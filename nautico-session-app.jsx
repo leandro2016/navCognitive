@@ -16,6 +16,7 @@ const DIFFICULTIES = [
   { id: "hard",   label: "Difícil", sprintTime: 7,  qTimer: 20, minFatigue: 1, restSeconds: 20 },
   { id: "brutal", label: "Brutal",  sprintTime: 5,  qTimer: 15, minFatigue: 2, restSeconds: 12 },
   { id: "notimer",label: "Sin reloj", sprintTime: 99, qTimer: 99, minFatigue: 1, restSeconds: 20 },
+  { id: "shrinking", label: "Degradable", sprintTime: 0, qTimer: 20, minFatigue: 1, restSeconds: 20 },
 ];
 
 const CAT_COLORS  = { NAV: "#38BDF8", MAN: "#34D399", DEC: "#FB923C", REG: "#A78BFA", SIT: "#F0A500" };
@@ -68,6 +69,12 @@ const SESSION_TEMPLATES = {
     label: "Caminata cognitiva",
     phases: [
       { id: "sprint", label: "Caminata",  duration: 1200, color: "#34D399" },
+    ],
+  },
+  "custom": {
+    label: "Sprint personalizado",
+    phases: [
+      { id: "sprint", label: "Sprint",  duration: 0, color: "#FBBF24" },
     ],
   },
 };
@@ -146,7 +153,10 @@ function shuffle(arr) {
 }
 
 function getAllQuestions(customQ) {
-  return [...BUILTIN_QUESTIONS, ...customQ];
+  const builtinIds = new Set(BUILTIN_QUESTIONS.map(q => q.id));
+  const builtinTexts = new Set(BUILTIN_QUESTIONS.map(q => q.q));
+  const uniqueCustom = customQ.filter(q => !builtinIds.has(q.id) && !builtinTexts.has(q.q));
+  return [...BUILTIN_QUESTIONS, ...uniqueCustom];
 }
 
 function getMaxId(allQ) {
@@ -186,12 +196,57 @@ function getExercisesForPhase(phaseId) {
   return shuffle(EXERCISES.filter(e => pool.includes(e.id)));
 }
 
-function buildSession(templateKey, role, difficultyId, allQ) {
+function buildSession(templateKey, role, difficultyId, allQ, opts) {
   const tmpl = SESSION_TEMPLATES[templateKey];
   const diff = DIFFICULTIES.find(d => d.id === difficultyId) || DIFFICULTIES[0];
   const rounds = [];
   const usedIds = new Set();
   let exercisesDone = 0;
+
+  const roleMatch = (q) => role === "TOD" || q.role === "ALL" || q.role === role;
+  const effectiveSprintTime = difficultyId === "shrinking" ? (opts?.shrinkingBase || 10) : diff.sprintTime;
+
+  if (templateKey === "walk") {
+    let pool = shuffle(allQ.filter(q => roleMatch(q) && q.fatigue >= 1));
+    const maxQ = Math.min(40, pool.length);
+    const questions = pool.slice(0, maxQ);
+    questions.forEach(q => usedIds.add(q.id));
+    rounds.push({
+      type: "sprint",
+      phaseLabel: "Caminata",
+      phaseColor: "#34D399",
+      questions,
+      questionTimer: 30,
+      isWalk: true,
+    });
+    return rounds;
+  }
+
+  if (templateKey === "custom") {
+    const cats = opts?.cats || ["NAV", "MAN", "DEC", "REG", "SIT"];
+    const count = opts?.count || 15;
+    let pool = shuffle(allQ.filter(q =>
+      cats.includes(q.cat) &&
+      roleMatch(q) &&
+      q.fatigue >= diff.minFatigue
+    ));
+    if (pool.length < count) {
+      pool = shuffle(allQ.filter(q =>
+        cats.includes(q.cat) &&
+        roleMatch(q)
+      ));
+    }
+    const questions = pool.slice(0, Math.min(count, pool.length));
+    questions.forEach(q => usedIds.add(q.id));
+    rounds.push({
+      type: "sprint",
+      phaseLabel: "Sprint personalizado",
+      phaseColor: "#FBBF24",
+      questions,
+      questionTimer: effectiveSprintTime,
+    });
+    return rounds;
+  }
 
   tmpl.phases.forEach(phase => {
     if (phase.id === "sprint") {
@@ -202,7 +257,7 @@ function buildSession(templateKey, role, difficultyId, allQ) {
         phaseLabel: phase.label,
         phaseColor: phase.color,
         questions,
-        questionTimer: diff.sprintTime,
+        questionTimer: effectiveSprintTime,
       });
       return;
     }
@@ -389,15 +444,27 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
   const [template,   setTemplate]   = useState("30min");
   const [role,       setRole]       = useState("ALL");
   const [difficulty, setDifficulty] = useState(settings.difficulty || "hard");
+  const [customCats, setCustomCats] = useState(["NAV", "MAN", "DEC", "REG", "SIT"]);
+  const [customCount, setCustomCount] = useState(15);
 
   const diff = DIFFICULTIES.find(d => d.id === difficulty);
 
   const handleStart = () => {
     setSettings(s => ({ ...s, difficulty }));
-    onStart(template, role, difficulty);
+    onStart(template, role, difficulty, { cats: customCats, count: customCount });
   };
 
-  const DIFFICULTY_OPTIONS = DIFFICULTIES.filter(d => d.id !== "notimer");
+  const DIFFICULTY_OPTIONS = DIFFICULTIES.filter(d => d.id !== "notimer" && d.id !== "shrinking");
+
+  const toggleCustomCat = (cat) => {
+    setCustomCats(prev => {
+      if (prev.includes(cat)) {
+        if (prev.length <= 1) return prev;
+        return prev.filter(c => c !== cat);
+      }
+      return [...prev, cat];
+    });
+  };
 
   return (
     <div style={{
@@ -434,12 +501,48 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
 
       <Section label="Duracion">
         {Object.entries(SESSION_TEMPLATES).map(([k, v]) => (
-          <ChoiceBtn key={k} active={template === k} color="#0EA5E9" onClick={() => setTemplate(k)}>
+          <ChoiceBtn key={k} active={template === k} color={k === "walk" ? "#34D399" : k === "custom" ? "#FBBF24" : "#0EA5E9"} onClick={() => setTemplate(k)}>
             <strong>{v.label}</strong>
-            <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>{v.phases.length} fases</span>
+            {k !== "custom" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>{v.phases.length} fases</span>}
+            {k === "walk" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>30s/pregunta</span>}
+            {k === "custom" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>Vos elegis</span>}
           </ChoiceBtn>
         ))}
       </Section>
+
+      {template === "custom" && (
+        <Section label="Categorias">
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+            {["NAV", "MAN", "DEC", "REG", "SIT"].map(c => {
+              const active = customCats.includes(c);
+              const col = CAT_COLORS[c];
+              return (
+                <button key={c} onClick={() => toggleCustomCat(c)} style={{
+                  padding: "10px 14px", borderRadius: 8, cursor: "pointer",
+                  background: active ? col + "22" : S.bg2,
+                  border: active ? "1.5px solid " + col : "1.5px solid " + S.border,
+                  color: active ? col : S.muted,
+                  fontFamily: S.font, fontSize: 10, fontWeight: 700, letterSpacing: 1,
+                }}>{CAT_LABELS[c]}</button>
+              );
+            })}
+          </div>
+          <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 8, textTransform: "uppercase" }}>
+            Cantidad de preguntas
+          </div>
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+            {[5, 10, 15, 20, 30].map(n => (
+              <button key={n} onClick={() => setCustomCount(n)} style={{
+                flex: 1, padding: "10px 4px", borderRadius: 8, cursor: "pointer",
+                background: customCount === n ? "rgba(251,191,36,0.15)" : S.bg2,
+                border: customCount === n ? "1.5px solid #FBBF24" : "1.5px solid " + S.border,
+                color: customCount === n ? "#FBBF24" : S.muted,
+                fontFamily: S.font, fontSize: 11, fontWeight: 700,
+              }}>{n}</button>
+            ))}
+          </div>
+        </Section>
+      )}
 
       <Section label="Tu rol hoy">
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -475,8 +578,22 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
             onClick={() => setDifficulty("notimer")}>
             Sin reloj
           </ChoiceBtn>
+          <ChoiceBtn active={difficulty === "shrinking"} color="#FBBF24"
+            extraStyle={{ flex: 1, textAlign: "center", marginBottom: 0 }}
+            onClick={() => setDifficulty("shrinking")}>
+            Degradable
+          </ChoiceBtn>
         </div>
-        {diff && (
+        {difficulty === "shrinking" && (
+          <div style={{ fontSize: 10, color: "#FBBF24", marginTop: 8, lineHeight: 1.7 }}>
+            Timer actual: {settings.shrinkingBase || 10}s
+            {settings.personalBest && settings.personalBest < Infinity && (
+              <span style={{ color: S.muted }}> · Record: {settings.personalBest}s prom.</span>
+            )}
+            <br /><span style={{ color: S.dim }}>Baja 1s automaticamente por sesion completada</span>
+          </div>
+        )}
+        {diff && difficulty !== "shrinking" && (
           <div style={{ fontSize: 10, color: S.dim, marginTop: 8, lineHeight: 1.7 }}>
             {difficulty === "notimer"
               ? "Sin timer · Solo precision · Ideal para repasar"
@@ -486,7 +603,25 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
       </Section>
 
       <Section label="Fases">
-        {SESSION_TEMPLATES[template].phases.map(p => (
+        {template === "walk" && (
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
+            <div style={{ width: 3, height: 32, borderRadius: 2, background: "#34D399", flexShrink: 0 }} />
+            <div>
+              <div style={{ fontSize: 11, color: S.text, fontWeight: 700 }}>Caminata continua</div>
+              <div style={{ fontSize: 10, color: S.muted }}>20 min · 1 pregunta cada 30s · Sin ejercicios</div>
+            </div>
+          </div>
+        )}
+        {template === "custom" && (
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
+            <div style={{ width: 3, height: 32, borderRadius: 2, background: "#FBBF24", flexShrink: 0 }} />
+            <div>
+              <div style={{ fontSize: 11, color: S.text, fontWeight: 700 }}>{customCount} preguntas · {customCats.join(" + ")}</div>
+              <div style={{ fontSize: 10, color: S.muted }}>Sin ejercicios · Sprint puro · Timer: {diff?.sprintTime || 10}s</div>
+            </div>
+          </div>
+        )}
+        {template !== "walk" && template !== "custom" && SESSION_TEMPLATES[template].phases.map(p => (
           <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
             <div style={{ width: 3, height: 32, borderRadius: 2, background: p.color, flexShrink: 0 }} />
             <div>
@@ -730,11 +865,11 @@ function LibraryScreen({ customQ, setCustomQ }) {
         })}
       </div>
 
-      {filtered.map(q => {
+      {filtered.map((q, idx) => {
         const isCustom  = !builtinIds.has(q.id);
         const catColor  = CAT_COLORS[q.cat] || S.muted;
         return (
-          <div key={q.id} style={{
+          <div key={q.id + '-' + idx} style={{
             background: S.bg2, borderRadius: 10, border: "1px solid " + S.border,
             padding: "12px 14px", marginBottom: 8,
           }}>
@@ -898,6 +1033,8 @@ function ExerciseTimer({ round, paused, onDone }) {
   const [stage,            setStage]            = useState("exercise");
   const [running,          setRunning]          = useState(true);
   const [questionRevealed, setQuestionRevealed] = useState(false);
+  const [qStart,           setQStart]           = useState(Date.now());
+  const [qTimeUp,          setQTimeUp]          = useState(false);
 
   const ex          = round.exercise;
   const isTimeBased = !!ex.dur;
@@ -917,15 +1054,18 @@ function ExerciseTimer({ round, paused, onDone }) {
         setStage("question");
         setRunning(true);
         setQuestionRevealed(false);
+        setQStart(Date.now());
       } else {
         onDone(null);
       }
     } else if (stage === "question") {
-      setQuestionRevealed(true);
+      setQTimeUp(true);
+      setRunning(false);
     }
   }, [stage, round, onDone]);
 
-  const active = running && !paused;
+  const isNoTimer = round.questionTimer >= 90;
+  const active = running && !paused && !(stage === "question" && isNoTimer);
   const t      = useCountdown(totalSecs, active, handleStageDone);
   const pct    = totalSecs > 0 ? (t / totalSecs) * 100 : 0;
 
@@ -1058,7 +1198,7 @@ function ExerciseTimer({ round, paused, onDone }) {
       </div>
 
       <div style={{ padding: "0 16px 36px", display: "flex", gap: 10 }}>
-        {stage === "question" && !questionRevealed && (
+        {stage === "question" && !questionRevealed && !qTimeUp && (
           <button onClick={() => { setRunning(false); setQuestionRevealed(true); }} style={{
             flex: 1, padding: "16px",
             background: "rgba(167,139,250,0.12)", border: "1.5px solid rgba(167,139,250,0.4)",
@@ -1066,15 +1206,24 @@ function ExerciseTimer({ round, paused, onDone }) {
             fontFamily: S.font, fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
           }}>✓ YA RESPONDI</button>
         )}
+        {stage === "question" && !questionRevealed && qTimeUp && (
+          <button onClick={() => setQuestionRevealed(true)} style={{
+            flex: 1, padding: "16px",
+            background: "rgba(251,191,36,0.1)", border: "1.5px solid rgba(251,191,36,0.4)",
+            borderRadius: 12, color: "#FBBF24",
+            fontFamily: S.font, fontSize: 13, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
+            animation: "pulse 1.5s ease-in-out infinite",
+          }}>VER RESPUESTA →</button>
+        )}
         {stage === "question" && questionRevealed && (
           <>
-            <button onClick={() => onDone(false)} style={{
+            <button onClick={() => onDone({ correct: false, time: (Date.now() - qStart) / 1000 })} style={{
               flex: 1, padding: "16px",
               background: "rgba(244,63,94,0.1)", border: "1px solid rgba(244,63,94,0.3)",
               borderRadius: 12, color: "#F43F5E",
               fontFamily: S.font, fontSize: 12, fontWeight: 700, cursor: "pointer",
             }}>✗ ERRE</button>
-            <button onClick={() => onDone(true)} style={{
+            <button onClick={() => onDone({ correct: true, time: (Date.now() - qStart) / 1000 })} style={{
               flex: 1, padding: "16px",
               background: "rgba(52,211,153,0.1)", border: "1px solid rgba(52,211,153,0.3)",
               borderRadius: 12, color: "#34D399",
@@ -1099,7 +1248,7 @@ function ExerciseTimer({ round, paused, onDone }) {
           }}>SALTEAR DESCANSO →</button>
         )}
       </div>
-      <style>{`@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}`}</style>
+      <style>{`@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.7}}`}</style>
     </div>
   );
 }
@@ -1111,23 +1260,38 @@ function SprintScreen({ round, paused, onDone }) {
   const [revealed, setRevealed] = useState(false);
   const [results,  setResults]  = useState([]);
   const [running,  setRunning]  = useState(true);
+  const [qStart,   setQStart]   = useState(Date.now());
+  const [qTimeUp,  setQTimeUp]  = useState(false);
 
   const questions = round.questions;
   const current   = questions[qIdx];
+  const isWalk    = round.isWalk;
 
-  const handleDone = useCallback(() => setRevealed(true), []);
-  const active     = running && !paused && !revealed;
+  const handleDone = useCallback(() => {
+    setQTimeUp(true);
+    setRunning(false);
+  }, []);
+  const isNoTimer  = round.questionTimer >= 90;
+  const active     = running && !paused && !revealed && !isNoTimer;
   const t          = useCountdown(round.questionTimer, active, handleDone);
-  const pct        = (t / round.questionTimer) * 100;
+  const pct        = isNoTimer ? 100 : (t / round.questionTimer) * 100;
   const timerColor = t > round.questionTimer * 0.5 ? "#A78BFA" : t > 3 ? "#FB923C" : "#F43F5E";
 
+  const revealAnswer = () => {
+    setRevealed(true);
+    setQTimeUp(false);
+  };
+
   const next = (correct) => {
-    const updated = [...results, { q: current, correct }];
+    const elapsed = (Date.now() - qStart) / 1000;
+    const updated = [...results, { q: current, correct, time: elapsed }];
     setResults(updated);
     if (qIdx + 1 >= questions.length) { onDone(updated); return; }
     setQIdx(qIdx + 1);
     setRevealed(false);
     setRunning(true);
+    setQTimeUp(false);
+    setQStart(Date.now());
   };
 
   if (!current) return null;
@@ -1174,7 +1338,7 @@ function SprintScreen({ round, paused, onDone }) {
           {current.q}
         </div>
 
-        {!revealed && (
+        {!revealed && !qTimeUp && (
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             {round.questionTimer < 90 && (
             <div style={{
@@ -1190,13 +1354,23 @@ function SprintScreen({ round, paused, onDone }) {
               </div>
             </div>
             )}
-            <button onClick={() => { setRunning(false); setRevealed(true); }} style={{
+            <button onClick={() => { setRunning(false); revealAnswer(); }} style={{
               flex: 1, padding: "14px",
               background: "rgba(167,139,250,0.1)", border: "1.5px solid rgba(167,139,250,0.4)",
               borderRadius: 12, color: "#A78BFA",
               fontFamily: S.font, fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
             }}>✓ YA RESPONDI</button>
           </div>
+        )}
+
+        {qTimeUp && !revealed && (
+          <button onClick={revealAnswer} style={{
+            width: "100%", padding: "16px", marginBottom: 16,
+            background: "rgba(251,191,36,0.1)", border: "1.5px solid rgba(251,191,36,0.4)",
+            borderRadius: 12, color: "#FBBF24",
+            fontFamily: S.font, fontSize: 13, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
+            animation: "pulse 1.5s ease-in-out infinite",
+          }}>VER RESPUESTA →</button>
         )}
 
         {revealed && (
@@ -1230,15 +1404,16 @@ function SprintScreen({ round, paused, onDone }) {
           </>
         ) : <div style={{ flex: 1 }} />}
       </div>
-      <style>{`@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}`}</style>
+      <style>{`@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.7}}`}</style>
     </div>
   );
 }
 
 // ─── RESULTS SCREEN ────────────────────────────────────────────────────────
 
-function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave }) {
+function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, settings }) {
   const [saved, setSaved] = useState(false);
+  const [showPR, setShowPR] = useState(false);
 
   const all      = sessionResults.flat().filter(r => r && r.q);
   const correct  = all.filter(r => r.correct).length;
@@ -1260,6 +1435,9 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave }) {
   const handleSave = () => {
     onSave();
     setSaved(true);
+    if (sessionMeta?.difficulty === "shrinking" && settings?.newPR) {
+      setShowPR(true);
+    }
   };
 
   return (
@@ -1273,6 +1451,22 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave }) {
           {correct} correctas · {total - correct} errores · {total} preguntas
         </div>
       </div>
+
+      {showPR && (
+        <div style={{
+          marginBottom: 24, padding: "16px",
+          background: "rgba(251,191,36,0.08)", border: "1px solid rgba(251,191,36,0.3)",
+          borderRadius: 12, textAlign: "center",
+        }}>
+          <div style={{ fontSize: 28, marginBottom: 6 }}>🏆</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#FBBF24", letterSpacing: 2, marginBottom: 4 }}>
+            NUEVO RECORD PERSONAL
+          </div>
+          <div style={{ fontSize: 11, color: S.muted }}>
+            Promedio: {settings?.personalBest}s · Timer proximo: {(settings?.shrinkingBase || 10)}s
+          </div>
+        </div>
+      )}
 
       {Object.keys(byCat).length > 0 && (
         <div style={{ marginBottom: 24 }}>
@@ -1357,8 +1551,13 @@ export default function App() {
     }
   }, [sessionState]);
 
-  const handleStart = (template, role, difficulty) => {
-    const rounds = buildSession(template, role, difficulty, allQ);
+  const handleStart = (template, role, difficulty, opts) => {
+    let effectiveOpts = { ...opts };
+    if (difficulty === "shrinking") {
+      const base = settings.shrinkingBase || 10;
+      effectiveOpts.shrinkingBase = base;
+    }
+    const rounds = buildSession(template, role, difficulty, allQ, effectiveOpts);
     setSavedSession(null);
     setSessionState({ rounds, roundIdx: 0, results: [], meta: { template, role, difficulty }, done: false });
     setPaused(false);
@@ -1379,11 +1578,16 @@ export default function App() {
   const handleRoundDone = (result) => {
     setSessionState(prev => {
       if (!prev) return prev;
-      const qResult = Array.isArray(result)
-        ? result
-        : result !== null
-          ? [{ q: prev.rounds[prev.roundIdx]?.question, correct: result }]
-          : [];
+      let qResult;
+      if (Array.isArray(result)) {
+        qResult = result;
+      } else if (result !== null && typeof result === "object") {
+        qResult = [{ q: prev.rounds[prev.roundIdx]?.question, correct: result.correct, time: result.time }];
+      } else if (result !== null) {
+        qResult = [{ q: prev.rounds[prev.roundIdx]?.question, correct: result }];
+      } else {
+        qResult = [];
+      }
       const newResults = [...prev.results, qResult];
       const nextIdx    = prev.roundIdx + 1;
       const done       = nextIdx >= prev.rounds.length;
@@ -1401,12 +1605,30 @@ export default function App() {
       results:    sessionState.results,
     }]);
     setSavedSession(null);
+
+    if (sessionState.meta.difficulty === "shrinking") {
+      const allTimes = sessionState.results.flat().filter(r => r && r.time).map(r => r.time);
+      const avgTime = allTimes.length ? allTimes.reduce((a, b) => a + b, 0) / allTimes.length : null;
+      setSettings(s => {
+        const newBase = Math.max(3, (s.shrinkingBase || 10) - 1);
+        const update = { ...s, shrinkingBase: newBase };
+        if (avgTime !== null) {
+          const prevBest = s.personalBest || Infinity;
+          if (avgTime < prevBest) {
+            update.personalBest = Math.round(avgTime * 10) / 10;
+            update.newPR = true;
+          }
+        }
+        return update;
+      });
+    }
   };
 
   const handleRestart = () => {
     setSavedSession(null);
     setSessionState(null);
     setPaused(false);
+    setSettings(s => ({ ...s, newPR: false }));
   };
 
   const handleClearHistory = () => {
@@ -1422,6 +1644,7 @@ export default function App() {
             sessionMeta={sessionState.meta}
             onRestart={handleRestart}
             onSave={handleSaveHistory}
+            settings={settings}
           />
           <style>{`body{margin:0;background:#060C14}`}</style>
         </>
