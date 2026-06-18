@@ -16,8 +16,8 @@ const DIFFICULTIES = [
   { id: "brutal", label: "Brutal",  sprintTime: 5,  qTimer: 15, minFatigue: 2, restSeconds: 12 },
 ];
 
-const CAT_COLORS  = { NAV: "#38BDF8", MAN: "#34D399", DEC: "#FB923C", REG: "#A78BFA" };
-const CAT_LABELS  = { NAV: "Navegación", MAN: "Maniobras", DEC: "Decisiones", REG: "Reglamento" };
+const CAT_COLORS  = { NAV: "#38BDF8", MAN: "#34D399", DEC: "#FB923C", REG: "#A78BFA", SIT: "#F0A500" };
+const CAT_LABELS  = { NAV: "Navegación", MAN: "Maniobras", DEC: "Decisiones", REG: "Reglamento", SIT: "Situacional" };
 const INT_COLORS  = { 1: "#38BDF8", 2: "#34D399", 3: "#FB923C", 4: "#F43F5E" };
 const INT_LABELS  = { 1: "Baja", 2: "Media", 3: "Alta", 4: "Muy alta" };
 const FAT_LABELS  = { 1: "Fresco", 2: "Activado", 3: "Fatigado", 4: "Al límite" };
@@ -72,10 +72,10 @@ const PHASE_EX_MAP = {
 };
 
 const PHASE_Q_MAP = {
-  warm:   ["NAV"],
-  cardio: ["NAV", "DEC"],
-  man:    ["MAN", "DEC"],
-  sprint: ["NAV", "MAN", "DEC", "REG"],
+  warm:   ["NAV", "SIT"],
+  cardio: ["NAV", "DEC", "SIT"],
+  man:    ["MAN", "DEC", "SIT"],
+  sprint: ["NAV", "MAN", "DEC", "REG", "SIT"],
 };
 
 const ROLES = [
@@ -245,7 +245,7 @@ function downloadJSON(data, filename) {
 
 function validateImportedQuestions(raw) {
   if (!Array.isArray(raw)) throw new Error("Debe ser un array JSON");
-  const validCats  = ["NAV", "MAN", "DEC", "REG"];
+  const validCats  = ["NAV", "MAN", "DEC", "REG", "SIT"];
   const validRoles = ["ALL", "GEN", "MAY", "PRO"];
   return raw.map((item, idx) => {
     if (typeof item.cat !== "string" || !validCats.includes(item.cat))
@@ -554,7 +554,7 @@ function LibraryScreen({ customQ, setCustomQ }) {
         <div style={{ marginBottom: 14 }}>
           <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 8, textTransform: "uppercase" }}>Categoria</div>
           <div style={{ display: "flex", gap: 8 }}>
-            {["NAV", "MAN", "DEC", "REG"].map(c => (
+            {["NAV", "MAN", "DEC", "REG", "SIT"].map(c => (
               <button key={c} onClick={() => setForm(f => ({ ...f, cat: c }))} style={{
                 flex: 1, padding: "10px 4px", borderRadius: 8, cursor: "pointer",
                 background: form.cat === c ? CAT_COLORS[c] + "22" : S.bg2,
@@ -671,7 +671,7 @@ function LibraryScreen({ customQ, setCustomQ }) {
       )}
 
       <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" }}>
-        {["ALL", "NAV", "MAN", "DEC", "REG"].map(c => {
+        {["ALL", "NAV", "MAN", "DEC", "REG", "SIT"].map(c => {
           const count = c === "ALL" ? allQ.length : allQ.filter(q => q.cat === c).length;
           const color = c === "ALL" ? "#64748B" : CAT_COLORS[c];
           return (
@@ -958,6 +958,18 @@ function ExerciseTimer({ round, paused, onDone }) {
 
         {stage === "question" && round.question && (
           <div>
+            {round.question.context && (
+              <div style={{
+                background: "rgba(240,165,0,0.07)", border: "1px solid rgba(240,165,0,0.25)",
+                borderRadius: 10, padding: "12px 14px", marginBottom: 14,
+                fontFamily: S.font,
+              }}>
+                <div style={{ fontSize: 8, letterSpacing: 3, color: "#F0A500", marginBottom: 7, textTransform: "uppercase" }}>Escenario</div>
+                <div style={{ fontSize: 12, color: S.text, lineHeight: 1.7, whiteSpace: "pre-line", fontFamily: "monospace" }}>
+                  {round.question.context}
+                </div>
+              </div>
+            )}
             <div style={{ fontSize: 17, fontWeight: 700, color: S.text, lineHeight: 1.65, whiteSpace: "pre-line", marginBottom: 16 }}>
               {round.question.q}
             </div>
@@ -1097,6 +1109,18 @@ function SprintScreen({ round, paused, onDone }) {
           border: "1px solid " + CAT_COLORS[current.cat] + "44",
           fontSize: 9, color: CAT_COLORS[current.cat], letterSpacing: 2, marginBottom: 16, textTransform: "uppercase",
         }}>{CAT_LABELS[current.cat]}</div>
+
+        {current.context && (
+          <div style={{
+            background: "rgba(240,165,0,0.07)", border: "1px solid rgba(240,165,0,0.25)",
+            borderRadius: 10, padding: "12px 14px", marginBottom: 14,
+          }}>
+            <div style={{ fontSize: 8, letterSpacing: 3, color: "#F0A500", marginBottom: 7, textTransform: "uppercase" }}>Escenario</div>
+            <div style={{ fontSize: 12, color: S.text, lineHeight: 1.7, whiteSpace: "pre-line", fontFamily: "monospace" }}>
+              {current.context}
+            </div>
+          </div>
+        )}
 
         <div style={{ fontSize: 18, fontWeight: 700, color: S.text, lineHeight: 1.65, whiteSpace: "pre-line", marginBottom: 20 }}>
           {current.q}

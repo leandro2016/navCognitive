@@ -1015,5 +1015,205 @@
   "q": "En que fase se ejecuta la maniobra?",
   "a": "ORDEN",
   "d": "Ejecucion"
+},
+{
+  "id": 141,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 2,
+  "context": "↑ VIENTO\n\n   ★ BOYA (arriba)\n\n🚢 TU  →  🚢 BARCO-A\n(babor)    (estribor)\n\nAmbos ceñidos. Van a cruzarse.",
+  "q": "Barco-A viene en amura estribor. Tu en babor. ¿Que haces?",
+  "a": "Ceder: virar o arribar antes del cruce",
+  "d": "Regla 10: estribor tiene prioridad absoluta"
+},
+{
+  "id": 142,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 2,
+  "context": "↑ VIENTO\n\n   ★ BOYA\n\n🚢 TU\n  ↘\n    🚢 BARCO-A (alcanzando)\n\nAmbos amura estribor. El viene por detras.",
+  "q": "Barco-A te alcanza. Misma amura. ¿Quien cede?",
+  "a": "Barco-A cede (alcanzador)",
+  "d": "Regla 12: el que alcanza no tiene derecho"
+},
+{
+  "id": 143,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 3,
+  "context": "↑ VIENTO\n\n★ BOYA ← 2 largos\n\n🚢 TU: layline babor\n🚢 BARCO-A: estribor, cruzando ahora\n\nSi viras quedas en layline estribor.",
+  "q": "¿Viras ahora o cedes y sigues en babor?",
+  "a": "Ceder y virar cuando sea seguro, no forzar el cruce",
+  "d": "Nunca arriesgar una protesta a 2 largos de la boya"
+},
+{
+  "id": 144,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 3,
+  "context": "↑ VIENTO\n\n★ BOYA (arriba) — 4 largos\n\n🚢 TU: amura babor, header constante\n   Velocidad: buena\n   Barco-B: 1 largo a tu izquierda, mismo bordo",
+  "q": "Llevas 3 headers seguidos en babor. ¿Que haces?",
+  "a": "Virar: los headers en babor = lifts en estribor",
+  "d": "Header en babor significa que el viento rola a favor de estribor"
+},
+{
+  "id": 145,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 2,
+  "context": "↑ VIENTO\n\n★ BOYA — zona = 3 largos\n\n🚢 TU: interior, 2.5 largos\n🚢 BARCO-A: exterior, mismo nivel\n\nAun no estan en la zona.",
+  "q": "¿Tienes derecho de marca en este momento?",
+  "a": "No. El solapamiento debe establecerse ANTES de la zona",
+  "d": "Regla 18: el solapamiento cuenta solo al entrar a 3 largos"
+},
+{
+  "id": 146,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 3,
+  "context": "↑ VIENTO\n\n★ BOYA (arriba)\n\n🚢 TU: 1 largo, layline perfecta estribor\n🚢 BARCO-A: babor, viene rapido\n🚢 BARCO-B: estribor, 0.5 largos mas lejos",
+  "q": "Barco-A en babor se mete entre vos y la boya cruzando limpio. ¿Que haces?",
+  "a": "Seguir: si cruzo limpio, tiene derecho. Evalua si vale protestar.",
+  "d": "No frenar bruscamente. Evalua el espacio real antes de actuar."
+},
+{
+  "id": 147,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 2,
+  "context": "↓ VIENTO (popas)\n\n★ BOYA (abajo) — 3 largos\n\n🚢 TU: amura estribor, spi arriba\n🚢 BARCO-A: babor, convergiendo\n\nAmbos con spi.",
+  "q": "En popas, amura estribor vs babor. ¿Quien tiene prioridad?",
+  "a": "Tu (estribor). Barco-A debe ceder.",
+  "d": "Regla 10 aplica igual en popas: estribor manda"
+},
+{
+  "id": 148,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 3,
+  "context": "↑ VIENTO\n\nBARCO-A ← ← ← (headers continuos)\n\n🚢 TU: estribor, lifts continuos\n\nBarco-A en babor viene con headers.\nTu: lifts. El: headers.",
+  "q": "¿A que lado esta el viento shiftando?",
+  "a": "A babor (tu ganas lifts en estribor = viento roló a babor)",
+  "d": "Lift en estribor = header en babor = viento rolando a babor"
+},
+{
+  "id": 149,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 3,
+  "context": "SALIDA — 45 segundos para el gun\n\n★ LINEA: boya barlovento → boya sotavento\n\n🚢 TU: sobre la linea, 45 seg antes\n🚢 BARCO-A: a barlovento tuyo\n🚢 BARCO-B: a sotavento, 1 cuerpo\n\nViento: 12 kn estable",
+  "q": "Estas OCS (Over the line) antes del gun. ¿Primera accion?",
+  "a": "Retornar al lado correcto por un extremo de la linea",
+  "d": "No salir hasta cruzar la linea legalmente. Evitar DSQ."
+},
+{
+  "id": 150,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 2,
+  "context": "REGATE — 1er tramo de ceñida\n\n↑ VIENTO 090°\n\n🚢 TU: rumbo 045°, vel 6kn\n🚢 BARCO-A: rumbo 315°, vel 6kn\n\nVan a cruzarse en 2 minutos.",
+  "q": "Viento del Este (090°). Tu vas al NE. ¿Que amura llevas?",
+  "a": "Amura estribor: viento entra por tu banda de estribor",
+  "d": "Viento E (090°), rumbo NE (045°): el viento viene de tu derecha = amura estribor"
+},
+{
+  "id": 151,
+  "cat": "SIT",
+  "role": "GEN",
+  "fatigue": 3,
+  "context": "Ceñida, viento 15 kn.\n\nVirada ejecutada.\nNueva escota: cobrada 80%.\n\nBarco sale de virada con velocidad baja.\nEl timonel pide: 'AFUERA'.",
+  "q": "¿Que haces con la escota ahora mismo?",
+  "a": "Amollar levemente para abrir la vela y recuperar velocidad",
+  "d": "Con poca velocidad, la vela necesita mas apertura para generar sustentacion"
+},
+{
+  "id": 152,
+  "cat": "SIT",
+  "role": "MAY",
+  "fatigue": 3,
+  "context": "Trasluchada en popas.\nViento: 18 kn con rachas a 22 kn.\n\nBotavara pasando al nuevo lado.\nRacha llega justo al completar la maniobra.\n\nEl barco empieza a escorarse fuerte.",
+  "q": "¿Primera accion del trimmer de mayor?",
+  "a": "Amollar mayor rapidamente para reducir escora",
+  "d": "En racha post-maniobra: prioridad es enderezar el barco"
+},
+{
+  "id": 153,
+  "cat": "SIT",
+  "role": "PRO",
+  "fatigue": 3,
+  "context": "Izado de spi en regate.\nDriza: subiendo.\nPuno de amura: tensando.\n\nA mitad del izado ves que el spi\ntiene una vuelta de torsion.",
+  "q": "¿Que haces?",
+  "a": "Comunicar inmediatamente y detener el izado",
+  "d": "Un spi con torsion no abre y puede bloquearse. Nunca forzar."
+},
+{
+  "id": 154,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 2,
+  "context": "↑ VIENTO\n\n           ★ BOYA\n          /\n         / (layline)\n        /\n🚢 TU (10° pasado la layline)",
+  "q": "Estas en overlayline. ¿Que perdiste?",
+  "a": "Distancia: llegas a la boya con angulo y tenes que orbitar",
+  "d": "Overlayline = metros extra recorridos innecesariamente"
+},
+{
+  "id": 155,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 3,
+  "context": "POPAS — Regate corrido\n\n🚢 TU: spi arriba, vel 8 kn\n🚢 BARCO-A: 1 largo atras, ganando\n🚢 BARCO-B: 1 largo adelante\n\n★ BOYA (abajo): 5 largos\nViento: 12 kn, oscilando +-10°",
+  "q": "Barco-A te va a alcanzar en 3 largos. ¿Primera accion tactica?",
+  "a": "Cubrirlo: interponerte entre el y la boya para bloquear su viento",
+  "d": "En popas: cubrir es mas efectivo que intentar acelerar"
+},
+{
+  "id": 156,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 3,
+  "context": "CEÑIDA — Viento 10 kn\n\n🚢 TU: 5 kn, trim ajustado\n🚢 BARCO-A: 1 cuerpo a barlovento, mismo rumbo\n\nBarco-A te esta tapando el viento.",
+  "q": "Barco-A te da viento sucio desde barlovento. ¿Que opciones tenes?",
+  "a": "Virar para salir de su estela, o arribar para escapar por sotavento",
+  "d": "Nunca quedarse en viento sucio: se pierde velocidad y VMG"
+},
+{
+  "id": 157,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 3,
+  "context": "CEÑIDA — Final del tramo\n\n↑ VIENTO cambiante (+-15°)\n\n🚢 TU: a 3 largos de la boya\nLayline calculada hace 2 min.\n\nViento roló 10° a babor hace 30 seg.",
+  "q": "Tu layline calculada ya no es valida. ¿Que haces?",
+  "a": "Recalcular: si roló a babor, tu layline de estribor quedo corta. Seguir un poco mas.",
+  "d": "Cada rollada del viento invalida la layline. Siempre recalcular."
+},
+{
+  "id": 158,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 3,
+  "context": "⚠ TRIPULANTE AL AGUA\n\nVelocidad: 6 kn\nViento: 15 kn, amura estribor\n\nTripulante cayo por popa de babor\nTiempo: 10 segundos",
+  "q": "Maniobra de rescate: ¿primera accion del timonel?",
+  "a": "Arribar (girar hacia sotavento) para alejarse y preparar el regreso al MOB",
+  "d": "Quick Stop: arribar primero para ganar espacio, luego virar de vuelta al punto MOB"
+},
+{
+  "id": 159,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 2,
+  "context": "SALIDA DEL REGATE — 30 segundos\n\n↑ VIENTO 000°\n\n★ LINEA: boya babor (izq) — boya estribor (der)\n\nExtremo de barlovento (babor) favorecido 5°.\n\n🚢 TU: posicionado al centro de la linea.",
+  "q": "¿A que extremo de la linea deberias ir?",
+  "a": "Al extremo de barlovento (babor): favorecido = menos distancia a la 1era boya",
+  "d": "El extremo favorecido da angulo mejor hacia la boya. Vale la pena pelearlo."
+},
+{
+  "id": 160,
+  "cat": "SIT",
+  "role": "ALL",
+  "fatigue": 2,
+  "context": "NAVEGACION NOCTURNA\n\nVes una luz fija ROJA a tu proa izquierda.\nTu barco: a motor, viento calmo.",
+  "q": "¿Que indica esa luz roja?",
+  "a": "Lado de babor de un barco que se aproxima: estas en su camino",
+  "d": "Rojo = babor del otro barco. Si ves rojo y verde = viene de frente. Solo rojo = lo estas cortando."
 }
 ]
