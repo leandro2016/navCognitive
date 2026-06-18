@@ -5,15 +5,17 @@ import EXERCISES from "./Questions/exercises.json";
 // ─── CONSTANTS & STORAGE KEYS ──────────────────────────────────────────────
 
 const LS = {
-  customQ:  "naut_custom_q_v2",
-  history:  "naut_history_v2",
-  settings: "naut_settings_v2",
+  customQ:   "naut_custom_q_v2",
+  history:   "naut_history_v2",
+  settings:  "naut_settings_v2",
+  savedSession: "naut_saved_session_v1",
 };
 
 const DIFFICULTIES = [
   { id: "normal", label: "Normal",  sprintTime: 10, qTimer: 25, minFatigue: 1, restSeconds: 20 },
   { id: "hard",   label: "Difícil", sprintTime: 7,  qTimer: 20, minFatigue: 1, restSeconds: 20 },
   { id: "brutal", label: "Brutal",  sprintTime: 5,  qTimer: 15, minFatigue: 2, restSeconds: 12 },
+  { id: "notimer",label: "Sin reloj", sprintTime: 99, qTimer: 99, minFatigue: 1, restSeconds: 20 },
 ];
 
 const CAT_COLORS  = { NAV: "#38BDF8", MAN: "#34D399", DEC: "#FB923C", REG: "#A78BFA", SIT: "#F0A500" };
@@ -60,6 +62,12 @@ const SESSION_TEMPLATES = {
     phases: [
       { id: "cardio", label: "Cardiovascular", duration: 480,  color: "#F43F5E" },
       { id: "sprint", label: "Sprint mental",  duration: 300,  color: "#A78BFA" },
+    ],
+  },
+  "walk": {
+    label: "Caminata cognitiva",
+    phases: [
+      { id: "sprint", label: "Caminata",  duration: 1200, color: "#34D399" },
     ],
   },
 };
@@ -345,7 +353,7 @@ function FormField({ label, value, onChange, multiline, placeholder }) {
   );
 }
 
-function PauseOverlay({ onResume }) {
+function PauseOverlay({ onResume, onSaveExit }) {
   return (
     <div style={{
       position: "fixed", inset: 0, zIndex: 200,
@@ -363,14 +371,21 @@ function PauseOverlay({ onResume }) {
         background: "linear-gradient(135deg, #0EA5E9, #0D9488)",
         border: "none", borderRadius: 12, color: "#fff",
         fontFamily: S.font, fontSize: 14, fontWeight: 700, letterSpacing: 3, cursor: "pointer",
+        marginBottom: 14,
       }}>CONTINUAR</button>
+      <button onClick={onSaveExit} style={{
+        padding: "12px 32px",
+        background: "none", border: "1px solid " + S.border,
+        borderRadius: 10, color: S.muted,
+        fontFamily: S.font, fontSize: 10, letterSpacing: 2, cursor: "pointer",
+      }}>💾 GUARDAR Y SALIR</button>
     </div>
   );
 }
 
 // ─── HOME SCREEN ───────────────────────────────────────────────────────────
 
-function HomeScreen({ onStart, settings, setSettings }) {
+function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSettings }) {
   const [template,   setTemplate]   = useState("30min");
   const [role,       setRole]       = useState("ALL");
   const [difficulty, setDifficulty] = useState(settings.difficulty || "hard");
@@ -381,6 +396,8 @@ function HomeScreen({ onStart, settings, setSettings }) {
     setSettings(s => ({ ...s, difficulty }));
     onStart(template, role, difficulty);
   };
+
+  const DIFFICULTY_OPTIONS = DIFFICULTIES.filter(d => d.id !== "notimer");
 
   return (
     <div style={{
@@ -395,6 +412,25 @@ function HomeScreen({ onStart, settings, setSettings }) {
         </div>
         <div style={{ fontSize: 22, fontWeight: 700, color: S.text }}>Nueva Sesion</div>
       </div>
+
+      {savedSession && (
+        <div style={{
+          width: "100%", maxWidth: 380, marginBottom: 20,
+          background: "rgba(14,165,233,0.08)", border: "1px solid rgba(14,165,233,0.3)",
+          borderRadius: 12, padding: "14px 16px",
+        }}>
+          <div style={{ fontSize: 9, letterSpacing: 3, color: "#0EA5E9", marginBottom: 6, textTransform: "uppercase" }}>Sesion guardada</div>
+          <div style={{ fontSize: 11, color: S.muted, marginBottom: 12 }}>
+            {SESSION_TEMPLATES[savedSession.meta.template]?.label} · Ronda {savedSession.roundIdx + 1}/{savedSession.rounds.length}
+          </div>
+          <button onClick={onResumeSaved} style={{
+            width: "100%", padding: "12px",
+            background: "linear-gradient(135deg, #0EA5E9, #0D9488)",
+            border: "none", borderRadius: 10, color: "#fff",
+            fontFamily: S.font, fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
+          }}>▶ CONTINUAR SESION</button>
+        </div>
+      )}
 
       <Section label="Duracion">
         {Object.entries(SESSION_TEMPLATES).map(([k, v]) => (
@@ -421,8 +457,8 @@ function HomeScreen({ onStart, settings, setSettings }) {
       </Section>
 
       <Section label="Dificultad">
-        <div style={{ display: "flex", gap: 8 }}>
-          {DIFFICULTIES.map(d => {
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {DIFFICULTY_OPTIONS.map(d => {
             const col = d.id === "normal" ? "#34D399" : d.id === "hard" ? "#FB923C" : "#F43F5E";
             return (
               <ChoiceBtn key={d.id} active={difficulty === d.id} color={col}
@@ -433,10 +469,18 @@ function HomeScreen({ onStart, settings, setSettings }) {
             );
           })}
         </div>
+        <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+          <ChoiceBtn active={difficulty === "notimer"} color="#64748B"
+            extraStyle={{ flex: 1, textAlign: "center", marginBottom: 0 }}
+            onClick={() => setDifficulty("notimer")}>
+            Sin reloj
+          </ChoiceBtn>
+        </div>
         {diff && (
           <div style={{ fontSize: 10, color: S.dim, marginTop: 8, lineHeight: 1.7 }}>
-            Sprint: {diff.sprintTime}s/pregunta · Descanso: {diff.restSeconds}s
-            {difficulty === "brutal" && " · Solo preguntas dificiles"}
+            {difficulty === "notimer"
+              ? "Sin timer · Solo precision · Ideal para repasar"
+              : `Sprint: ${diff.sprintTime}s/pregunta · Descanso: ${diff.restSeconds}s${difficulty === "brutal" ? " · Solo preguntas dificiles" : ""}`}
           </div>
         )}
       </Section>
@@ -988,6 +1032,7 @@ function ExerciseTimer({ round, paused, onDone }) {
         )}
 
         <div style={{ display: "flex", justifyContent: "center", margin: "auto 0 24px" }}>
+          {round.questionTimer < 90 ? (
           <div style={{ position: "relative", width: 160, height: 160 }}>
             <svg width="160" height="160" style={{ transform: "rotate(-90deg)" }}>
               <circle cx="80" cy="80" r="70" fill="none" stroke={S.border} strokeWidth="8" />
@@ -1006,6 +1051,9 @@ function ExerciseTimer({ round, paused, onDone }) {
               <span style={{ fontSize: 10, color: S.muted, letterSpacing: 2 }}>SEG</span>
             </div>
           </div>
+          ) : (
+            <div style={{ fontSize: 9, letterSpacing: 3, color: S.dim, textTransform: "uppercase" }}>Sin reloj</div>
+          )}
         </div>
       </div>
 
@@ -1128,6 +1176,7 @@ function SprintScreen({ round, paused, onDone }) {
 
         {!revealed && (
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            {round.questionTimer < 90 && (
             <div style={{
               width: 52, height: 52, borderRadius: "50%", position: "relative", flexShrink: 0,
               background: "conic-gradient(" + timerColor + " " + (pct * 3.6) + "deg, " + S.border + " " + (pct * 3.6) + "deg)",
@@ -1140,6 +1189,7 @@ function SprintScreen({ round, paused, onDone }) {
                 <span style={{ fontSize: 14, fontWeight: 700, color: timerColor }}>{t}</span>
               </div>
             </div>
+            )}
             <button onClick={() => { setRunning(false); setRevealed(true); }} style={{
               flex: 1, padding: "14px",
               background: "rgba(167,139,250,0.1)", border: "1.5px solid rgba(167,139,250,0.4)",
@@ -1293,13 +1343,36 @@ export default function App() {
   const [customQ,      setCustomQ]      = useLocalStorage(LS.customQ, []);
   const [history,      setHistory]      = useLocalStorage(LS.history, []);
   const [settings,     setSettings]     = useLocalStorage(LS.settings, { difficulty: "hard" });
+  const [savedSession, setSavedSession] = useLocalStorage(LS.savedSession, null);
 
-  const allQ       = getAllQuestions(customQ);
+  const allQ        = getAllQuestions(customQ);
   const isInSession = sessionState !== null;
+
+  // persist session on every round so phone sleep/calls don't lose progress
+  useEffect(() => {
+    if (sessionState && !sessionState.done) {
+      setSavedSession(sessionState);
+    } else if (sessionState?.done) {
+      setSavedSession(null);
+    }
+  }, [sessionState]);
 
   const handleStart = (template, role, difficulty) => {
     const rounds = buildSession(template, role, difficulty, allQ);
+    setSavedSession(null);
     setSessionState({ rounds, roundIdx: 0, results: [], meta: { template, role, difficulty }, done: false });
+    setPaused(false);
+  };
+
+  const handleResumeSaved = () => {
+    if (!savedSession) return;
+    setSessionState(savedSession);
+    setPaused(false);
+  };
+
+  const handleSaveExit = () => {
+    // savedSession already persisted via useEffect — just exit
+    setSessionState(null);
     setPaused(false);
   };
 
@@ -1327,9 +1400,11 @@ export default function App() {
       difficulty: sessionState.meta.difficulty,
       results:    sessionState.results,
     }]);
+    setSavedSession(null);
   };
 
   const handleRestart = () => {
+    setSavedSession(null);
     setSessionState(null);
     setPaused(false);
   };
@@ -1358,7 +1433,7 @@ export default function App() {
 
     return (
       <>
-        {paused && <PauseOverlay onResume={() => setPaused(false)} />}
+        {paused && <PauseOverlay onResume={() => setPaused(false)} onSaveExit={handleSaveExit} />}
         <button
           onClick={() => setPaused(p => !p)}
           style={{
@@ -1382,7 +1457,7 @@ export default function App() {
   return (
     <>
       {navScreen === "home" && (
-        <HomeScreen onStart={handleStart} settings={settings} setSettings={setSettings} />
+        <HomeScreen onStart={handleStart} onResumeSaved={handleResumeSaved} savedSession={savedSession} settings={settings} setSettings={setSettings} />
       )}
       {navScreen === "library" && (
         <LibraryScreen customQ={customQ} setCustomQ={setCustomQ} />
