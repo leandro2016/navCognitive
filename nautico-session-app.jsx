@@ -156,10 +156,11 @@ const PHASE_Q_MAP = {
 };
 
 const ROLES = [
-  { id: "ALL", label: "General",       color: "#64748B" },
-  { id: "GEN", label: "Trimmer Genova",color: "#38BDF8" },
-  { id: "MAY", label: "Trimmer Mayor", color: "#34D399" },
-  { id: "PRO", label: "Proel",         color: "#FB923C" },
+  { id: "ALL", label: "General",         color: "#64748B" },
+  { id: "GEN", label: "Trimmer Genova",  color: "#38BDF8" },
+  { id: "MAY", label: "Trimmer Mayor",   color: "#34D399" },
+  { id: "PRO", label: "Proel",           color: "#FB923C" },
+  { id: "TOD", label: "Todos los roles", color: "#A78BFA" },
 ];
 
 // ─── HOOKS ─────────────────────────────────────────────────────────────────
@@ -224,9 +225,11 @@ function getMaxId(allQ) {
 function getQuestionsForPhase(phaseId, role, fatigueLevel, count, usedIds, diff, allQ) {
   const cats = PHASE_Q_MAP[phaseId] || PHASE_Q_MAP.sprint;
 
+  const roleMatch = (q) => role === "TOD" || q.role === "ALL" || q.role === role;
+
   let pool = allQ.filter(q =>
     cats.includes(q.cat) &&
-    (q.role === "ALL" || q.role === role) &&
+    roleMatch(q) &&
     !usedIds.has(q.id) &&
     q.fatigue >= diff.minFatigue
   );
@@ -239,7 +242,7 @@ function getQuestionsForPhase(phaseId, role, fatigueLevel, count, usedIds, diff,
   if (pool.length < count) {
     pool = allQ.filter(q =>
       cats.includes(q.cat) &&
-      (q.role === "ALL" || q.role === role) &&
+      roleMatch(q) &&
       q.fatigue >= diff.minFatigue
     );
   }

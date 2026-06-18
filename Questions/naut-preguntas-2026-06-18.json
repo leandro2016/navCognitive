@@ -1,0 +1,1019 @@
+[
+  {
+    "id": 1,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Rumbo verdadero 120° (Dec 8°W)\n→ Rumbo magnético?",
+    "a": "128° M",
+    "d": "120 + 8 = 128"
+  },
+  {
+    "id": 2,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Rumbo verdadero 315° (Dec 8°W)\n→ Rumbo magnético?",
+    "a": "323° M",
+    "d": "315 + 8 = 323"
+  },
+  {
+    "id": 3,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Compás 210° M (Dec 8°W)\n→ Rumbo verdadero?",
+    "a": "202° V",
+    "d": "210 - 8 = 202"
+  },
+  {
+    "id": 4,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Compás 045° M (Dec 8°W)\n→ Rumbo verdadero?",
+    "a": "037° V",
+    "d": "045 - 8 = 037"
+  },
+  {
+    "id": 5,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "V=6kn · D=9mn\n→ Tiempo?",
+    "a": "1h 30min",
+    "d": "9/6=1.5h"
+  },
+  {
+    "id": 6,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "V=8kn · T=45min\n→ Distancia?",
+    "a": "6 mn",
+    "d": "8x0.75=6"
+  },
+  {
+    "id": 7,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Son las 13:10 · ETA: 1h20min\n→ Hora llegada?",
+    "a": "14:30",
+    "d": "13:10+1h20=14:30"
+  },
+  {
+    "id": 8,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Son las 23:20 · ETA: 55min\n→ Hora llegada?",
+    "a": "00:15",
+    "d": "Cruza medianoche"
+  },
+  {
+    "id": 9,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Derrota 090° · corriente arrastra al sur\n→ Rumbo verdadero?",
+    "a": "080° V",
+    "d": "Orzas 10° norte"
+  },
+  {
+    "id": 10,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Amura ESTRIBOR ceñida · viento rola a ESTRIBOR\n→ Lift o header?",
+    "a": "LIFT",
+    "d": "Se acerca a tu amura = lift"
+  },
+  {
+    "id": 11,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Amura BABOR ceñida · viento rola a ESTRIBOR\n→ Lift o header?",
+    "a": "HEADER",
+    "d": "Se aleja de tu amura = header -> virar"
+  },
+  {
+    "id": 12,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "V=6kn · T=45min\n→ Distancia?",
+    "a": "4,5 mn",
+    "d": "6x0.75=4.5"
+  },
+  {
+    "id": 13,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Salida 09:00 · V=6kn · D=18mn\n→ Hora llegada?",
+    "a": "12:00",
+    "d": "18/6=3h -> 09+3=12"
+  },
+  {
+    "id": 14,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Compás 355° M (Dec 8°W)\n→ Rumbo verdadero?",
+    "a": "347° V",
+    "d": "355-8=347"
+  },
+  {
+    "id": 15,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "V=5kn · T=2h30min\n→ Distancia?",
+    "a": "12,5 mn",
+    "d": "5x2.5=12.5"
+  },
+  {
+    "id": 16,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "D=15mn · V=4kn\n→ Tiempo en horas y minutos?",
+    "a": "3h 45min",
+    "d": "15/4=3.75h -> 3h45m"
+  },
+  {
+    "id": 17,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Salida 21:45 · ETA: 3h20min\n→ Hora llegada?",
+    "a": "01:05",
+    "d": "21:45+3h20=25:05 -> 01:05"
+  },
+  {
+    "id": 20,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 1,
+    "q": "Virada PREPARADOS\n-> Primera accion del trimmer?",
+    "a": "Sacar escota de la cornamusa",
+    "d": "Mantener tension con la mano"
+  },
+  {
+    "id": 21,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 1,
+    "q": "Virada PREPARADOS\n-> Que haces con la boba?",
+    "a": "Cargar 2-3 vueltas en el winche",
+    "d": "Lista para cazar sin delay"
+  },
+  {
+    "id": 22,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Virada ORDEN\n-> Cuando soltas la escota activa?",
+    "a": "Cuando la genova flamea",
+    "d": "Caida de presion = momento exacto"
+  },
+  {
+    "id": 23,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Cobran nueva antes de largar activa\n-> Consecuencia?",
+    "a": "Barco se para en la virada",
+    "d": "La vela no puede pasar la proa"
+  },
+  {
+    "id": 24,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Escota nueva enganchada, barco girando\n-> Primera accion?",
+    "a": "Comunicar + liberar",
+    "d": "Escota enganchada primero"
+  },
+  {
+    "id": 25,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Salis de virada con viento flojo, sin velocidad\n-> Que haces con la escota?",
+    "a": "Amollar levemente",
+    "d": "Viento flojo necesita mas apertura"
+  },
+  {
+    "id": 30,
+    "cat": "MAN",
+    "role": "MAY",
+    "fatigue": 1,
+    "q": "Virada PREPARADOS (mayor)\n-> Que verificas?",
+    "a": "Carro + traveller + recorrido",
+    "d": "Tirar el carro a barlovento si hay viento"
+  },
+  {
+    "id": 31,
+    "cat": "MAN",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Racha durante la salida de la virada\n-> Tu responsabilidad?",
+    "a": "Amollar mayor, barco de pie",
+    "d": "Reducir escora rapido"
+  },
+  {
+    "id": 32,
+    "cat": "MAN",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Barco escora fuerte + timonel pide altura\n-> Que ajuste?",
+    "a": "Cazar traveller a barlovento",
+    "d": "Cierra la mayor sin aplanarla"
+  },
+  {
+    "id": 33,
+    "cat": "MAN",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Riesgo trasluchada involuntaria a popa\n-> Primera accion?",
+    "a": "Poner retenida de botavara",
+    "d": "Cabo del extremo al gancho = control del giro"
+  },
+  {
+    "id": 40,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 1,
+    "q": "Virada PREPARADOS (proel)\n-> Que verificas?",
+    "a": "Cabos, faldon, recorrido libre",
+    "d": "Faldon sin enganches en la regala"
+  },
+  {
+    "id": 41,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Genova enganchada en el estay post-virada\n-> Que haces?",
+    "a": "Tomar el gratil y liberar a mano",
+    "d": "Nunca tirar de la escota"
+  },
+  {
+    "id": 42,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 1,
+    "q": "Detectas cabo cruzado antes de virar\n-> Que haces?",
+    "a": "Comunicar antes del LISTOS",
+    "d": "No se vira hasta que este aclarado"
+  },
+  {
+    "id": 50,
+    "cat": "MAN",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Por que existen PREPARADOS -> LISTOS -> ORDEN?",
+    "a": "Separar preparacion, confirmacion y ejecucion",
+    "d": "Nadie ejecuta solo"
+  },
+  {
+    "id": 51,
+    "cat": "MAN",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Trasluchada: genova o botavara pasan primero?",
+    "a": "Primero el genova",
+    "d": "Al flamear largar activa, cazar nueva"
+  },
+  {
+    "id": 52,
+    "cat": "MAN",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Death roll durante trasluchada con spi\n-> Primera accion?",
+    "a": "Cazar escota sotavento del spi",
+    "d": "Meter vela detras de la mayor"
+  },
+  {
+    "id": 53,
+    "cat": "MAN",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Arriada de spi: secuencia correcta",
+    "a": "Genova -> puno -> driza -> escota",
+    "d": "Nunca soltar driza antes del puno"
+  },
+  {
+    "id": 54,
+    "cat": "MAN",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Cuando se iza el genova en la arriada de spi?",
+    "a": "ANTES de arriar el spi",
+    "d": "No llegar a la boya sin potencia"
+  },
+  {
+    "id": 60,
+    "cat": "DEC",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "LISTOS para virar. Trimmer de genova no responde.\n-> Confirmas?",
+    "a": "No. Comunicar Espera",
+    "d": "Virar sin el trimmer = peor que retraso"
+  },
+  {
+    "id": 61,
+    "cat": "DEC",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Barco en tu agua. Layline aun no resuelta.\n-> Cuando preparas el spi?",
+    "a": "Cuando la layline este resuelta",
+    "d": "Mover triples antes arriesga una virada extra"
+  },
+  {
+    "id": 62,
+    "cat": "DEC",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Estas en layline babor. Barco estribor cruza.\n-> Que haces?",
+    "a": "Ceder: estribor tiene prioridad",
+    "d": "Regla 10: arribar o virar antes de colision"
+  },
+  {
+    "id": 63,
+    "cat": "DEC",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Header en amura de estribor.\n-> Que haces tacticamente?",
+    "a": "Virar (tendras lift en babor)",
+    "d": "Header en Estr = lift en Bab"
+  },
+  {
+    "id": 64,
+    "cat": "DEC",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Tripulante sin punto de agarre, van a trasluchar\n-> Que haces?",
+    "a": "Retrasar hasta que este seguro",
+    "d": "Nada justifica riesgo de hombre al agua"
+  },
+  {
+    "id": 65,
+    "cat": "DEC",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Llegas a la boya con angulo muy cerrado\n-> Que es peor: pasarla o arco amplio?",
+    "a": "Pasarla (overshoot) es peor",
+    "d": "Obliga a maniobrar de vuelta"
+  },
+  {
+    "id": 66,
+    "cat": "DEC",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Dos barcos llegan a la boya a la vez. Estas por dentro.\n-> Tenes derecho de marca?",
+    "a": "Si, si estableciste solapamiento antes de la zona",
+    "d": "Regla 18: zona = 3 largos"
+  },
+  {
+    "id": 70,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Dos barcos misma amura paralelos\n-> Quien tiene prioridad?",
+    "a": "Sotavento (Regla 11)",
+    "d": "Mismo bordo: sotavento sobre barlovento"
+  },
+  {
+    "id": 71,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Amura estribor vs amura babor\n-> Quien cede?",
+    "a": "Babor cede (Regla 10)",
+    "d": "Estribor siempre tiene prioridad"
+  },
+  {
+    "id": 72,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Cuanto mide la zona de marca?",
+    "a": "3 largos de barco",
+    "d": "El interior tiene derecho de paso"
+  },
+  {
+    "id": 73,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Infraccion leve. Penalizacion mas rapida?",
+    "a": "Vuelta de 720 (dos vueltas)",
+    "d": "Permite seguir sin DSQ"
+  },
+  {
+    "id": 74,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Un barco te toca. Fue su culpa.\n-> Que debe hacer?",
+    "a": "Vuelta de 360",
+    "d": "Una vuelta completa antes de continuar"
+  },
+  {
+    "id": 75,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Barco alcanzador vs alcanzado\n-> Quien cede?",
+    "a": "Alcanzador cede (Regla 12)",
+    "d": "El que viene por detras no tiene derecho"
+  },
+  {
+    "id": 76,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Que regla aplica al acercarse a tierra?",
+    "a": "Regla 9: canales angostos",
+    "d": "Mantenerse a estribor del canal"
+  },
+{
+  "id": 77,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Rumbo 090°\n→ Reciproco?",
+  "a": "270°",
+  "d": "Sumar 180°"
+},
+{
+  "id": 78,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Rumbo 225°\n→ Reciproco?",
+  "a": "045°",
+  "d": "225+180=405 -> 045"
+},
+{
+  "id": 79,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 2,
+  "q": "V=6kn · D=12mn\n→ Tiempo?",
+  "a": "2h",
+  "d": "12/6=2"
+},
+{
+  "id": 80,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 2,
+  "q": "V=7kn · T=1h\n→ Distancia?",
+  "a": "7 mn",
+  "d": "7x1=7"
+},
+{
+  "id": 81,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 2,
+  "q": "Son las 11:40 · ETA 50min\n→ Hora llegada?",
+  "a": "12:30",
+  "d": "11:40+50=12:30"
+},
+{
+  "id": 82,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 3,
+  "q": "Compas 120° M (Dec 8°W)\n→ Rumbo verdadero?",
+  "a": "112° V",
+  "d": "120-8=112"
+},
+{
+  "id": 83,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 3,
+  "q": "Rumbo verdadero 300° (Dec 8°W)\n→ Rumbo magnetico?",
+  "a": "308° M",
+  "d": "300+8=308"
+},
+{
+  "id": 84,
+  "cat": "REG",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Barco a estribor vs barco a babor\n→ Quien tiene prioridad?",
+  "a": "Estribor",
+  "d": "Regla 10"
+},
+{
+  "id": 85,
+  "cat": "REG",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Dos barcos misma amura\n→ Quien tiene prioridad?",
+  "a": "Sotavento",
+  "d": "Regla 11"
+},
+{
+  "id": 86,
+  "cat": "REG",
+  "role": "ALL",
+  "fatigue": 2,
+  "q": "Barco alcanzador vs alcanzado\n→ Quien cede?",
+  "a": "Alcanzador",
+  "d": "Regla 12"
+},
+{
+  "id": 87,
+  "cat": "MAN",
+  "role": "GEN",
+  "fatigue": 1,
+  "q": "Virada LISTOS (genova)\n→ Que esperas?",
+  "a": "La ORDEN",
+  "d": "No ejecutar antes"
+},
+{
+  "id": 88,
+  "cat": "MAN",
+  "role": "GEN",
+  "fatigue": 2,
+  "q": "Virada ORDEN\n→ Primera accion?",
+  "a": "Largar escota activa",
+  "d": "Cuando flamea la vela"
+},
+{
+  "id": 89,
+  "cat": "MAN",
+  "role": "GEN",
+  "fatigue": 2,
+  "q": "Virada ORDEN\n→ Segunda accion?",
+  "a": "Cobrar nueva escota",
+  "d": "Tan rapido como sea posible"
+},
+{
+  "id": 90,
+  "cat": "MAN",
+  "role": "PRO",
+  "fatigue": 1,
+  "q": "Virada PREPARADOS (proel)\n→ Que revisas primero?",
+  "a": "Cabos libres",
+  "d": "Sin cruces ni enganches"
+},
+{
+  "id": 91,
+  "cat": "MAN",
+  "role": "PRO",
+  "fatigue": 2,
+  "q": "Detectas un cabo cruzado\n→ Que haces?",
+  "a": "Comunicar",
+  "d": "Antes del LISTOS"
+},
+{
+  "id": 92,
+  "cat": "MAN",
+  "role": "MAY",
+  "fatigue": 1,
+  "q": "Virada PREPARADOS (mayor)\n→ Que verificas?",
+  "a": "Recorrido de botavara",
+  "d": "Libre y seguro"
+},
+{
+  "id": 93,
+  "cat": "MAN",
+  "role": "MAY",
+  "fatigue": 2,
+  "q": "Racha fuerte en salida de virada\n→ Primera accion?",
+  "a": "Amollar mayor",
+  "d": "Reducir escora"
+},
+{
+  "id": 94,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "PREPARADOS -> LISTOS -> ORDEN\n→ Que representa LISTOS?",
+  "a": "Confirmacion",
+  "d": "Preparacion ya completada"
+},
+{
+  "id": 95,
+  "cat": "MAN",
+  "role": "GEN",
+  "fatigue": 2,
+  "q": "Orden correcta:\nA-Cargar boba\nB-Sacar escota activa\nC-Esperar orden",
+  "a": "B-A-C",
+  "d": "Preparar antes de esperar"
+},
+{
+  "id": 96,
+  "cat": "MAN",
+  "role": "PRO",
+  "fatigue": 2,
+  "q": "Orden correcta:\nA-Informar cabo cruzado\nB-Revisar cabos\nC-Ejecutar movimiento",
+  "a": "B-A-C",
+  "d": "Verificar antes de actuar"
+},
+{
+  "id": 97,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Quien libera la escota activa en la virada?\nA-Proel\nB-Genova\nC-Mayor",
+  "a": "B",
+  "d": "Responsabilidad del trimmer de genova"
+},
+{
+  "id": 98,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Quien controla la mayor?\nA-Proel\nB-Genova\nC-Mayor",
+  "a": "C",
+  "d": "Responsabilidad del trimmer de mayor"
+},
+{
+  "id": 99,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Quien revisa cabos en proa?\nA-Proel\nB-Genova\nC-Mayor",
+  "a": "A",
+  "d": "Responsabilidad del proel"
+},
+{
+  "id": 100,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 3,
+  "q": "Tripulante al agua\n→ Primera palabra?",
+  "a": "Hombre al agua",
+  "d": "Comunicacion inmediata"
+},
+{
+  "id": 101,
+  "cat": "MAN",
+  "role": "MAY",
+  "fatigue": 1,
+  "q": "Preparados para trasluchar\n-> Que verificas primero?",
+  "a": "Recorrido libre de botavara",
+  "d": "Seguridad antes de ejecutar"
+},
+{
+  "id": 102,
+  "cat": "MAN",
+  "role": "MAY",
+  "fatigue": 2,
+  "q": "LISTOS para trasluchar\n-> Que esperas?",
+  "a": "La ORDEN",
+  "d": "No ejecutar antes"
+},
+{
+  "id": 103,
+  "cat": "MAN",
+  "role": "MAY",
+  "fatigue": 3,
+  "q": "Trasluchada ejecutada\n-> Objetivo inmediato?",
+  "a": "Estabilizar la mayor",
+  "d": "Evitar oscilaciones"
+},
+{
+  "id": 104,
+  "cat": "MAN",
+  "role": "PRO",
+  "fatigue": 1,
+  "q": "Preparados para izar spi\n-> Primera verificacion?",
+  "a": "Driza libre",
+  "d": "Sin cruces"
+},
+{
+  "id": 105,
+  "cat": "MAN",
+  "role": "PRO",
+  "fatigue": 2,
+  "q": "Preparados para izar spi\n-> Segunda verificacion?",
+  "a": "Puno de amura listo",
+  "d": "Preparado para tensar"
+},
+{
+  "id": 106,
+  "cat": "MAN",
+  "role": "PRO",
+  "fatigue": 3,
+  "q": "Spi arriba pero no abre\n-> Primera sospecha?",
+  "a": "Torsion",
+  "d": "Revisar vueltas"
+},
+{
+  "id": 107,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "PREPARADOS -> LISTOS -> ?",
+  "a": "ORDEN",
+  "d": "Secuencia oficial"
+},
+{
+  "id": 108,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "PREPARADOS significa?",
+  "a": "Iniciar preparacion",
+  "d": "No ejecutar aun"
+},
+{
+  "id": 109,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "ORDEN significa?",
+  "a": "Ejecutar",
+  "d": "Accion inmediata"
+},
+{
+  "id": 110,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Quien controla traveller?\nA-Proel\nB-Genova\nC-Mayor",
+  "a": "C",
+  "d": "Responsabilidad del mayor"
+},
+{
+  "id": 111,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Quien controla el gratil de una genova enganchada?\nA-Proel\nB-Genova\nC-Mayor",
+  "a": "A",
+  "d": "Intervencion de proa"
+},
+{
+  "id": 112,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Quien prepara la driza de spi?\nA-Proel\nB-Genova\nC-Mayor",
+  "a": "A",
+  "d": "Trabajo de proa"
+},
+{
+  "id": 113,
+  "cat": "DEC",
+  "role": "GEN",
+  "fatigue": 3,
+  "q": "Escota activa sigue en cornamusa durante virada\n-> Primera accion?",
+  "a": "Liberarla",
+  "d": "Corregir inmediatamente"
+},
+{
+  "id": 114,
+  "cat": "DEC",
+  "role": "GEN",
+  "fatigue": 3,
+  "q": "Escota nueva pasa por debajo de la vieja\n-> Primera accion?",
+  "a": "Comunicar",
+  "d": "Evitar carga sobre cruce"
+},
+{
+  "id": 115,
+  "cat": "DEC",
+  "role": "PRO",
+  "fatigue": 3,
+  "q": "Driza trabada durante izado\n-> Primera accion?",
+  "a": "Detener izado",
+  "d": "Evitar dano"
+},
+{
+  "id": 116,
+  "cat": "DEC",
+  "role": "ALL",
+  "fatigue": 3,
+  "q": "Tripulante fuera de posicion para maniobra\n-> Primera accion?",
+  "a": "Esperar",
+  "d": "Seguridad primero"
+},
+{
+  "id": 117,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 2,
+  "q": "Rumbo 135°\n-> Reciproco?",
+  "a": "315°",
+  "d": "Sumar 180"
+},
+{
+  "id": 118,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 2,
+  "q": "V=5kn · D=15mn\n-> Tiempo?",
+  "a": "3h",
+  "d": "15/5"
+},
+{
+  "id": 119,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 2,
+  "q": "V=6kn · T=90min\n-> Distancia?",
+  "a": "9 mn",
+  "d": "6 x 1.5"
+},
+{
+  "id": 120,
+  "cat": "NAV",
+  "role": "ALL",
+  "fatigue": 3,
+  "q": "Compas 180° M (Dec 8°W)\n-> Rumbo verdadero?",
+  "a": "172° V",
+  "d": "180-8"
+},
+{
+  "id": 121,
+  "cat": "MAN",
+  "role": "GEN",
+  "fatigue": 1,
+  "q": "Preparados para virar\n-> Primera accion?",
+  "a": "Sacar escota activa de la cornamusa",
+  "d": "Preparacion"
+},
+{
+  "id": 122,
+  "cat": "MAN",
+  "role": "GEN",
+  "fatigue": 1,
+  "q": "Preparados para virar\n-> Segunda accion?",
+  "a": "Cargar boba",
+  "d": "Preparacion"
+},
+{
+  "id": 123,
+  "cat": "MAN",
+  "role": "GEN",
+  "fatigue": 1,
+  "q": "Listos para virar\n-> Que haces?",
+  "a": "Esperar la orden",
+  "d": "No ejecutar aun"
+},
+{
+  "id": 124,
+  "cat": "MAN",
+  "role": "GEN",
+  "fatigue": 2,
+  "q": "Orden de virar\n-> Primera accion?",
+  "a": "Largar escota activa",
+  "d": "Inicio maniobra"
+},
+{
+  "id": 125,
+  "cat": "MAN",
+  "role": "GEN",
+  "fatigue": 2,
+  "q": "Orden de virar\n-> Segunda accion?",
+  "a": "Cobrar nueva escota",
+  "d": "Trimado"
+},
+{
+  "id": 126,
+  "cat": "MAN",
+  "role": "GEN",
+  "fatigue": 2,
+  "q": "Genova cruzo completamente\n-> Accion?",
+  "a": "Terminar trimado",
+  "d": "Ajuste final"
+},
+{
+  "id": 127,
+  "cat": "MAN",
+  "role": "PRO",
+  "fatigue": 1,
+  "q": "Preparados para virar\n-> Primera verificacion?",
+  "a": "Cabos libres",
+  "d": "Sin cruces"
+},
+{
+  "id": 128,
+  "cat": "MAN",
+  "role": "PRO",
+  "fatigue": 1,
+  "q": "Preparados para virar\n-> Segunda verificacion?",
+  "a": "Cubierta libre",
+  "d": "Zona despejada"
+},
+{
+  "id": 129,
+  "cat": "MAN",
+  "role": "PRO",
+  "fatigue": 2,
+  "q": "Detectas cabo cruzado\n-> Accion?",
+  "a": "Comunicar",
+  "d": "Antes del LISTOS"
+},
+{
+  "id": 130,
+  "cat": "MAN",
+  "role": "PRO",
+  "fatigue": 2,
+  "q": "Listos para virar\n-> Que haces?",
+  "a": "Esperar la orden",
+  "d": "Preparado para ejecutar"
+},
+{
+  "id": 131,
+  "cat": "MAN",
+  "role": "MAY",
+  "fatigue": 1,
+  "q": "Preparados para virar\n-> Que verificas?",
+  "a": "Recorrido de botavara",
+  "d": "Seguridad"
+},
+{
+  "id": 132,
+  "cat": "MAN",
+  "role": "MAY",
+  "fatigue": 1,
+  "q": "Listos para virar\n-> Que haces?",
+  "a": "Esperar la orden",
+  "d": "Sin ejecutar"
+},
+{
+  "id": 133,
+  "cat": "MAN",
+  "role": "MAY",
+  "fatigue": 2,
+  "q": "Orden de virar\n-> Objetivo principal?",
+  "a": "Controlar la mayor",
+  "d": "Maniobra segura"
+},
+{
+  "id": 134,
+  "cat": "DEC",
+  "role": "GEN",
+  "fatigue": 3,
+  "q": "Olvidaste sacar escota de cornamusa\n-> Primera accion?",
+  "a": "Liberarla",
+  "d": "Corregir de inmediato"
+},
+{
+  "id": 135,
+  "cat": "DEC",
+  "role": "GEN",
+  "fatigue": 3,
+  "q": "Genova no cruza\n-> Primera accion?",
+  "a": "Comunicar",
+  "d": "Informar el problema"
+},
+{
+  "id": 136,
+  "cat": "DEC",
+  "role": "PRO",
+  "fatigue": 3,
+  "q": "Detectas enganche durante la virada\n-> Primera accion?",
+  "a": "Comunicar",
+  "d": "Aviso inmediato"
+},
+{
+  "id": 137,
+  "cat": "DEC",
+  "role": "MAY",
+  "fatigue": 3,
+  "q": "Botavara sin control\n-> Prioridad?",
+  "a": "Controlarla",
+  "d": "Seguridad"
+},
+{
+  "id": 138,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Despues de PREPARADOS?",
+  "a": "LISTOS",
+  "d": "Secuencia"
+},
+{
+  "id": 139,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 1,
+  "q": "Despues de LISTOS?",
+  "a": "ORDEN",
+  "d": "Secuencia"
+},
+{
+  "id": 140,
+  "cat": "MAN",
+  "role": "ALL",
+  "fatigue": 2,
+  "q": "En que fase se ejecuta la maniobra?",
+  "a": "ORDEN",
+  "d": "Ejecucion"
+}
+]
