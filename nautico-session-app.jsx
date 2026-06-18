@@ -1,4 +1,6 @@
 ﻿import { useState, useEffect, useRef, useCallback } from "react";
+import BUILTIN_QUESTIONS from "./Questions/naut-preguntas-2026-06-18.json";
+import EXERCISES from "./Questions/exercises.json";
 
 // ─── CONSTANTS & STORAGE KEYS ──────────────────────────────────────────────
 
@@ -31,86 +33,7 @@ const S = {
   dim:    "#475569",
 };
 
-// ─── EXERCISES ─────────────────────────────────────────────────────────────
-
-const EXERCISES = [
-  { id: "BU",  name: "Burpees",                 dur: 40,   reps: null, unit: "seg",  intensity: 4, pattern: "full",    fatigue: 4, cog: true  },
-  { id: "MC",  name: "Mountain Climbers",        dur: 40,   reps: null, unit: "seg",  intensity: 3, pattern: "core",    fatigue: 3, cog: true  },
-  { id: "HK",  name: "High Knees",              dur: 40,   reps: null, unit: "seg",  intensity: 3, pattern: "cardio",  fatigue: 3, cog: true  },
-  { id: "JJ",  name: "Jumping Jacks",           dur: 45,   reps: null, unit: "seg",  intensity: 1, pattern: "cardio",  fatigue: 1, cog: true  },
-  { id: "BJ",  name: "Box Jumps",               dur: null, reps: 10,   unit: "reps", intensity: 3, pattern: "power",   fatigue: 3, cog: false },
-  { id: "LS",  name: "Skater Jumps",            dur: null, reps: 20,   unit: "reps", intensity: 2, pattern: "lateral", fatigue: 2, cog: true  },
-  { id: "LJ",  name: "Lunge Jumps",             dur: null, reps: 16,   unit: "reps", intensity: 3, pattern: "power",   fatigue: 3, cog: false },
-  { id: "SL",  name: "Saltos lat. sobre línea", dur: 30,   reps: null, unit: "seg",  intensity: 2, pattern: "lateral", fatigue: 2, cog: true  },
-  { id: "WS",  name: "Wall Sit",                dur: 40,   reps: null, unit: "seg",  intensity: 2, pattern: "iso",     fatigue: 2, cog: true  },
-  { id: "PL",  name: "Plancha",                 dur: 40,   reps: null, unit: "seg",  intensity: 2, pattern: "iso",     fatigue: 2, cog: true  },
-  { id: "PLI", name: "Plancha lat. izq.",        dur: 30,   reps: null, unit: "seg",  intensity: 2, pattern: "iso",     fatigue: 2, cog: true  },
-  { id: "PLD", name: "Plancha lat. der.",        dur: 30,   reps: null, unit: "seg",  intensity: 2, pattern: "iso",     fatigue: 2, cog: true  },
-  { id: "EQ",  name: "Equilibrio una pierna",   dur: 30,   reps: null, unit: "seg",  intensity: 1, pattern: "balance", fatigue: 1, cog: true  },
-  { id: "EQC", name: "Equilibrio ojos cerr.",   dur: 20,   reps: null, unit: "seg",  intensity: 1, pattern: "balance", fatigue: 1, cog: true  },
-  { id: "SQ",  name: "Air Squats rápidos",      dur: 40,   reps: null, unit: "seg",  intensity: 2, pattern: "legs",    fatigue: 2, cog: true  },
-];
-
-// ─── BUILT-IN QUESTIONS ────────────────────────────────────────────────────
-
-const BUILTIN_QUESTIONS = [
-  // NAV
-  { id: 1,  cat: "NAV", role: "ALL", fatigue: 1, q: "Rumbo verdadero 120° (Dec 8°W)\n→ Rumbo magnético?",                             a: "128° M",             d: "120 + 8 = 128" },
-  { id: 2,  cat: "NAV", role: "ALL", fatigue: 1, q: "Rumbo verdadero 315° (Dec 8°W)\n→ Rumbo magnético?",                             a: "323° M",             d: "315 + 8 = 323" },
-  { id: 3,  cat: "NAV", role: "ALL", fatigue: 1, q: "Compás 210° M (Dec 8°W)\n→ Rumbo verdadero?",                                    a: "202° V",             d: "210 - 8 = 202" },
-  { id: 4,  cat: "NAV", role: "ALL", fatigue: 1, q: "Compás 045° M (Dec 8°W)\n→ Rumbo verdadero?",                                    a: "037° V",             d: "045 - 8 = 037" },
-  { id: 5,  cat: "NAV", role: "ALL", fatigue: 2, q: "V=6kn · D=9mn\n→ Tiempo?",                                                       a: "1h 30min",           d: "9/6=1.5h" },
-  { id: 6,  cat: "NAV", role: "ALL", fatigue: 2, q: "V=8kn · T=45min\n→ Distancia?",                                                  a: "6 mn",               d: "8x0.75=6" },
-  { id: 7,  cat: "NAV", role: "ALL", fatigue: 2, q: "Son las 13:10 · ETA: 1h20min\n→ Hora llegada?",                                  a: "14:30",              d: "13:10+1h20=14:30" },
-  { id: 8,  cat: "NAV", role: "ALL", fatigue: 2, q: "Son las 23:20 · ETA: 55min\n→ Hora llegada?",                                    a: "00:15",              d: "Cruza medianoche" },
-  { id: 9,  cat: "NAV", role: "ALL", fatigue: 3, q: "Derrota 090° · corriente arrastra al sur\n→ Rumbo verdadero?",                   a: "080° V",             d: "Orzas 10° norte" },
-  { id: 10, cat: "NAV", role: "ALL", fatigue: 3, q: "Amura ESTRIBOR ceñida · viento rola a ESTRIBOR\n→ Lift o header?",               a: "LIFT",               d: "Se acerca a tu amura = lift" },
-  { id: 11, cat: "NAV", role: "ALL", fatigue: 3, q: "Amura BABOR ceñida · viento rola a ESTRIBOR\n→ Lift o header?",                  a: "HEADER",             d: "Se aleja de tu amura = header -> virar" },
-  { id: 12, cat: "NAV", role: "ALL", fatigue: 2, q: "V=6kn · T=45min\n→ Distancia?",                                                  a: "4,5 mn",             d: "6x0.75=4.5" },
-  { id: 13, cat: "NAV", role: "ALL", fatigue: 2, q: "Salida 09:00 · V=6kn · D=18mn\n→ Hora llegada?",                                 a: "12:00",              d: "18/6=3h -> 09+3=12" },
-  { id: 14, cat: "NAV", role: "ALL", fatigue: 1, q: "Compás 355° M (Dec 8°W)\n→ Rumbo verdadero?",                                    a: "347° V",             d: "355-8=347" },
-  { id: 15, cat: "NAV", role: "ALL", fatigue: 3, q: "V=5kn · T=2h30min\n→ Distancia?",                                                a: "12,5 mn",            d: "5x2.5=12.5" },
-  { id: 16, cat: "NAV", role: "ALL", fatigue: 3, q: "D=15mn · V=4kn\n→ Tiempo en horas y minutos?",                                   a: "3h 45min",           d: "15/4=3.75h -> 3h45m" },
-  { id: 17, cat: "NAV", role: "ALL", fatigue: 3, q: "Salida 21:45 · ETA: 3h20min\n→ Hora llegada?",                                   a: "01:05",              d: "21:45+3h20=25:05 -> 01:05" },
-  // MAN - Genova
-  { id: 20, cat: "MAN", role: "GEN", fatigue: 1, q: "Virada PREPARADOS\n-> Primera accion del trimmer?",                               a: "Sacar escota de la cornamusa",     d: "Mantener tension con la mano" },
-  { id: 21, cat: "MAN", role: "GEN", fatigue: 1, q: "Virada PREPARADOS\n-> Que haces con la boba?",                                    a: "Cargar 2-3 vueltas en el winche",  d: "Lista para cazar sin delay" },
-  { id: 22, cat: "MAN", role: "GEN", fatigue: 2, q: "Virada ORDEN\n-> Cuando soltas la escota activa?",                                a: "Cuando la genova flamea",          d: "Caida de presion = momento exacto" },
-  { id: 23, cat: "MAN", role: "GEN", fatigue: 3, q: "Cobran nueva antes de largar activa\n-> Consecuencia?",                           a: "Barco se para en la virada",       d: "La vela no puede pasar la proa" },
-  { id: 24, cat: "MAN", role: "GEN", fatigue: 2, q: "Escota nueva enganchada, barco girando\n-> Primera accion?",                      a: "Comunicar + liberar",              d: "Escota enganchada primero" },
-  { id: 25, cat: "MAN", role: "GEN", fatigue: 3, q: "Salis de virada con viento flojo, sin velocidad\n-> Que haces con la escota?",    a: "Amollar levemente",                d: "Viento flojo necesita mas apertura" },
-  // MAN - Mayor
-  { id: 30, cat: "MAN", role: "MAY", fatigue: 1, q: "Virada PREPARADOS (mayor)\n-> Que verificas?",                                    a: "Carro + traveller + recorrido",    d: "Tirar el carro a barlovento si hay viento" },
-  { id: 31, cat: "MAN", role: "MAY", fatigue: 2, q: "Racha durante la salida de la virada\n-> Tu responsabilidad?",                    a: "Amollar mayor, barco de pie",      d: "Reducir escora rapido" },
-  { id: 32, cat: "MAN", role: "MAY", fatigue: 3, q: "Barco escora fuerte + timonel pide altura\n-> Que ajuste?",                      a: "Cazar traveller a barlovento",     d: "Cierra la mayor sin aplanarla" },
-  { id: 33, cat: "MAN", role: "MAY", fatigue: 2, q: "Riesgo trasluchada involuntaria a popa\n-> Primera accion?",                     a: "Poner retenida de botavara",       d: "Cabo del extremo al gancho = control del giro" },
-  // MAN - Proel
-  { id: 40, cat: "MAN", role: "PRO", fatigue: 1, q: "Virada PREPARADOS (proel)\n-> Que verificas?",                                    a: "Cabos, faldon, recorrido libre",   d: "Faldon sin enganches en la regala" },
-  { id: 41, cat: "MAN", role: "PRO", fatigue: 2, q: "Genova enganchada en el estay post-virada\n-> Que haces?",                        a: "Tomar el gratil y liberar a mano", d: "Nunca tirar de la escota" },
-  { id: 42, cat: "MAN", role: "PRO", fatigue: 1, q: "Detectas cabo cruzado antes de virar\n-> Que haces?",                             a: "Comunicar antes del LISTOS",       d: "No se vira hasta que este aclarado" },
-  // MAN - General
-  { id: 50, cat: "MAN", role: "ALL", fatigue: 1, q: "Por que existen PREPARADOS -> LISTOS -> ORDEN?",                                  a: "Separar preparacion, confirmacion y ejecucion", d: "Nadie ejecuta solo" },
-  { id: 51, cat: "MAN", role: "ALL", fatigue: 2, q: "Trasluchada: genova o botavara pasan primero?",                                    a: "Primero el genova",                d: "Al flamear largar activa, cazar nueva" },
-  { id: 52, cat: "MAN", role: "ALL", fatigue: 3, q: "Death roll durante trasluchada con spi\n-> Primera accion?",                      a: "Cazar escota sotavento del spi",   d: "Meter vela detras de la mayor" },
-  { id: 53, cat: "MAN", role: "ALL", fatigue: 2, q: "Arriada de spi: secuencia correcta",                                              a: "Genova -> puno -> driza -> escota", d: "Nunca soltar driza antes del puno" },
-  { id: 54, cat: "MAN", role: "ALL", fatigue: 3, q: "Cuando se iza el genova en la arriada de spi?",                                   a: "ANTES de arriar el spi",           d: "No llegar a la boya sin potencia" },
-  // DEC
-  { id: 60, cat: "DEC", role: "ALL", fatigue: 2, q: "LISTOS para virar. Trimmer de genova no responde.\n-> Confirmas?",                 a: "No. Comunicar Espera",             d: "Virar sin el trimmer = peor que retraso" },
-  { id: 61, cat: "DEC", role: "ALL", fatigue: 3, q: "Barco en tu agua. Layline aun no resuelta.\n-> Cuando preparas el spi?",           a: "Cuando la layline este resuelta",  d: "Mover triples antes arriesga una virada extra" },
-  { id: 62, cat: "DEC", role: "ALL", fatigue: 3, q: "Estas en layline babor. Barco estribor cruza.\n-> Que haces?",                    a: "Ceder: estribor tiene prioridad",  d: "Regla 10: arribar o virar antes de colision" },
-  { id: 63, cat: "DEC", role: "ALL", fatigue: 2, q: "Header en amura de estribor.\n-> Que haces tacticamente?",                        a: "Virar (tendras lift en babor)",    d: "Header en Estr = lift en Bab" },
-  { id: 64, cat: "DEC", role: "ALL", fatigue: 3, q: "Tripulante sin punto de agarre, van a trasluchar\n-> Que haces?",                 a: "Retrasar hasta que este seguro",   d: "Nada justifica riesgo de hombre al agua" },
-  { id: 65, cat: "DEC", role: "ALL", fatigue: 2, q: "Llegas a la boya con angulo muy cerrado\n-> Que es peor: pasarla o arco amplio?", a: "Pasarla (overshoot) es peor",      d: "Obliga a maniobrar de vuelta" },
-  { id: 66, cat: "DEC", role: "ALL", fatigue: 3, q: "Dos barcos llegan a la boya a la vez. Estas por dentro.\n-> Tenes derecho de marca?", a: "Si, si estableciste solapamiento antes de la zona", d: "Regla 18: zona = 3 largos" },
-  // REG
-  { id: 70, cat: "REG", role: "ALL", fatigue: 1, q: "Dos barcos misma amura paralelos\n-> Quien tiene prioridad?",                      a: "Sotavento (Regla 11)",             d: "Mismo bordo: sotavento sobre barlovento" },
-  { id: 71, cat: "REG", role: "ALL", fatigue: 1, q: "Amura estribor vs amura babor\n-> Quien cede?",                                   a: "Babor cede (Regla 10)",            d: "Estribor siempre tiene prioridad" },
-  { id: 72, cat: "REG", role: "ALL", fatigue: 2, q: "Cuanto mide la zona de marca?",                                                    a: "3 largos de barco",               d: "El interior tiene derecho de paso" },
-  { id: 73, cat: "REG", role: "ALL", fatigue: 2, q: "Infraccion leve. Penalizacion mas rapida?",                                        a: "Vuelta de 720 (dos vueltas)",      d: "Permite seguir sin DSQ" },
-  { id: 74, cat: "REG", role: "ALL", fatigue: 1, q: "Un barco te toca. Fue su culpa.\n-> Que debe hacer?",                             a: "Vuelta de 360",                   d: "Una vuelta completa antes de continuar" },
-  { id: 75, cat: "REG", role: "ALL", fatigue: 3, q: "Barco alcanzador vs alcanzado\n-> Quien cede?",                                   a: "Alcanzador cede (Regla 12)",       d: "El que viene por detras no tiene derecho" },
-  { id: 76, cat: "REG", role: "ALL", fatigue: 2, q: "Que regla aplica al acercarse a tierra?",                                         a: "Regla 9: canales angostos",        d: "Mantenerse a estribor del canal" },
-];
+// ─── EXERCISES ─── (loaded from Questions/exercises.json) ─────────────────
 
 // ─── SESSION TEMPLATES ─────────────────────────────────────────────────────
 
@@ -142,9 +65,9 @@ const SESSION_TEMPLATES = {
 };
 
 const PHASE_EX_MAP = {
-  warm:   ["JJ", "HK", "EQ", "EQC", "SQ"],
-  cardio: ["BU", "MC", "HK", "LS", "SL", "BJ"],
-  man:    ["WS", "PL", "PLI", "PLD", "EQ", "EQC"],
+  warm:   ["JJ", "HK", "SQ", "CC", "TAP", "EQ", "EQC", "INH", "STR"],
+  cardio: ["BU", "MC", "HK", "LS", "SL", "BJ", "JR", "JRA", "SHC", "BC"],
+  man:    ["WS", "PL", "PLI", "PLD", "EQ", "EQC", "EQA", "CC", "TAP"],
   sprint: [],
 };
 
@@ -288,6 +211,9 @@ function buildSession(templateKey, role, difficultyId, allQ) {
       const question = qs[0] ?? null;
       if (question) usedIds.add(question.id);
 
+      const isWarm = phase.id === "warm";
+      const dualTask = !isWarm && (i + 1) % 3 === 0 && !!question;
+
       rounds.push({
         type: "round",
         phaseLabel: phase.label,
@@ -297,8 +223,9 @@ function buildSession(templateKey, role, difficultyId, allQ) {
         exercise: ex,
         restSeconds: diff.restSeconds,
         question,
-        questionTimer: phase.id === "warm" ? 30 : diff.qTimer,
+        questionTimer: isWarm ? 30 : diff.qTimer,
         fatigueLevel: Math.max(1, fatigueLevel),
+        dualTask,
       });
     }
   });
@@ -978,13 +905,21 @@ function ExerciseTimer({ round, paused, onDone }) {
 
       <div style={{ flex: 1, display: "flex", flexDirection: "column", padding: "20px 16px 0" }}>
         <div style={{ fontSize: 9, letterSpacing: 4, color: stageColor, textTransform: "uppercase", marginBottom: 12 }}>
-          {stage === "exercise" ? "ejercicio" : stage === "rest" ? "descanso" : "pregunta cognitiva"}
+          {stage === "exercise" ? "ejercicio" : stage === "rest" ? "descanso" : round.dualTask ? "¿la recordas?" : "pregunta cognitiva"}
         </div>
 
         {stage === "exercise" && (
           <div>
-            <div style={{ fontSize: 26, fontWeight: 700, color: S.text, marginBottom: 10 }}>{ex.name}</div>
-            <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+              <div style={{ fontSize: 26, fontWeight: 700, color: S.text }}>{ex.name}</div>
+              {round.dualTask && (
+                <span style={{
+                  fontSize: 8, letterSpacing: 2, padding: "3px 7px", borderRadius: 4,
+                  background: "rgba(251,191,36,0.15)", color: "#FBBF24", fontWeight: 700,
+                }}>DUAL TASK</span>
+              )}
+            </div>
+            <div style={{ display: "flex", gap: 12, marginBottom: 10 }}>
               <span style={{
                 padding: "4px 10px", borderRadius: 4,
                 background: INT_COLORS[ex.intensity] + "18",
@@ -994,6 +929,24 @@ function ExerciseTimer({ round, paused, onDone }) {
                 {isTimeBased ? ex.dur + "s" : ex.reps + " " + ex.unit}
               </span>
             </div>
+            {ex.desc && (
+              <div style={{ fontSize: 11, color: S.dim, lineHeight: 1.6, marginBottom: 14 }}>
+                {ex.desc}
+              </div>
+            )}
+            {round.dualTask && round.question && (
+              <div style={{
+                background: "rgba(251,191,36,0.06)", border: "1px solid rgba(251,191,36,0.25)",
+                borderRadius: 10, padding: "12px 14px", marginBottom: 4,
+              }}>
+                <div style={{ fontSize: 8, letterSpacing: 3, color: "#FBBF24", marginBottom: 6, textTransform: "uppercase" }}>
+                  Memoriza · vas a responder despues
+                </div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: S.text, lineHeight: 1.6, whiteSpace: "pre-line" }}>
+                  {round.question.q}
+                </div>
+              </div>
+            )}
           </div>
         )}
 

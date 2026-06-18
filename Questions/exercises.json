@@ -1,0 +1,170 @@
+[
+  {
+    "id": "JJ",
+    "name": "Jumping Jacks",
+    "desc": "Saltos con apertura simultánea de brazos y piernas. Ritmo constante. Buen calentamiento.",
+    "dur": 45, "reps": null, "unit": "seg",
+    "intensity": 1, "pattern": "cardio", "fatigue": 1, "cog": true
+  },
+  {
+    "id": "HK",
+    "name": "High Knees",
+    "desc": "Corre en el lugar elevando rodillas al 90°. Mantén el ritmo sostenido y los brazos activos.",
+    "dur": 40, "reps": null, "unit": "seg",
+    "intensity": 3, "pattern": "cardio", "fatigue": 3, "cog": true
+  },
+  {
+    "id": "SQ",
+    "name": "Air Squats rápidos",
+    "desc": "Sentadillas sin peso a ritmo sostenido. Rodillas sobre puntas, core activo, respiración rítmica.",
+    "dur": 40, "reps": null, "unit": "seg",
+    "intensity": 2, "pattern": "legs", "fatigue": 2, "cog": true
+  },
+  {
+    "id": "EQ",
+    "name": "Equilibrio una pierna",
+    "desc": "De pie sobre un pie, ojos abiertos. Activa el sistema vestibular y la propiocepción. Cambia de pie a mitad.",
+    "dur": 30, "reps": null, "unit": "seg",
+    "intensity": 1, "pattern": "balance", "fatigue": 1, "cog": true
+  },
+  {
+    "id": "EQC",
+    "name": "Equilibrio ojos cerrados",
+    "desc": "Una pierna, ojos cerrados. Máxima demanda propioceptiva. Fuerza al cerebro a depender de señales internas.",
+    "dur": 20, "reps": null, "unit": "seg",
+    "intensity": 1, "pattern": "balance", "fatigue": 1, "cog": true
+  },
+  {
+    "id": "CC",
+    "name": "Cross Crawl",
+    "desc": "Alterna codo derecho con rodilla izquierda y viceversa lentamente. Activa conexión entre hemisferios. Ideal antes de preguntas.",
+    "dur": 40, "reps": null, "unit": "seg",
+    "intensity": 1, "pattern": "coordination", "fatigue": 1, "cog": true
+  },
+  {
+    "id": "TAP",
+    "name": "Tap alternado de manos",
+    "desc": "Toca el hombro opuesto alternando manos lo más rápido posible. Activa cortex motor bilateral y atención dividida.",
+    "dur": 30, "reps": null, "unit": "seg",
+    "intensity": 1, "pattern": "coordination", "fatigue": 1, "cog": true
+  },
+  {
+    "id": "EQA",
+    "name": "Equilibrio + brazos",
+    "desc": "Una pierna. Con el brazo libre, dibuja letras o números en el aire. Dual-task vestibular puro.",
+    "dur": 25, "reps": null, "unit": "seg",
+    "intensity": 1, "pattern": "balance", "fatigue": 1, "cog": true
+  },
+  {
+    "id": "INH",
+    "name": "Respiración 4-7-8",
+    "desc": "Inhala 4 seg · Retén 7 seg · Exhala 8 seg. Activa el sistema parasimpático. Úsalo antes de preguntas difíciles.",
+    "dur": 45, "reps": null, "unit": "seg",
+    "intensity": 1, "pattern": "breath", "fatigue": 1, "cog": true
+  },
+  {
+    "id": "STR",
+    "name": "Movilidad dinámica",
+    "desc": "Círculos de cadera → hombros → cuello. Activa conciencia corporal y prepara el sistema nervioso.",
+    "dur": 40, "reps": null, "unit": "seg",
+    "intensity": 1, "pattern": "mobility", "fatigue": 1, "cog": true
+  },
+  {
+    "id": "JR",
+    "name": "Soga — salto continuo",
+    "desc": "Salta la soga (real o simulada) con ambos pies juntos. Coordinación ojo-pie, ritmo y atención sostenida.",
+    "dur": 40, "reps": null, "unit": "seg",
+    "intensity": 3, "pattern": "cardio", "fatigue": 3, "cog": true
+  },
+  {
+    "id": "JRA",
+    "name": "Soga — alternada",
+    "desc": "Soga alternando pies como si corrieras. Mayor demanda coordinativa que el salto continuo.",
+    "dur": 30, "reps": null, "unit": "seg",
+    "intensity": 3, "pattern": "cardio", "fatigue": 3, "cog": true
+  },
+  {
+    "id": "SHC",
+    "name": "Shuffle + palmada",
+    "desc": "Shuffles laterales (3 pasos) con palmada al centro al cambiar dirección. Combina movimiento lateral con señal rítmica.",
+    "dur": 30, "reps": null, "unit": "seg",
+    "intensity": 2, "pattern": "coordination", "fatigue": 2, "cog": true
+  },
+  {
+    "id": "MC",
+    "name": "Mountain Climbers",
+    "desc": "En plancha, alterna rodillas al pecho rápidamente. Mantén caderas bajas y ritmo constante.",
+    "dur": 40, "reps": null, "unit": "seg",
+    "intensity": 3, "pattern": "core", "fatigue": 3, "cog": true
+  },
+  {
+    "id": "BC",
+    "name": "Bear Crawl",
+    "desc": "En cuatro apoyos (rodillas off el suelo), avanza coordinando mano y pie opuestos. Alta demanda neuromuscular.",
+    "dur": 30, "reps": null, "unit": "seg",
+    "intensity": 3, "pattern": "coordination", "fatigue": 3, "cog": true
+  },
+  {
+    "id": "LS",
+    "name": "Skater Jumps",
+    "desc": "Saltos laterales imitando un patinador. Aterrizaje sobre un pie, luego el otro. Control y equilibrio dinámico.",
+    "dur": null, "reps": 20, "unit": "reps",
+    "intensity": 2, "pattern": "lateral", "fatigue": 2, "cog": true
+  },
+  {
+    "id": "SL",
+    "name": "Saltos lat. sobre línea",
+    "desc": "Salta lateralmente sobre una línea real o imaginaria, rápido y controlado. Activa coordinación lateral.",
+    "dur": 30, "reps": null, "unit": "seg",
+    "intensity": 2, "pattern": "lateral", "fatigue": 2, "cog": true
+  },
+  {
+    "id": "BU",
+    "name": "Burpees",
+    "desc": "De pie → plancha → flexión (opcional) → salto explosivo. Movimiento de cuerpo completo de alta intensidad.",
+    "dur": 40, "reps": null, "unit": "seg",
+    "intensity": 4, "pattern": "full", "fatigue": 4, "cog": true
+  },
+  {
+    "id": "LJ",
+    "name": "Lunge Jumps",
+    "desc": "Zancadas con salto explosivo al cambiar de pierna. Fuerza + potencia + coordinación. Core activo.",
+    "dur": null, "reps": 16, "unit": "reps",
+    "intensity": 3, "pattern": "power", "fatigue": 3, "cog": false
+  },
+  {
+    "id": "BJ",
+    "name": "Box Jumps",
+    "desc": "Salta sobre una superficie elevada con ambos pies. Aterrizaje suave, absorbe el impacto con las rodillas.",
+    "dur": null, "reps": 10, "unit": "reps",
+    "intensity": 3, "pattern": "power", "fatigue": 3, "cog": false
+  },
+  {
+    "id": "WS",
+    "name": "Wall Sit",
+    "desc": "Espalda en la pared, rodillas a 90°. Isométrico de piernas. Usa el tiempo para respirar y enfocarte.",
+    "dur": 40, "reps": null, "unit": "seg",
+    "intensity": 2, "pattern": "iso", "fatigue": 2, "cog": true
+  },
+  {
+    "id": "PL",
+    "name": "Plancha",
+    "desc": "Posición de plancha frontal. Cuerpo en línea recta, core activo. Respira profundo y mantén la concentración.",
+    "dur": 40, "reps": null, "unit": "seg",
+    "intensity": 2, "pattern": "iso", "fatigue": 2, "cog": true
+  },
+  {
+    "id": "PLI",
+    "name": "Plancha lateral izq.",
+    "desc": "Plancha lateral sobre el lado izquierdo. Cadera elevada, cuerpo alineado de cabeza a pies.",
+    "dur": 30, "reps": null, "unit": "seg",
+    "intensity": 2, "pattern": "iso", "fatigue": 2, "cog": true
+  },
+  {
+    "id": "PLD",
+    "name": "Plancha lateral der.",
+    "desc": "Plancha lateral sobre el lado derecho. Cadera elevada, cuerpo alineado de cabeza a pies.",
+    "dur": 30, "reps": null, "unit": "seg",
+    "intensity": 2, "pattern": "iso", "fatigue": 2, "cog": true
+  }
+]
