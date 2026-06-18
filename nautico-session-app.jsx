@@ -154,8 +154,7 @@ function shuffle(arr) {
 
 function getAllQuestions(customQ) {
   const builtinIds = new Set(BUILTIN_QUESTIONS.map(q => q.id));
-  const builtinTexts = new Set(BUILTIN_QUESTIONS.map(q => q.q));
-  const uniqueCustom = customQ.filter(q => !builtinIds.has(q.id) && !builtinTexts.has(q.q));
+  const uniqueCustom = customQ.filter(q => !builtinIds.has(q.id));
   return [...BUILTIN_QUESTIONS, ...uniqueCustom];
 }
 
