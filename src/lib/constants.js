@@ -19,8 +19,27 @@ export const DIFFICULTIES = [
   { id: "shrinking", label: "Degradable", sprintTime: 0, qTimer: 20, minFatigue: 1, restSeconds: 20 },
 ];
 
-export const CAT_COLORS = { NAV: "#38BDF8", MAN: "#34D399", DEC: "#FB923C", REG: "#A78BFA", SIT: "#F0A500" };
-export const CAT_LABELS = { NAV: "Navegación", MAN: "Maniobras", DEC: "Decisiones", REG: "Reglamento", SIT: "Situacional" };
+export const CAT_COLORS = {
+  NAV: "#38BDF8", MAN: "#34D399", DEC: "#FB923C", REG: "#A78BFA", SIT: "#F0A500",
+  TRIM: "#2DD4BF", TACT: "#F472B6", METEO: "#818CF8", SEG: "#EF4444",
+};
+export const CAT_LABELS = {
+  NAV: "Navegación", MAN: "Maniobras", DEC: "Decisiones", REG: "Reglamento", SIT: "Situacional",
+  TRIM: "Trimado", TACT: "Táctica", METEO: "Meteorología", SEG: "Seguridad",
+};
+export const CAT_DESC = {
+  NAV: "Rumbos, declinación, VMG, laylines, corriente",
+  MAN: "Virada, trasluchada, rizos, spinnaker, mark rounding",
+  DEC: "Lado del recorrido, cuándo virar, cobrir/estirar",
+  REG: "Derecho de paso, baliza, cambio de rumbo, protestas",
+  SIT: "Borneos, tráfico, olas, comunicación, prioridades",
+  TRIM: "Escota, traveler, cunningham, driza, barber, mayor",
+  TACT: "Posicionamiento flota, cobertura, start, laylines tácticas",
+  METEO: "Lectura viento, rachas, gradientes, nubes, corriente",
+  SEG: "Hombre al agua, vela de tormenta, emergencias, equipo",
+};
+// Orden canónico para iterar UI y pesos adaptativos.
+export const CAT_ORDER = ["NAV", "MAN", "DEC", "REG", "SIT", "TRIM", "TACT", "METEO", "SEG"];
 export const INT_COLORS = { 1: "#38BDF8", 2: "#34D399", 3: "#FB923C", 4: "#F43F5E" };
 export const INT_LABELS = { 1: "Baja", 2: "Media", 3: "Alta", 4: "Muy alta" };
 export const FAT_LABELS = { 1: "Fresco", 2: "Activado", 3: "Fatigado", 4: "Al límite" };
@@ -95,16 +114,21 @@ export const PHASE_EX_MAP = {
 };
 
 export const PHASE_Q_MAP = {
-  warm:   ["NAV", "SIT"],
-  cardio: ["NAV", "DEC", "SIT"],
-  man:    ["MAN", "DEC", "SIT"],
-  sprint: ["NAV", "MAN", "DEC", "REG", "SIT"],
+  warm:   ["NAV", "SIT", "METEO"],
+  cardio: ["NAV", "DEC", "SIT", "METEO"],
+  man:    ["MAN", "TRIM", "DEC", "SIT"],
+  sprint: ["NAV", "MAN", "DEC", "REG", "SIT", "TRIM", "TACT", "METEO", "SEG"],
 };
 
 export const ROLES = [
-  { id: "ALL", label: "General",         color: "#64748B" },
-  { id: "GEN", label: "Trimmer Genova",  color: "#38BDF8" },
-  { id: "MAY", label: "Trimmer Mayor",   color: "#34D399" },
-  { id: "PRO", label: "Proel",           color: "#FB923C" },
-  { id: "TOD", label: "Todos los roles", color: "#A78BFA" },
+  { id: "ALL",  label: "General",          color: "#64748B", desc: "Cualquier tripulante" },
+  { id: "GEN",  label: "Trimmer Génova",   color: "#38BDF8", desc: "Genoa, escota, barber, traveler de proa" },
+  { id: "MAY",  label: "Trimmer Mayor",    color: "#34D399", desc: "Mayor, cunningham, botavara, traveler" },
+  { id: "PRO",  label: "Proel",            color: "#FB923C", desc: "Proa, spinnaker, gennaker, maniobras de proa" },
+  { id: "TAC",  label: "Táctico",          color: "#F472B6", desc: "Decisiones de recorrido, lectura de viento" },
+  { id: "TIM",  label: "Timonel",          color: "#A78BFA", desc: "Rumbo, orza/escora, gobierno del barco" },
+  { id: "PIT",  label: "Pit",              color: "#FBBF24", desc: "Drizas, escotas, winches, maniobras de cubierta" },
+  { id: "NAVEG", label: "Navegante",       color: "#818CF8", desc: "Posición, cálculos, instrumentos, routing" },
+  { id: "TOD",  label: "Todos los roles",  color: "#A78BFA", desc: "Decisiones de equipo completo" },
 ];
+export const ROLE_MAP = Object.fromEntries(ROLES.map(r => [r.id, r]));

@@ -3,7 +3,8 @@ import BUILTIN_QUESTIONS from "./Questions/naut-preguntas-2026-06-18.json";
 
 // ─── LIB MODULES ───────────────────────────────────────────────────────────
 import {
-  LS, SCHEMA_VERSION, DIFFICULTIES, CAT_COLORS, CAT_LABELS, INT_COLORS, INT_LABELS,
+  LS, SCHEMA_VERSION, DIFFICULTIES, CAT_COLORS, CAT_LABELS, CAT_DESC, CAT_ORDER,
+  INT_COLORS, INT_LABELS, ROLE_MAP,
   FAT_LABELS, RPE_TO_FATIGUE, RPE_LABELS, S, SESSION_TEMPLATES, PHASE_EX_MAP,
   PHASE_Q_MAP, ROLES,
 } from "./src/lib/constants.js";
@@ -214,21 +215,26 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
 
       {template === "custom" && (
         <Section label="Categorias">
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
-            {["NAV", "MAN", "DEC", "REG", "SIT"].map(c => {
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
+            {CAT_ORDER.map(c => {
               const active = customCats.includes(c);
               const col = CAT_COLORS[c];
               return (
-                <button key={c} onClick={() => toggleCustomCat(c)} style={{
-                  padding: "10px 14px", borderRadius: 8, cursor: "pointer",
+                <button key={c} title={CAT_DESC[c]} onClick={() => toggleCustomCat(c)} style={{
+                  padding: "9px 12px", borderRadius: 8, cursor: "pointer",
                   background: active ? col + "22" : S.bg2,
                   border: active ? "1.5px solid " + col : "1.5px solid " + S.border,
                   color: active ? col : S.muted,
                   fontFamily: S.font, fontSize: 10, fontWeight: 700, letterSpacing: 1,
-                }}>{CAT_LABELS[c]}</button>
+                }}>{c}</button>
               );
             })}
           </div>
+          {customCats.length === 1 && (
+            <div style={{ fontSize: 10, color: CAT_COLORS[customCats[0]], marginBottom: 10, lineHeight: 1.5 }}>
+              {CAT_DESC[customCats[0]]}
+            </div>
+          )}
           <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 8, textTransform: "uppercase" }}>
             Cantidad de preguntas
           </div>
@@ -247,7 +253,7 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
       )}
 
       <Section label="Tu rol hoy">
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
           {ROLES.map(r => (
             <ChoiceBtn key={r.id} active={role === r.id} color={r.color}
               extraStyle={{ flex: "1 1 40%", width: "auto", marginBottom: 0 }}
@@ -256,8 +262,8 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
             </ChoiceBtn>
           ))}
         </div>
-        <div style={{ fontSize: 10, color: S.dim, marginTop: 8, lineHeight: 1.5 }}>
-          Preguntas de maniobra filtradas por rol + generales ALL.
+        <div style={{ fontSize: 10, color: ROLE_MAP[role]?.color || S.dim, marginTop: 8, lineHeight: 1.5 }}>
+          {ROLE_MAP[role]?.desc || "Preguntas de maniobra filtradas por rol + generales ALL."}
         </div>
       </Section>
 
@@ -318,7 +324,7 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
             <div style={{ width: 3, height: 32, borderRadius: 2, background: "#FBBF24", flexShrink: 0 }} />
             <div>
-              <div style={{ fontSize: 11, color: S.text, fontWeight: 700 }}>{customCount} preguntas · {customCats.join(" + ")}</div>
+              <div style={{ fontSize: 11, color: S.text, fontWeight: 700 }}>{customCount} preguntas · {customCats.map(c => CAT_LABELS[c]).join(" + ")}</div>
               <div style={{ fontSize: 10, color: S.muted }}>Sin ejercicios · Sprint puro · Timer: {diff?.sprintTime || 10}s</div>
             </div>
           </div>
@@ -449,16 +455,19 @@ function LibraryScreen({ customQ, setCustomQ }) {
 
         <div style={{ marginBottom: 14 }}>
           <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 8, textTransform: "uppercase" }}>Categoria</div>
-          <div style={{ display: "flex", gap: 8 }}>
-            {["NAV", "MAN", "DEC", "REG", "SIT"].map(c => (
-              <button key={c} onClick={() => setForm(f => ({ ...f, cat: c }))} style={{
-                flex: 1, padding: "10px 4px", borderRadius: 8, cursor: "pointer",
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+            {CAT_ORDER.map(c => (
+              <button key={c} title={CAT_DESC[c]} onClick={() => setForm(f => ({ ...f, cat: c }))} style={{
+                padding: "9px 10px", borderRadius: 8, cursor: "pointer",
                 background: form.cat === c ? CAT_COLORS[c] + "22" : S.bg2,
                 border: form.cat === c ? "1.5px solid " + CAT_COLORS[c] : "1.5px solid " + S.border,
                 color: form.cat === c ? CAT_COLORS[c] : S.muted,
                 fontFamily: S.font, fontSize: 10, fontWeight: 700,
               }}>{c}</button>
             ))}
+          </div>
+          <div style={{ fontSize: 9, color: CAT_COLORS[form.cat] || S.dim, marginTop: 6, lineHeight: 1.4 }}>
+            {CAT_DESC[form.cat] || ""}
           </div>
         </div>
 
@@ -567,7 +576,7 @@ function LibraryScreen({ customQ, setCustomQ }) {
             {IMPORT_EXAMPLE}
           </pre>
           <div style={{ fontSize: 9, color: S.dim, marginTop: 8 }}>
-            fatigue: 1=Baja · 2=Media · 3=Alta &nbsp; | &nbsp; role: ALL / GEN / MAY / PRO
+            fatigue: 1=Baja · 2=Media · 3=Alta &nbsp; | &nbsp; cat: NAV/MAN/DEC/REG/SIT/TRIM/TACT/METEO/SEG &nbsp; | &nbsp; role: ALL/GEN/MAY/PRO/TAC/TIM/PIT/NAVEG/TOD
           </div>
         </div>
       )}
@@ -586,17 +595,25 @@ function LibraryScreen({ customQ, setCustomQ }) {
       )}
 
       <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" }}>
-        {["ALL", "NAV", "MAN", "DEC", "REG", "SIT"].map(c => {
-          const count = c === "ALL" ? allQ.length : allQ.filter(q => q.cat === c).length;
-          const color = c === "ALL" ? "#64748B" : CAT_COLORS[c];
+        <button onClick={() => setFilterCat("ALL")} style={{
+          padding: "6px 12px", borderRadius: 6, cursor: "pointer",
+          background: filterCat === "ALL" ? "#64748B22" : S.bg2,
+          border: "1px solid " + (filterCat === "ALL" ? "#64748B" : S.border),
+          color: filterCat === "ALL" ? "#64748B" : S.muted,
+          fontFamily: S.font, fontSize: 9, fontWeight: 700, letterSpacing: 1,
+        }}>TODAS ({allQ.length})</button>
+        {CAT_ORDER.map(c => {
+          const count = allQ.filter(q => q.cat === c).length;
+          if (count === 0) return null;
+          const col = CAT_COLORS[c];
           return (
-            <button key={c} onClick={() => setFilterCat(c)} style={{
+            <button key={c} title={CAT_DESC[c]} onClick={() => setFilterCat(c)} style={{
               padding: "6px 12px", borderRadius: 6, cursor: "pointer",
-              background: filterCat === c ? color + "22" : S.bg2,
-              border: "1px solid " + (filterCat === c ? color : S.border),
-              color: filterCat === c ? color : S.muted,
+              background: filterCat === c ? col + "22" : S.bg2,
+              border: "1px solid " + (filterCat === c ? col : S.border),
+              color: filterCat === c ? col : S.muted,
               fontFamily: S.font, fontSize: 9, fontWeight: 700, letterSpacing: 1,
-            }}>{c === "ALL" ? "TODAS (" + count + ")" : c + " (" + count + ")"}</button>
+            }}>{c} ({count})</button>
           );
         })}
       </div>
@@ -618,8 +635,11 @@ function LibraryScreen({ customQ, setCustomQ }) {
                 fontSize: 8, padding: "2px 7px", borderRadius: 4,
                 background: INT_COLORS[q.fatigue] + "18", color: INT_COLORS[q.fatigue], letterSpacing: 1,
               }}>{INT_LABELS[q.fatigue]}</span>
-              {q.role !== "ALL" && (
-                <span style={{ fontSize: 8, color: S.dim }}>{q.role}</span>
+              {q.role && q.role !== "ALL" && ROLE_MAP[q.role] && (
+                <span style={{
+                  fontSize: 8, padding: "2px 7px", borderRadius: 4,
+                  background: ROLE_MAP[q.role].color + "18", color: ROLE_MAP[q.role].color, letterSpacing: 1, fontWeight: 700,
+                }}>{ROLE_MAP[q.role].label}</span>
               )}
               {isCustom && (
                 <span style={{ fontSize: 8, color: "#A78BFA", marginLeft: "auto" }}>CUSTOM</span>
@@ -628,6 +648,16 @@ function LibraryScreen({ customQ, setCustomQ }) {
             <div style={{ fontSize: 11, color: S.text, lineHeight: 1.55, whiteSpace: "pre-line", marginBottom: 5 }}>{q.q}</div>
             <div style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>→ {q.a}</div>
             {q.d && <div style={{ fontSize: 10, color: S.muted, marginTop: 3 }}>{q.d}</div>}
+            {Array.isArray(q.tags) && q.tags.length > 0 && (
+              <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginTop: 6 }}>
+                {q.tags.map((t, i) => (
+                  <span key={i} style={{
+                    fontSize: 8, padding: "1px 6px", borderRadius: 3,
+                    background: S.bg3, color: S.dim, letterSpacing: 0.5,
+                  }}>#{t}</span>
+                ))}
+              </div>
+            )}
             {isCustom && (
               <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
                 <button onClick={() => openEdit(q)} style={{

@@ -992,7 +992,7 @@
   {
     "id": 173,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 1,
     "q": "Trimming génova — ceñida, viento estable\n→ ¿Primera referencia visual para saber si está bien trimada?",
     "a": "Lúes del gratil: los tres flameando a la vez, suavemente hacia afuera.",
@@ -1001,7 +1001,7 @@
   {
     "id": 174,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Trimming génova — el lú de barlovento (superior) flamea constantemente\n→ ¿Qué ajuste hacés?",
     "a": "Amollar escota o abrir el carro de génova (a proa).",
@@ -1010,7 +1010,7 @@
   {
     "id": 175,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Trimming génova — los lúes de sotavento están pegados (no flamean)\n→ ¿Qué indica y qué hacés?",
     "a": "Génova sub-trimada (muy abierta). Cobrar escota.",
@@ -1019,7 +1019,7 @@
   {
     "id": 176,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Ceñida, el timonel pide 'más velocidad' (aceleración táctica)\n→ ¿Qué hacés con la génova?",
     "a": "Amollar 5-10cm de escota para abrir el ángulo de entrada y ganar velocidad.",
@@ -1028,7 +1028,7 @@
   {
     "id": 177,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "El timonel pide 'vamos a altura'\n→ ¿Cómo ajustás la génova?",
     "a": "Cobrar escota y subir el carro (hacia popa) para cerrar la baluma.",
@@ -1037,7 +1037,7 @@
   {
     "id": 178,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 1,
     "q": "¿Cuándo movés el carro de génova hacia proa vs hacia popa?",
     "a": "Proa: abre el ángulo superior (más velocidad, viento flojo). Popa: cierra la baluma (más altura, viento fresco).",
@@ -1046,7 +1046,7 @@
   {
     "id": 179,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 1,
     "q": "Trimming mayor — ceñida\n→ ¿Qué tres controles usás para regular la forma?",
     "a": "Escota mayor (tensión), cunningham (gratil), vang/barber (baluma).",
@@ -1055,7 +1055,7 @@
   {
     "id": 180,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Ceñida, viento fresco. La mayor está muy curveada y el barco escora mucho\n→ ¿Qué dos ajustes hacés primero?",
     "a": "1) Amollar traveller a sotavento. 2) Si no alcanza, amollar escota mayor (twist).",
@@ -1064,7 +1064,7 @@
   {
     "id": 181,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Navegando con viento flojo, popas. La mayor está flambeando en el gratil\n→ ¿Qué hacés?",
     "a": "Tensar el vang para cerrar la baluma y cobrar escota suavemente.",
@@ -1073,7 +1073,7 @@
   {
     "id": 182,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 1,
     "q": "¿Para qué sirve el cunningham en ceñida?",
     "a": "Tensa el gratil, aplana la vela y mueve el draft hacia adelante. Se usa al aumentar el viento.",
@@ -1082,7 +1082,7 @@
   {
     "id": 183,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "El backstay se puede regular. Viento fresco, ceñida\n→ ¿Lo tensás o aflojás? ¿Para qué?",
     "a": "Tensarlo: encorva el mástil, aplana la mayor y abre la baluma. Reduce potencia y escora.",
@@ -1091,7 +1091,7 @@
   {
     "id": 184,
     "cat": "MAN",
-    "role": "TIMONEL",
+    "role": "TIM",
     "fatigue": 2,
     "q": "Orzar — PREPARADOS\n→ ¿Qué verificás como timonel?",
     "a": "Vía libre en popa y proa. Velocidad suficiente para completar la virada.",
@@ -1100,7 +1100,7 @@
   {
     "id": 185,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Orzar — PREPARADOS\n→ ¿Qué hacés como COPIT?",
     "a": "Sacar la escota activa de la cornamusa/stopper. Cargar boba. Verificar escota nueva libre.",
@@ -1109,7 +1109,7 @@
   {
     "id": 186,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 2,
     "q": "Orzar — PREPARADOS\n→ ¿Qué hacés como PROEL?",
     "a": "Verificar cabos libres en proa. Escota nueva sin nudos ni trabas. Listo en posición para cobrar.",
@@ -1118,7 +1118,7 @@
   {
     "id": 187,
     "cat": "MAN",
-    "role": "TIMONEL",
+    "role": "TIM",
     "fatigue": 2,
     "q": "Orzar — LISTOS\n→ ¿Qué confirma el timonel antes de ejecutar?",
     "a": "Confirmación verbal de COPIT y PROEL. Vía libre. Entonces ordena: '¡ORZAMOS!'",
@@ -1127,7 +1127,7 @@
   {
     "id": 188,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Orzar — EJECUTAR (orden: '¡Orzamos!')\n→ Secuencia COPIT",
     "a": "1) Soltar escota activa cuando la génova flamea. 2) Cobrar escota nueva fuerte. 3) Trimar al salir.",
@@ -1136,7 +1136,7 @@
   {
     "id": 189,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 2,
     "q": "Orzar — EJECUTAR\n→ Secuencia PROEL",
     "a": "Cobrar escota nueva apenas la génova cruza. Comunicar 'cruzó' o 'libre'.",
@@ -1145,7 +1145,7 @@
   {
     "id": 190,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Orzar — EJECUTAR (mayor)\n→ ¿Qué hacés con la mayor y el traveller?",
     "a": "Centrar la mayor al cruzar. Ajustar traveller al nuevo bordo según el viento.",
@@ -1154,7 +1154,7 @@
   {
     "id": 191,
     "cat": "MAN",
-    "role": "TIMONEL",
+    "role": "TIM",
     "fatigue": 2,
     "q": "Trabuchar — PREPARADOS\n→ ¿Qué verificás como timonel?",
     "a": "Vía libre en popa. Velocidad adecuada. Comunicar el bordo al que se va.",
@@ -1163,7 +1163,7 @@
   {
     "id": 192,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Trabuchar — PREPARADOS\n→ ¿Qué hacés como COPIT?",
     "a": "Verificar recorrido libre de botavara. Tensar vang si estaba flojo. Escota mayor en mano.",
@@ -1172,7 +1172,7 @@
   {
     "id": 193,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 2,
     "q": "Trabuchar — PREPARADOS\n→ ¿Qué hacés como PROEL?",
     "a": "Posicionarse en el centro-proa. Verificar que el spinnaker (si hay) o génova no interfieran.",
@@ -1181,7 +1181,7 @@
   {
     "id": 194,
     "cat": "MAN",
-    "role": "TIMONEL",
+    "role": "TIM",
     "fatigue": 3,
     "q": "Trabuchar — EJECUTAR\n→ ¿Cuándo ordena el timonel arribar y cómo controla el death roll?",
     "a": "Arribar suavemente, no de golpe. Controlar con el timón para evitar oscilación. Peso a sotavento.",
@@ -1190,7 +1190,7 @@
   {
     "id": 195,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 3,
     "q": "Trabuchar — EJECUTAR (mayor)\n→ Secuencia COPIT",
     "a": "1) Cobrar escota mayor al centro. 2) Acompañar el pase de botavara. 3) Amollar al nuevo bordo.",
@@ -1199,7 +1199,7 @@
   {
     "id": 196,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 2,
     "q": "Trabuchar — EJECUTAR\n→ ¿Qué hace el PROEL con el peso?",
     "a": "Pasar al nuevo bordo de sotavento coordinado con el giro del barco.",
@@ -1208,7 +1208,7 @@
   {
     "id": 197,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 3,
     "q": "Trabuchar con spi — PREPARADOS\n→ ¿Qué prepara el PROEL?",
     "a": "Conectar el nuevo tangón (o preparar sin tangón). Verificar escota y braza nueva. Driza libre.",
@@ -1217,7 +1217,7 @@
   {
     "id": 198,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 3,
     "q": "Trabuchar con spi — PREPARADOS\n→ ¿Qué verifica el COPIT?",
     "a": "Escota y braza del spi sin trabas. Vang tenso. Recorrido de botavara libre.",
@@ -1226,7 +1226,7 @@
   {
     "id": 199,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 3,
     "q": "Trabuchar con spi — EJECUTAR\n→ Secuencia del PROEL con el tangón",
     "a": "1) Sacar tangón del mástil. 2) Pasar al nuevo bordo. 3) Conectar al mástil nuevo lado. 4) Ajustar braza.",
@@ -1235,7 +1235,7 @@
   {
     "id": 200,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 3,
     "q": "Trabuchar con spi — EJECUTAR\n→ ¿Qué hace el COPIT con la braza y la escota durante el pase?",
     "a": "Amollar braza activa mientras se cobra escota nueva. El spi debe mantenerse lleno en todo momento.",
@@ -1244,7 +1244,7 @@
   {
     "id": 201,
     "cat": "MAN",
-    "role": "TIMONEL",
+    "role": "TIM",
     "fatigue": 3,
     "q": "Trabuchar con spi — EJECUTAR\n→ ¿Qué controla el timonel durante el pase del tangón?",
     "a": "Mantener el barco derecho (rumbo popa-popa). No arribar más hasta que el spi esté estabilizado.",
@@ -1253,7 +1253,7 @@
   {
     "id": 202,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Izar mayor — PREPARADOS\n→ ¿Qué verificás?",
     "a": "Driza aclarada y libre. Cunningham y escota amolladas. Botavara en posición central.",
@@ -1262,7 +1262,7 @@
   {
     "id": 203,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 2,
     "q": "Izar mayor — EJECUTAR\n→ ¿Qué hace el PROEL?",
     "a": "Izar en la driza de forma pareja y constante. Comunicar si hay traba. Asegurar en el stopper.",
@@ -1271,7 +1271,7 @@
   {
     "id": 204,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Arriar mayor — PREPARADOS\n→ ¿Qué hacés?",
     "a": "Aclarar driza (sacar del stopper, en mano). Escota mayor amollada. Cunningham suelto.",
@@ -1280,7 +1280,7 @@
   {
     "id": 205,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 2,
     "q": "Arriar mayor — LISTOS\n→ ¿Qué verificás?",
     "a": "Liberar el stopper de la driza. Mano en la driza lista para arriar."
@@ -1288,7 +1288,7 @@
   {
     "id": 206,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Arriar mayor — EJECUTAR\n→ Secuencia COPIT",
     "a": "Arriar driza controlado. Comunicar 'abajo'. Asegurar driza. Ordenar la vela si corresponde.",
@@ -1297,7 +1297,7 @@
   {
     "id": 207,
     "cat": "MAN",
-    "role": "TIMONEL",
+    "role": "TIM",
     "fatigue": 2,
     "q": "Tomar rizos — PREPARADOS\n→ ¿Qué ordena el timonel y qué hace?",
     "a": "Ordenar 'PREPARADOS PARA RIZAR'. Arribar levemente para aliviar la mayor. Mantener velocidad.",
@@ -1306,7 +1306,7 @@
   {
     "id": 208,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 3,
     "q": "Tomar rizos — PREPARADOS\n→ ¿Qué preparás?",
     "a": "Aclarar driza de mayor. Preparar cabo de rizo (tack y clew). Amollar escota mayor.",
@@ -1315,7 +1315,7 @@
   {
     "id": 209,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 3,
     "q": "Tomar rizos — EJECUTAR\n→ Secuencia PROEL",
     "a": "1) Enganchar punto de rizo del gratil (tack). 2) Comunicar 'tack enganchado'. 3) Ayudar a ordenar el paño.",
@@ -1324,7 +1324,7 @@
   {
     "id": 210,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 3,
     "q": "Tomar rizos — EJECUTAR\n→ Secuencia COPIT",
     "a": "1) Bajar driza hasta el punto de rizo. 2) Cobrar cabo de rizo del puño (clew). 3) Cobrar driza nuevamente.",
@@ -1342,7 +1342,7 @@
   {
     "id": 212,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 2,
     "q": "Izar génova — PREPARADOS\n→ ¿Qué verificás en proa?",
     "a": "Génova enfundada o enrollada correctamente. Driza enganchada al puño de pena. Escota pasada por los ojos de proa.",
@@ -1351,7 +1351,7 @@
   {
     "id": 213,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 2,
     "q": "Izar génova — EJECUTAR\n→ Secuencia COPIT",
     "a": "Izar driza de génova constante. Verificar que suba sin cruces. Asegurar en stopper. Trimar escota."
@@ -1359,7 +1359,7 @@
   {
     "id": 214,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 2,
     "q": "Izar génova — EJECUTAR\n→ ¿Qué controla el PROEL durante la izada?",
     "a": "Que la génova suba limpia por el estay, sin enrollarse. Guiar el gratil si es necesario.",
@@ -1377,7 +1377,7 @@
   {
     "id": 216,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 3,
     "q": "Peeling génova — PREPARADOS\n→ ¿Qué prepara el PROEL?",
     "a": "Nueva génova en cubierta. Driza nueva enganchada. Escota nueva pasada por el ojo correcto.",
@@ -1386,7 +1386,7 @@
   {
     "id": 217,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 3,
     "q": "Peeling génova — EJECUTAR\n→ Secuencia completa",
     "a": "1) Izar nueva génova (PROEL guía). 2) Trimar nueva escota. 3) Soltar escota vieja. 4) Arriar driza vieja. 5) Recuperar génova vieja.",
@@ -1395,7 +1395,7 @@
   {
     "id": 218,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 3,
     "q": "Peeling génova — ¿Qué riesgo hay con las drizas si no se controlan?",
     "a": "Las drizas se enredan en el mástil o en la driza de la otra génova. Arriar se vuelve imposible.",
@@ -1413,7 +1413,7 @@
   {
     "id": 220,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 3,
     "q": "Peeling spi — PREPARADOS\n→ ¿Qué prepara el PROEL?",
     "a": "Nuevo spi en bolsa en cubierta. Driza nueva enganchada al puño. Braza y escota nuevas listas.",
@@ -1422,7 +1422,7 @@
   {
     "id": 221,
     "cat": "MAN",
-    "role": "COPIT",
+    "role": "PIT",
     "fatigue": 3,
     "q": "Peeling spi — EJECUTAR\n→ Secuencia COPIT (braza y escota)",
     "a": "1) Izar nuevo spi desde la bolsa. 2) Cobrar braza y escota nueva hasta llenarlo. 3) Comunicar 'nuevo trimado'. 4) Arriar spi viejo.",
@@ -1431,10 +1431,58 @@
   {
     "id": 222,
     "cat": "MAN",
-    "role": "PROEL",
+    "role": "PRO",
     "fatigue": 3,
     "q": "Peeling spi — EJECUTAR\n→ ¿Cómo se arría el spi viejo sin que caiga al agua?",
     "a": "Tirar por la escota hacia cubierta mientras se suelta la braza. Controlar la driza desde arriba.",
     "d": "El spi viejo tiene que venir para adentro del barco, no por la proa. Si cae al agua, frena el barco."
+  },
+  {
+    "id": 223,
+    "cat": "METEO",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Cumulus con base oscura y vertical creciente a barlovento\n→ Que indica?",
+    "a": "Racha y lluvia inminente (posible chubasco)",
+    "d": "Cumulus congestus/nimbostrato = conveccion fuerte, baja de presion y racha",
+    "tags": [
+      "nubes",
+      "racha",
+      "chubasco",
+      "ingerido"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 224,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "El viento bornea 15 grados a la derecha y la intensidad sube\n→ Que lado del recorridoo favorece?",
+    "a": "Lado derecho (cobrar)",
+    "d": "Borneo derecho + mas intensidad favorece el lado derecho del recorridoo",
+    "tags": [
+      "borneo",
+      "intensidad",
+      "estrategia",
+      "ingerido"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 225,
+    "cat": "METEO",
+    "role": "TIM",
+    "fatigue": 2,
+    "q": "Ripples oscuros (cat paws) a 100m a babor en ceñida\n→ Que hacer?",
+    "a": "Preparar a orzar, viene racha desde babor",
+    "d": "Cat paws = racha local visible; anticipar orza para no escorar de mas",
+    "tags": [
+      "cat-paws",
+      "racha",
+      "lectura-viento",
+      "ingerido"
+    ],
+    "difficulty": 2
   }
 ]

@@ -5,6 +5,7 @@ import BUILTIN_QUESTIONS from "../../Questions/naut-preguntas-2026-06-18.json";
 import EXERCISES from "../../Questions/exercises.json";
 import {
   DIFFICULTIES, SESSION_TEMPLATES, PHASE_EX_MAP, PHASE_Q_MAP, SCHEMA_VERSION, LS,
+  CAT_ORDER,
 } from "./constants.js";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -97,7 +98,7 @@ export function computeCategoryStats(history) {
 
 export function categoryWeights(stats) {
   const w = {};
-  for (const cat of ["NAV", "MAN", "DEC", "REG", "SIT"]) {
+  for (const cat of CAT_ORDER) {
     const s = stats[cat];
     if (!s || s.total < 5) { w[cat] = 1.0; continue; }
     const acc = s.correct / s.total;
