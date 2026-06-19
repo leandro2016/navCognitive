@@ -1,331 +1,21 @@
 ﻿import { useState, useEffect, useRef, useCallback } from "react";
 import BUILTIN_QUESTIONS from "./Questions/naut-preguntas-2026-06-18.json";
-import EXERCISES from "./Questions/exercises.json";
 
-// ─── CONSTANTS & STORAGE KEYS ──────────────────────────────────────────────
-
-const LS = {
-  customQ:   "naut_custom_q_v2",
-  history:   "naut_history_v2",
-  settings:  "naut_settings_v2",
-  savedSession: "naut_saved_session_v1",
-};
-
-const DIFFICULTIES = [
-  { id: "normal", label: "Normal",  sprintTime: 10, qTimer: 25, minFatigue: 1, restSeconds: 20 },
-  { id: "hard",   label: "Difícil", sprintTime: 7,  qTimer: 20, minFatigue: 1, restSeconds: 20 },
-  { id: "brutal", label: "Brutal",  sprintTime: 5,  qTimer: 15, minFatigue: 2, restSeconds: 12 },
-  { id: "notimer",label: "Sin reloj", sprintTime: 99, qTimer: 99, minFatigue: 1, restSeconds: 20 },
-  { id: "shrinking", label: "Degradable", sprintTime: 0, qTimer: 20, minFatigue: 1, restSeconds: 20 },
-];
-
-const CAT_COLORS  = { NAV: "#38BDF8", MAN: "#34D399", DEC: "#FB923C", REG: "#A78BFA", SIT: "#F0A500" };
-const CAT_LABELS  = { NAV: "Navegación", MAN: "Maniobras", DEC: "Decisiones", REG: "Reglamento", SIT: "Situacional" };
-const INT_COLORS  = { 1: "#38BDF8", 2: "#34D399", 3: "#FB923C", 4: "#F43F5E" };
-const INT_LABELS  = { 1: "Baja", 2: "Media", 3: "Alta", 4: "Muy alta" };
-const FAT_LABELS  = { 1: "Fresco", 2: "Activado", 3: "Fatigado", 4: "Al límite" };
-
-const S = {
-  font:   "'Space Mono', monospace",
-  bg:     "#060C14",
-  bg2:    "#0D1826",
-  bg3:    "#111D2E",
-  border: "#1E293B",
-  text:   "#F1F5F9",
-  muted:  "#64748B",
-  dim:    "#475569",
-};
-
-// ─── EXERCISES ─── (loaded from Questions/exercises.json) ─────────────────
-
-// ─── SESSION TEMPLATES ─────────────────────────────────────────────────────
-
-const SESSION_TEMPLATES = {
-  "30min": {
-    label: "30 min — Completa",
-    phases: [
-      { id: "warm",   label: "Calentamiento",       duration: 300,  color: "#0EA5E9" },
-      { id: "cardio", label: "Carga cardiovascular", duration: 600,  color: "#F43F5E" },
-      { id: "man",    label: "Maniobras",            duration: 600,  color: "#34D399" },
-      { id: "sprint", label: "Sprint mental",        duration: 300,  color: "#A78BFA" },
-    ],
-  },
-  "20min": {
-    label: "20 min — Express",
-    phases: [
-      { id: "warm",   label: "Calentamiento",  duration: 180,  color: "#0EA5E9" },
-      { id: "cardio", label: "Cardiovascular", duration: 480,  color: "#F43F5E" },
-      { id: "sprint", label: "Sprint mental",  duration: 300,  color: "#A78BFA" },
-    ],
-  },
-  "15min": {
-    label: "15 min — Sprint",
-    phases: [
-      { id: "cardio", label: "Cardiovascular", duration: 480,  color: "#F43F5E" },
-      { id: "sprint", label: "Sprint mental",  duration: 300,  color: "#A78BFA" },
-    ],
-  },
-  "walk": {
-    label: "Caminata cognitiva",
-    phases: [
-      { id: "sprint", label: "Caminata",  duration: 1200, color: "#34D399" },
-    ],
-  },
-  "custom": {
-    label: "Sprint personalizado",
-    phases: [
-      { id: "sprint", label: "Sprint",  duration: 0, color: "#FBBF24" },
-    ],
-  },
-};
-
-const PHASE_EX_MAP = {
-  warm:   ["JJ", "HK", "SQ", "CC", "TAP", "EQ", "EQC", "INH", "STR"],
-  cardio: ["BU", "MC", "HK", "LS", "SL", "BJ", "JR", "JRA", "SHC", "BC"],
-  man:    ["WS", "PL", "PLI", "PLD", "EQ", "EQC", "EQA", "CC", "TAP"],
-  sprint: [],
-};
-
-const PHASE_Q_MAP = {
-  warm:   ["NAV", "SIT"],
-  cardio: ["NAV", "DEC", "SIT"],
-  man:    ["MAN", "DEC", "SIT"],
-  sprint: ["NAV", "MAN", "DEC", "REG", "SIT"],
-};
-
-const ROLES = [
-  { id: "ALL", label: "General",         color: "#64748B" },
-  { id: "GEN", label: "Trimmer Genova",  color: "#38BDF8" },
-  { id: "MAY", label: "Trimmer Mayor",   color: "#34D399" },
-  { id: "PRO", label: "Proel",           color: "#FB923C" },
-  { id: "TOD", label: "Todos los roles", color: "#A78BFA" },
-];
-
-// ─── HOOKS ─────────────────────────────────────────────────────────────────
-
-function useLocalStorage(key, defaultVal) {
-  const [value, setValue] = useState(() => {
-    try {
-      const stored = localStorage.getItem(key);
-      return stored !== null ? JSON.parse(stored) : defaultVal;
-    } catch { return defaultVal; }
-  });
-
-  useEffect(() => {
-    try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* quota */ }
-  }, [key, value]);
-
-  return [value, setValue];
-}
-
-function useCountdown(seconds, active, onDone) {
-  const [t, setT] = useState(seconds);
-  const ref = useRef(null);
-  const onDoneRef = useRef(onDone);
-  onDoneRef.current = onDone;
-
-  useEffect(() => { setT(seconds); }, [seconds]);
-
-  useEffect(() => {
-    clearInterval(ref.current);
-    if (!active) return;
-    ref.current = setInterval(() => {
-      setT(prev => {
-        if (prev <= 1) { clearInterval(ref.current); onDoneRef.current(); return 0; }
-        return prev - 1;
-      });
-    }, 1000);
-    return () => clearInterval(ref.current);
-  }, [active, seconds]);
-
-  return t;
-}
-
-// ─── UTILITIES ─────────────────────────────────────────────────────────────
-
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function getAllQuestions(customQ) {
-  const builtinIds = new Set(BUILTIN_QUESTIONS.map(q => q.id));
-  const uniqueCustom = customQ.filter(q => !builtinIds.has(q.id));
-  return [...BUILTIN_QUESTIONS, ...uniqueCustom];
-}
-
-function getMaxId(allQ) {
-  return Math.max(0, ...allQ.map(q => q.id ?? 0));
-}
-
-function getQuestionsForPhase(phaseId, role, fatigueLevel, count, usedIds, diff, allQ) {
-  const cats = PHASE_Q_MAP[phaseId] || PHASE_Q_MAP.sprint;
-
-  const roleMatch = (q) => role === "TOD" || q.role === "ALL" || q.role === role;
-
-  let pool = allQ.filter(q =>
-    cats.includes(q.cat) &&
-    roleMatch(q) &&
-    !usedIds.has(q.id) &&
-    q.fatigue >= diff.minFatigue
-  );
-
-  if (fatigueLevel >= 3) {
-    const hard = pool.filter(q => q.fatigue >= 2);
-    if (hard.length >= count) pool = hard;
-  }
-
-  if (pool.length < count) {
-    pool = allQ.filter(q =>
-      cats.includes(q.cat) &&
-      roleMatch(q) &&
-      q.fatigue >= diff.minFatigue
-    );
-  }
-
-  return shuffle(pool).slice(0, count);
-}
-
-function getExercisesForPhase(phaseId) {
-  const pool = PHASE_EX_MAP[phaseId] || [];
-  return shuffle(EXERCISES.filter(e => pool.includes(e.id)));
-}
-
-function buildSession(templateKey, role, difficultyId, allQ, opts) {
-  const tmpl = SESSION_TEMPLATES[templateKey];
-  const diff = DIFFICULTIES.find(d => d.id === difficultyId) || DIFFICULTIES[0];
-  const rounds = [];
-  const usedIds = new Set();
-  let exercisesDone = 0;
-
-  const roleMatch = (q) => role === "TOD" || q.role === "ALL" || q.role === role;
-  const effectiveSprintTime = difficultyId === "shrinking" ? (opts?.shrinkingBase || 10) : diff.sprintTime;
-
-  if (templateKey === "walk") {
-    let pool = shuffle(allQ.filter(q => roleMatch(q) && q.fatigue >= 1));
-    const maxQ = Math.min(40, pool.length);
-    const questions = pool.slice(0, maxQ);
-    questions.forEach(q => usedIds.add(q.id));
-    rounds.push({
-      type: "sprint",
-      phaseLabel: "Caminata",
-      phaseColor: "#34D399",
-      questions,
-      questionTimer: 30,
-      isWalk: true,
-    });
-    return rounds;
-  }
-
-  if (templateKey === "custom") {
-    const cats = opts?.cats || ["NAV", "MAN", "DEC", "REG", "SIT"];
-    const count = opts?.count || 15;
-    let pool = shuffle(allQ.filter(q =>
-      cats.includes(q.cat) &&
-      roleMatch(q) &&
-      q.fatigue >= diff.minFatigue
-    ));
-    if (pool.length < count) {
-      pool = shuffle(allQ.filter(q =>
-        cats.includes(q.cat) &&
-        roleMatch(q)
-      ));
-    }
-    const questions = pool.slice(0, Math.min(count, pool.length));
-    questions.forEach(q => usedIds.add(q.id));
-    rounds.push({
-      type: "sprint",
-      phaseLabel: "Sprint personalizado",
-      phaseColor: "#FBBF24",
-      questions,
-      questionTimer: effectiveSprintTime,
-    });
-    return rounds;
-  }
-
-  tmpl.phases.forEach(phase => {
-    if (phase.id === "sprint") {
-      const questions = getQuestionsForPhase("sprint", role, 3, 10, usedIds, diff, allQ);
-      questions.forEach(q => usedIds.add(q.id));
-      rounds.push({
-        type: "sprint",
-        phaseLabel: phase.label,
-        phaseColor: phase.color,
-        questions,
-        questionTimer: effectiveSprintTime,
-      });
-      return;
-    }
-
-    const exList = getExercisesForPhase(phase.id);
-    const numRounds = phase.id === "warm" ? 2 : 5;
-
-    for (let i = 0; i < numRounds; i++) {
-      const ex = exList[i % exList.length];
-      exercisesDone++;
-      const fatigueLevel = Math.min(4, Math.ceil(exercisesDone / 3));
-
-      const qs = getQuestionsForPhase(phase.id, role, fatigueLevel, 1, usedIds, diff, allQ);
-      const question = qs[0] ?? null;
-      if (question) usedIds.add(question.id);
-
-      const isWarm = phase.id === "warm";
-      const dualTask = !isWarm && (i + 1) % 3 === 0 && !!question;
-
-      rounds.push({
-        type: "round",
-        phaseLabel: phase.label,
-        phaseColor: phase.color,
-        roundIndex: i + 1,
-        totalRounds: numRounds,
-        exercise: ex,
-        restSeconds: diff.restSeconds,
-        question,
-        questionTimer: isWarm ? 30 : diff.qTimer,
-        fatigueLevel: Math.max(1, fatigueLevel),
-        dualTask,
-      });
-    }
-  });
-
-  return rounds;
-}
-
-function downloadJSON(data, filename) {
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-function validateImportedQuestions(raw) {
-  if (!Array.isArray(raw)) throw new Error("Debe ser un array JSON");
-  const validCats  = ["NAV", "MAN", "DEC", "REG", "SIT"];
-  const validRoles = ["ALL", "GEN", "MAY", "PRO"];
-  return raw.map((item, idx) => {
-    if (typeof item.cat !== "string" || !validCats.includes(item.cat))
-      throw new Error("Item " + (idx + 1) + ": cat debe ser NAV/MAN/DEC/REG");
-    if (typeof item.q !== "string" || !item.q.trim())
-      throw new Error("Item " + (idx + 1) + ": q (pregunta) es obligatorio");
-    if (typeof item.a !== "string" || !item.a.trim())
-      throw new Error("Item " + (idx + 1) + ": a (respuesta) es obligatorio");
-    return {
-      cat:    item.cat,
-      role:   validRoles.includes(item.role) ? item.role : "ALL",
-      fatigue: [1, 2, 3].includes(item.fatigue) ? item.fatigue : 1,
-      q:      item.q.trim(),
-      a:      item.a.trim(),
-      d:      typeof item.d === "string" ? item.d.trim() : "",
-    };
-  });
-}
+// ─── LIB MODULES ───────────────────────────────────────────────────────────
+import {
+  LS, SCHEMA_VERSION, DIFFICULTIES, CAT_COLORS, CAT_LABELS, INT_COLORS, INT_LABELS,
+  FAT_LABELS, RPE_TO_FATIGUE, RPE_LABELS, S, SESSION_TEMPLATES, PHASE_EX_MAP,
+  PHASE_Q_MAP, ROLES,
+} from "./src/lib/constants.js";
+import {
+  shuffle, getAllQuestions, getMaxId, nextCustomId, normalizeQuestion,
+  getDueReviews, getOverdueCount, updateReviews,
+  computeCategoryStats, categoryWeights, weightedShuffle,
+  getQuestionsForPhase, getExercisesForPhase, buildSession,
+  downloadJSON, validateImportedQuestions, migrateSchema,
+} from "./src/lib/session.js";
+import { CUE, vibrate, acquireWakeLock, releaseWakeLock } from "./src/lib/feedback.js";
+import { useLocalStorage, useCountdown } from "./src/lib/hooks.js";
 
 // ─── UI HELPERS ────────────────────────────────────────────────────────────
 
@@ -407,7 +97,7 @@ function FormField({ label, value, onChange, multiline, placeholder }) {
   );
 }
 
-function PauseOverlay({ onResume, onSaveExit }) {
+function PauseOverlay({ onResume, onSaveExit, onExitNoSave }) {
   return (
     <div style={{
       position: "fixed", inset: 0, zIndex: 200,
@@ -432,14 +122,21 @@ function PauseOverlay({ onResume, onSaveExit }) {
         background: "none", border: "1px solid " + S.border,
         borderRadius: 10, color: S.muted,
         fontFamily: S.font, fontSize: 10, letterSpacing: 2, cursor: "pointer",
+        marginBottom: 10,
       }}>💾 GUARDAR Y SALIR</button>
+      <button onClick={onExitNoSave} style={{
+        padding: "12px 32px",
+        background: "none", border: "1px solid rgba(244,63,94,0.3)",
+        borderRadius: 10, color: "#F43F5E",
+        fontFamily: S.font, fontSize: 10, letterSpacing: 2, cursor: "pointer",
+      }}>✕ SALIR SIN GUARDAR</button>
     </div>
   );
 }
 
 // ─── HOME SCREEN ───────────────────────────────────────────────────────────
 
-function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSettings }) {
+function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSettings, reviews }) {
   const [template,   setTemplate]   = useState("30min");
   const [role,       setRole]       = useState("ALL");
   const [difficulty, setDifficulty] = useState(settings.difficulty || "hard");
@@ -447,6 +144,7 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
   const [customCount, setCustomCount] = useState(15);
 
   const diff = DIFFICULTIES.find(d => d.id === difficulty);
+  const dueCount = getOverdueCount(reviews);
 
   const handleStart = () => {
     setSettings(s => ({ ...s, difficulty }));
@@ -500,11 +198,16 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
 
       <Section label="Duracion">
         {Object.entries(SESSION_TEMPLATES).map(([k, v]) => (
-          <ChoiceBtn key={k} active={template === k} color={k === "walk" ? "#34D399" : k === "custom" ? "#FBBF24" : "#0EA5E9"} onClick={() => setTemplate(k)}>
+          <ChoiceBtn key={k} active={template === k} color={k === "walk" ? "#34D399" : k === "custom" ? "#FBBF24" : k === "repaso" ? "#F472B6" : "#0EA5E9"} onClick={() => setTemplate(k)}>
             <strong>{v.label}</strong>
-            {k !== "custom" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>{v.phases.length} fases</span>}
+            {k !== "custom" && k !== "repaso" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>{v.phases.length} fases</span>}
             {k === "walk" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>30s/pregunta</span>}
             {k === "custom" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>Vos elegis</span>}
+            {k === "repaso" && (
+              <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>
+                {dueCount > 0 ? dueCount + " pendientes" : "sin pendientes"}
+              </span>
+            )}
           </ChoiceBtn>
         ))}
       </Section>
@@ -620,7 +323,18 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
             </div>
           </div>
         )}
-        {template !== "walk" && template !== "custom" && SESSION_TEMPLATES[template].phases.map(p => (
+        {template === "repaso" && (
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
+            <div style={{ width: 3, height: 32, borderRadius: 2, background: "#F472B6", flexShrink: 0 }} />
+            <div>
+              <div style={{ fontSize: 11, color: S.text, fontWeight: 700 }}>Repaso espaciado</div>
+              <div style={{ fontSize: 10, color: S.muted }}>
+                {dueCount > 0 ? dueCount + " preguntas pendientes" : "Sin pendientes · repaso general"} · Timer: {diff?.sprintTime || 10}s
+              </div>
+            </div>
+          </div>
+        )}
+        {template !== "walk" && template !== "custom" && template !== "repaso" && SESSION_TEMPLATES[template].phases.map(p => (
           <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
             <div style={{ width: 3, height: 32, borderRadius: 2, background: p.color, flexShrink: 0 }} />
             <div>
@@ -660,7 +374,7 @@ function LibraryScreen({ customQ, setCustomQ }) {
   const [editingId,  setEditingId]  = useState(null);
   const [showFormat, setShowFormat] = useState(false);
   const [importMsg,  setImportMsg]  = useState(null);
-  const [form, setForm] = useState({ cat: "NAV", role: "ALL", fatigue: 2, q: "", a: "", d: "" });
+  const [form, setForm] = useState({ cat: "NAV", role: "ALL", fatigue: 2, q: "", a: "", d: "", tags: [], difficulty: null });
   const fileRef = useRef(null);
 
   const allQ       = getAllQuestions(customQ);
@@ -668,21 +382,25 @@ function LibraryScreen({ customQ, setCustomQ }) {
   const filtered   = filterCat === "ALL" ? allQ : allQ.filter(q => q.cat === filterCat);
 
   const openNew = () => {
-    setForm({ cat: "NAV", role: "ALL", fatigue: 2, q: "", a: "", d: "" });
+    setForm({ cat: "NAV", role: "ALL", fatigue: 2, q: "", a: "", d: "", tags: [], difficulty: null });
     setEditingId("new");
   };
 
   const openEdit = (q) => {
-    setForm({ cat: q.cat, role: q.role, fatigue: q.fatigue, q: q.q, a: q.a, d: q.d || "" });
+    setForm({ cat: q.cat, role: q.role, fatigue: q.fatigue, q: q.q, a: q.a, d: q.d || "", tags: q.tags || [], difficulty: q.difficulty ?? null });
     setEditingId(q.id);
   };
 
   const saveForm = () => {
     if (!form.q.trim() || !form.a.trim()) return;
+    const tagsArr = Array.isArray(form.tags)
+      ? form.tags.flatMap(s => String(s).split(",").map(x => x.trim())).filter(Boolean)
+      : [];
+    const payload = { ...form, tags: tagsArr, difficulty: form.difficulty || null, fatigue: Number(form.fatigue) };
     if (editingId === "new") {
-      setCustomQ(prev => [...prev, { ...form, id: getMaxId(getAllQuestions(prev)) + 1, fatigue: Number(form.fatigue) }]);
+      setCustomQ(prev => [...prev, { ...payload, id: nextCustomId(getAllQuestions(prev)) }]);
     } else {
-      setCustomQ(prev => prev.map(q => q.id === editingId ? { ...q, ...form, fatigue: Number(form.fatigue) } : q));
+      setCustomQ(prev => prev.map(q => q.id === editingId ? { ...q, ...payload } : q));
     }
     setEditingId(null);
   };
@@ -705,8 +423,8 @@ function LibraryScreen({ customQ, setCustomQ }) {
       const existingTexts = new Set(allQ.map(q => q.q));
       const newOnes = validated.filter(q => !existingTexts.has(q.q));
       if (newOnes.length === 0) { setImportMsg("Sin preguntas nuevas para importar."); return; }
-      let nextId = getMaxId(allQ) + 1;
-      const withIds = newOnes.map(q => ({ ...q, id: nextId++ }));
+      let nextId = nextCustomId(allQ);
+      const withIds = newOnes.map(q => ({ ...q, id: nextId-- }));
       setCustomQ(prev => [...prev, ...withIds]);
       setImportMsg("✓ " + withIds.length + " pregunta(s) importada(s) correctamente.");
     } catch (err) {
@@ -777,6 +495,25 @@ function LibraryScreen({ customQ, setCustomQ }) {
         <FormField label="Pregunta" value={form.q} onChange={v => setForm(f => ({ ...f, q: v }))} multiline placeholder="Cual es el rumbo magnetico si..." />
         <FormField label="Respuesta" value={form.a} onChange={v => setForm(f => ({ ...f, a: v }))} placeholder="128° M" />
         <FormField label="Detalle / Explicacion (opcional)" value={form.d} onChange={v => setForm(f => ({ ...f, d: v }))} placeholder="120 + 8 = 128" />
+        <FormField label="Tags (separados por coma)" value={Array.isArray(form.tags) ? form.tags.join(", ") : ""} onChange={v => setForm(f => ({ ...f, tags: v.split(",").map(x => x.trim()) }))} placeholder="rumbo, corriente" />
+
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 8, textTransform: "uppercase" }}>Dificultad (1-5, opcional)</div>
+          <div style={{ display: "flex", gap: 8 }}>
+            {[null, 1, 2, 3, 4, 5].map(f => {
+              const active = (form.difficulty ?? null) === f;
+              return (
+                <button key={String(f)} onClick={() => setForm(fv => ({ ...fv, difficulty: f }))} style={{
+                  flex: 1, padding: "10px 4px", borderRadius: 8, cursor: "pointer",
+                  background: active ? "rgba(56,189,248,0.15)" : S.bg2,
+                  border: active ? "1.5px solid #38BDF8" : "1.5px solid " + S.border,
+                  color: active ? "#38BDF8" : S.muted,
+                  fontFamily: S.font, fontSize: 10, fontWeight: 700,
+                }}>{f === null ? "—" : f}</button>
+              );
+            })}
+          </div>
+        </div>
 
         <button onClick={saveForm} disabled={!form.q.trim() || !form.a.trim()} style={{
           width: "100%", padding: "16px",
@@ -1034,6 +771,7 @@ function ExerciseTimer({ round, paused, onDone }) {
   const [questionRevealed, setQuestionRevealed] = useState(false);
   const [qStart,           setQStart]           = useState(Date.now());
   const [qTimeUp,          setQTimeUp]          = useState(false);
+  const [rpe,              setRpe]              = useState(null);
 
   const ex          = round.exercise;
   const isTimeBased = !!ex.dur;
@@ -1046,10 +784,12 @@ function ExerciseTimer({ round, paused, onDone }) {
 
   const handleStageDone = useCallback(() => {
     if (stage === "exercise") {
-      setStage("rest");
-      setRunning(true);
+      CUE.stage(); vibrate(60);
+      setStage("rpe");
+      setRunning(false);
     } else if (stage === "rest") {
       if (round.question) {
+        CUE.stage(); vibrate(60);
         setStage("question");
         setRunning(true);
         setQuestionRevealed(false);
@@ -1058,10 +798,18 @@ function ExerciseTimer({ round, paused, onDone }) {
         onDone(null);
       }
     } else if (stage === "question") {
+      CUE.timeUp(); vibrate([100, 50, 100]);
       setQTimeUp(true);
       setRunning(false);
     }
   }, [stage, round, onDone]);
+
+  const submitRpe = (val) => {
+    setRpe(val);
+    CUE.tick(); vibrate(30);
+    setStage("rest");
+    setRunning(true);
+  };
 
   const isNoTimer = round.questionTimer >= 90;
   const active = running && !paused && !(stage === "question" && isNoTimer);
@@ -1071,6 +819,29 @@ function ExerciseTimer({ round, paused, onDone }) {
   const stageColor = stage === "exercise" ? round.phaseColor
     : stage === "rest" ? "#64748B"
     : "#A78BFA";
+
+  const timerColor = t > totalSecs * 0.5 ? stageColor : t > 3 ? "#FB923C" : "#F43F5E";
+
+  // keyboard shortcuts during the question stage
+  useEffect(() => {
+    if (stage !== "question") return;
+    const onKey = (e) => {
+      if (e.repeat) return;
+      if (e.key === " " || e.code === "Space") {
+        e.preventDefault();
+        if (!questionRevealed && !qTimeUp) { setRunning(false); setQuestionRevealed(true); }
+        else if (qTimeUp && !questionRevealed) { setQuestionRevealed(true); }
+      } else if (e.key === "ArrowLeft" && questionRevealed) {
+        e.preventDefault(); CUE.wrong(); vibrate(120);
+        onDone({ correct: false, time: (Date.now() - qStart) / 1000, rpe });
+      } else if (e.key === "ArrowRight" && questionRevealed) {
+        e.preventDefault(); CUE.correct(); vibrate(40);
+        onDone({ correct: true, time: (Date.now() - qStart) / 1000, rpe });
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
 
   return (
     <div style={{ minHeight: "100vh", background: S.bg, fontFamily: S.font, display: "flex", flexDirection: "column" }}>
@@ -1139,6 +910,38 @@ function ExerciseTimer({ round, paused, onDone }) {
           </div>
         )}
 
+        {stage === "rpe" && (
+          <div>
+            <div style={{ fontSize: 9, letterSpacing: 4, color: "#FBBF24", textTransform: "uppercase", marginBottom: 10 }}>
+              ¿Cuanto te costo? (RPE)
+            </div>
+            <div style={{ fontSize: 13, color: S.muted, marginBottom: 16 }}>
+              {rpe ? RPE_LABELS[rpe] + " (" + rpe + "/10)" : "Tocá un valor del 1 al 10"}
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 6, marginBottom: 16 }}>
+              {[1,2,3,4,5,6,7,8,9,10].map(n => {
+                const fat = RPE_TO_FATIGUE[n];
+                const col = INT_COLORS[fat];
+                return (
+                  <button key={n} onClick={() => submitRpe(n)} style={{
+                    padding: "14px 0", borderRadius: 8, cursor: "pointer",
+                    background: rpe === n ? col + "22" : S.bg2,
+                    border: rpe === n ? "1.5px solid " + col : "1.5px solid " + S.border,
+                    color: rpe === n ? col : S.muted,
+                    fontFamily: S.font, fontSize: 13, fontWeight: 700,
+                  }}>{n}</button>
+                );
+              })}
+            </div>
+            <button onClick={() => submitRpe(rpe || 5)} style={{
+              width: "100%", padding: "14px",
+              background: "linear-gradient(135deg, #0EA5E9, #0D9488)",
+              border: "none", borderRadius: 10, color: "#fff",
+              fontFamily: S.font, fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
+            }}>CONFIRMAR → DESCANSO</button>
+          </div>
+        )}
+
         {stage === "question" && round.question && (
           <div>
             {round.question.context && (
@@ -1172,22 +975,16 @@ function ExerciseTimer({ round, paused, onDone }) {
 
         <div style={{ display: "flex", justifyContent: "center", margin: "auto 0 24px" }}>
           {round.questionTimer < 90 ? (
-          <div style={{ position: "relative", width: 160, height: 160 }}>
-            <svg width="160" height="160" style={{ transform: "rotate(-90deg)" }}>
-              <circle cx="80" cy="80" r="70" fill="none" stroke={S.border} strokeWidth="8" />
-              <circle cx="80" cy="80" r="70" fill="none"
-                stroke={stageColor} strokeWidth="8" strokeLinecap="round"
-                strokeDasharray={"" + (2 * Math.PI * 70)}
-                strokeDashoffset={"" + (2 * Math.PI * 70 * (1 - pct / 100))}
-                style={{ transition: "stroke-dashoffset .8s linear" }}
-              />
-            </svg>
+          <div style={{
+            width: 52, height: 52, borderRadius: "50%", position: "relative", flexShrink: 0,
+            background: "conic-gradient(" + timerColor + " " + (pct * 3.6) + "deg, " + S.border + " " + (pct * 3.6) + "deg)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}>
             <div style={{
-              position: "absolute", inset: 0, display: "flex",
-              flexDirection: "column", alignItems: "center", justifyContent: "center",
+              position: "absolute", inset: 5, borderRadius: "50%", background: S.bg,
+              display: "flex", alignItems: "center", justifyContent: "center",
             }}>
-              <span style={{ fontSize: 42, fontWeight: 700, color: stageColor }}>{t}</span>
-              <span style={{ fontSize: 10, color: S.muted, letterSpacing: 2 }}>SEG</span>
+              <span style={{ fontSize: 14, fontWeight: 700, color: timerColor }}>{t}</span>
             </div>
           </div>
           ) : (
@@ -1216,13 +1013,13 @@ function ExerciseTimer({ round, paused, onDone }) {
         )}
         {stage === "question" && questionRevealed && (
           <>
-            <button onClick={() => onDone({ correct: false, time: (Date.now() - qStart) / 1000 })} style={{
+            <button onClick={() => { CUE.wrong(); vibrate(120); next(false); }} style={{
               flex: 1, padding: "16px",
               background: "rgba(244,63,94,0.1)", border: "1px solid rgba(244,63,94,0.3)",
               borderRadius: 12, color: "#F43F5E",
               fontFamily: S.font, fontSize: 12, fontWeight: 700, cursor: "pointer",
             }}>✗ ERRE</button>
-            <button onClick={() => onDone({ correct: true, time: (Date.now() - qStart) / 1000 })} style={{
+            <button onClick={() => { CUE.correct(); vibrate(40); next(true); }} style={{
               flex: 1, padding: "16px",
               background: "rgba(52,211,153,0.1)", border: "1px solid rgba(52,211,153,0.3)",
               borderRadius: 12, color: "#34D399",
@@ -1267,6 +1064,7 @@ function SprintScreen({ round, paused, onDone }) {
   const isWalk    = round.isWalk;
 
   const handleDone = useCallback(() => {
+    CUE.timeUp(); vibrate([100, 50, 100]);
     setQTimeUp(true);
     setRunning(false);
   }, []);
@@ -1292,6 +1090,22 @@ function SprintScreen({ round, paused, onDone }) {
     setQTimeUp(false);
     setQStart(Date.now());
   };
+
+  // keyboard shortcuts: Space=reveal/ya respondi, ArrowLeft=erre, ArrowRight=acerte
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.repeat) return;
+      if (e.key === " " || e.code === "Space") {
+        if (!revealed && !qTimeUp) { e.preventDefault(); setRunning(false); revealAnswer(); }
+      } else if (e.key === "ArrowLeft" && revealed) {
+        e.preventDefault(); CUE.wrong(); vibrate(120); next(false);
+      } else if (e.key === "ArrowRight" && revealed) {
+        e.preventDefault(); CUE.correct(); vibrate(40); next(true);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
 
   if (!current) return null;
 
@@ -1388,13 +1202,13 @@ function SprintScreen({ round, paused, onDone }) {
       <div style={{ padding: "0 16px 36px", display: "flex", gap: 10 }}>
         {revealed ? (
           <>
-            <button onClick={() => next(false)} style={{
+            <button onClick={() => { CUE.wrong(); vibrate(120); next(false); }} style={{
               flex: 1, padding: "16px",
               background: "rgba(244,63,94,0.1)", border: "1px solid rgba(244,63,94,0.3)",
               borderRadius: 12, color: "#F43F5E",
               fontFamily: S.font, fontSize: 12, fontWeight: 700, cursor: "pointer",
             }}>✗ ERRE</button>
-            <button onClick={() => next(true)} style={{
+            <button onClick={() => { CUE.correct(); vibrate(40); next(true); }} style={{
               flex: 1, padding: "16px",
               background: "rgba(52,211,153,0.1)", border: "1px solid rgba(52,211,153,0.3)",
               borderRadius: 12, color: "#34D399",
@@ -1430,6 +1244,13 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, setting
 
   const wrongOnes = all.filter(r => !r.correct);
   const diffObj   = DIFFICULTIES.find(d => d.id === sessionMeta?.difficulty) || DIFFICULTIES[0];
+
+  // fatigue curve: RPE per round (exercise rounds only carry rpe)
+  const rpePoints = sessionResults
+    .flat()
+    .map(r => r?.rpe)
+    .filter(r => typeof r === "number");
+  const hasRpe = rpePoints.length > 0;
 
   const handleSave = () => {
     onSave();
@@ -1488,6 +1309,31 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, setting
         </div>
       )}
 
+      {hasRpe && (
+        <div style={{ marginBottom: 24 }}>
+          <div style={{ fontSize: 9, letterSpacing: 4, color: S.muted, marginBottom: 12, textTransform: "uppercase" }}>
+            Curva de fatiga (RPE)
+          </div>
+          <div style={{ display: "flex", alignItems: "flex-end", gap: 3, height: 60, padding: "0 2px" }}>
+            {rpePoints.map((rpe, i) => {
+              const h = (rpe / 10) * 100;
+              const col = INT_COLORS[RPE_TO_FATIGUE[rpe]] || S.muted;
+              return (
+                <div key={i} title={"Ronda " + (i + 1) + ": " + rpe + "/10"} style={{
+                  flex: 1, minWidth: 6, height: h + "%",
+                  background: col, borderRadius: 2, opacity: 0.85,
+                  transition: "height .4s",
+                }} />
+              );
+            })}
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9, color: S.dim, marginTop: 6 }}>
+            <span>Inicio</span>
+            <span>Fin · promedio {Math.round(rpePoints.reduce((a, b) => a + b, 0) / rpePoints.length * 10) / 10}/10</span>
+          </div>
+        </div>
+      )}
+
       {wrongOnes.length > 0 && (
         <div style={{ marginBottom: 24 }}>
           <div style={{ fontSize: 9, letterSpacing: 4, color: S.muted, marginBottom: 12, textTransform: "uppercase" }}>
@@ -1530,6 +1376,9 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, setting
 // ─── MAIN APP ──────────────────────────────────────────────────────────────
 
 export default function App() {
+  // run schema migration once on mount
+  useEffect(() => { migrateSchema(); }, []);
+
   const [navScreen,    setNavScreen]    = useState("home");
   const [sessionState, setSessionState] = useState(null);
   const [paused,       setPaused]       = useState(false);
@@ -1537,6 +1386,7 @@ export default function App() {
   const [history,      setHistory]      = useLocalStorage(LS.history, []);
   const [settings,     setSettings]     = useLocalStorage(LS.settings, { difficulty: "hard" });
   const [savedSession, setSavedSession] = useLocalStorage(LS.savedSession, null);
+  const [reviews,      setReviews]      = useLocalStorage(LS.reviews, {});
 
   const allQ        = getAllQuestions(customQ);
   const isInSession = sessionState !== null;
@@ -1550,12 +1400,36 @@ export default function App() {
     }
   }, [sessionState]);
 
+  // keep screen awake during a session, release when done/idle
+  useEffect(() => {
+    if (isInSession && !sessionState.done) {
+      acquireWakeLock();
+    } else {
+      releaseWakeLock();
+    }
+    return () => releaseWakeLock();
+  }, [isInSession, sessionState?.done]);
+
+  // play completion cue when session transitions to done
+  const prevDoneRef = useRef(false);
+  useEffect(() => {
+    const done = !!sessionState?.done;
+    if (done && !prevDoneRef.current) { CUE.done(); vibrate([60, 40, 60, 40, 120]); }
+    prevDoneRef.current = done;
+  }, [sessionState?.done]);
+
   const handleStart = (template, role, difficulty, opts) => {
     let effectiveOpts = { ...opts };
     if (difficulty === "shrinking") {
       const base = settings.shrinkingBase || 10;
       effectiveOpts.shrinkingBase = base;
     }
+    if (template === "repaso") {
+      effectiveOpts.reviews = reviews;
+    }
+    // adaptive category weighting from history
+    const stats = computeCategoryStats(history);
+    effectiveOpts.weights = categoryWeights(stats);
     const rounds = buildSession(template, role, difficulty, allQ, effectiveOpts);
     setSavedSession(null);
     setSessionState({ rounds, roundIdx: 0, results: [], meta: { template, role, difficulty }, done: false });
@@ -1574,16 +1448,24 @@ export default function App() {
     setPaused(false);
   };
 
+  const handleExitNoSave = () => {
+    if (!window.confirm("Salir sin guardar? Se perdera el progreso de esta sesion.")) return;
+    setSavedSession(null);
+    setSessionState(null);
+    setPaused(false);
+  };
+
   const handleRoundDone = (result) => {
     setSessionState(prev => {
       if (!prev) return prev;
       let qResult;
+      const round = prev.rounds[prev.roundIdx];
       if (Array.isArray(result)) {
         qResult = result;
       } else if (result !== null && typeof result === "object") {
-        qResult = [{ q: prev.rounds[prev.roundIdx]?.question, correct: result.correct, time: result.time }];
+        qResult = [{ q: round?.question, correct: result.correct, time: result.time, rpe: result.rpe ?? null }];
       } else if (result !== null) {
-        qResult = [{ q: prev.rounds[prev.roundIdx]?.question, correct: result }];
+        qResult = [{ q: round?.question, correct: result }];
       } else {
         qResult = [];
       }
@@ -1604,6 +1486,12 @@ export default function App() {
       results:    sessionState.results,
     }]);
     setSavedSession(null);
+
+    // update spaced-repetition state from this session's results
+    const flatResults = sessionState.results.flat().filter(r => r && r.q);
+    if (flatResults.length > 0) {
+      setReviews(prev => updateReviews(prev, flatResults));
+    }
 
     if (sessionState.meta.difficulty === "shrinking") {
       const allTimes = sessionState.results.flat().filter(r => r && r.time).map(r => r.time);
@@ -1655,7 +1543,7 @@ export default function App() {
 
     return (
       <>
-        {paused && <PauseOverlay onResume={() => setPaused(false)} onSaveExit={handleSaveExit} />}
+        {paused && <PauseOverlay onResume={() => setPaused(false)} onSaveExit={handleSaveExit} onExitNoSave={handleExitNoSave} />}
         <button
           onClick={() => setPaused(p => !p)}
           style={{
@@ -1679,7 +1567,7 @@ export default function App() {
   return (
     <>
       {navScreen === "home" && (
-        <HomeScreen onStart={handleStart} onResumeSaved={handleResumeSaved} savedSession={savedSession} settings={settings} setSettings={setSettings} />
+        <HomeScreen onStart={handleStart} onResumeSaved={handleResumeSaved} savedSession={savedSession} settings={settings} setSettings={setSettings} reviews={reviews} />
       )}
       {navScreen === "library" && (
         <LibraryScreen customQ={customQ} setCustomQ={setCustomQ} />
