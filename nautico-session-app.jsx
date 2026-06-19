@@ -453,7 +453,15 @@ function LibraryScreen({ customQ, setCustomQ }) {
     if (editingId === "new") {
       setCustomQ(prev => [...prev, { ...payload, id: nextCustomId(getAllQuestions(prev)) }]);
     } else {
-      setCustomQ(prev => prev.map(q => q.id === editingId ? { ...q, ...payload } : q));
+      // editingId es un ID existente (positivo=builtin override, negativo=custom).
+      setCustomQ(prev => {
+        const exists = prev.some(q => q.id === editingId);
+        if (exists) {
+          return prev.map(q => q.id === editingId ? { ...q, ...payload } : q);
+        }
+        // Es un builtin que se edita por primera vez → agregar como override con el mismo ID.
+        return [...prev, { ...payload, id: editingId }];
+      });
     }
     setEditingId(null);
   };
@@ -464,6 +472,11 @@ function LibraryScreen({ customQ, setCustomQ }) {
 
   const handleExport = () => {
     downloadJSON(allQ, "naut-preguntas-" + new Date().toISOString().slice(0, 10) + ".json");
+  };
+  const handleExportFiltered = () => {
+    const data = filterCat === "ALL" ? allQ : allQ.filter(q => q.cat === filterCat);
+    const suffix = filterCat === "ALL" ? "todas" : filterCat.toLowerCase();
+    downloadJSON(data, "naut-preguntas-" + suffix + "-" + new Date().toISOString().slice(0, 10) + ".json");
   };
 
   const handleImportFile = async (e) => {
@@ -659,12 +672,17 @@ function LibraryScreen({ customQ, setCustomQ }) {
           flex: 1, padding: "12px 8px", borderRadius: 10, cursor: "pointer",
           background: S.bg2, border: "1px solid " + S.border, color: "#34D399",
           fontFamily: S.font, fontSize: 9, letterSpacing: 1,
-        }}>↓ EXPORTAR JSON</button>
+        }}>↓ EXPORTAR TODO</button>
+        <button onClick={handleExportFiltered} style={{
+          flex: 1, padding: "12px 8px", borderRadius: 10, cursor: "pointer",
+          background: S.bg2, border: "1px solid " + S.border, color: "#2DD4BF",
+          fontFamily: S.font, fontSize: 9, letterSpacing: 1,
+        }}>↓ EXPORTAR FILTRO</button>
         <button onClick={() => fileRef.current?.click()} style={{
           flex: 1, padding: "12px 8px", borderRadius: 10, cursor: "pointer",
           background: S.bg2, border: "1px solid " + S.border, color: "#38BDF8",
           fontFamily: S.font, fontSize: 9, letterSpacing: 1,
-        }}>↑ IMPORTAR JSON</button>
+        }}>↑ IMPORTAR</button>
         <button onClick={() => setShowFormat(f => !f)} style={{
           padding: "12px 14px", borderRadius: 10, cursor: "pointer",
           background: showFormat ? "rgba(167,139,250,0.1)" : S.bg2,
@@ -757,8 +775,10 @@ function LibraryScreen({ customQ, setCustomQ }) {
                   background: "rgba(94,234,212,0.12)", color: "#2DD4BF", letterSpacing: 1, fontWeight: 700,
                 }}>{Q_TYPE_MAP[q.type].label.toUpperCase()}</span>
               )}
-              {isCustom && (
+              {isCustom ? (
                 <span style={{ fontSize: 8, color: "#A78BFA", marginLeft: "auto" }}>CUSTOM</span>
+              ) : (
+                <span style={{ fontSize: 8, color: S.dim, marginLeft: "auto" }}>BUILTIN</span>
               )}
             </div>
             <div style={{ fontSize: 11, color: S.text, lineHeight: 1.55, whiteSpace: "pre-line", marginBottom: 5 }}>{q.q}</div>
@@ -786,6 +806,20 @@ function LibraryScreen({ customQ, setCustomQ }) {
                   background: "rgba(244,63,94,0.08)", border: "1px solid rgba(244,63,94,0.3)",
                   color: "#F43F5E", fontFamily: S.font, fontSize: 9, letterSpacing: 1,
                 }}>ELIMINAR</button>
+              </div>
+            )}
+            {!isCustom && (
+              <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+                <button onClick={() => openEdit(q)} style={{
+                  flex: 1, padding: "8px", borderRadius: 8, cursor: "pointer",
+                  background: "rgba(56,189,248,0.08)", border: "1px solid rgba(56,189,248,0.3)",
+                  color: "#38BDF8", fontFamily: S.font, fontSize: 9, letterSpacing: 1,
+                }}>EDITAR</button>
+                <button onClick={() => { if (confirm("Restaurar pregunta builtin original? Se pierde tu edición.")) setCustomQ(prev => prev.filter(c => c.id !== q.id)); }} style={{
+                  flex: 1, padding: "8px", borderRadius: 8, cursor: "pointer",
+                  background: "rgba(100,116,139,0.08)", border: "1px solid rgba(100,116,139,0.3)",
+                  color: S.muted, fontFamily: S.font, fontSize: 9, letterSpacing: 1,
+                }}>RESTAURAR</button>
               </div>
             )}
           </div>
@@ -1113,7 +1147,7 @@ function ExerciseTimer({ round, paused, onDone }) {
               {round.question.q}
             </div>
             {isExProcedural && (
-              <QuestionCard q={round.question} onAnswer={handleExProceduralAnswer} />
+              <QuestionCard key={round.question.id} q={round.question} onAnswer={handleExProceduralAnswer} />
             )}
             {!isExProcedural && questionRevealed && (
               <div style={{
@@ -1215,6 +1249,10 @@ function SequenceUI({ q, onAnswer }) {
   // order[i] = índice en shuffled que está en la posición i.
   const [order, setOrder] = useState(() => shuffled.map((_, i) => i));
   const [confirmed, setConfirmed] = useState(false);
+  const [dragIdx, setDragIdx] = useState(null);     // posición que se está arrastrando
+  const [dragOver, setDragOver] = useState(null);   // posición sobre la que se hover
+  const containerRef = useRef(null);
+  const touchDragRef = useRef(null); // { idx, startY, itemHeights }
 
   const move = (idx, dir) => {
     if (confirmed) return;
@@ -1223,6 +1261,48 @@ function SequenceUI({ q, onAnswer }) {
     const next = [...order];
     [next[idx], next[newIdx]] = [next[newIdx], next[idx]];
     setOrder(next);
+  };
+
+  // Reordenar por drag: mover el item de dragIdx a la posición target.
+  const reorder = (from, to) => {
+    if (from === to || confirmed) return;
+    setOrder(prev => {
+      const next = [...prev];
+      const [item] = next.splice(from, 1);
+      next.splice(to, 0, item);
+      return next;
+    });
+  };
+
+  // Touch drag: detectar sobre qué item está el dedo y reordenar.
+  const onTouchStart = (e, pos) => {
+    if (confirmed) return;
+    const touch = e.touches[0];
+    touchDragRef.current = { idx: pos, startY: touch.clientY };
+    setDragIdx(pos);
+  };
+  const onTouchMove = (e) => {
+    if (!touchDragRef.current) return;
+    e.preventDefault();
+    const touch = e.touches[0];
+    const container = containerRef.current;
+    if (!container) return;
+    const items = container.querySelectorAll("[data-seq-item]");
+    const y = touch.clientY;
+    let overPos = null;
+    items.forEach((item, i) => {
+      const rect = item.getBoundingClientRect();
+      if (y >= rect.top && y <= rect.bottom) overPos = i;
+    });
+    if (overPos !== null && overPos !== dragOver) setDragOver(overPos);
+  };
+  const onTouchEnd = () => {
+    if (touchDragRef.current && dragOver !== null && dragIdx !== null) {
+      reorder(dragIdx, dragOver);
+    }
+    touchDragRef.current = null;
+    setDragIdx(null);
+    setDragOver(null);
   };
 
   const confirm = () => {
@@ -1234,32 +1314,51 @@ function SequenceUI({ q, onAnswer }) {
   };
 
   return (
-    <div>
+    <div ref={containerRef} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
       <div style={{ fontSize: 10, color: S.muted, marginBottom: 10, letterSpacing: 1 }}>
-        Ordená los pasos con ▲▼ y confirmá.
+        Arrastrá los pasos o usá ▲▼ y confirmá.
       </div>
       {order.map((shuffledIdx, pos) => (
-        <div key={pos} style={{
-          display: "flex", alignItems: "stretch", gap: 0, marginBottom: 6,
-          background: S.bg2, borderRadius: 8, border: "1px solid " + S.border, overflow: "hidden",
-        }}>
-          <div style={{
-            width: 28, display: "flex", alignItems: "center", justifyContent: "center",
-            background: S.bg3, color: S.muted, fontSize: 11, fontWeight: 700,
-          }}>{pos + 1}</div>
+        <div
+          key={pos}
+          data-seq-item={pos}
+          draggable={!confirmed}
+          onDragStart={(e) => { setDragIdx(pos); e.dataTransfer.effectAllowed = "move"; }}
+          onDragEnd={() => { setDragIdx(null); setDragOver(null); }}
+          onDragOver={(e) => { e.preventDefault(); if (dragIdx !== null && pos !== dragOver) setDragOver(pos); }}
+          onDrop={(e) => { e.preventDefault(); if (dragIdx !== null) reorder(dragIdx, pos); setDragIdx(null); setDragOver(null); }}
+          style={{
+            display: "flex", alignItems: "stretch", gap: 0, marginBottom: 6,
+            background: dragOver === pos ? "rgba(56,189,248,0.10)" : S.bg2,
+            borderRadius: 8,
+            border: dragOver === pos ? "1.5px solid #38BDF8" : "1px solid " + S.border,
+            overflow: "hidden",
+            opacity: dragIdx === pos ? 0.4 : 1,
+            transition: "background .15s, border-color .15s, opacity .15s",
+          }}
+        >
+          <div
+            onTouchStart={(e) => onTouchStart(e, pos)}
+            style={{
+              width: 36, display: "flex", alignItems: "center", justifyContent: "center",
+              background: S.bg3, color: S.muted, fontSize: 11, fontWeight: 700,
+              cursor: confirmed ? "default" : "grab",
+              userSelect: "none", touchAction: "none",
+            }}
+          >{pos + 1}</div>
           <div style={{ flex: 1, padding: "10px 12px", fontSize: 12, color: S.text, lineHeight: 1.4 }}>
             {shuffled[shuffledIdx]}
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <button onClick={() => move(pos, -1)} disabled={confirmed || pos === 0} style={{
-              flex: 1, padding: "0 8px", background: "none", border: "none",
+              flex: 1, padding: "0 10px", background: "none", border: "none",
               color: pos === 0 ? S.dim : "#38BDF8", cursor: confirmed || pos === 0 ? "default" : "pointer",
-              fontSize: 12, opacity: confirmed ? 0.4 : 1,
+              fontSize: 14, opacity: confirmed ? 0.4 : 1, minHeight: 28,
             }}>▲</button>
             <button onClick={() => move(pos, 1)} disabled={confirmed || pos === order.length - 1} style={{
-              flex: 1, padding: "0 8px", background: "none", border: "none",
+              flex: 1, padding: "0 10px", background: "none", border: "none",
               color: pos === order.length - 1 ? S.dim : "#38BDF8", cursor: confirmed || pos === order.length - 1 ? "default" : "pointer",
-              fontSize: 12, opacity: confirmed ? 0.4 : 1,
+              fontSize: 14, opacity: confirmed ? 0.4 : 1, minHeight: 28,
             }}>▼</button>
           </div>
         </div>
@@ -1524,7 +1623,7 @@ function SprintScreen({ round, paused, onDone }) {
         </div>
 
         {isProcedural && (
-          <QuestionCard q={current} onAnswer={handleProceduralAnswer} />
+          <QuestionCard key={current.id} q={current} onAnswer={handleProceduralAnswer} />
         )}
 
         {!isProcedural && !revealed && !qTimeUp && (

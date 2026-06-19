@@ -34,9 +34,18 @@ export function normalizeQuestion(q) {
 }
 
 export function getAllQuestions(customQ) {
+  // Custom questions with positive IDs override builtins (edits de builtin).
+  // Custom questions with negative IDs are nuevas.
+  const customById = new Map();
+  for (const q of customQ) customById.set(q.id, q);
+  const builtins = BUILTIN_QUESTIONS.map(bq => {
+    const override = customById.get(bq.id);
+    return override ? normalizeQuestion(override) : bq;
+  });
+  // Agregar custom nuevas (IDs negativos o IDs no-builtin).
   const builtinIds = new Set(BUILTIN_QUESTIONS.map(q => q.id));
-  const uniqueCustom = customQ.filter(q => !builtinIds.has(q.id));
-  return [...BUILTIN_QUESTIONS, ...uniqueCustom.map(normalizeQuestion)];
+  const newCustom = customQ.filter(q => !builtinIds.has(q.id)).map(normalizeQuestion);
+  return [...builtins, ...newCustom];
 }
 
 export function getMaxId(allQ) {

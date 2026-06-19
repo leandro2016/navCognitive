@@ -68,6 +68,17 @@ describe("getAllQuestions", () => {
     expect(c.tags).toEqual([]);
     expect(c.d).toBe("");
   });
+
+  it("custom override with builtin ID replaces the builtin", () => {
+    const builtin = getAllQuestions([]);
+    const firstId = builtin[0].id;
+    const originalQ = builtin[0].q;
+    const override = [{ id: firstId, cat: builtin[0].cat, role: "ALL", fatigue: 1, q: "OVERRIDE", a: "x" }];
+    const all = getAllQuestions(override);
+    const q = all.find(x => x.id === firstId);
+    expect(q.q).toBe("OVERRIDE");
+    expect(q.q).not.toBe(originalQ);
+  });
 });
 
 // ─── getMaxId / nextCustomId ───────────────────────────────────────────────
