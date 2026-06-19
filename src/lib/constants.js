@@ -114,6 +114,12 @@ export const SESSION_TEMPLATES = {
       { id: "sprint", label: "Repaso",  duration: 0, color: "#F472B6" },
     ],
   },
+  "procedural": {
+    label: "Práctica procedural",
+    phases: [
+      { id: "sprint", label: "Procedural",  duration: 0, color: "#2DD4BF" },
+    ],
+  },
 };
 
 export const PHASE_EX_MAP = {

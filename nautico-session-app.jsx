@@ -4,7 +4,7 @@ import BUILTIN_QUESTIONS from "./Questions/naut-preguntas-2026-06-18.json";
 // ─── LIB MODULES ───────────────────────────────────────────────────────────
 import {
   LS, SCHEMA_VERSION, DIFFICULTIES, CAT_COLORS, CAT_LABELS, CAT_DESC, CAT_ORDER,
-  INT_COLORS, INT_LABELS, ROLE_MAP, Q_TYPE_MAP,
+  INT_COLORS, INT_LABELS, ROLE_MAP, Q_TYPES, Q_TYPE_MAP,
   FAT_LABELS, RPE_TO_FATIGUE, RPE_LABELS, S, SESSION_TEMPLATES, PHASE_EX_MAP,
   PHASE_Q_MAP, ROLES,
 } from "./src/lib/constants.js";
@@ -200,9 +200,9 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
 
       <Section label="Duracion">
         {Object.entries(SESSION_TEMPLATES).map(([k, v]) => (
-          <ChoiceBtn key={k} active={template === k} color={k === "walk" ? "#34D399" : k === "custom" ? "#FBBF24" : k === "repaso" ? "#F472B6" : "#0EA5E9"} onClick={() => setTemplate(k)}>
+          <ChoiceBtn key={k} active={template === k} color={k === "walk" ? "#34D399" : k === "custom" ? "#FBBF24" : k === "repaso" ? "#F472B6" : k === "procedural" ? "#2DD4BF" : "#0EA5E9"} onClick={() => setTemplate(k)}>
             <strong>{v.label}</strong>
-            {k !== "custom" && k !== "repaso" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>{v.phases.length} fases</span>}
+            {k !== "custom" && k !== "repaso" && k !== "procedural" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>{v.phases.length} fases</span>}
             {k === "walk" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>30s/pregunta</span>}
             {k === "custom" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>Vos elegis</span>}
             {k === "repaso" && (
@@ -210,6 +210,7 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
                 {dueCount > 0 ? dueCount + " pendientes" : "sin pendientes"}
               </span>
             )}
+            {k === "procedural" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>Secuencias · pasos</span>}
           </ChoiceBtn>
         ))}
       </Section>
@@ -341,6 +342,15 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
             </div>
           </div>
         )}
+        {template === "procedural" && (
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
+            <div style={{ width: 3, height: 32, borderRadius: 2, background: "#2DD4BF", flexShrink: 0 }} />
+            <div>
+              <div style={{ fontSize: 11, color: S.text, fontWeight: 700 }}>Práctica procedural</div>
+              <div style={{ fontSize: 10, color: S.muted }}>Solo sequence/invalid/filter · Sin recall · Timer ×1.3-1.5</div>
+            </div>
+          </div>
+        )}
         {template !== "walk" && template !== "custom" && template !== "repaso" && SESSION_TEMPLATES[template].phases.map(p => (
           <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
             <div style={{ width: 3, height: 32, borderRadius: 2, background: p.color, flexShrink: 0 }} />
@@ -381,7 +391,7 @@ function LibraryScreen({ customQ, setCustomQ }) {
   const [editingId,  setEditingId]  = useState(null);
   const [showFormat, setShowFormat] = useState(false);
   const [importMsg,  setImportMsg]  = useState(null);
-  const [form, setForm] = useState({ cat: "NAV", role: "ALL", fatigue: 2, q: "", a: "", d: "", tags: [], difficulty: null });
+  const [form, setForm] = useState({ cat: "NAV", role: "ALL", fatigue: 2, q: "", a: "", d: "", tags: [], difficulty: null, type: "recall", steps: [], invalidIndex: null, validMask: [] });
   const fileRef = useRef(null);
 
   const allQ       = getAllQuestions(customQ);
@@ -389,14 +399,45 @@ function LibraryScreen({ customQ, setCustomQ }) {
   const filtered   = filterCat === "ALL" ? allQ : allQ.filter(q => q.cat === filterCat);
 
   const openNew = () => {
-    setForm({ cat: "NAV", role: "ALL", fatigue: 2, q: "", a: "", d: "", tags: [], difficulty: null });
+    setForm({ cat: "NAV", role: "ALL", fatigue: 2, q: "", a: "", d: "", tags: [], difficulty: null, type: "recall", steps: [], invalidIndex: null, validMask: [] });
     setEditingId("new");
   };
 
   const openEdit = (q) => {
-    setForm({ cat: q.cat, role: q.role, fatigue: q.fatigue, q: q.q, a: q.a, d: q.d || "", tags: q.tags || [], difficulty: q.difficulty ?? null });
+    setForm({
+      cat: q.cat, role: q.role, fatigue: q.fatigue, q: q.q, a: q.a, d: q.d || "",
+      tags: q.tags || [], difficulty: q.difficulty ?? null,
+      type: q.type || "recall",
+      steps: Array.isArray(q.steps) ? [...q.steps] : [],
+      invalidIndex: Number.isInteger(q.invalidIndex) ? q.invalidIndex : null,
+      validMask: Array.isArray(q.validMask) ? [...q.validMask] : [],
+    });
     setEditingId(q.id);
   };
+
+  // Helpers para editar steps procedurales.
+  const setStep = (i, val) => setForm(f => {
+    const steps = [...(f.steps || [])]; steps[i] = val;
+    const patch = { steps };
+    // Mantener validMask sincronizado en length.
+    if (f.type === "filter") patch.validMask = steps.map((_, j) => f.validMask?.[j] ?? false);
+    return { ...f, ...patch };
+  });
+  const addStep = () => setForm(f => {
+    const steps = [...(f.steps || []), ""];
+    const patch = { steps };
+    if (f.type === "filter") patch.validMask = [...(f.validMask || []), false];
+    return { ...f, ...patch };
+  });
+  const removeStep = (i) => setForm(f => {
+    const steps = (f.steps || []).filter((_, j) => j !== i);
+    const patch = { steps };
+    if (f.type === "filter") patch.validMask = (f.validMask || []).filter((_, j) => j !== i);
+    if (f.type === "invalid" && f.invalidIndex === i) patch.invalidIndex = null;
+    if (f.type === "invalid" && f.invalidIndex > i) patch.invalidIndex = f.invalidIndex - 1;
+    return { ...f, ...patch };
+  });
+  const setType = (t) => setForm(f => ({ ...f, type: t, invalidIndex: t === "invalid" ? f.invalidIndex : null, validMask: t === "filter" ? (f.steps || []).map((_, j) => f.validMask?.[j] ?? false) : [] }));
 
   const saveForm = () => {
     if (!form.q.trim() || !form.a.trim()) return;
@@ -404,6 +445,11 @@ function LibraryScreen({ customQ, setCustomQ }) {
       ? form.tags.flatMap(s => String(s).split(",").map(x => x.trim())).filter(Boolean)
       : [];
     const payload = { ...form, tags: tagsArr, difficulty: form.difficulty || null, fatigue: Number(form.fatigue) };
+    // Limpiar campos procedurales segun tipo.
+    if (form.type === "recall") { delete payload.steps; delete payload.invalidIndex; delete payload.validMask; }
+    else if (form.type === "sequence") { delete payload.invalidIndex; delete payload.validMask; payload.steps = (form.steps || []).filter(s => s.trim()); }
+    else if (form.type === "invalid") { delete payload.validMask; payload.steps = (form.steps || []).filter(s => s.trim()); }
+    else if (form.type === "filter") { delete payload.invalidIndex; payload.steps = (form.steps || []).filter(s => s.trim()); payload.validMask = (form.validMask || []).slice(0, payload.steps.length); }
     if (editingId === "new") {
       setCustomQ(prev => [...prev, { ...payload, id: nextCustomId(getAllQuestions(prev)) }]);
     } else {
@@ -506,6 +552,69 @@ function LibraryScreen({ customQ, setCustomQ }) {
         <FormField label="Respuesta" value={form.a} onChange={v => setForm(f => ({ ...f, a: v }))} placeholder="128° M" />
         <FormField label="Detalle / Explicacion (opcional)" value={form.d} onChange={v => setForm(f => ({ ...f, d: v }))} placeholder="120 + 8 = 128" />
         <FormField label="Tags (separados por coma)" value={Array.isArray(form.tags) ? form.tags.join(", ") : ""} onChange={v => setForm(f => ({ ...f, tags: v.split(",").map(x => x.trim()) }))} placeholder="rumbo, corriente" />
+
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 8, textTransform: "uppercase" }}>Tipo de pregunta</div>
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+            {Q_TYPES.map(t => (
+              <button key={t.id} onClick={() => setType(t.id)} style={{
+                padding: "9px 10px", borderRadius: 8, cursor: "pointer",
+                background: form.type === t.id ? "rgba(45,212,191,0.15)" : S.bg2,
+                border: form.type === t.id ? "1.5px solid #2DD4BF" : "1.5px solid " + S.border,
+                color: form.type === t.id ? "#2DD4BF" : S.muted,
+                fontFamily: S.font, fontSize: 10, fontWeight: 700,
+              }}>{t.label}</button>
+            ))}
+          </div>
+        </div>
+
+        {form.type !== "recall" && (
+          <div style={{ marginBottom: 14 }}>
+            <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 8, textTransform: "uppercase" }}>
+              Pasos {form.type === "sequence" ? "(en orden correcto)" : form.type === "invalid" ? "(uno es incorrecto)" : "(marcar aplicables)"}
+            </div>
+            {(form.steps || []).map((s, i) => (
+              <div key={i} style={{ display: "flex", gap: 6, marginBottom: 6, alignItems: "center" }}>
+                {form.type === "invalid" && (
+                  <button onClick={() => setForm(f => ({ ...f, invalidIndex: f.invalidIndex === i ? null : i }))} title="Marcar como paso incorrecto" style={{
+                    width: 28, height: 28, borderRadius: 6, flexShrink: 0, cursor: "pointer",
+                    background: form.invalidIndex === i ? "rgba(244,63,94,0.15)" : S.bg3,
+                    border: form.invalidIndex === i ? "1.5px solid #F43F5E" : "1px solid " + S.border,
+                    color: form.invalidIndex === i ? "#F43F5E" : S.muted, fontSize: 10, fontWeight: 700,
+                  }}>{form.invalidIndex === i ? "✗" : i + 1}</button>
+                )}
+                {form.type === "filter" && (
+                  <button onClick={() => setForm(f => { const vm = [...(f.validMask || [])]; vm[i] = !vm[i]; return { ...f, validMask: vm }; })} title="Marcar como aplicable" style={{
+                    width: 28, height: 28, borderRadius: 6, flexShrink: 0, cursor: "pointer",
+                    background: form.validMask?.[i] ? "rgba(52,211,153,0.15)" : S.bg3,
+                    border: form.validMask?.[i] ? "1.5px solid #34D399" : "1px solid " + S.border,
+                    color: form.validMask?.[i] ? "#34D399" : S.muted, fontSize: 10, fontWeight: 700,
+                  }}>{form.validMask?.[i] ? "✓" : i + 1}</button>
+                )}
+                {form.type === "sequence" && (
+                  <span style={{ width: 28, textAlign: "center", color: S.muted, fontSize: 10, fontWeight: 700, flexShrink: 0 }}>{i + 1}</span>
+                )}
+                <input value={s} onChange={e => setStep(i, e.target.value)} placeholder={`Paso ${i + 1}`} style={{
+                  flex: 1, background: S.bg3, border: "1px solid " + S.border, borderRadius: 8, padding: "10px",
+                  color: S.text, fontFamily: S.font, fontSize: 11, outline: "none",
+                }} />
+                <button onClick={() => removeStep(i)} style={{
+                  width: 28, height: 28, borderRadius: 6, flexShrink: 0, cursor: "pointer",
+                  background: "rgba(244,63,94,0.08)", border: "1px solid rgba(244,63,94,0.2)",
+                  color: "#F43F5E", fontSize: 11,
+                }}>✕</button>
+              </div>
+            ))}
+            <button onClick={addStep} style={{
+              width: "100%", padding: "10px", borderRadius: 8, cursor: "pointer",
+              background: S.bg2, border: "1px dashed " + S.border, color: S.muted,
+              fontFamily: S.font, fontSize: 10, letterSpacing: 1,
+            }}>+ AGREGAR PASO</button>
+            {form.type === "invalid" && form.invalidIndex === null && (form.steps || []).length > 0 && (
+              <div style={{ fontSize: 9, color: "#FBBF24", marginTop: 6 }}>Marcá qué paso es el incorrecto (botón ✗).</div>
+            )}
+          </div>
+        )}
 
         <div style={{ marginBottom: 14 }}>
           <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 8, textTransform: "uppercase" }}>Dificultad (1-5, opcional)</div>
@@ -641,6 +750,12 @@ function LibraryScreen({ customQ, setCustomQ }) {
                   fontSize: 8, padding: "2px 7px", borderRadius: 4,
                   background: ROLE_MAP[q.role].color + "18", color: ROLE_MAP[q.role].color, letterSpacing: 1, fontWeight: 700,
                 }}>{ROLE_MAP[q.role].label}</span>
+              )}
+              {q.type && q.type !== "recall" && Q_TYPE_MAP[q.type] && (
+                <span style={{
+                  fontSize: 8, padding: "2px 7px", borderRadius: 4,
+                  background: "rgba(94,234,212,0.12)", color: "#2DD4BF", letterSpacing: 1, fontWeight: 700,
+                }}>{Q_TYPE_MAP[q.type].label.toUpperCase()}</span>
               )}
               {isCustom && (
                 <span style={{ fontSize: 8, color: "#A78BFA", marginLeft: "auto" }}>CUSTOM</span>

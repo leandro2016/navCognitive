@@ -268,6 +268,38 @@ export function buildSession(templateKey, role, difficultyId, allQ, opts) {
     return rounds;
   }
 
+  if (templateKey === "procedural") {
+    // Solo preguntas procedurales (sequence/invalid/filter), filtradas por rol.
+    let pool = allQ.filter(q =>
+      q.type && q.type !== "recall" &&
+      Array.isArray(q.steps) && q.steps.length > 0 &&
+      roleMatch(q) &&
+      q.fatigue >= diff.minFatigue
+    );
+    if (pool.length < 5) {
+      // Fallback: si hay pocas procedurales, no filtrar por fatigue.
+      pool = allQ.filter(q =>
+        q.type && q.type !== "recall" &&
+        Array.isArray(q.steps) && q.steps.length > 0 &&
+        roleMatch(q)
+      );
+    }
+    pool = weights ? weightedShuffle(pool, weights) : shuffle(pool);
+    const count = opts?.count || Math.min(15, pool.length);
+    const questions = pool.slice(0, count);
+    questions.forEach(q => usedIds.add(q.id));
+    rounds.push({
+      type: "sprint",
+      phaseLabel: "Práctica procedural",
+      phaseColor: "#2DD4BF",
+      questions,
+      questionTimer: effectiveSprintTime,
+      questionTimers: questions.map(q => questionTimer(effectiveSprintTime, q)),
+      isProcedural: true,
+    });
+    return rounds;
+  }
+
   tmpl.phases.forEach(phase => {
     if (phase.id === "sprint") {
       const questions = getQuestionsForPhase("sprint", role, 3, 10, usedIds, diff, allQ, weights);
