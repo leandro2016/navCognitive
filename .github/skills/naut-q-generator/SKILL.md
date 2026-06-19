@@ -133,3 +133,5 @@ Devolver un resumen corto:
 
 - [Schema y taxonomia completa](./references/question-schema.md)
 - [Ejemplos por categoria](./references/examples.md)
+- [Como describir situaciones para ingerir](./references/input-guide.md)
+- [Ejemplos de preguntas procedurales](./references/procedural-examples.md)

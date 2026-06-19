@@ -29,6 +29,11 @@
 | `d` | string | si | Deduccion / calculo / razonamiento en una linea. |
 | `tags` | string[] | no | Default `[]`. Palabras clave en minusculas. |
 | `difficulty` | number\|null | no | 1-4 o `null`. |
+| `type` | string | no | `"recall"` (default), `"sequence"`, `"invalid"`, `"filter"`. |
+| `steps` | string[] | no | Pasos. Obligatorio si `type !== "recall"`. |
+| `invalidIndex` | number | no | Indice del paso incorrecto. Solo `type: "invalid"`. |
+| `validMask` | boolean[] | no | Cuales pasos aplicar. Solo `type: "filter"`. Mismo length que `steps`. |
+| `timeLimit` | number\|null | no | Override de timer en segundos. |
 
 ## Categorias (`cat`)
 

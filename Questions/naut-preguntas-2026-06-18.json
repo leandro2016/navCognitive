@@ -1484,5 +1484,1029 @@
       "ingerido"
     ],
     "difficulty": 2
+  },
+  {
+    "id": 226,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Toma de rizos de mayor — PREPARADOS\n→ Que hace el proel?",
+    "a": "Va al palo",
+    "d": "El proel sube/al palo para acomodar los garruchos y enganchar el rizo",
+    "tags": [
+      "rizos",
+      "mayor",
+      "proel",
+      "secuencia",
+      "ingerido",
+      "relato"
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": 227,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 2,
+    "q": "Toma de rizos de mayor — PREPARADOS\n→ Que hace el copit con la driza?",
+    "a": "Aduja la driza para que este clara y saca de la cornamuza",
+    "d": "Driza clara y fuera de cornamuza para poder liberarla sin trabas",
+    "tags": [
+      "rizos",
+      "mayor",
+      "copit",
+      "driza",
+      "secuencia",
+      "ingerido",
+      "relato"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 228,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Toma de rizos de mayor — TOMAR RIZOS\n→ Que hace el proel mientras se arria la mayor?",
+    "a": "Acomoda la mayor, garruchos abajo, engancha el rizo y grita 'rizo listo'",
+    "d": "Garruchos abajo para que el rizo tome bien; engancha y avisa para que el copit re-ice",
+    "tags": [
+      "rizos",
+      "mayor",
+      "proel",
+      "garruchos",
+      "comunicacion",
+      "secuencia",
+      "ingerido",
+      "relato"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 229,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Toma de rizos de mayor — TOMAR RIZOS\n→ Ordená la secuencia del copit",
+    "a": "Libera escota → libera stopper → baja driza → caza amante de rizo",
+    "d": "Orden: quitar carga (escota) → liberar driza (stopper) → arriar (baja driza) → cazar amante",
+    "steps": [
+      "Libera escota",
+      "Libera stopper",
+      "Baja driza",
+      "Caza amante de rizo"
+    ],
+    "tags": [
+      "rizos",
+      "mayor",
+      "copit",
+      "secuencia",
+      "escota",
+      "driza",
+      "amante",
+      "procedural",
+      "ingerido",
+      "relato"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 230,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 2,
+    "q": "Toma de rizos — el proel grita 'rizo listo'\n→ Que hace el copit?",
+    "a": "Vuelve a izar la driza y la hace firme",
+    "d": "El grito del proel dispara el re-izado; driza firme para cargar la mayor con el rizo puesto",
+    "tags": [
+      "rizos",
+      "mayor",
+      "copit",
+      "driza",
+      "comunicacion",
+      "secuencia",
+      "ingerido",
+      "relato"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 231,
+    "cat": "SIT",
+    "role": "TOD",
+    "fatigue": 2,
+    "q": "Toma de rizos de mayor — que disparador verbal coordina la maniobra?",
+    "a": "'Rizo listo' gritado por el proel",
+    "d": "El proel confirma enganche; el copit re-iza al oirlo. Sincroniza proa-cubierta",
+    "tags": [
+      "rizos",
+      "comunicacion",
+      "coordinacion",
+      "secuencia",
+      "ingerido",
+      "relato"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 232,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 1,
+    "q": "Toma de rizos de mayor — terminada la maniobra\n→ Que falta hacer?",
+    "a": "Volver a trimmar la vela mayor",
+    "d": "Con el rizo puesto cambia el centro velico; re-trimmar escota/traveler para el nuevo perfil",
+    "tags": [
+      "rizos",
+      "mayor",
+      "trimado",
+      "post-maniobra",
+      "ingerido",
+      "relato"
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": 233,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "type": "invalid",
+    "q": "Toma de rizos de mayor — PREPARADOS\n→ Hay un paso incorrecto. Tocalo.",
+    "a": "El proel baja la driza (es el copit quien la maneja)",
+    "d": "En preparados el proel va al palo; la driza la maneja el copit",
+    "steps": [
+      "Proel va al palo",
+      "Copit aduja la driza y saca de la cornamuza",
+      "Proel baja la driza",
+      "Copit confirma todo libre"
+    ],
+    "invalidIndex": 2,
+    "tags": [
+      "rizos",
+      "mayor",
+      "proel",
+      "copit",
+      "procedural",
+      "ingerido",
+      "relato"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 234,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 2,
+    "type": "filter",
+    "q": "Toma de rizos — al oir 'rizo listo'\n→ Marcá qué hace el copit",
+    "a": "Izar driza + hacerla firme",
+    "d": "El grito del proel dispara el re-izado; driza firme para cargar",
+    "steps": [
+      "Vuelve a izar la driza",
+      "Hace firme la driza",
+      "Libera la escota de nuevo",
+      "Baja el amante de rizo"
+    ],
+    "validMask": [
+      true,
+      true,
+      false,
+      false
+    ],
+    "tags": [
+      "rizos",
+      "mayor",
+      "copit",
+      "procedural",
+      "ingerido",
+      "relato"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 235,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Toma de rizos de mayor — EJECUTAR\n→ Ordená la secuencia del copit",
+    "a": "Filar escota → bajar driza → cazar amante → izar driza y hacer firme",
+    "d": "Filar (quitar carga) → arriar (bajar driza) → cazar amante → re-izar firme",
+    "steps": [
+      "Filar escota de mayor",
+      "Bajar driza controlado",
+      "Cazar amante",
+      "Izar driza y hacer firme"
+    ],
+    "tags": [
+      "rizos",
+      "mayor",
+      "copit",
+      "secuencia",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 236,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Toma de rizos de mayor — EJECUTAR\n→ Ordená la secuencia del proel",
+    "a": "Acompañar bajada → guiar garruchos → enganchar rizo → gritar '¡Rizo listo!'",
+    "d": "El proel acompaña la vela, guía los garruchos abajo, engancha y avisa",
+    "steps": [
+      "Acompañar bajada y guiar garruchos",
+      "Enganchar rizo",
+      "Gritar '¡Rizo listo!'"
+    ],
+    "tags": [
+      "rizos",
+      "mayor",
+      "proel",
+      "secuencia",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 237,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 2,
+    "type": "invalid",
+    "q": "Toma de rizos — PREPARADOS\n→ Hay un paso incorrecto. Tocalo.",
+    "a": "El copit caza amante en preparados (se hace en ejecutar)",
+    "d": "En preparados el copit aclara driza y prepara amante; no caza todavía",
+    "steps": [
+      "Copit aclara driza",
+      "Copit saca driza de cornamusa",
+      "Copit caza amante",
+      "Copit prepara amante de rizo"
+    ],
+    "invalidIndex": 2,
+    "tags": [
+      "rizos",
+      "mayor",
+      "copit",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 238,
+    "cat": "SIT",
+    "role": "TOD",
+    "fatigue": 2,
+    "type": "recall",
+    "q": "Toma de rizos — ¿qué disparador verbal coordina la maniobra?",
+    "a": "'¡Rizo listo!' gritado por el proel",
+    "d": "El proel confirma enganche; el copit re-iza al oírlo",
+    "tags": [
+      "rizos",
+      "comunicacion",
+      "coordinacion",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 239,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 1,
+    "type": "recall",
+    "q": "Toma de rizos — POST\n→ ¿Qué falta después del rizo firme?",
+    "a": "Re-trimar mayor y verificar tensión general",
+    "d": "El rizo cambia el centro vélico; re-trimmar para el nuevo perfil",
+    "tags": [
+      "rizos",
+      "mayor",
+      "trimado",
+      "post-maniobra",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": 240,
+    "cat": "MAN",
+    "role": "TIM",
+    "fatigue": 2,
+    "type": "sequence",
+    "q": "Virada en ceñida — EJECUTAR\n→ Ordená la secuencia del timonel",
+    "a": "Orzar progresivo → mantener control → acelerar y cerrar",
+    "d": "Orzar progresivo para pasar la proa por el viento, luego acelerar en nuevo bordo",
+    "steps": [
+      "Orzar progresivo",
+      "Mantener control del timón",
+      "Acelerar y cerrar en nuevo bordo"
+    ],
+    "tags": [
+      "virada",
+      "ceñida",
+      "timonel",
+      "secuencia",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 241,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Virada en ceñida — EJECUTAR\n→ Ordená la secuencia del trimmer de génova",
+    "a": "Mantener tensión → soltar al flameo → cazar nueva",
+    "d": "Mantener tensión hasta el flameo, soltar la vieja, cazar la nueva escota",
+    "steps": [
+      "Mantener tensión",
+      "Soltar al flameo",
+      "Cazar nueva escota"
+    ],
+    "tags": [
+      "virada",
+      "ceñida",
+      "genoa",
+      "secuencia",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 242,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 2,
+    "type": "invalid",
+    "q": "Virada en ceñida — hay un error común\n→ Tocalo.",
+    "a": "Cazar antes de cruzar (hay que soltar al flameo primero)",
+    "d": "Error: cazar la nueva antes de que la vieja flamee → enganche o frenada",
+    "steps": [
+      "Mantener tensión",
+      "Soltar al flameo",
+      "Cazar nueva antes de cruzar",
+      "Acelerar y cerrar"
+    ],
+    "invalidIndex": 2,
+    "tags": [
+      "virada",
+      "ceñida",
+      "genoa",
+      "errores",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 243,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Trasluchada — EJECUTAR\n→ Ordená la secuencia del copit",
+    "a": "Control de escota → cazar mayor al centro → pasar botavara y filar",
+    "d": "Controlar la escota, llevar la mayor al centro, pasar la botavara y filar controlado",
+    "steps": [
+      "Control de escota",
+      "Cazar mayor al centro",
+      "Pasar botavara y filar"
+    ],
+    "tags": [
+      "trasluchada",
+      "copit",
+      "secuencia",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 244,
+    "cat": "MAN",
+    "role": "TIM",
+    "fatigue": 2,
+    "type": "recall",
+    "q": "Trasluchada — EJECUTAR\n→ ¿Qué hace el timonel?",
+    "a": "Derivar progresivo",
+    "d": "Derivar (arribar) progresivo para que el viento pase por la popa controlado",
+    "tags": [
+      "trasluchada",
+      "timonel",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 245,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "type": "sequence",
+    "q": "Izado de spinnaker — EJECUTAR\n→ Ordená la secuencia del proel",
+    "a": "Izar → ajustar forma (con copit)",
+    "d": "El proel iza el spi; el copit ajusta la forma una vez arriba",
+    "steps": [
+      "Izar spinnaker",
+      "Ajustar forma (copit)"
+    ],
+    "tags": [
+      "spinnaker",
+      "izado",
+      "proel",
+      "secuencia",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 246,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Arriada de spinnaker — EJECUTAR\n→ Ordená la secuencia",
+    "a": "Soltar braza → traer vela → bajar driza",
+    "d": "Soltar braza (copit), traer la vela (proel), bajar driza (copit)",
+    "steps": [
+      "Soltar braza",
+      "Traer vela",
+      "Bajar driza"
+    ],
+    "tags": [
+      "spinnaker",
+      "arriada",
+      "secuencia",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 247,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "type": "invalid",
+    "q": "Arriada de spinnaker — hay un error crítico\n→ Tocalo.",
+    "a": "Tirar la vela al agua (hay que traerla a cubierta)",
+    "d": "Error: dejar caer el spi al agua → frena el barco y se puede perder",
+    "steps": [
+      "Soltar braza",
+      "Traer vela a cubierta",
+      "Tirar la vela al agua",
+      "Bajar driza"
+    ],
+    "invalidIndex": 2,
+    "tags": [
+      "spinnaker",
+      "arriada",
+      "errores",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 248,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Peeling génova — EJECUTAR\n→ Ordená la secuencia del proel",
+    "a": "Izar nueva → arriar vieja",
+    "d": "Izar la nueva génova primero, luego arriar la vieja (siempre tener vela)",
+    "steps": [
+      "Izar nueva génova",
+      "Arriar vieja génova"
+    ],
+    "tags": [
+      "peeling",
+      "genoa",
+      "proel",
+      "secuencia",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 249,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Peeling génova — EJECUTAR\n→ Ordená la secuencia del copit",
+    "a": "Trimar nueva → filar vieja",
+    "d": "Trimar la nueva vela, filar (soltar) la vieja para que el barco no quede sin carga",
+    "steps": [
+      "Trimar nueva génova",
+      "Filar vieja génova"
+    ],
+    "tags": [
+      "peeling",
+      "genoa",
+      "copit",
+      "secuencia",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 250,
+    "cat": "DEC",
+    "role": "GEN",
+    "fatigue": 2,
+    "type": "filter",
+    "q": "Post virada sin velocidad (viento flojo)\n→ Marcá qué hacer",
+    "a": "Filar escota + mantener potencia + no orzar",
+    "d": "Viento flojo: velocidad > altura. Filar para dar potencia, no orzar",
+    "steps": [
+      "Filar escota",
+      "Cazar escota",
+      "Mantener potencia (mayor)",
+      "Orzar para ganar altura"
+    ],
+    "validMask": [
+      true,
+      false,
+      true,
+      false
+    ],
+    "tags": [
+      "viento-flojo",
+      "salida",
+      "genoa",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 251,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "type": "invalid",
+    "q": "Racha fuerte en ceñida — hay un error\n→ Tocalo.",
+    "a": "Filar escota primero (hay que bajar traveller)",
+    "d": "Error: filar escota en racha → más escora. Lo correcto es bajar traveller",
+    "steps": [
+      "Bajar traveller",
+      "Filar escota primero",
+      "Mantener ángulo (timonel)"
+    ],
+    "invalidIndex": 1,
+    "tags": [
+      "rachas",
+      "ceñida",
+      "errores",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 252,
+    "cat": "SIT",
+    "role": "TIM",
+    "fatigue": 4,
+    "type": "recall",
+    "q": "Popa inestable (death roll inminente)\n→ ¿Qué hace el timonel?",
+    "a": "Control suave del timón",
+    "d": "Movimientos suaves para no amplificar la inestabilidad; no movimientos bruscos",
+    "tags": [
+      "death-roll",
+      "popa",
+      "timonel",
+      "situacional",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 4
+  },
+  {
+    "id": 253,
+    "cat": "MAN",
+    "role": "MAY",
+    "fatigue": 4,
+    "type": "recall",
+    "q": "Popa inestable (death roll inminente)\n→ ¿Qué hace el trimmer?",
+    "a": "Cazar sotavento",
+    "d": "Cazar la escota de sotavento para estabilizar la botavara y evitar el death roll",
+    "tags": [
+      "death-roll",
+      "popa",
+      "mayor",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 4
+  },
+  {
+    "id": 254,
+    "cat": "TACT",
+    "role": "TIM",
+    "fatigue": 2,
+    "type": "recall",
+    "q": "Largada (prestart)\n→ ¿Qué hace el timonel?",
+    "a": "Posición",
+    "d": "Posicionarse en la línea de largada con espacio y rumbo correcto",
+    "tags": [
+      "largada",
+      "prestart",
+      "timonel",
+      "tactica",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 255,
+    "cat": "TACT",
+    "role": "GEN",
+    "fatigue": 2,
+    "type": "recall",
+    "q": "Largada (prestart)\n→ ¿Qué hace el trimmer de génova?",
+    "a": "Velocidad fina",
+    "d": "Trimar para velocidad fina en el prestart para arrancar con ritmo",
+    "tags": [
+      "largada",
+      "prestart",
+      "genoa",
+      "tactica",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 256,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "type": "filter",
+    "q": "Lanita baja sotavento cae\n→ Marcá qué hacer",
+    "a": "Filar escota (no cazar más)",
+    "d": "Sobretrim abajo: la lanita cae = exceso de tensión. Filar, no cazar",
+    "steps": [
+      "Filar escota",
+      "Cazar más",
+      "Mover carro a proa",
+      "Mover carro atrás"
+    ],
+    "validMask": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "tags": [
+      "trimado",
+      "genoa",
+      "lanitas",
+      "sobretrim",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 257,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "type": "recall",
+    "q": "Lanita barlovento flamea (abajo)\n→ ¿Qué hacer?",
+    "a": "Cazar",
+    "d": "Falta de trim: la lanita flamea = poca tensión. Cazar escota",
+    "tags": [
+      "trimado",
+      "genoa",
+      "lanitas",
+      "falta-trim",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 258,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "recall",
+    "q": "Lanita alta flamea\n→ ¿Qué hacer?",
+    "a": "Carro a proa",
+    "d": "Mucho twist arriba: la lanita alta flamea. Mover carro a proa para cerrar el twist",
+    "tags": [
+      "trimado",
+      "genoa",
+      "lanitas",
+      "twist",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 259,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "recall",
+    "q": "Lanita alta cae\n→ ¿Qué hacer?",
+    "a": "Carro atrás o filar leve",
+    "d": "Sobretrim arriba: la lanita alta cae. Carro atrás o filar leve para abrir",
+    "tags": [
+      "trimado",
+      "genoa",
+      "lanitas",
+      "sobretrim",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 260,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "recall",
+    "q": "Todas las lanitas bien pero el barco va lento\n→ ¿Qué hacer?",
+    "a": "Filar apenas (overtrim)",
+    "d": "Todo se ve bien pero lento = overtrim. Filar apenas para dar flujo",
+    "tags": [
+      "trimado",
+      "genoa",
+      "lanitas",
+      "overtrim",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 261,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "filter",
+    "q": "Arriba mal, abajo bien\n→ Marcá qué ajustar",
+    "a": "Ajustar carro (no escota)",
+    "d": "Si arriba mal y abajo bien, el problema es el twist → ajustar carro, no escota",
+    "steps": [
+      "Ajustar carro",
+      "Ajustar escota",
+      "Filar escota",
+      "Cazar escota"
+    ],
+    "validMask": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "tags": [
+      "trimado",
+      "genoa",
+      "lanitas",
+      "carro",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 262,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "type": "filter",
+    "q": "Abajo mal\n→ Marcá qué ajustar",
+    "a": "Ajustar escota (no carro)",
+    "d": "Si abajo mal, el problema es tensión → ajustar escota, no carro",
+    "steps": [
+      "Ajustar escota",
+      "Ajustar carro",
+      "Mover carro a proa",
+      "Mover carro atrás"
+    ],
+    "validMask": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "tags": [
+      "trimado",
+      "genoa",
+      "lanitas",
+      "escota",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 263,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "type": "filter",
+    "q": "Viento flojo\n→ Marcá qué hacer con la génova",
+    "a": "Filar + carro a proa",
+    "d": "Viento flojo: filar para dar potencia y carro a proa para más flujo",
+    "steps": [
+      "Filar escota",
+      "Cazar escota",
+      "Carro a proa",
+      "Carro atrás"
+    ],
+    "validMask": [
+      true,
+      false,
+      true,
+      false
+    ],
+    "tags": [
+      "trimado",
+      "genoa",
+      "viento-flojo",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 264,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "type": "recall",
+    "q": "Ola (mar formado)\n→ ¿Qué hacer con la génova?",
+    "a": "Trim más abierto",
+    "d": "Con ola, trim más abierto para que la vela respire y no se cargue de golpe",
+    "tags": [
+      "trimado",
+      "genoa",
+      "ola",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 265,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "recall",
+    "q": "Sobrecazado (génova cerrada de más)\n→ ¿Qué hacer?",
+    "a": "Abrir todo",
+    "d": "Sobrecazado: la vela está demasiado cerrada. Abrir todo (filar + carro)",
+    "tags": [
+      "trimado",
+      "genoa",
+      "sobrecazado",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 266,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "type": "recall",
+    "q": "Escora excesiva\n→ ¿Qué hacer con el traveller de mayor?",
+    "a": "Bajar traveller",
+    "d": "Bajar el traveller para sacar potencia y reducir escora",
+    "tags": [
+      "trimado",
+      "mayor",
+      "escora",
+      "traveller",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 267,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "type": "recall",
+    "q": "Slot cerrado (mayor y génova pegadas)\n→ ¿Qué hacer?",
+    "a": "Abrir mayor o génova",
+    "d": "Slot cerrado: abrir la mayor o la génova para que pase el flujo entre las velas",
+    "tags": [
+      "trimado",
+      "mayor",
+      "slot",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": 268,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "type": "recall",
+    "q": "Viento flojo\n→ ¿Qué hacer con la mayor?",
+    "a": "Filar mayor",
+    "d": "Viento flojo: filar la mayor para dar potencia y profundidad",
+    "tags": [
+      "trimado",
+      "mayor",
+      "viento-flojo",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 269,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "type": "recall",
+    "q": "Popa\n→ ¿Qué hacer con el vang?",
+    "a": "Cazar vang",
+    "d": "En popa, cazar el vang para controlar la botavara y evitar trasluchada involuntaria",
+    "tags": [
+      "trimado",
+      "mayor",
+      "popa",
+      "vang",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": 270,
+    "cat": "DEC",
+    "role": "ALL",
+    "fatigue": 3,
+    "type": "invalid",
+    "q": "Diagnóstico de trimado — hay un error en el método\n→ Tocalo.",
+    "a": "Ajustar solo una vela (hay que mirar mayor y génova juntas)",
+    "d": "Error humano: ajustar solo una vela. Hay que diagnosticar arriba/abajo, escota/carro, y ambas velas",
+    "steps": [
+      "Diagnosticar arriba vs abajo",
+      "Diagnosticar escota vs carro",
+      "Ajustar solo una vela",
+      "Diagnosticar velocidad vs altura"
+    ],
+    "invalidIndex": 2,
+    "tags": [
+      "trimado",
+      "diagnostico",
+      "errores",
+      "procedural",
+      "ingerido",
+      "manibras-mak"
+    ],
+    "difficulty": 3
   }
 ]

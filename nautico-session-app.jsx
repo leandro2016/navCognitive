@@ -4,7 +4,7 @@ import BUILTIN_QUESTIONS from "./Questions/naut-preguntas-2026-06-18.json";
 // ─── LIB MODULES ───────────────────────────────────────────────────────────
 import {
   LS, SCHEMA_VERSION, DIFFICULTIES, CAT_COLORS, CAT_LABELS, CAT_DESC, CAT_ORDER,
-  INT_COLORS, INT_LABELS, ROLE_MAP,
+  INT_COLORS, INT_LABELS, ROLE_MAP, Q_TYPE_MAP,
   FAT_LABELS, RPE_TO_FATIGUE, RPE_LABELS, S, SESSION_TEMPLATES, PHASE_EX_MAP,
   PHASE_Q_MAP, ROLES,
 } from "./src/lib/constants.js";
@@ -14,6 +14,7 @@ import {
   computeCategoryStats, categoryWeights, weightedShuffle,
   getQuestionsForPhase, getExercisesForPhase, buildSession,
   downloadJSON, validateImportedQuestions, migrateSchema,
+  shuffleSteps,
 } from "./src/lib/session.js";
 import { CUE, vibrate, acquireWakeLock, releaseWakeLock } from "./src/lib/feedback.js";
 import { useLocalStorage, useCountdown } from "./src/lib/hooks.js";
@@ -805,6 +806,12 @@ function ExerciseTimer({ round, paused, onDone }) {
 
   const ex          = round.exercise;
   const isTimeBased = !!ex.dur;
+  const isExProcedural = stage === "question" && round.question && round.question.type && round.question.type !== "recall";
+
+  const handleExProceduralAnswer = (correct) => {
+    if (correct) { CUE.correct(); vibrate(40); } else { CUE.wrong(); vibrate(120); }
+    onDone({ correct, time: (Date.now() - qStart) / 1000, rpe });
+  };
 
   const totalSecs = stage === "exercise"
     ? (isTimeBased ? ex.dur : 90)
@@ -857,6 +864,7 @@ function ExerciseTimer({ round, paused, onDone }) {
     if (stage !== "question") return;
     const onKey = (e) => {
       if (e.repeat) return;
+      if (isExProcedural) return; // procedurales se responden con botones/touch
       if (e.key === " " || e.code === "Space") {
         e.preventDefault();
         if (!questionRevealed && !qTimeUp) { setRunning(false); setQuestionRevealed(true); }
@@ -989,7 +997,10 @@ function ExerciseTimer({ round, paused, onDone }) {
             <div style={{ fontSize: 17, fontWeight: 700, color: S.text, lineHeight: 1.65, whiteSpace: "pre-line", marginBottom: 16 }}>
               {round.question.q}
             </div>
-            {questionRevealed && (
+            {isExProcedural && (
+              <QuestionCard q={round.question} onAnswer={handleExProceduralAnswer} />
+            )}
+            {!isExProcedural && questionRevealed && (
               <div style={{
                 background: "#0F172A", border: "1px solid #A78BFA55",
                 borderRadius: 12, padding: "16px", marginBottom: 12,
@@ -1024,7 +1035,7 @@ function ExerciseTimer({ round, paused, onDone }) {
       </div>
 
       <div style={{ padding: "0 16px 36px", display: "flex", gap: 10 }}>
-        {stage === "question" && !questionRevealed && !qTimeUp && (
+        {stage === "question" && !isExProcedural && !questionRevealed && !qTimeUp && (
           <button onClick={() => { setRunning(false); setQuestionRevealed(true); }} style={{
             flex: 1, padding: "16px",
             background: "rgba(167,139,250,0.12)", border: "1.5px solid rgba(167,139,250,0.4)",
@@ -1032,7 +1043,7 @@ function ExerciseTimer({ round, paused, onDone }) {
             fontFamily: S.font, fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
           }}>✓ YA RESPONDI</button>
         )}
-        {stage === "question" && !questionRevealed && qTimeUp && (
+        {stage === "question" && !isExProcedural && !questionRevealed && qTimeUp && (
           <button onClick={() => setQuestionRevealed(true)} style={{
             flex: 1, padding: "16px",
             background: "rgba(251,191,36,0.1)", border: "1.5px solid rgba(251,191,36,0.4)",
@@ -1041,15 +1052,15 @@ function ExerciseTimer({ round, paused, onDone }) {
             animation: "pulse 1.5s ease-in-out infinite",
           }}>VER RESPUESTA →</button>
         )}
-        {stage === "question" && questionRevealed && (
+        {stage === "question" && questionRevealed && !isExProcedural && (
           <>
-            <button onClick={() => { CUE.wrong(); vibrate(120); next(false); }} style={{
+            <button onClick={() => { CUE.wrong(); vibrate(120); onDone({ correct: false, time: (Date.now() - qStart) / 1000, rpe }); }} style={{
               flex: 1, padding: "16px",
               background: "rgba(244,63,94,0.1)", border: "1px solid rgba(244,63,94,0.3)",
               borderRadius: 12, color: "#F43F5E",
               fontFamily: S.font, fontSize: 12, fontWeight: 700, cursor: "pointer",
             }}>✗ ERRE</button>
-            <button onClick={() => { CUE.correct(); vibrate(40); next(true); }} style={{
+            <button onClick={() => { CUE.correct(); vibrate(40); onDone({ correct: true, time: (Date.now() - qStart) / 1000, rpe }); }} style={{
               flex: 1, padding: "16px",
               background: "rgba(52,211,153,0.1)", border: "1px solid rgba(52,211,153,0.3)",
               borderRadius: 12, color: "#34D399",
@@ -1079,6 +1090,213 @@ function ExerciseTimer({ round, paused, onDone }) {
   );
 }
 
+// ─── QUESTION CARD (branch por type) ───────────────────────────────────────
+// Componente compartido entre SprintScreen y ExerciseTimer.
+// Render recall (flujo reveal + ERRE/ACERTE) o procedural (sequence/invalid/filter).
+
+function SequenceUI({ q, onAnswer }) {
+  // Orden mezclado estable por id de pregunta.
+  const [shuffled] = useState(() => shuffleSteps(q.steps, q.id));
+  // order[i] = índice en shuffled que está en la posición i.
+  const [order, setOrder] = useState(() => shuffled.map((_, i) => i));
+  const [confirmed, setConfirmed] = useState(false);
+
+  const move = (idx, dir) => {
+    if (confirmed) return;
+    const newIdx = idx + dir;
+    if (newIdx < 0 || newIdx >= order.length) return;
+    const next = [...order];
+    [next[idx], next[newIdx]] = [next[newIdx], next[idx]];
+    setOrder(next);
+  };
+
+  const confirm = () => {
+    // Comparar el orden elegido (shuffled[order[i]]) contra el correcto (q.steps).
+    const chosen = order.map(i => shuffled[i]);
+    const correct = chosen.every((s, i) => s === q.steps[i]);
+    setConfirmed(true);
+    onAnswer(correct);
+  };
+
+  return (
+    <div>
+      <div style={{ fontSize: 10, color: S.muted, marginBottom: 10, letterSpacing: 1 }}>
+        Ordená los pasos con ▲▼ y confirmá.
+      </div>
+      {order.map((shuffledIdx, pos) => (
+        <div key={pos} style={{
+          display: "flex", alignItems: "stretch", gap: 0, marginBottom: 6,
+          background: S.bg2, borderRadius: 8, border: "1px solid " + S.border, overflow: "hidden",
+        }}>
+          <div style={{
+            width: 28, display: "flex", alignItems: "center", justifyContent: "center",
+            background: S.bg3, color: S.muted, fontSize: 11, fontWeight: 700,
+          }}>{pos + 1}</div>
+          <div style={{ flex: 1, padding: "10px 12px", fontSize: 12, color: S.text, lineHeight: 1.4 }}>
+            {shuffled[shuffledIdx]}
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <button onClick={() => move(pos, -1)} disabled={confirmed || pos === 0} style={{
+              flex: 1, padding: "0 8px", background: "none", border: "none",
+              color: pos === 0 ? S.dim : "#38BDF8", cursor: confirmed || pos === 0 ? "default" : "pointer",
+              fontSize: 12, opacity: confirmed ? 0.4 : 1,
+            }}>▲</button>
+            <button onClick={() => move(pos, 1)} disabled={confirmed || pos === order.length - 1} style={{
+              flex: 1, padding: "0 8px", background: "none", border: "none",
+              color: pos === order.length - 1 ? S.dim : "#38BDF8", cursor: confirmed || pos === order.length - 1 ? "default" : "pointer",
+              fontSize: 12, opacity: confirmed ? 0.4 : 1,
+            }}>▼</button>
+          </div>
+        </div>
+      ))}
+      {!confirmed && (
+        <button onClick={confirm} style={{
+          width: "100%", padding: "14px", marginTop: 8,
+          background: "linear-gradient(135deg, #0EA5E9, #0D9488)",
+          border: "none", borderRadius: 12, color: "#fff",
+          fontFamily: S.font, fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
+        }}>CONFIRMAR ORDEN</button>
+      )}
+      {confirmed && (
+        <div style={{
+          marginTop: 10, padding: "12px", borderRadius: 10,
+          background: "#0F172A", border: "1px solid #A78BFA55",
+        }}>
+          <div style={{ fontSize: 9, color: "#A78BFA", letterSpacing: 3, marginBottom: 6, textTransform: "uppercase" }}>Orden correcto</div>
+          {q.steps.map((s, i) => (
+            <div key={i} style={{ fontSize: 11, color: S.text, marginBottom: 3 }}>{i + 1}. {s}</div>
+          ))}
+          {q.d && <div style={{ fontSize: 10, color: S.muted, marginTop: 6 }}>{q.d}</div>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function InvalidUI({ q, onAnswer }) {
+  const [selected, setSelected] = useState(null);
+  const [answered, setAnswered] = useState(false);
+
+  const pick = (idx) => {
+    if (answered) return;
+    setSelected(idx);
+    setAnswered(true);
+    onAnswer(idx === q.invalidIndex);
+  };
+
+  return (
+    <div>
+      <div style={{ fontSize: 10, color: S.muted, marginBottom: 10, letterSpacing: 1 }}>
+        Tocá el paso incorrecto en la secuencia.
+      </div>
+      {q.steps.map((s, i) => {
+        const isPicked = selected === i;
+        const showResult = answered && (isPicked || i === q.invalidIndex);
+        const isWrong = answered && i === q.invalidIndex;
+        return (
+          <button key={i} onClick={() => pick(i)} disabled={answered} style={{
+            display: "block", width: "100%", textAlign: "left",
+            padding: "12px 14px", marginBottom: 6, borderRadius: 8, cursor: answered ? "default" : "pointer",
+            background: isWrong ? "rgba(244,63,94,0.12)" : isPicked ? "rgba(251,191,36,0.12)" : S.bg2,
+            border: isWrong ? "1.5px solid #F43F5E" : isPicked ? "1.5px solid #FBBF24" : "1px solid " + S.border,
+            color: S.text, fontFamily: S.font, fontSize: 12, lineHeight: 1.4,
+          }}>
+            <span style={{ color: S.muted, marginRight: 8 }}>{i + 1}.</span>{s}
+            {isWrong && <span style={{ color: "#F43F5E", marginLeft: 8, fontSize: 10 }}>✗ INVÁLIDO</span>}
+            {isPicked && !isWrong && <span style={{ color: "#FBBF24", marginLeft: 8, fontSize: 10 }}>→ tu elección</span>}
+          </button>
+        );
+      })}
+      {answered && q.d && (
+        <div style={{ marginTop: 10, padding: "12px", borderRadius: 10, background: "#0F172A", border: "1px solid #A78BFA55" }}>
+          <div style={{ fontSize: 10, color: S.muted }}>{q.d}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function FilterUI({ q, onAnswer }) {
+  const [mask, setMask] = useState(() => (q.steps || []).map(() => false));
+  const [confirmed, setConfirmed] = useState(false);
+
+  const toggle = (i) => {
+    if (confirmed) return;
+    setMask(m => m.map((v, j) => j === i ? !v : v));
+  };
+
+  const confirm = () => {
+    const correct = q.validMask && mask.every((v, i) => v === q.validMask[i]);
+    setConfirmed(true);
+    onAnswer(correct);
+  };
+
+  return (
+    <div>
+      <div style={{ fontSize: 10, color: S.muted, marginBottom: 10, letterSpacing: 1 }}>
+        Marcá cuáles pasos aplicar y confirmá.
+      </div>
+      {(q.steps || []).map((s, i) => {
+        const checked = mask[i];
+        const showResult = confirmed;
+        const shouldBe = q.validMask?.[i];
+        return (
+          <button key={i} onClick={() => toggle(i)} disabled={confirmed} style={{
+            display: "flex", alignItems: "center", gap: 10, width: "100%", textAlign: "left",
+            padding: "12px 14px", marginBottom: 6, borderRadius: 8, cursor: confirmed ? "default" : "pointer",
+            background: showResult
+              ? (shouldBe ? "rgba(52,211,153,0.10)" : "rgba(244,63,94,0.10)")
+              : checked ? "rgba(56,189,248,0.10)" : S.bg2,
+            border: showResult
+              ? (shouldBe ? "1.5px solid #34D399" : "1.5px solid #F43F5E")
+              : checked ? "1.5px solid #38BDF8" : "1px solid " + S.border,
+            color: S.text, fontFamily: S.font, fontSize: 12, lineHeight: 1.4,
+          }}>
+            <span style={{
+              width: 20, height: 20, borderRadius: 5, flexShrink: 0,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              background: checked ? "#38BDF8" : S.bg3, color: checked ? "#fff" : S.muted,
+              border: "1px solid " + (checked ? "#38BDF8" : S.border), fontSize: 11, fontWeight: 700,
+            }}>{checked ? "✓" : ""}</span>
+            <span style={{ flex: 1 }}>{s}</span>
+            {showResult && !shouldBe && checked && <span style={{ color: "#F43F5E", fontSize: 10 }}>✗ no</span>}
+            {showResult && shouldBe && !checked && <span style={{ color: "#34D399", fontSize: 10 }}>faltó</span>}
+          </button>
+        );
+      })}
+      {!confirmed && (
+        <button onClick={confirm} style={{
+          width: "100%", padding: "14px", marginTop: 8,
+          background: "linear-gradient(135deg, #0EA5E9, #0D9488)",
+          border: "none", borderRadius: 12, color: "#fff",
+          fontFamily: S.font, fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
+        }}>CONFIRMAR</button>
+      )}
+      {confirmed && q.d && (
+        <div style={{ marginTop: 10, padding: "12px", borderRadius: 10, background: "#0F172A", border: "1px solid #A78BFA55" }}>
+          <div style={{ fontSize: 10, color: S.muted }}>{q.d}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Card de pregunta que branch por type. onAnswer(correct) es el callback.
+function QuestionCard({ q, onAnswer }) {
+  const type = q.type || "recall";
+  if (type === "sequence" && Array.isArray(q.steps) && q.steps.length > 1) {
+    return <SequenceUI q={q} onAnswer={onAnswer} />;
+  }
+  if (type === "invalid" && Array.isArray(q.steps) && q.steps.length > 0 && Number.isInteger(q.invalidIndex)) {
+    return <InvalidUI q={q} onAnswer={onAnswer} />;
+  }
+  if (type === "filter" && Array.isArray(q.steps) && q.steps.length > 0 && Array.isArray(q.validMask)) {
+    return <FilterUI q={q} onAnswer={onAnswer} />;
+  }
+  // recall o fallback: null (el flujo reveal/ERRE-ACERTE lo maneja el parent).
+  return null;
+}
+
 // ─── SPRINT SCREEN ─────────────────────────────────────────────────────────
 
 function SprintScreen({ round, paused, onDone }) {
@@ -1092,17 +1310,19 @@ function SprintScreen({ round, paused, onDone }) {
   const questions = round.questions;
   const current   = questions[qIdx];
   const isWalk    = round.isWalk;
+  const isProcedural = current && current.type && current.type !== "recall";
 
   const handleDone = useCallback(() => {
     CUE.timeUp(); vibrate([100, 50, 100]);
     setQTimeUp(true);
     setRunning(false);
   }, []);
-  const isNoTimer  = round.questionTimer >= 90;
-  const active     = running && !paused && !revealed && !isNoTimer;
-  const t          = useCountdown(round.questionTimer, active, handleDone);
-  const pct        = isNoTimer ? 100 : (t / round.questionTimer) * 100;
-  const timerColor = t > round.questionTimer * 0.5 ? "#A78BFA" : t > 3 ? "#FB923C" : "#F43F5E";
+  const baseTimer  = (round.questionTimers?.[qIdx] ?? round.questionTimer) || round.questionTimer;
+  const isNoTimer  = baseTimer >= 90;
+  const active     = running && !paused && !revealed && !isNoTimer && !isProcedural;
+  const t          = useCountdown(baseTimer, active, handleDone);
+  const pct        = isNoTimer ? 100 : (t / baseTimer) * 100;
+  const timerColor = t > baseTimer * 0.5 ? "#A78BFA" : t > 3 ? "#FB923C" : "#F43F5E";
 
   const revealAnswer = () => {
     setRevealed(true);
@@ -1121,10 +1341,17 @@ function SprintScreen({ round, paused, onDone }) {
     setQStart(Date.now());
   };
 
+  // Respuesta de pregunta procedural: juzga y avanza con feedback.
+  const handleProceduralAnswer = (correct) => {
+    if (correct) { CUE.correct(); vibrate(40); } else { CUE.wrong(); vibrate(120); }
+    next(correct);
+  };
+
   // keyboard shortcuts: Space=reveal/ya respondi, ArrowLeft=erre, ArrowRight=acerte
   useEffect(() => {
     const onKey = (e) => {
       if (e.repeat) return;
+      if (isProcedural) return; // procedurales se responden con botones/touch
       if (e.key === " " || e.code === "Space") {
         if (!revealed && !qTimeUp) { e.preventDefault(); setRunning(false); revealAnswer(); }
       } else if (e.key === "ArrowLeft" && revealed) {
@@ -1181,7 +1408,11 @@ function SprintScreen({ round, paused, onDone }) {
           {current.q}
         </div>
 
-        {!revealed && !qTimeUp && (
+        {isProcedural && (
+          <QuestionCard q={current} onAnswer={handleProceduralAnswer} />
+        )}
+
+        {!isProcedural && !revealed && !qTimeUp && (
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             {round.questionTimer < 90 && (
             <div style={{
@@ -1206,7 +1437,7 @@ function SprintScreen({ round, paused, onDone }) {
           </div>
         )}
 
-        {qTimeUp && !revealed && (
+        {!isProcedural && qTimeUp && !revealed && (
           <button onClick={revealAnswer} style={{
             width: "100%", padding: "16px", marginBottom: 16,
             background: "rgba(251,191,36,0.1)", border: "1.5px solid rgba(251,191,36,0.4)",
@@ -1216,7 +1447,7 @@ function SprintScreen({ round, paused, onDone }) {
           }}>VER RESPUESTA →</button>
         )}
 
-        {revealed && (
+        {!isProcedural && revealed && (
           <div style={{
             background: "#0F172A", border: "1px solid #A78BFA55",
             borderRadius: 12, padding: "16px", marginBottom: 12,
@@ -1230,7 +1461,7 @@ function SprintScreen({ round, paused, onDone }) {
       </div>
 
       <div style={{ padding: "0 16px 36px", display: "flex", gap: 10 }}>
-        {revealed ? (
+        {!isProcedural && revealed ? (
           <>
             <button onClick={() => { CUE.wrong(); vibrate(120); next(false); }} style={{
               flex: 1, padding: "16px",

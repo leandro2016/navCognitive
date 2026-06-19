@@ -40,6 +40,16 @@ export const CAT_DESC = {
 };
 // Orden canónico para iterar UI y pesos adaptativos.
 export const CAT_ORDER = ["NAV", "MAN", "DEC", "REG", "SIT", "TRIM", "TACT", "METEO", "SEG"];
+
+// Tipos de pregunta: recall (texto) + procedurales (sequence/invalid/filter).
+// timerMult: multiplicador del timer base según el tipo (más tiempo para leer pasos).
+export const Q_TYPES = [
+  { id: "recall",   label: "Recall",        timerMult: 1.0 },
+  { id: "sequence", label: "Secuencia",    timerMult: 1.5 },
+  { id: "invalid",  label: "Paso inválido", timerMult: 1.3 },
+  { id: "filter",   label: "Filtrar",      timerMult: 1.3 },
+];
+export const Q_TYPE_MAP = Object.fromEntries(Q_TYPES.map(t => [t.id, t]));
 export const INT_COLORS = { 1: "#38BDF8", 2: "#34D399", 3: "#FB923C", 4: "#F43F5E" };
 export const INT_LABELS = { 1: "Baja", 2: "Media", 3: "Alta", 4: "Muy alta" };
 export const FAT_LABELS = { 1: "Fresco", 2: "Activado", 3: "Fatigado", 4: "Al límite" };

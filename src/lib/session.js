@@ -5,7 +5,7 @@ import BUILTIN_QUESTIONS from "../../Questions/naut-preguntas-2026-06-18.json";
 import EXERCISES from "../../Questions/exercises.json";
 import {
   DIFFICULTIES, SESSION_TEMPLATES, PHASE_EX_MAP, PHASE_Q_MAP, SCHEMA_VERSION, LS,
-  CAT_ORDER,
+  CAT_ORDER, Q_TYPE_MAP,
 } from "./constants.js";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -28,6 +28,8 @@ export function normalizeQuestion(q) {
     d:        typeof q.d === "string" ? q.d : "",
     tags:     Array.isArray(q.tags) ? q.tags : [],
     difficulty: typeof q.difficulty === "number" ? q.difficulty : null,
+    type:     Q_TYPE_MAP[q.type] ? q.type : "recall",
+    steps:    Array.isArray(q.steps) ? q.steps.map(String) : [],
   };
 }
 
@@ -46,6 +48,28 @@ export function getMaxId(allQ) {
 export function nextCustomId(allQ) {
   const customIds = allQ.filter(q => q.id < 0).map(q => q.id);
   return customIds.length ? Math.min(...customIds) - 1 : -1;
+}
+
+// Per-question timer: override explícito (q.timeLimit) o multiplicador por tipo.
+// Las preguntas procedurales (sequence/invalid/filter) reciben más tiempo.
+export function questionTimer(base, q) {
+  if (q?.timeLimit && q.timeLimit > 0) return q.timeLimit;
+  const mult = Q_TYPE_MAP[q?.type]?.timerMult ?? 1;
+  return Math.round(base * mult);
+}
+
+// Shuffle determinista de steps basado en el id de la pregunta (estable entre renders).
+export function shuffleSteps(steps, seed) {
+  if (!Array.isArray(steps) || steps.length <= 1) return steps ? [...steps] : [];
+  const indices = steps.map((_, i) => i);
+  // PRNG simple (mulberry32) con seed = id de la pregunta.
+  let s = (seed | 0) || 1;
+  const rand = () => { s = (s + 0x6D2B79F5) | 0; let t = Math.imul(s ^ (s >>> 15), 1 | s); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  return indices.map(i => steps[i]);
 }
 
 // ─── spaced repetition (SM-2-lite) ──────────────────────────────────────────
@@ -182,6 +206,7 @@ export function buildSession(templateKey, role, difficultyId, allQ, opts) {
       phaseColor: "#34D399",
       questions,
       questionTimer: 30,
+      questionTimers: questions.map(q => questionTimer(30, q)),
       isWalk: true,
     });
     return rounds;
@@ -210,6 +235,7 @@ export function buildSession(templateKey, role, difficultyId, allQ, opts) {
       phaseColor: "#FBBF24",
       questions,
       questionTimer: effectiveSprintTime,
+      questionTimers: questions.map(q => questionTimer(effectiveSprintTime, q)),
     });
     return rounds;
   }
@@ -236,6 +262,7 @@ export function buildSession(templateKey, role, difficultyId, allQ, opts) {
       phaseColor: "#F472B6",
       questions,
       questionTimer: effectiveSprintTime,
+      questionTimers: questions.map(q => questionTimer(effectiveSprintTime, q)),
       isRepaso: true,
     });
     return rounds;
@@ -251,6 +278,7 @@ export function buildSession(templateKey, role, difficultyId, allQ, opts) {
         phaseColor: phase.color,
         questions,
         questionTimer: effectiveSprintTime,
+        questionTimers: questions.map(q => questionTimer(effectiveSprintTime, q)),
       });
       return;
     }
@@ -279,7 +307,7 @@ export function buildSession(templateKey, role, difficultyId, allQ, opts) {
         exercise: ex,
         restSeconds: diff.restSeconds,
         question,
-        questionTimer: isWarm ? 30 : diff.qTimer,
+        questionTimer: isWarm ? questionTimer(30, question) : questionTimer(diff.qTimer, question),
         fatigueLevel: Math.max(1, fatigueLevel),
         dualTask,
       });
@@ -302,24 +330,37 @@ export function downloadJSON(data, filename) {
 
 export function validateImportedQuestions(raw) {
   if (!Array.isArray(raw)) throw new Error("Debe ser un array JSON");
-  const validCats  = ["NAV", "MAN", "DEC", "REG", "SIT"];
-  const validRoles = ["ALL", "GEN", "MAY", "PRO"];
+  const validCats  = CAT_ORDER;
+  const validRoles = ["ALL", "GEN", "MAY", "PRO", "TAC", "TIM", "PIT", "NAVEG", "TOD"];
+  const validTypes = ["recall", "sequence", "invalid", "filter"];
   return raw.map((item, idx) => {
     if (typeof item.cat !== "string" || !validCats.includes(item.cat))
-      throw new Error("Item " + (idx + 1) + ": cat debe ser NAV/MAN/DEC/REG/SIT");
+      throw new Error("Item " + (idx + 1) + ": cat debe ser uno de " + validCats.join("/"));
     if (typeof item.q !== "string" || !item.q.trim())
       throw new Error("Item " + (idx + 1) + ": q (pregunta) es obligatorio");
     if (typeof item.a !== "string" || !item.a.trim())
       throw new Error("Item " + (idx + 1) + ": a (respuesta) es obligatorio");
+    const type = validTypes.includes(item.type) ? item.type : "recall";
+    const steps = Array.isArray(item.steps) ? item.steps.map(String) : [];
+    const invalidIndex = Number.isInteger(item.invalidIndex) && item.invalidIndex >= 0 && item.invalidIndex < steps.length
+      ? item.invalidIndex : null;
+    const validMask = Array.isArray(item.validMask) && item.validMask.length === steps.length
+      ? item.validMask.map(Boolean) : null;
+    const timeLimit = typeof item.timeLimit === "number" && item.timeLimit > 0 ? item.timeLimit : null;
     return {
       cat:    item.cat,
       role:   validRoles.includes(item.role) ? item.role : "ALL",
-      fatigue: [1, 2, 3].includes(item.fatigue) ? item.fatigue : 1,
+      fatigue: [1, 2, 3, 4].includes(item.fatigue) ? item.fatigue : 1,
       q:      item.q.trim(),
       a:      item.a.trim(),
       d:      typeof item.d === "string" ? item.d.trim() : "",
       tags:   Array.isArray(item.tags) ? item.tags.map(String) : [],
       difficulty: [1,2,3,4,5].includes(item.difficulty) ? item.difficulty : null,
+      type,
+      steps,
+      invalidIndex,
+      validMask,
+      timeLimit,
     };
   });
 }

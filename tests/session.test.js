@@ -11,6 +11,9 @@ import {
   categoryWeights,
   weightedShuffle,
   validateImportedQuestions,
+  shuffleSteps,
+  questionTimer,
+  buildSession,
 } from "../src/lib/session.js";
 
 // ─── shuffle ───────────────────────────────────────────────────────────────
@@ -214,5 +217,131 @@ describe("validateImportedQuestions", () => {
   it("defaults invalid fatigue to 1", () => {
     const out = validateImportedQuestions([{ cat: "NAV", q: "q", a: "a", fatigue: 99 }]);
     expect(out[0].fatigue).toBe(1);
+  });
+});
+
+// ─── procedural question types (type/steps) ────────────────────────────────
+describe("normalizeQuestion — type/steps", () => {
+  it("defaults type to recall and steps to []", () => {
+    const q = normalizeQuestion({ id: 1, cat: "NAV", q: "x", a: "y" });
+    expect(q.type).toBe("recall");
+    expect(q.steps).toEqual([]);
+  });
+
+  it("preserves valid type and steps", () => {
+    const q = normalizeQuestion({ id: 1, cat: "MAN", q: "x", a: "y", type: "sequence", steps: ["a", "b"] });
+    expect(q.type).toBe("sequence");
+    expect(q.steps).toEqual(["a", "b"]);
+  });
+
+  it("falls back invalid type to recall", () => {
+    const q = normalizeQuestion({ id: 1, cat: "MAN", q: "x", a: "y", type: "bogus" });
+    expect(q.type).toBe("recall");
+  });
+});
+
+describe("validateImportedQuestions — procedural fields", () => {
+  it("accepts type sequence with steps", () => {
+    const out = validateImportedQuestions([{ cat: "MAN", q: "q", a: "a", type: "sequence", steps: ["x", "y"] }]);
+    expect(out[0].type).toBe("sequence");
+    expect(out[0].steps).toEqual(["x", "y"]);
+  });
+
+  it("accepts type invalid with invalidIndex", () => {
+    const out = validateImportedQuestions([{ cat: "MAN", q: "q", a: "a", type: "invalid", steps: ["a", "b", "c"], invalidIndex: 1 }]);
+    expect(out[0].type).toBe("invalid");
+    expect(out[0].invalidIndex).toBe(1);
+  });
+
+  it("accepts type filter with validMask", () => {
+    const out = validateImportedQuestions([{ cat: "MAN", q: "q", a: "a", type: "filter", steps: ["a", "b"], validMask: [true, false] }]);
+    expect(out[0].type).toBe("filter");
+    expect(out[0].validMask).toEqual([true, false]);
+  });
+
+  it("defaults unknown type to recall", () => {
+    const out = validateImportedQuestions([{ cat: "NAV", q: "q", a: "a", type: "bogus" }]);
+    expect(out[0].type).toBe("recall");
+  });
+
+  it("rejects invalidIndex out of range", () => {
+    const out = validateImportedQuestions([{ cat: "MAN", q: "q", a: "a", type: "invalid", steps: ["a"], invalidIndex: 5 }]);
+    expect(out[0].invalidIndex).toBeNull();
+  });
+
+  it("accepts new cats (TRIM/TACT/METEO/SEG)", () => {
+    const out = validateImportedQuestions([{ cat: "TRIM", q: "q", a: "a" }]);
+    expect(out[0].cat).toBe("TRIM");
+  });
+
+  it("accepts new roles (TAC/TIM/PIT/NAVEG)", () => {
+    const out = validateImportedQuestions([{ cat: "NAV", q: "q", a: "a", role: "TAC" }]);
+    expect(out[0].role).toBe("TAC");
+  });
+});
+
+// ─── shuffleSteps ──────────────────────────────────────────────────────────
+describe("shuffleSteps", () => {
+  it("returns same elements in possibly different order", () => {
+    const steps = ["a", "b", "c", "d"];
+    const out = shuffleSteps(steps, 42);
+    expect(out.sort()).toEqual(steps);
+  });
+
+  it("is deterministic for same seed", () => {
+    const steps = ["a", "b", "c", "d", "e"];
+    expect(shuffleSteps(steps, 7)).toEqual(shuffleSteps(steps, 7));
+  });
+
+  it("handles empty and single-element arrays", () => {
+    expect(shuffleSteps([], 1)).toEqual([]);
+    expect(shuffleSteps(["x"], 1)).toEqual(["x"]);
+  });
+});
+
+// ─── questionTimer ─────────────────────────────────────────────────────────
+describe("questionTimer", () => {
+  it("returns base for recall", () => {
+    expect(questionTimer(10, { type: "recall" })).toBe(10);
+  });
+
+  it("multiplies by type (sequence x1.5)", () => {
+    expect(questionTimer(10, { type: "sequence" })).toBe(15);
+  });
+
+  it("multiplies by type (invalid x1.3)", () => {
+    expect(questionTimer(10, { type: "invalid" })).toBe(13);
+  });
+
+  it("honors explicit timeLimit override", () => {
+    expect(questionTimer(10, { type: "sequence", timeLimit: 40 })).toBe(40);
+  });
+
+  it("defaults to base for unknown type", () => {
+    expect(questionTimer(10, { type: "bogus" })).toBe(10);
+  });
+});
+
+// ─── buildSession ──────────────────────────────────────────────────────────
+describe("buildSession", () => {
+  const allQ = [
+    { id: 1, cat: "NAV", role: "ALL", fatigue: 1, q: "q1", a: "a1", type: "recall" },
+    { id: 2, cat: "MAN", role: "ALL", fatigue: 2, q: "q2", a: "a2", type: "sequence", steps: ["x", "y"] },
+    { id: 3, cat: "DEC", role: "ALL", fatigue: 1, q: "q3", a: "a3", type: "recall" },
+  ];
+
+  it("builds a custom sprint round with questionTimers array", () => {
+    const rounds = buildSession("custom", "ALL", "hard", allQ, { cats: ["NAV", "MAN", "DEC"], count: 3 });
+    expect(rounds.length).toBe(1);
+    expect(rounds[0].type).toBe("sprint");
+    expect(Array.isArray(rounds[0].questionTimers)).toBe(true);
+    expect(rounds[0].questionTimers.length).toBe(rounds[0].questions.length);
+  });
+
+  it("applies timer multiplier for sequence questions", () => {
+    const rounds = buildSession("custom", "ALL", "hard", allQ, { cats: ["MAN"], count: 1 });
+    const seqTimer = rounds[0].questionTimers[0];
+    const base = rounds[0].questionTimer;
+    expect(seqTimer).toBe(Math.round(base * 1.5));
   });
 });
