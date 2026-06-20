@@ -138,13 +138,73 @@ Ver `./references/question-schema.md` para el detalle completo. Resumen:
   trimado de spinnaker en viento flojo", etc.
 - Devolver **solo el array JSON**, sin prose explicativa (el agente lo consume).
 
+### 3.5. Gate de autocontención (obligatorio antes de escribir cualquier `q`)
+
+Antes de aceptar una pregunta como terminada — en CUALQUIER modo (Generar,
+Ingerir, Runtime) — aplicar esta prueba a cada `q` individualmente:
+
+**¿Puede alguien que NUNCA leyó el documento fuente entender e imaginar la
+escena completa solo leyendo `q`?**
+
+Esto importa especialmente para preguntas extraídas de un subtítulo de
+documento (patrón `## Concepto` → pregunta directa). El subtítulo de un doc
+SIEMPRE asume el contexto del párrafo que lo rodea; una pregunta extraída
+de un subtítulo sin reconstruir ese contexto pierde la escena.
+
+Clasificar cada `q` candidata en una de tres categorías antes de aceptarla:
+
+1. **Definición/función pura** ("¿Qué controla el outhaul?", "¿Qué mide la
+   corredera?") → OK sin escena. No requiere viento/rumbo/vela.
+
+2. **Relación causal universal** ("Más profundidad → ¿qué genera?") → OK
+   sin escena SOLO SI la relación es verdaderamente incondicional (no
+   depende del punto de vela, viento, ni rumbo). Si la respuesta que estás
+   por escribir empieza con "depende de..." o "solo cuando...", la pregunta
+   necesita esa condición explícita en `q`, no escondida en `a`.
+
+3. **Diagnóstico/síntoma/acción recomendada** ("¿Síntoma de X?",
+   "¿Diagnóstico ante Y?", "¿Qué hacer si Z?") → NUNCA sin escena. Estas
+   SIEMPRE necesitan: qué vela, qué viento/rumbo (aproximado está bien:
+   "8-25kn" es el rango de realismo ya definido en Criterios de calidad), y
+   qué se observó. Si no podés escribir esa escena en una línea, la pregunta
+   no está lista — volvé al documento fuente y leé el párrafo completo, no
+   solo el subtítulo.
+
+**Chequeo adicional — una pregunta, un hecho:** si al escribir `a` te
+encontrás listando síntomas/acciones de MÁS DE UNA vela o situación
+distinta (ej. "lanitas caídas, spi colapsando, mayor sobretrimada" — tres
+velas en una respuesta), es señal de que estás comprimiendo varias
+preguntas en una. Dividir en preguntas separadas, una por vela/situación,
+cada una con su propia escena. No fusionar para "ahorrar" — cada pregunta
+debe poder responderse pensando en UNA escena, no en una lista genérica de
+síntomas de toda la categoría.
+
+**Ejemplo de rechazo y reescritura:**
+
+❌ Mal (subtítulo directo, sin escena, mezcla 3 velas):
+```json
+{ "q": "Ángulo de ataque demasiado grande · ¿Síntoma?",
+  "a": "Lanitas caídas, spi colapsando, mayor sobretrimada" }
+```
+
+✅ Bien (escena concreta, una vela por pregunta):
+```json
+{ "q": "Ceñida, 10kn, escota de génova muy cazada\n→ ¿Qué indican las lanitas?",
+  "a": "Lanita interior cae (señal de pérdida)" }
+```
+
+Si tenés dudas sobre si una pregunta pasa este gate, preferí pecar de
+agregar una línea de contexto de más antes que dejarla abstracta — el costo
+de una línea extra es mucho menor que el de una pregunta sin sentido en la
+sesión de un usuario real.
+
 ### 4. Criterios de calidad (todas las preguntas)
 
 - **En español**, terminologia nautica de regata (rumbo, escora, borneo, orza,
   ceñida, traverso, largo, popa, layline, VMG, VMC, spinnaker, genoa, mayor,
   proel, popa, escota, driza, rizos, etc.).
 - **`q` concisa**: puede usar `\n` para separar datos (ej. viento, rumbo, angulo).
-- **`a` concisa**: un numero, un rumbo, o una frase corta. No parrafos.
+- **`a` concisa**: un numero, un rumbo, o una frase corta (<80 chars). No parrafos.
 - **`d` obligatoria**: mostrar el calculo o el porque en una linea
   (ej. `"9/6=1.5h"`, `"Dec W → sumar al rumbo verdadero"`).
 - **Realismo de regata**: situaciones plausibles (viento 8-25 kn, olas, borneos,
@@ -156,6 +216,26 @@ Ver `./references/question-schema.md` para el detalle completo. Resumen:
 - **difficulty** (opcional): 1=facil, 2=media, 3=dificil, 4=avanzada. `null` si
   no se quiere asignar.
 - **source obligatorio**: toda pregunta debe indicar su origen.
+
+### Reglas semánticas obligatorias (ver ./references/validation-rules.md)
+
+El banco se valida con `npm run validate` (12 reglas semánticas). Las preguntas
+generadas deben pasar el validador sin errores. Reglas clave:
+
+- **R1_ROLE_VELA_MISMATCH**: el rol debe responder sobre su vela. Si la pregunta
+  es de aerodinámica general (afecta genoa, mayor y spi), usar `role: "ALL"`.
+  - GEN → genoa/escota/patín/brisa/papel/entrenador/baten/sag
+  - MAY → mayor/cataviento/traveller/cunningham/outhaul/contra/amantillo
+  - PRO → spinnaker/tangón/braza/gratil/driza
+- **R2_TRIM_NO_CONTEXT**: las preguntas de TRIM deben incluir contexto de
+  condición (viento, rumbo, ola, escora) o ser claramente conceptuales.
+  - Mal: "Ángulo de ataque demasiado grande · ¿Síntoma?"
+  - Bien: "Ceñida, 15 kn, ángulo de ataque demasiado grande · ¿Síntoma en genoa?"
+- **R4_MULTI_VELA_CONFUSION**: la respuesta no debe mezclar síntomas de múltiples
+  velas sin contexto. Si es de genoa, la respuesta es sobre genoa.
+  - Mal: "Lanitas caídas, spi colapsando, mayor sobretrimada"
+  - Bien: "Lanita interior cae" (si es de genoa)
+- **R11_DEBUG_ARTIFACT**: no incluir `wait`, `...`, ni notas de proceso interno.
 
 ### 5. Asignar IDs y armar el bloque (modos Generar e Ingerir)
 
@@ -171,7 +251,15 @@ Ver `./references/question-schema.md` para el detalle completo. Resumen:
 - **No** tocar `id` existentes.
 - Preservar el cierre `]` del array.
 
-### 7. Reportar (modos Generar e Ingerir)
+### 7. Validar (modos Generar e Ingerir)
+
+- Ejecutar `npm run validate` para validar semánticamente las preguntas nuevas.
+- Si hay errores (R1, R4, R6, R8, R9, R11, R12), corregir las preguntas antes
+  de confirmar.
+- Si hay warnings (R2, R3, R5, R7, R10), revisar y mejorar si es posible.
+- Reportar el resultado del validador en el resumen.
+
+### 8. Reportar (modos Generar e Ingerir)
 
 Devolver un resumen corto:
 - Cantidad agregada y rango de IDs nuevos.
@@ -196,6 +284,7 @@ Devolver un resumen corto:
 ## Referencias
 
 - [Schema y taxonomia completa](./references/question-schema.md)
+- [Reglas de validación semántica](./references/validation-rules.md)
 - [Ejemplos por categoria](./references/examples.md)
 - [Como describir situaciones para ingerir](./references/input-guide.md)
 - [Ejemplos de preguntas procedurales](./references/procedural-examples.md)
