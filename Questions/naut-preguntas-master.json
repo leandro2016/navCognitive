@@ -99,7 +99,7 @@
     "id": 7,
     "cat": "NAV",
     "role": "NAVEG",
-    "fatigue": 3,
+    "fatigue": 2,
     "q": "RV = 085° · Var = 6°W · Desvío = 2°E\n→ Rumbo de compás?",
     "a": "081° C",
     "d": "085-6=079 RM; 079+2=081 RC",
@@ -116,7 +116,7 @@
     "id": 8,
     "cat": "NAV",
     "role": "NAVEG",
-    "fatigue": 3,
+    "fatigue": 2,
     "q": "RV = 270° · Var = 10°E · Desvío = 4°W\n→ Rumbo de compás?",
     "a": "256° C",
     "d": "270-10=260 RM; 260-4=256 RC",
@@ -275,7 +275,7 @@
     "id": 18,
     "cat": "NAV",
     "role": "NAVEG",
-    "fatigue": 3,
+    "fatigue": 2,
     "q": "D = 20 mn · SOG = 8 kn\n→ ETA?",
     "a": "2h 30min",
     "d": "20/8 = 2.5h",
@@ -291,7 +291,7 @@
     "id": 19,
     "cat": "NAV",
     "role": "NAVEG",
-    "fatigue": 3,
+    "fatigue": 2,
     "q": "D = 20 mn · SOG = 4 kn\n→ ETA?",
     "a": "5 h",
     "d": "20/4 = 5",
@@ -449,7 +449,7 @@
     "cat": "MAN",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Toma de rizos · Fase preparados\n→ ¿Qué hace el proel?",
+    "q": "Toma de rizos · Ceñida, 18kn · Fase preparados\n→ ¿Qué hace el proel?",
     "a": "Va al palo, verifica puntos de rizo y recorrido libre",
     "d": "Proel verifica que todo esté libre antes de rizar",
     "tags": [
@@ -465,7 +465,7 @@
     "cat": "MAN",
     "role": "PIT",
     "fatigue": 2,
-    "q": "Toma de rizos · Fase preparados\n→ ¿Qué hace el copit?",
+    "q": "Toma de rizos · Ceñida, 18kn · Fase preparados\n→ ¿Qué hace el copit?",
     "a": "Aclara driza, saca de cornamuza, prepara amante de rizo",
     "d": "Copit deja driza lista y amante preparado",
     "tags": [
@@ -513,7 +513,7 @@
     "cat": "MAN",
     "role": "PIT",
     "fatigue": 3,
-    "q": "Toma de rizos · Al oír \"¡Rizo listo!\"\n→ ¿Qué hace el copit?",
+    "q": "Toma de rizos · Ceñida, 18kn · Al oír \"¡Rizo listo!\"\n→ ¿Qué hace el copit?",
     "a": "Cazar amante, izar driza, hacer firme",
     "d": "Re-izar para cargar el rizo y hacer firme",
     "tags": [
@@ -576,7 +576,7 @@
     "cat": "MAN",
     "role": "PIT",
     "fatigue": 3,
-    "q": "Trasluchada · ¿Qué hace el copit?",
+    "q": "Trasluchada · Popa, 15kn · ¿Qué hace el copit?",
     "a": "Cazar mayor al centro, pasar botavara, filar",
     "d": "Control de escota: llevar al centro, pasar, filar controlado",
     "tags": [
@@ -592,7 +592,7 @@
     "cat": "MAN",
     "role": "TIM",
     "fatigue": 2,
-    "q": "Trasluchada · ¿Qué hace el timonel?",
+    "q": "Trasluchada · Popa, 15kn · ¿Qué hace el timonel?",
     "a": "Derivar progresivo",
     "d": "Orzar → través → popa de forma progresiva",
     "tags": [
@@ -607,7 +607,7 @@
     "cat": "MAN",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Izado de spinnaker · Preparados\n→ ¿Qué hace el proel?",
+    "q": "Izado de spinnaker · Largo, 10kn · Preparados\n→ ¿Qué hace el proel?",
     "a": "Spi listo",
     "d": "Proel prepara el spinnaker para izar",
     "tags": [
@@ -719,7 +719,7 @@
     "cat": "MAN",
     "role": "TIM",
     "fatigue": 4,
-    "q": "Death roll en popa inestable\n→ ¿Qué hacer?",
+    "q": "Death roll · Popa inestable, 20kn · ¿Qué hacer?",
     "a": "Control suave del timón, cazar sotavento",
     "d": "Cazar escota sotavento estabiliza el spi",
     "tags": [
@@ -817,7 +817,7 @@
     "role": "PIT",
     "fatigue": 2,
     "type": "filter",
-    "q": "Toma de rizos · Al oír \"¡Rizo listo!\"\n→ Marcá qué hace el copit",
+    "q": "Toma de rizos · Ceñida, 18kn · Al oír \"¡Rizo listo!\"\n→ Marcá qué hace el copit",
     "a": "Cazar amante + Izar driza y hacer firme",
     "d": "El grito del proel dispara el re-izado; amante carga el rizo",
     "steps": [
@@ -884,7 +884,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 1,
-    "q": "Flujo adherido · ¿Qué síntomas produce?",
+    "q": "Ceñida, 10kn · Flujo adherido en velas\n→ ¿Qué síntomas produce?",
     "a": "Lanitas estables, barco acelera, timón equilibrado",
     "d": "Flujo adherido = máxima eficiencia",
     "tags": [
@@ -899,7 +899,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 2,
-    "q": "Flujo separado · ¿Qué síntomas produce?",
+    "q": "Ceñida, 12kn · Flujo separado en velas\n→ ¿Qué síntomas produce?",
     "a": "Lanitas caídas, vibraciones, pérdida de velocidad",
     "d": "Flujo separado = menor VMG",
     "tags": [
@@ -915,7 +915,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Stall (pérdida) en génova · ¿Síntoma principal?",
+    "q": "Ceñida, 12kn · Stall (pérdida) en génova\n→ ¿Síntoma principal?",
     "a": "Lanita interior cae",
     "d": "Flujo se separa en cara de barlovento",
     "tags": [
@@ -931,7 +931,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Stall en mayor · ¿Síntoma principal?",
+    "q": "Ceñida, 12kn · Stall en mayor\n→ ¿Síntoma principal?",
     "a": "Cataviento superior desaparece detrás de la vela",
     "d": "Baluma demasiado cerrada, flujo separado",
     "tags": [
@@ -947,7 +947,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Stall en spinnaker · ¿Síntoma principal?",
+    "q": "Largo, 12kn · Stall en spinnaker\n→ ¿Síntoma principal?",
     "a": "Colapso del gratil",
     "d": "Gratil pierde flujo adherido",
     "tags": [
@@ -979,7 +979,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Ángulo de ataque demasiado pequeño · ¿Síntoma?",
+    "q": "Ceñida, 8kn · Ángulo de ataque demasiado pequeño en génova\n→ ¿Síntoma?",
     "a": "Falta de potencia y aceleración",
     "d": "Vela demasiado abierta, poco ángulo",
     "tags": [
@@ -1025,7 +1025,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Poco twist · ¿Síntomas?",
+    "q": "Ceñida, 15kn · Poco twist en mayor\n→ ¿Síntomas?",
     "a": "Lanitas superiores problemáticas, escora excesiva",
     "d": "Cabeza trabaja demasiado cerrada",
     "tags": [
@@ -1040,7 +1040,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Mucho twist · ¿Síntomas?",
+    "q": "Ceñida, 8kn · Mucho twist en mayor\n→ ¿Síntomas?",
     "a": "Menor potencia, menor altura, menor escora",
     "d": "Cabeza se descarga",
     "tags": [
@@ -1145,7 +1145,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Más sag en el estay · ¿Qué efecto produce en la génova?",
+    "q": "Ceñida, 8kn · Más sag en el estay de proa\n→ ¿Qué efecto produce en la génova?",
     "a": "Más profundidad, más potencia",
     "d": "Estay más curvo = génova más profundo",
     "tags": [
@@ -1161,7 +1161,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Menos sag · ¿Qué efecto produce?",
+    "q": "Ceñida, 18kn · Menos sag en el estay\n→ ¿Qué efecto produce?",
     "a": "Génova más plano, más control",
     "d": "Estay tenso = vela plana, menos escora",
     "tags": [
@@ -1177,7 +1177,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 2,
-    "q": "Slot muy cerrado · ¿Qué efecto produce?",
+    "q": "Ceñida, 12kn · Slot muy cerrado entre génova y mayor\n→ ¿Qué efecto produce?",
     "a": "Estrangula el flujo",
     "d": "Espacio entre génova y mayor demasiado pequeño",
     "tags": [
@@ -1285,7 +1285,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 1,
-    "q": "Profundidad de la mayor · ¿Control principal?",
+    "q": "Ceñida, 10kn · Profundidad de la mayor · ¿Control principal?",
     "a": "Outhaul",
     "d": "Outhaul regula curvatura del pie",
     "tags": [
@@ -1301,7 +1301,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Ubicación de la profundidad en mayor · ¿Control principal?",
+    "q": "Ceñida, 10kn · Ubicación de la profundidad en mayor · ¿Control principal?",
     "a": "Cunningham",
     "d": "Cunningham mueve el draft adelante o atrás",
     "tags": [
@@ -1317,7 +1317,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Más Cunningham · ¿Qué produce?",
+    "q": "Ceñida, 15kn · Más Cunningham en mayor\n→ ¿Qué produce?",
     "a": "Profundidad adelantada, menor potencia, más estabilidad",
     "d": "Tira el draft hacia adelante",
     "tags": [
@@ -1332,7 +1332,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Escota vs carro de mayor · ¿Diferencia fundamental?",
+    "q": "Ceñida, 12kn · Escota vs carro de mayor\n→ ¿Diferencia fundamental?",
     "a": "Escota afecta ángulo y twist; carro afecta ángulo",
     "d": "Carro modifica ángulo sin alterar tanto el twist",
     "tags": [
@@ -1348,7 +1348,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Necesitás modificar ángulo sin alterar twist\n→ ¿Qué usás?",
+    "q": "Ceñida, 12kn · Necesitás modificar ángulo sin alterar twist en mayor\n→ ¿Qué usás?",
     "a": "Carro",
     "d": "Carro = ángulo sin tocar baluma",
     "tags": [
@@ -1364,7 +1364,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Contra (vang) · ¿Cuándo es más importante?",
+    "q": "Largo, 12kn · Contra (vang) · ¿Cuándo es más importante?",
     "a": "Desde través hacia popa",
     "d": "En ceñida la escota controla; en popa el vang",
     "tags": [
@@ -1380,7 +1380,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Más contra (vang) · ¿Qué produce?",
+    "q": "Largo, 12kn · Más contra (vang) en mayor\n→ ¿Qué produce?",
     "a": "Menos twist, baluma más cerrada",
     "d": "Vang cierra la baluma",
     "tags": [
@@ -1396,7 +1396,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Amantillo · ¿Cuándo se libera generalmente?",
+    "q": "Ceñida, regata normal · Amantillo\n→ ¿Cuándo se libera generalmente?",
     "a": "Siempre (en regata normal)",
     "d": "Se libera salvo excepciones",
     "tags": [
@@ -1474,7 +1474,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 1,
-    "q": "Situación ideal de las lanitas",
+    "q": "Ceñida, 10kn · Situación ideal de las lanitas del génova",
     "a": "Ambas horizontales y paralelas",
     "d": "Flujo adherido, ángulo correcto",
     "tags": [
@@ -1490,7 +1490,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Lanita interior levantada · ¿Qué significa?",
+    "q": "Ceñida, 12kn · Lanita interior del génova levantada\n→ ¿Qué significa?",
     "a": "Demasiado cazada, inicio de pérdida",
     "d": "Exceso de ángulo de ataque",
     "tags": [
@@ -1506,7 +1506,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Lanita interior levantada · ¿Acción?",
+    "q": "Ceñida, 12kn · Lanita interior del génova levantada\n→ ¿Acción?",
     "a": "Filar escota o caer levemente",
     "d": "Reducir ángulo de ataque",
     "tags": [
@@ -1522,7 +1522,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Lanita exterior levantada · ¿Qué significa?",
+    "q": "Ceñida, 12kn · Lanita exterior del génova levantada\n→ ¿Qué significa?",
     "a": "Demasiado abierta, falta ángulo",
     "d": "Falta ángulo de ataque",
     "tags": [
@@ -1538,7 +1538,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Lanita exterior levantada · ¿Acción?",
+    "q": "Ceñida, 12kn · Lanita exterior del génova levantada\n→ ¿Acción?",
     "a": "Cazar escota u orzar",
     "d": "Aumentar ángulo de ataque",
     "tags": [
@@ -1554,7 +1554,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Sag del génova · ¿Control principal?",
+    "q": "Ceñida, 10kn · Sag del génova · ¿Control principal?",
     "a": "Burdas",
     "d": "Burdas tensionan el estay",
     "tags": [
@@ -1570,7 +1570,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Ubicación de la profundidad en génova · ¿Control principal?",
+    "q": "Ceñida, 10kn · Ubicación de la profundidad en génova · ¿Control principal?",
     "a": "Driza",
     "d": "Más tensión de driza = draft adelantado",
     "tags": [
@@ -1586,7 +1586,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Twist del génova · ¿Control principal?",
+    "q": "Ceñida, 10kn · Twist del génova · ¿Control principal?",
     "a": "Punto de escota",
     "d": "Punto adelantado = menos twist",
     "tags": [
@@ -1602,7 +1602,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Punto de escota adelantado · ¿Qué produce?",
+    "q": "Ceñida, 12kn · Punto de escota adelantado del génova · ¿Qué produce?",
     "a": "Menos twist, más tensión de baluma, más trabajo arriba",
     "d": "Trabaja más la parte alta",
     "tags": [
@@ -1618,7 +1618,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Punto de escota atrasado · ¿Qué produce?",
+    "q": "Ceñida, 12kn · Punto de escota atrasado del génova · ¿Qué produce?",
     "a": "Más twist, baluma abierta, descarga de la cabeza",
     "d": "Descarga la parte alta",
     "tags": [
@@ -1634,7 +1634,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Lanita superior entra en pérdida primero · ¿Diagnóstico?",
+    "q": "Ceñida, 12kn · Lanita superior del génova entra en pérdida primero\n→ ¿Diagnóstico?",
     "a": "Falta twist",
     "d": "Cabeza demasiado cerrada",
     "tags": [
@@ -1650,7 +1650,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Lanita inferior entra en pérdida primero · ¿Diagnóstico?",
+    "q": "Ceñida, 12kn · Lanita inferior del génova entra en pérdida primero\n→ ¿Diagnóstico?",
     "a": "Exceso de twist",
     "d": "Parte baja trabaja demasiado cerrada",
     "tags": [
@@ -1666,7 +1666,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Todas las lanitas en pérdida · ¿Diagnóstico?",
+    "q": "Ceñida, 15kn · Todas las lanitas del génova en pérdida\n→ ¿Diagnóstico?",
     "a": "Exceso de ángulo de ataque",
     "d": "Filar escota o caer algunos grados",
     "tags": [
@@ -1682,7 +1682,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 4,
-    "q": "Todas las lanitas bien pero barco lento · ¿Diagnóstico?",
+    "q": "Ceñida, 10kn · Todas las lanitas del génova bien pero barco lento\n→ ¿Diagnóstico?",
     "a": "Problema de forma (no de flujo)",
     "d": "Revisar sag, profundidad, ubicación",
     "tags": [
@@ -1698,7 +1698,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Mucha escora en génova · ¿Causas posibles?",
+    "q": "Ceñida, 18kn · Mucha escora en génova\n→ ¿Causas posibles?",
     "a": "Exceso de profundidad, exceso de sag, poco twist",
     "d": "Demasiada potencia sin descarga",
     "tags": [
@@ -1714,7 +1714,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Falta de potencia en génova · ¿Causas posibles?",
+    "q": "Ceñida, 6kn · Falta de potencia en génova\n→ ¿Causas posibles?",
     "a": "Poco sag, génova plano, draft adelantado",
     "d": "Poca forma = poca potencia",
     "tags": [
@@ -1730,7 +1730,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Barco frena en la ola · ¿Causas posibles en génova?",
+    "q": "Ceñida, 12kn con ola · Barco frena en la ola\n→ ¿Causas posibles en génova?",
     "a": "Velas planas, poco sag, twist insuficiente",
     "d": "Sin potencia para atravesar la ola",
     "tags": [
@@ -1778,7 +1778,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Spi demasiado cazado · ¿Síntomas?",
+    "q": "Largo, 15kn · Spi demasiado cazado\n→ ¿Síntomas?",
     "a": "Escondido detrás de la mayor, barco escorado, sin acelerar",
     "d": "Sobretrimado = lento",
     "tags": [
@@ -1793,7 +1793,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Spi demasiado filado · ¿Síntomas?",
+    "q": "Largo, 8kn · Spi demasiado filado\n→ ¿Síntomas?",
     "a": "Colapsos frecuentes, pérdida de potencia, oscilaciones",
     "d": "Falta de escota",
     "tags": [
@@ -1840,7 +1840,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Braza muy cazada · ¿Qué produce?",
+    "q": "Largo, 15kn · Braza muy cazada del spi\n→ ¿Qué produce?",
     "a": "Exceso de tensión, menor proyección, menor área efectiva",
     "d": "Tangón demasiado atrás reduce área",
     "tags": [
@@ -1870,7 +1870,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Spi colapsa arriba sistemáticamente · ¿Qué ajustar?",
+    "q": "Largo, 12kn · Spi colapsa arriba sistemáticamente\n→ ¿Qué ajustar?",
     "a": "Altura del tangón (subir o bajar según el barco)",
     "d": "Evaluar tangón para equilibrar el gratil",
     "tags": [
@@ -1886,7 +1886,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Spi nunca colapsa · ¿Diagnóstico?",
+    "q": "Largo, 15kn · Spi nunca colapsa\n→ ¿Diagnóstico?",
     "a": "Sobretrimado",
     "d": "Exceso de escota, vela demasiado cazada",
     "tags": [
@@ -1902,7 +1902,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Barco acelera y spi comienza a colapsar · ¿Causa?",
+    "q": "Largo, 12kn · Barco acelera y spi comienza a colapsar\n→ ¿Causa?",
     "a": "El viento aparente rotó hacia proa",
     "d": "Más velocidad = VA avanza, reajustar escota",
     "tags": [
@@ -2281,7 +2281,7 @@
     "cat": "REG",
     "role": "ALL",
     "fatigue": 2,
-    "q": "Encuentro de frente (motor) · ¿Qué hacer?",
+    "q": "Navegación costera · Encuentro de frente (motor) · ¿Qué hacer?",
     "a": "Ambos alteran rumbo a estribor",
     "d": "Regla 14 COLREG",
     "tags": [
@@ -3089,7 +3089,7 @@
     "cat": "METEO",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Racha en ceñida · ¿Qué hacer con el trimado?",
+    "q": "Ceñida, 15kn · Racha · ¿Qué hacer con el trimado?",
     "a": "Retrimar",
     "d": "Más escora y viento aparente requieren ajuste",
     "tags": [
@@ -3353,7 +3353,7 @@
     "cat": "SIT",
     "role": "TIM",
     "fatigue": 3,
-    "q": "Priorización bajo presión · ¿Qué hacer primero?",
+    "q": "Ceñida, bajo presión · Priorización · ¿Qué hacer primero?",
     "a": "Velocidad, luego altura",
     "d": "Sin velocidad nada funciona",
     "tags": [
@@ -3415,7 +3415,7 @@
     "cat": "SEG",
     "role": "TIM",
     "fatigue": 3,
-    "q": "Canal angosto con buque restringido · ¿Qué hacer?",
+    "q": "Canal angosto, noche · Buque restringido · ¿Qué hacer?",
     "a": "No impedir el paso del buque",
     "d": "Regla 9 COLREG",
     "tags": [
@@ -3461,7 +3461,7 @@
     "cat": "SEG",
     "role": "TIM",
     "fatigue": 4,
-    "q": "Noche · Veo roja y verde de frente\n→ ¿Qué hacer?",
+    "q": "Noche · Veo roja y verde de frente · ¿Qué hacer?",
     "a": "Asumir encuentro de frente, alterar a estribor",
     "d": "Riesgo máximo, regla 14 COLREG",
     "tags": [
@@ -3521,7 +3521,7 @@
   {
     "cat": "NAV",
     "role": "NAVEG",
-    "fatigue": 3,
+    "fatigue": 2,
     "q": "Salida 09:00 · D = 18 mn · V = 6 kn\n→ ETA?",
     "a": "12:00",
     "d": "18/6 = 3h → 09:00 + 3h",
@@ -3536,7 +3536,7 @@
   {
     "cat": "NAV",
     "role": "NAVEG",
-    "fatigue": 3,
+    "fatigue": 2,
     "q": "Salida 14:15 · D = 21 mn · V = 7 kn\n→ ETA?",
     "a": "17:15",
     "d": "21/7 = 3h → 14:15 + 3h",
@@ -3551,7 +3551,7 @@
   {
     "cat": "NAV",
     "role": "NAVEG",
-    "fatigue": 4,
+    "fatigue": 2,
     "q": "Salida 06:30 · D = 30 mn · V = 5 kn · Corriente adversa 1 kn\n→ ETA?",
     "a": "13:30",
     "d": "SOG=4 → 30/4=7.5h → 06:30+7:30",
@@ -3566,7 +3566,7 @@
   {
     "cat": "NAV",
     "role": "NAVEG",
-    "fatigue": 3,
+    "fatigue": 2,
     "q": "Corriente favorable 2 kn · STW = 5 kn · D = 28 mn\n→ ETA?",
     "a": "4 h",
     "d": "SOG=7 → 28/7 = 4h",
@@ -3611,9 +3611,9 @@
     "cat": "NAV",
     "role": "ALL",
     "fatigue": 2,
-    "q": "5 mn → ¿km?",
-    "a": "9.26 km",
-    "d": "5 × 1.852 = 9.26",
+    "q": "RV = 320° · Var = 8°W · Desvío = 3°E\n→ RC?",
+    "a": "315° C",
+    "d": "320-8=312 RM; 312+3=315 RC",
     "tags": [
       "milla-nautica"
     ],
@@ -3786,7 +3786,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 2,
-    "q": "Error: regular mirando solo la forma de la vela\n→ Corrección",
+    "q": "Ceñida, regata · Error: regular mirando solo la forma de la vela\n→ Corrección",
     "a": "Mirar siempre los indicadores de flujo",
     "d": "Lanitas/cataviento, no solo la forma",
     "tags": [
@@ -3801,7 +3801,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 2,
-    "q": "Error: intentar eliminar toda pérdida\n→ Corrección",
+    "q": "Ceñida, regata · Error: intentar eliminar toda pérdida\n→ Corrección",
     "a": "Navegar cerca del límite",
     "d": "La máxima potencia está cerca de la pérdida",
     "tags": [
@@ -3816,7 +3816,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 2,
-    "q": "Error: buscar máxima altura\n→ Corrección",
+    "q": "Ceñida, regata · Error: buscar máxima altura\n→ Corrección",
     "a": "Buscar máximo VMG",
     "d": "VMG > altura",
     "tags": [
@@ -3831,7 +3831,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 2,
-    "q": "Más potencia · ¿Ventajas y desventajas?",
+    "q": "Ceñida, 10kn · Más potencia · ¿Ventajas y desventajas?",
     "a": "Ventaja: aceleración/empuje · Desventaja: escora/arrastre",
     "d": "Compromiso potencia vs control",
     "tags": [
@@ -3846,8 +3846,8 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 2,
-    "q": "Más control · ¿Ventajas y desventajas?",
-    "a": "Ventaja: timón equilibrado/menor escora · Desventaja: menor potencia",
+    "q": "Ceñida, 18kn · Más control · ¿Ventajas y desventajas?",
+    "a": "Ventaja: timón equilibrado · Desventaja: menor potencia",
     "d": "Compromiso potencia vs control",
     "tags": [
       "control",
@@ -3861,7 +3861,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Viento liviano · Mayor\n→ ¿Objetivo de trimado?",
+    "q": "Ceñida, 6kn · Viento liviano · Mayor → ¿Objetivo de trimado?",
     "a": "Generar potencia",
     "d": "Más profundidad, menos cunningham, menos outhaul",
     "tags": [
@@ -3876,7 +3876,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Viento medio · Mayor\n→ ¿Objetivo?",
+    "q": "Ceñida, 12kn · Viento medio · Mayor → ¿Objetivo?",
     "a": "Máximo VMG",
     "d": "Forma equilibrada, trabajo fino sobre cataviento",
     "tags": [
@@ -3891,7 +3891,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Viento fuerte · Mayor\n→ ¿Ajustes?",
+    "q": "Ceñida, 20kn · Viento fuerte · Mayor → ¿Ajustes?",
     "a": "Más cunningham, más outhaul, más twist, menor escora",
     "d": "Control en viento fuerte",
     "tags": [
@@ -3906,7 +3906,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Mayor · Mucha escora\n→ Causas posibles",
+    "q": "Ceñida, 18kn · Mayor · Mucha escora\n→ Causas posibles",
     "a": "Exceso de profundidad, poco twist, exceso de ángulo",
     "d": "Demasiada potencia sin descarga",
     "tags": [
@@ -3921,7 +3921,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Mayor · Timón muy pesado\n→ Causas posibles",
+    "q": "Ceñida, 18kn · Mayor · Timón muy pesado\n→ Causas posibles",
     "a": "Mayor sobretrimada, baluma cerrada, exceso de profundidad",
     "d": "Baluma cerrada carga el timón",
     "tags": [
@@ -3936,7 +3936,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Mayor · Barco lento en ola\n→ Causas posibles",
+    "q": "Ceñida, 12kn con ola · Mayor · Barco lento en ola\n→ Causas posibles",
     "a": "Mayor demasiado plana, profundidad insuficiente",
     "d": "Sin potencia para atravesar la ola",
     "tags": [
@@ -3951,7 +3951,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Cataviento desaparece constantemente\n→ Revisar",
+    "q": "Ceñida, 15kn · Cataviento desaparece constantemente\n→ Revisar",
     "a": "Escota, contra, carro",
     "d": "Falta twist",
     "tags": [
@@ -3966,7 +3966,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Cataviento vuela permanentemente\n→ Revisar",
+    "q": "Ceñida, 8kn · Cataviento vuela permanentemente\n→ Revisar",
     "a": "Escota, contra",
     "d": "Exceso de twist",
     "tags": [
@@ -3981,7 +3981,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Slot muy cerrado · ¿Qué puede pasar?",
+    "q": "Ceñida, 12kn · Slot muy cerrado\n→ ¿Qué puede pasar?",
     "a": "Estrangular flujo, perjudicar ambas velas",
     "d": "Mayor y génova se afectan mutuamente",
     "tags": [
@@ -3996,7 +3996,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Slot muy abierto · ¿Qué efecto?",
+    "q": "Ceñida, 12kn · Slot muy abierto\n→ ¿Qué efecto?",
     "a": "Reduce interacción entre velas",
     "d": "Equilibrio necesario, no mínimo",
     "tags": [
@@ -4010,7 +4010,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Lanitas inferior, media y superior rompen simultáneamente\n→ Diagnóstico",
+    "q": "Ceñida, 12kn · Lanitas inferior, media y superior del génova rompen simultáneamente\n→ Diagnóstico",
     "a": "Twist equilibrado",
     "d": "Mantener regulación",
     "tags": [
@@ -4026,7 +4026,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Lanita superior en pérdida primero\n→ Acción",
+    "q": "Ceñida, 12kn · Lanita superior del génova en pérdida primero\n→ Acción",
     "a": "Mover punto de escota hacia popa, verificar tensión de escota",
     "d": "Falta twist, cabeza cerrada",
     "tags": [
@@ -4041,7 +4041,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Lanita inferior en pérdida primero\n→ Acción",
+    "q": "Ceñida, 12kn · Lanita inferior del génova en pérdida primero\n→ Acción",
     "a": "Mover punto de escota hacia proa",
     "d": "Exceso de twist, parte baja cerrada",
     "tags": [
@@ -4056,7 +4056,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Todas las lanitas en pérdida\n→ Acción",
+    "q": "Ceñida, 15kn · Todas las lanitas del génova en pérdida\n→ Acción",
     "a": "Filar escota o caer algunos grados",
     "d": "Exceso de ángulo de ataque",
     "tags": [
@@ -4086,7 +4086,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Lanitas medias · ¿Por qué son las más confiables?",
+    "q": "Ceñida, 10kn · Lanitas medias del génova · ¿Por qué son las más confiables?",
     "a": "Representan el comportamiento general del génova",
     "d": "No tan sensibles como superiores ni inferiores",
     "tags": [
@@ -4101,7 +4101,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Más tensión de driza en génova\n→ ¿Qué produce?",
+    "q": "Ceñida, 12kn · Más tensión de driza en génova → ¿Qué produce?",
     "a": "Profundidad adelantada",
     "d": "Draft se mueve hacia el gratil",
     "tags": [
@@ -4116,7 +4116,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Menos tensión de driza\n→ ¿Qué produce?",
+    "q": "Ceñida, 8kn · Menos tensión de driza en génova → ¿Qué produce?",
     "a": "Profundidad atrasada",
     "d": "Draft se mueve hacia atrás, más potencia",
     "tags": [
@@ -4131,7 +4131,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Spi en viento medio · ¿Método?",
+    "q": "Largo, 12kn · Spi en viento medio · ¿Método?",
     "a": "Trabajar permanentemente sobre el borde del colapso",
     "d": "Máximo VMG",
     "tags": [
@@ -4146,7 +4146,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Spi en viento fuerte · ¿Riesgos?",
+    "q": "Largo, 20kn · Spi en viento fuerte · ¿Riesgos?",
     "a": "Rolidos, broach, pérdida de gobierno",
     "d": "Priorizar estabilidad y coordinación",
     "tags": [
@@ -4161,7 +4161,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Spi · Gratil nunca colapsa\n→ Causas posibles",
+    "q": "Largo, 15kn · Spi · Gratil nunca colapsa\n→ Causas posibles",
     "a": "Exceso de escota, rumbo demasiado alto",
     "d": "Sobretrimado",
     "tags": [
@@ -4176,7 +4176,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Spi · Gratil colapsa permanentemente\n→ Causas posibles",
+    "q": "Largo, 8kn · Spi · Gratil colapsa permanentemente\n→ Causas posibles",
     "a": "Escota demasiado filada, rumbo demasiado bajo",
     "d": "Falta de escota",
     "tags": [
@@ -4191,7 +4191,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Spi se esconde detrás de la mayor\n→ Causas",
+    "q": "Largo, 15kn · Spi se esconde detrás de la mayor\n→ Causas",
     "a": "Exceso de escota, ángulo incorrecto",
     "d": "Sobretrimado tapado por la mayor",
     "tags": [
@@ -4206,7 +4206,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Spi colapsa después de una aceleración\n→ Diagnóstico y acción",
+    "q": "Largo, 12kn · Spi colapsa después de una aceleración\n→ Diagnóstico y acción",
     "a": "Cambió el viento aparente → retrimar",
     "d": "Más velocidad = VA rota hacia proa",
     "tags": [
@@ -4221,7 +4221,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 4,
-    "q": "Una zona del gratil colapsa antes que otra\n→ Diagnóstico",
+    "q": "Largo, 12kn · Una zona del gratil colapsa antes que otra\n→ Diagnóstico",
     "a": "Desequilibrio vertical",
     "d": "Revisar altura del tangón, distribución de carga, rumbo",
     "tags": [
@@ -4252,7 +4252,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Spi · Error: trimar para eliminar todo colapso\n→ Corrección",
+    "q": "Largo, 12kn · Spi · Error: trimar para eliminar todo colapso\n→ Corrección",
     "a": "El colapso ocasional es saludable",
     "d": "Máxima velocidad cerca del colapso",
     "tags": [
@@ -4267,7 +4267,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Spi · Filosofía operativa · ¿Orden?",
+    "q": "Largo, 12kn · Spi · Filosofía operativa · ¿Orden?",
     "a": "Rumbo objetivo → trimar al borde → observar gratil → ajustar → comunicar",
     "d": "Ciclo continuo con timonel",
     "tags": [
@@ -4282,7 +4282,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Braza muy filada · ¿Qué produce?",
+    "q": "Largo, 15kn · Braza muy filada del spi\n→ ¿Qué produce?",
     "a": "Inestabilidad, colapsos frecuentes, pérdida de control",
     "d": "Tangón demasiado adelante",
     "tags": [
@@ -6115,7 +6115,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 2,
-    "q": "¿Qué ocurre al aumentar la profundidad?",
+    "q": "Ceñida, 10kn · ¿Qué ocurre al aumentar la profundidad en las velas?",
     "a": "Más potencia, más aceleración, más escora",
     "d": "Vela más profunda = más empuje",
     "tags": [
@@ -6129,7 +6129,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 2,
-    "q": "¿Qué sucede cuando el flujo se separa?",
+    "q": "Ceñida, 12kn · ¿Qué sucede cuando el flujo se separa en las velas?",
     "a": "Lanitas caídas, vibraciones, pérdida de velocidad, menor VMG",
     "d": "Flujo separado = eficiencia cae",
     "tags": [
@@ -6159,7 +6159,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "¿Cómo afecta el sag al rendimiento del génova?",
+    "q": "Ceñida, 10kn · ¿Cómo afecta el sag al rendimiento del génova?",
     "a": "Más sag = más profundidad y potencia; menos sag = más plano y control",
     "d": "Sag controla profundidad del génova",
     "tags": [
@@ -6174,7 +6174,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 3,
-    "q": "¿Por qué navegar más alto no siempre produce mejor VMG?",
+    "q": "Ceñida, regata · ¿Por qué navegar más alto no siempre produce mejor VMG?",
     "a": "Porque VMG depende del avance efectivo, no de la altura",
     "d": "VMG = velocidad × cos(ángulo)",
     "tags": [
@@ -6189,7 +6189,7 @@
     "cat": "TRIM",
     "role": "ALL",
     "fatigue": 3,
-    "q": "Lanitas estables pero el barco no acelera\n→ ¿Qué revisar?",
+    "q": "Ceñida, 10kn · Lanitas estables pero el barco no acelera\n→ ¿Qué revisar?",
     "a": "Sag, profundidad, ubicación del draft",
     "d": "Problema de forma, no de flujo",
     "tags": [
@@ -6281,7 +6281,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Menos contra (vang) · ¿Qué produce?",
+    "q": "Largo, 12kn · Menos contra (vang) en mayor · ¿Qué produce?",
     "a": "Más twist, baluma más abierta",
     "d": "Vang filado = baluma abre",
     "tags": [
@@ -6296,7 +6296,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Menos cunningham · ¿Qué produce?",
+    "q": "Ceñida, 8kn · Menos cunningham en mayor · ¿Qué produce?",
     "a": "Profundidad atrasada, más potencia, más sensibilidad",
     "d": "Draft se mueve atrás",
     "tags": [
@@ -6311,7 +6311,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 2,
-    "q": "Mayor · ¿Qué función principal tiene?",
+    "q": "Ceñida, regata · Mayor · ¿Qué función principal tiene?",
     "a": "Generar potencia, equilibrar, controlar escora, optimizar slot",
     "d": "No trabaja aislada, es un sistema con el génova",
     "tags": [
@@ -6326,7 +6326,7 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 3,
-    "q": "Amantillo · ¿Qué sostiene?",
+    "q": "Ceñida, regata · Amantillo · ¿Qué sostiene?",
     "a": "La botavara",
     "d": "Generalmente liberado en regata",
     "tags": [
@@ -6341,8 +6341,8 @@
     "cat": "TRIM",
     "role": "MAY",
     "fatigue": 4,
-    "q": "Amantillo en viento extremadamente liviano · ¿Beneficios?",
-    "a": "Sostiene peso de botavara, evita deformaciones, ayuda sables, incrementa twist efectivo",
+    "q": "Ceñida, 3kn · Amantillo en viento extremadamente liviano\n→ ¿Beneficios?",
+    "a": "Sostiene botavara, evita deformaciones, ayuda sables, más twist",
     "d": "Excepción al uso normal",
     "tags": [
       "amantillo",
@@ -6356,7 +6356,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Génova · ¿Cuál es el mejor indicador aerodinámico?",
+    "q": "Ceñida, 10kn · Génova · ¿Cuál es el mejor indicador aerodinámico?",
     "a": "Las lanitas",
     "d": "Mejores indicadores del barco",
     "tags": [
@@ -6371,7 +6371,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Génova · Sag · ¿Control principal?",
+    "q": "Ceñida, 10kn · Génova · Sag · ¿Control principal?",
     "a": "Burdas",
     "d": "Burdas tensionan el estay",
     "tags": [
@@ -6386,7 +6386,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Génova · Twist · ¿Control principal?",
+    "q": "Ceñida, 10kn · Génova · Twist · ¿Control principal?",
     "a": "Punto de escota",
     "d": "Adelantado = menos twist",
     "tags": [
@@ -6401,7 +6401,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 2,
-    "q": "Génova · Ángulo · ¿Control principal?",
+    "q": "Ceñida, 10kn · Génova · Ángulo · ¿Control principal?",
     "a": "Escota",
     "d": "Regula cuánto trabaja la vela",
     "tags": [
@@ -6416,7 +6416,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Génova · Filosofía de ceñida",
+    "q": "Ceñida, 10kn · Génova · Filosofía de ceñida",
     "a": "Navegar muy cerca del límite, no evitar toda pérdida",
     "d": "La lanita interior puede insinuar pérdida ocasionalmente",
     "tags": [
@@ -6431,7 +6431,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Génova · Más sag → ¿qué pasa con la profundidad?",
+    "q": "Ceñida, 8kn · Génova · Más sag → ¿qué pasa con la profundidad?",
     "a": "Más profundidad, más potencia, más aceleración",
     "d": "Estay más curvo = vela más profunda",
     "tags": [
@@ -6446,7 +6446,7 @@
     "cat": "TRIM",
     "role": "GEN",
     "fatigue": 3,
-    "q": "Génova · Menos sag → ¿qué pasa?",
+    "q": "Ceñida, 18kn · Génova · Menos sag → ¿qué pasa?",
     "a": "Menos profundidad, menos escora, más control",
     "d": "Estay tenso = vela plana",
     "tags": [
@@ -6461,7 +6461,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Spi · ¿Qué controla la escota?",
+    "q": "Largo, 12kn · Spi · ¿Qué controla la escota?",
     "a": "Ángulo de ataque, apertura, potencia",
     "d": "Control principal de trabajo",
     "tags": [
@@ -6476,7 +6476,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Spi · ¿Qué controla la braza?",
+    "q": "Largo, 12kn · Spi · ¿Qué controla la braza?",
     "a": "Posición horizontal del tangón",
     "d": "Forma, estabilidad, área efectiva",
     "tags": [
@@ -6491,7 +6491,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Spi · ¿Qué controla el tangón?",
+    "q": "Largo, 12kn · Spi · ¿Qué controla el tangón?",
     "a": "Distribución vertical de carga",
     "d": "No solo subir/bajar amura",
     "tags": [
@@ -6506,7 +6506,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Spi · ¿Respecto a qué se trimma?",
+    "q": "Largo, 12kn · Spi · ¿Respecto a qué se trimma?",
     "a": "Viento aparente (no viento real)",
     "d": "VA cambia con la velocidad",
     "tags": [
@@ -6521,7 +6521,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Spi · Escota demasiado cazada · ¿Síntoma del gratil?",
+    "q": "Largo, 15kn · Spi · Escota demasiado cazada · ¿Síntoma del gratil?",
     "a": "Excesivamente estable",
     "d": "Sobretrimado = gratil no colapsa",
     "tags": [
@@ -6536,7 +6536,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Spi · Twist · ¿Influencias?",
+    "q": "Largo, 12kn · Spi · Twist · ¿Influencias?",
     "a": "Altura del tangón, escota, forma de la vela, viento aparente",
     "d": "Múltiples factores",
     "tags": [
@@ -6551,7 +6551,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 2,
-    "q": "Spi · Largo · ¿Prioridad?",
+    "q": "Largo, 12kn · Spi · Largo · ¿Prioridad?",
     "a": "Mantener flujo y potencia",
     "d": "Compromiso sustentación/arrastre",
     "tags": [
@@ -6566,7 +6566,7 @@
     "cat": "TRIM",
     "role": "PRO",
     "fatigue": 3,
-    "q": "Spi · Coordinación trimmer-timonel · ¿Principio?",
+    "q": "Largo, 12kn · Spi · Coordinación trimmer-timonel · ¿Principio?",
     "a": "El spi no se trimma aislado, trabaja con timonel y viento aparente",
     "d": "Comunicación constante con timonel",
     "tags": [
@@ -7899,7 +7899,7 @@
     "cat": "TACT",
     "role": "TAC",
     "fatigue": 2,
-    "q": "Layline · ¿Qué evitar?",
+    "q": "Ceñida · Layline con tráfico · ¿Qué evitar?",
     "a": "Llegar过早 (pasarse) o con tráfico",
     "d": "Llegar justo o antes, sin tráfico",
     "tags": [
