@@ -62,9 +62,18 @@ antes de que el usuario las dé por aceptadas.
 
 ### Paso 1 — Correr el chequeo mecánico (siempre, es gratis y determinístico)
 
+**Con Python (Claude Code):**
 ```bash
 python3 scripts/mechanical_checks.py Questions/naut-preguntas-master.json --out /tmp/mech_report.json
 ```
+
+**Sin Python (local con Node.js):**
+```bash
+npm run validate
+```
+Esto ejecuta el mismo chequeo mecánico (schema, near-duplicates order-aware,
+context anchor A/B/C) más las 14 reglas semánticas (R1-R14), todo en un
+solo comando. El reporte se imprime en consola.
 
 Esto NO juzga sentido ni contexto — solo schema, duplicados casi-exactos por
 similitud de texto, distribución por fuente/categoría, fuentes desconocidas,
