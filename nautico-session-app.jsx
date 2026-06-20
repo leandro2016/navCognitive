@@ -1,5 +1,42 @@
-﻿import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+﻿import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import BUILTIN_QUESTIONS from "./Questions/naut-preguntas-master.json";
+
+// ─── ERROR BOUNDARY ───────────────────────────────────────────────────────
+// Prevents black screen on crash — shows fallback with reload button.
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error, info) {
+    console.error("NavCognitive crash:", error, info);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ minHeight: "100vh", background: "#060C14", color: "#F1F5F9",
+          fontFamily: "'Space Mono', monospace", display: "flex",
+          flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 20 }}>
+          <div style={{ fontSize: 40, marginBottom: 16 }}>⚓</div>
+          <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 8 }}>Algo salió mal</div>
+          <div style={{ fontSize: 11, color: "#64748B", marginBottom: 20, textAlign: "center", lineHeight: 1.5 }}>
+            {this.state.error?.message || "Error desconocido"}
+          </div>
+          <button onClick={() => { this.setState({ hasError: false, error: null }); window.location.reload(); }}
+            style={{ padding: "14px 28px", background: "linear-gradient(135deg, #0EA5E9, #0D9488)",
+            border: "none", borderRadius: 10, color: "#fff", fontFamily: "'Space Mono', monospace",
+            fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer" }}>
+            RECARGAR
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 // ─── LIB MODULES ───────────────────────────────────────────────────────────
 import {
@@ -142,7 +179,7 @@ function PauseOverlay({ onResume, onSaveExit, onExitNoSave }) {
 function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSettings, reviews, history }) {
   const [template,   setTemplate]   = useState("30min");
   const [role,       setRole]       = useState("ALL");
-  const [difficulty, setDifficulty] = useState(settings.difficulty || "hard");
+  const [difficulty, setDifficulty] = useState(settings?.difficulty || "hard");
   const [customCats, setCustomCats] = useState(["NAV", "MAN", "DEC", "REG", "SIT"]);
   const [customCount, setCustomCount] = useState(15);
   const [sourceFilter, setSourceFilter] = useState("");
@@ -150,23 +187,27 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
   const diff = DIFFICULTIES.find(d => d.id === difficulty);
   const dueCount = getOverdueCount(reviews);
 
-  // E: Sources disponibles para filtro (from builtin questions)
+  // E: Sources disponibles para filtro (from builtin questions) — defensivo
   const availableSources = useMemo(() => {
-    const sources = new Set(BUILTIN_QUESTIONS.map(q => q.source).filter(Boolean));
-    return [...sources].sort();
+    try {
+      const sources = new Set(BUILTIN_QUESTIONS.map(q => q.source).filter(Boolean));
+      return [...sources].sort();
+    } catch { return []; }
   }, []);
 
-  // B: Modo Focus — calcular categoría más débil del historial
-  const stats = computeCategoryStats(history || []);
+  // B: Modo Focus — calcular categoría más débil del historial — defensivo
   const weakCat = useMemo(() => {
-    let worst = null;
-    let worstAcc = 1;
-    for (const [cat, s] of Object.entries(stats)) {
-      if (s.total < 3) continue;
-      const acc = s.correct / s.total;
-      if (acc < worstAcc) { worstAcc = acc; worst = cat; }
-    }
-    return worst ? { cat, acc: worstAcc, total: stats[worst].total } : null;
+    try {
+      const stats = computeCategoryStats(history || []);
+      let worst = null;
+      let worstAcc = 1;
+      for (const [cat, s] of Object.entries(stats)) {
+        if (s.total < 3) continue;
+        const acc = s.correct / s.total;
+        if (acc < worstAcc) { worstAcc = acc; worst = cat; }
+      }
+      return worst ? { cat: worst, acc: worstAcc, total: stats[worst].total } : null;
+    } catch { return null; }
   }, [history]);
 
   const handleStart = () => {
@@ -2230,7 +2271,7 @@ function GenerateScreen({ customQ, setCustomQ }) {
 
 // ─── MAIN APP ──────────────────────────────────────────────────────────────
 
-export default function App() {
+function App() {
   // run schema migration once on mount
   useEffect(() => { migrateSchema(); }, []);
 
@@ -2332,7 +2373,7 @@ export default function App() {
   };
 
   const handleSaveHistory = () => {
-    if (!sessionState) return;
+    if (!sessionState || !sessionState.results) return;
     setHistory(h => [...h, {
       date:       new Date().toLocaleString("es-AR", { dateStyle: "short", timeStyle: "short" }),
       template:   sessionState.meta.template,
@@ -2370,7 +2411,8 @@ export default function App() {
     setSavedSession(null);
     setSessionState(null);
     setPaused(false);
-    setSettings(s => ({ ...s, newPR: false }));
+    setNavScreen("home");
+    setSettings(s => (s ? { ...s, newPR: false } : { difficulty: "hard" }));
   };
 
   // F: Reentrenar errores — genera una sesión sprint solo con las preguntas erróneas
@@ -2461,5 +2503,14 @@ export default function App() {
       <BottomNav screen={navScreen} setScreen={setNavScreen} />
       <style>{`body{margin:0;background:#060C14}`}</style>
     </>
+  );
+}
+
+// Wrap with ErrorBoundary to prevent black screen on crash
+export default function AppWithErrorBoundary() {
+  return (
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   );
 }
