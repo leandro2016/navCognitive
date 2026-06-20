@@ -1,0 +1,8329 @@
+[
+  {
+    "id": 1,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Rumbo verdadero 120° (Var 8°W)\n→ Rumbo magnético?",
+    "a": "112° M",
+    "d": "120 - 8 = 112",
+    "tags": [
+      "rumbo",
+      "variacion",
+      "conversion"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 2,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Rumbo verdadero 120° (Var 8°E)\n→ Rumbo magnético?",
+    "a": "128° M",
+    "d": "120 + 8 = 128",
+    "tags": [
+      "rumbo",
+      "variacion",
+      "conversion"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 3,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Rumbo magnético 200° (Var 7°W)\n→ Rumbo verdadero?",
+    "a": "207° V",
+    "d": "200 + 7 = 207",
+    "tags": [
+      "rumbo",
+      "variacion",
+      "conversion"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 4,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Rumbo magnético 045° (Var 5°E)\n→ Rumbo verdadero?",
+    "a": "040° V",
+    "d": "045 - 5 = 040",
+    "tags": [
+      "rumbo",
+      "variacion",
+      "conversion"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 5,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RM = 100° · Desvío = 3°E\n→ Rumbo de compás?",
+    "a": "103° C",
+    "d": "100 + 3 = 103",
+    "tags": [
+      "rumbo",
+      "desvio",
+      "compas"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 6,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RM = 100° · Desvío = 3°W\n→ Rumbo de compás?",
+    "a": "097° C",
+    "d": "100 - 3 = 097",
+    "tags": [
+      "rumbo",
+      "desvio",
+      "compas"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 7,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "RV = 085° · Var = 6°W · Desvío = 2°E\n→ Rumbo de compás?",
+    "a": "081° C",
+    "d": "085-6=079 RM; 079+2=081 RC",
+    "tags": [
+      "rumbo",
+      "variacion",
+      "desvio",
+      "conversion-completa"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 8,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "RV = 270° · Var = 10°E · Desvío = 4°W\n→ Rumbo de compás?",
+    "a": "256° C",
+    "d": "270-10=260 RM; 260-4=256 RC",
+    "tags": [
+      "rumbo",
+      "variacion",
+      "desvio",
+      "conversion-completa"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 9,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "V = 6 kn · D = 9 mn\n→ Tiempo?",
+    "a": "1h 30min",
+    "d": "9/6 = 1.5h",
+    "tags": [
+      "velocidad",
+      "tiempo",
+      "distancia"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 10,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "V = 8 kn · T = 45 min\n→ Distancia?",
+    "a": "6 mn",
+    "d": "8 × 0.75 = 6",
+    "tags": [
+      "velocidad",
+      "tiempo",
+      "distancia"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 11,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "D = 15 mn · T = 2 h\n→ Velocidad?",
+    "a": "7.5 kn",
+    "d": "15/2 = 7.5",
+    "tags": [
+      "velocidad",
+      "tiempo",
+      "distancia"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 12,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "2 mn → ¿cuántos metros?",
+    "a": "3704 m",
+    "d": "2 × 1852 = 3704",
+    "tags": [
+      "distancia",
+      "milla-nautica"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 13,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "10 mn → ¿cuántos km?",
+    "a": "18.52 km",
+    "d": "10 × 1.852 = 18.52",
+    "tags": [
+      "distancia",
+      "milla-nautica"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 14,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Demora a un buque constante en 045°\nLa distancia disminuye\n→ ¿Qué significa?",
+    "a": "Riesgo de colisión",
+    "d": "Demora constante + distancia decreciente = colisión (Regla 7)",
+    "tags": [
+      "demora",
+      "colision",
+      "colreg"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 15,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Corriente: set = 090° · drift = 2 kn\n→ ¿Hacia dónde se desplaza el agua?",
+    "a": "Hacia el Este a 2 kn",
+    "d": "Set = dirección, drift = velocidad",
+    "tags": [
+      "corriente",
+      "set",
+      "drift"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 16,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "STW = 6 kn · Corriente favorable 2 kn\n→ SOG?",
+    "a": "8 kn",
+    "d": "6 + 2 = 8",
+    "tags": [
+      "stw",
+      "sog",
+      "corriente"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 17,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "STW = 6 kn · Corriente adversa 2 kn\n→ SOG?",
+    "a": "4 kn",
+    "d": "6 - 2 = 4",
+    "tags": [
+      "stw",
+      "sog",
+      "corriente"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 18,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "D = 20 mn · SOG = 8 kn\n→ ETA?",
+    "a": "2h 30min",
+    "d": "20/8 = 2.5h",
+    "tags": [
+      "eta",
+      "sog",
+      "corriente"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 19,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "D = 20 mn · SOG = 4 kn\n→ ETA?",
+    "a": "5 h",
+    "d": "20/4 = 5",
+    "tags": [
+      "eta",
+      "sog",
+      "corriente"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 20,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Rumbo deseado 090° · Corriente hacia 180°\n→ ¿Qué efecto produce?",
+    "a": "Deriva hacia el Sur",
+    "d": "Corriente del N empuja al barco hacia el S",
+    "tags": [
+      "deriva",
+      "corriente"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 21,
+    "cat": "NAV",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "Destino al Este · Corriente empuja al Sur\n→ ¿Cómo corregir la deriva?",
+    "a": "Orzar algunos grados",
+    "d": "Apuntar contra la corriente para compensar",
+    "tags": [
+      "deriva",
+      "corriente",
+      "correccion"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 22,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué mide el GPS?",
+    "a": "SOG (Speed Over Ground)",
+    "d": "Velocidad respecto al fondo",
+    "tags": [
+      "sog",
+      "gps"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 23,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué mide la corredera?",
+    "a": "STW (Speed Through Water)",
+    "d": "Velocidad respecto al agua",
+    "tags": [
+      "stw",
+      "corredera"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 24,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Barco A: 7 kn con corriente adversa\nBarco B: 6 kn con corriente favorable\n→ ¿Quién puede llegar antes?",
+    "a": "B",
+    "d": "VMG real de B puede ser mayor pese a menor STW",
+    "tags": [
+      "vmg",
+      "corriente",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 25,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Río de la Plata · Sudestada\n→ ¿Qué efecto tiene sobre el nivel?",
+    "a": "Eleva el nivel",
+    "d": "Viento SE persistente sube el nivel del agua",
+    "tags": [
+      "rio-de-la-plata",
+      "sudestada",
+      "mareas"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 26,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Río de la Plata · Pampero\n→ ¿Qué efecto tiene sobre el nivel?",
+    "a": "Descenso del nivel",
+    "d": "Aire frío del SO produce descensos importantes",
+    "tags": [
+      "rio-de-la-plata",
+      "pampero",
+      "mareas"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 27,
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Pleamar vs bajamar\n→ ¿Qué es cada una?",
+    "a": "Pleamar = nivel máximo · Bajamar = nivel mínimo",
+    "d": "Marea cíclica entre máximo y mínimo",
+    "tags": [
+      "mareas",
+      "pleamar",
+      "bajamar"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 28,
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Río de la Plata · ¿Qué puede influir más que la marea astronómica?",
+    "a": "Condiciones meteorológicas (sudestada/pampero)",
+    "d": "Meteo puede dominar sobre la marea astronómica",
+    "tags": [
+      "rio-de-la-plata",
+      "mareas",
+      "meteo"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION"
+  },
+  {
+    "id": 29,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Toma de rizos · Fase preparados\n→ ¿Qué hace el proel?",
+    "a": "Va al palo, verifica puntos de rizo y recorrido libre",
+    "d": "Proel verifica que todo esté libre antes de rizar",
+    "tags": [
+      "rizos",
+      "proel",
+      "preparados"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 30,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 2,
+    "q": "Toma de rizos · Fase preparados\n→ ¿Qué hace el copit?",
+    "a": "Aclara driza, saca de cornamuza, prepara amante de rizo",
+    "d": "Copit deja driza lista y amante preparado",
+    "tags": [
+      "rizos",
+      "copit",
+      "preparados"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 31,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 2,
+    "q": "Toma de rizos · Fase ejecutar\n→ ¿Qué se fila primero?",
+    "a": "Escota de mayor",
+    "d": "Quitar carga de la vela antes de bajar driza",
+    "tags": [
+      "rizos",
+      "escota",
+      "ejecutar"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 32,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Toma de rizos · ¿Quién grita \"¡Rizo listo!\"?",
+    "a": "El proel",
+    "d": "Proel engancha el rizo y confirma con el grito",
+    "tags": [
+      "rizos",
+      "proel",
+      "disparador"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 33,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "q": "Toma de rizos · Al oír \"¡Rizo listo!\"\n→ ¿Qué hace el copit?",
+    "a": "Cazar amante, izar driza, hacer firme",
+    "d": "Re-izar para cargar el rizo y hacer firme",
+    "tags": [
+      "rizos",
+      "copit",
+      "disparador"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 34,
+    "cat": "MAN",
+    "role": "TIM",
+    "fatigue": 2,
+    "q": "Virada en ceñida · Preparados\n→ ¿Qué verifica el timonel?",
+    "a": "Velocidad",
+    "d": "Sin velocidad la virada no sale",
+    "tags": [
+      "virada",
+      "timonel",
+      "preparados"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 35,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Virada en ceñida · Al flameo de la genoa\n→ ¿Qué hace el trimmer?",
+    "a": "Soltar escota vieja, cazar nueva",
+    "d": "Soltar al flameo, cazar del nuevo bordo",
+    "tags": [
+      "virada",
+      "genoa",
+      "escota"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 36,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Virada en ceñida · Error común",
+    "a": "Soltar antes de tiempo / cazar antes de cruzar",
+    "d": "Soltar precoz pierde el bordo; cazar antes de cruzar frena",
+    "tags": [
+      "virada",
+      "error"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 37,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "q": "Trasluchada · ¿Qué hace el copit?",
+    "a": "Cazar mayor al centro, pasar botavara, filar",
+    "d": "Control de escota: llevar al centro, pasar, filar controlado",
+    "tags": [
+      "trasluchada",
+      "copit",
+      "mayor"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 38,
+    "cat": "MAN",
+    "role": "TIM",
+    "fatigue": 2,
+    "q": "Trasluchada · ¿Qué hace el timonel?",
+    "a": "Derivar progresivo",
+    "d": "Orzar → través → popa de forma progresiva",
+    "tags": [
+      "trasluchada",
+      "timonel"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 39,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Izado de spinnaker · Preparados\n→ ¿Qué hace el proel?",
+    "a": "Spi listo",
+    "d": "Proel prepara el spinnaker para izar",
+    "tags": [
+      "spinnaker",
+      "proel",
+      "izado"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 40,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "q": "Arriada de spinnaker · ¿Orden de acciones?",
+    "a": "Soltar braza → traer vela → bajar driza",
+    "d": "Braza primero, luego vela, driza última",
+    "tags": [
+      "spinnaker",
+      "arriada",
+      "secuencia"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 41,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Arriada de spinnaker · Error común",
+    "a": "Tirarlo al agua",
+    "d": "Sin control de driza el spi cae al agua",
+    "tags": [
+      "spinnaker",
+      "arriada",
+      "error"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 42,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Peeling de génova · ¿Orden correcto?",
+    "a": "Izar nueva → trimar nueva → filar vieja → arriar vieja",
+    "d": "Nueva arriba y trimando antes de soltar la vieja",
+    "tags": [
+      "peeling",
+      "genoa",
+      "secuencia"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 43,
+    "cat": "MAN",
+    "role": "TIM",
+    "fatigue": 2,
+    "q": "Post virada sin velocidad (viento flojo)\n→ ¿Qué priorizar?",
+    "a": "Velocidad > altura",
+    "d": "Sin velocidad no se puede orzar",
+    "tags": [
+      "viento-flojo",
+      "velocidad",
+      "post-virada"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 44,
+    "cat": "MAN",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Racha fuerte en ceñida\n→ ¿Qué hace el trimmer de mayor?",
+    "a": "Bajar traveller",
+    "d": "Traveller baja para descargar; no filar escota primero",
+    "tags": [
+      "rachas",
+      "mayor",
+      "traveller"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 45,
+    "cat": "MAN",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Racha en ceñida · Error común",
+    "a": "Filar escota primero",
+    "d": "Primero traveller, escota después",
+    "tags": [
+      "rachas",
+      "error",
+      "mayor"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 46,
+    "cat": "MAN",
+    "role": "TIM",
+    "fatigue": 4,
+    "q": "Death roll en popa inestable\n→ ¿Qué hacer?",
+    "a": "Control suave del timón, cazar sotavento",
+    "d": "Cazar escota sotavento estabiliza el spi",
+    "tags": [
+      "death-roll",
+      "popa",
+      "estabilidad"
+    ],
+    "difficulty": 4,
+    "source": "maniobras"
+  },
+  {
+    "id": 47,
+    "cat": "MAN",
+    "role": "TIM",
+    "fatigue": 2,
+    "q": "Largada · Prestart\n→ ¿Qué controla el timonel?",
+    "a": "Posición",
+    "d": "Controlar posición en la línea de salida",
+    "tags": [
+      "largada",
+      "timonel",
+      "prestart"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 48,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Largada · Prestart\n→ ¿Qué controla el trimmer de génova?",
+    "a": "Velocidad fina",
+    "d": "Trimado fino para acelerar al cañón",
+    "tags": [
+      "largada",
+      "genoa",
+      "prestart"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 49,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Toma de rizos · Copit en ejecutar\n→ Ordená la secuencia",
+    "a": "Filar escota → Bajar driza → Cazar amante → Izar driza y hacer firme",
+    "d": "Quitar carga → arriar → cazar rizo → re-izar firme",
+    "steps": [
+      "Filar escota",
+      "Bajar driza",
+      "Cazar amante",
+      "Izar driza y hacer firme"
+    ],
+    "tags": [
+      "rizos",
+      "copit",
+      "secuencia",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 50,
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "type": "invalid",
+    "q": "Toma de rizos · Preparados\n→ Hay un paso incorrecto. Tocalo.",
+    "a": "El copit baja la driza (es en ejecutar, no en preparados)",
+    "d": "En preparados el copit aclara driza, no la baja",
+    "steps": [
+      "Proel va al palo y verifica puntos de rizo",
+      "Copit aclara driza y saca de cornamuza",
+      "Copit baja la driza",
+      "Copit prepara amante de rizo"
+    ],
+    "invalidIndex": 2,
+    "tags": [
+      "rizos",
+      "proel",
+      "copit",
+      "procedural"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 51,
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 2,
+    "type": "filter",
+    "q": "Toma de rizos · Al oír \"¡Rizo listo!\"\n→ Marcá qué hace el copit",
+    "a": "Cazar amante + Izar driza y hacer firme",
+    "d": "El grito del proel dispara el re-izado; amante carga el rizo",
+    "steps": [
+      "Cazar amante de rizo",
+      "Izar driza y hacer firme",
+      "Filar escota de nuevo",
+      "Bajar el amante de rizo"
+    ],
+    "validMask": [
+      true,
+      true,
+      false,
+      false
+    ],
+    "tags": [
+      "rizos",
+      "copit",
+      "procedural"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 52,
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Virada en ceñida · Trimmer de génova\n→ Ordená la secuencia",
+    "a": "Preparar escotas → Mantener tensión → Soltar al flameo → Cazar nueva",
+    "d": "Preparar → tensión hasta flameo → soltar → cazar nuevo bordo",
+    "steps": [
+      "Preparar escotas",
+      "Mantener tensión",
+      "Soltar al flameo",
+      "Cazar nueva"
+    ],
+    "tags": [
+      "virada",
+      "genoa",
+      "secuencia",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 53,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Cómo funcionan las velas aerodinámicamente?",
+    "a": "Como un ala (sustentación)",
+    "d": "Generan fuerza por diferencia de presión entre caras",
+    "tags": [
+      "aerodinamica",
+      "sustentacion"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 54,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Flujo adherido · ¿Qué síntomas produce?",
+    "a": "Lanitas estables, barco acelera, timón equilibrado",
+    "d": "Flujo adherido = máxima eficiencia",
+    "tags": [
+      "flujo",
+      "aerodinamica"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 55,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Flujo separado · ¿Qué síntomas produce?",
+    "a": "Lanitas caídas, vibraciones, pérdida de velocidad",
+    "d": "Flujo separado = menor VMG",
+    "tags": [
+      "flujo",
+      "stall",
+      "aerodinamica"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 56,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Stall (pérdida) en génova · ¿Síntoma principal?",
+    "a": "Lanita interior cae",
+    "d": "Flujo se separa en cara de barlovento",
+    "tags": [
+      "stall",
+      "genoa",
+      "lanitas"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 57,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Stall en mayor · ¿Síntoma principal?",
+    "a": "Cataviento superior desaparece detrás de la vela",
+    "d": "Baluma demasiado cerrada, flujo separado",
+    "tags": [
+      "stall",
+      "mayor",
+      "cataviento"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 58,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Stall en spinnaker · ¿Síntoma principal?",
+    "a": "Colapso del gratil",
+    "d": "Gratil pierde flujo adherido",
+    "tags": [
+      "stall",
+      "spinnaker",
+      "gratil"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 59,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Filosofía de trimado en regata",
+    "a": "Navegar justo antes de la pérdida",
+    "d": "Máxima potencia se encuentra cerca del límite",
+    "tags": [
+      "filosofia",
+      "stall",
+      "limite"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 60,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Ángulo de ataque demasiado pequeño · ¿Síntoma?",
+    "a": "Falta de potencia y aceleración",
+    "d": "Vela demasiado abierta, poco ángulo",
+    "tags": [
+      "angulo-ataque",
+      "potencia"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 61,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Ángulo de ataque demasiado grande · ¿Síntoma?",
+    "a": "Lanitas caídas, spi colapsando, mayor sobretrimada",
+    "d": "Vela entra en pérdida por exceso de ángulo",
+    "tags": [
+      "angulo-ataque",
+      "stall"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 62,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Twist · ¿Por qué existe?",
+    "a": "El viento aparente cambia con la altura",
+    "d": "La cabeza de la vela ve un viento diferente al pie",
+    "tags": [
+      "twist",
+      "viento-aparente"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 63,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Poco twist · ¿Síntomas?",
+    "a": "Lanitas superiores problemáticas, escora excesiva",
+    "d": "Cabeza trabaja demasiado cerrada",
+    "tags": [
+      "twist",
+      "escora"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 64,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Mucho twist · ¿Síntomas?",
+    "a": "Menor potencia, menor altura, menor escora",
+    "d": "Cabeza se descarga",
+    "tags": [
+      "twist",
+      "potencia"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 65,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Más profundidad (draft) · ¿Qué genera?",
+    "a": "Más potencia, más aceleración, más escora",
+    "d": "Vela más profunda = más empuje",
+    "tags": [
+      "profundidad",
+      "potencia"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 66,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Menos profundidad · ¿Qué genera?",
+    "a": "Más control, menor resistencia, menos escora",
+    "d": "Vela más plana = menos arrastre",
+    "tags": [
+      "profundidad",
+      "control"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 67,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Cuándo buscar más profundidad?",
+    "a": "Viento liviano, ola corta, necesidad de aceleración",
+    "d": "Más forma = más potencia para acelerar",
+    "tags": [
+      "profundidad",
+      "viento-flojo"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 68,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Cuándo buscar menos profundidad?",
+    "a": "Viento fuerte, exceso de escora, necesidad de control",
+    "d": "Vela plana = control en viento fuerte",
+    "tags": [
+      "profundidad",
+      "viento-fuerte"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 69,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Profundidad adelantada (draft position) · ¿Para qué?",
+    "a": "Más estabilidad, viento fuerte",
+    "d": "Draft adelantado = estable y controlable",
+    "tags": [
+      "draft-position",
+      "estabilidad"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 70,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Profundidad atrasada · ¿Para qué?",
+    "a": "Más potencia, viento liviano",
+    "d": "Draft atrasado = más potencia pero más sensible",
+    "tags": [
+      "draft-position",
+      "potencia"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 71,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Más sag en el estay · ¿Qué efecto produce en la génova?",
+    "a": "Más profundidad, más potencia",
+    "d": "Estay más curvo = génova más profundo",
+    "tags": [
+      "sag",
+      "genoa",
+      "potencia"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 72,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Menos sag · ¿Qué efecto produce?",
+    "a": "Génova más plano, más control",
+    "d": "Estay tenso = vela plana, menos escora",
+    "tags": [
+      "sag",
+      "genoa",
+      "control"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 73,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Slot muy cerrado · ¿Qué efecto produce?",
+    "a": "Estrangula el flujo",
+    "d": "Espacio entre génova y mayor demasiado pequeño",
+    "tags": [
+      "slot",
+      "flujo"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 74,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Viento aparente · ¿Qué es?",
+    "a": "Combinación de viento real y velocidad del barco",
+    "d": "VA = VR + vector velocidad del barco",
+    "tags": [
+      "viento-aparente"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 75,
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Más velocidad del barco → viento aparente...",
+    "a": "Rota hacia proa",
+    "d": "Barco más rápido = VA avanza",
+    "tags": [
+      "viento-aparente",
+      "velocidad"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 76,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 1,
+    "q": "Indicador principal de la mayor",
+    "a": "Cataviento superior",
+    "d": "En la baluma, muestra flujo, twist e inicio de pérdida",
+    "tags": [
+      "mayor",
+      "cataviento",
+      "indicador"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 77,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Cataviento escondido permanentemente · ¿Diagnóstico?",
+    "a": "Falta twist, baluma cerrada",
+    "d": "Exceso de escota, contra excesiva o carro alto",
+    "tags": [
+      "mayor",
+      "cataviento",
+      "twist"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 78,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Cataviento siempre volando · ¿Diagnóstico?",
+    "a": "Exceso de twist",
+    "d": "Cabeza descargada, menor potencia",
+    "tags": [
+      "mayor",
+      "cataviento",
+      "twist"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 79,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Situación ideal del cataviento superior",
+    "a": "Vuela la mayor parte, ocasionalmente desaparece",
+    "d": "Navegar cerca del límite, no permanente ni siempre visible",
+    "tags": [
+      "mayor",
+      "cataviento",
+      "filosofia"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 80,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 1,
+    "q": "Profundidad de la mayor · ¿Control principal?",
+    "a": "Outhaul",
+    "d": "Outhaul regula curvatura del pie",
+    "tags": [
+      "mayor",
+      "outhaul",
+      "profundidad"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 81,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Ubicación de la profundidad en mayor · ¿Control principal?",
+    "a": "Cunningham",
+    "d": "Cunningham mueve el draft adelante o atrás",
+    "tags": [
+      "mayor",
+      "cunningham",
+      "draft-position"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 82,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Más Cunningham · ¿Qué produce?",
+    "a": "Profundidad adelantada, menor potencia, más estabilidad",
+    "d": "Tira el draft hacia adelante",
+    "tags": [
+      "cunningham",
+      "draft-position"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 83,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Escota vs carro de mayor · ¿Diferencia fundamental?",
+    "a": "Escota afecta ángulo y twist; carro afecta ángulo",
+    "d": "Carro modifica ángulo sin alterar tanto el twist",
+    "tags": [
+      "mayor",
+      "escota",
+      "carro"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 84,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Necesitás modificar ángulo sin alterar twist\n→ ¿Qué usás?",
+    "a": "Carro",
+    "d": "Carro = ángulo sin tocar baluma",
+    "tags": [
+      "mayor",
+      "carro",
+      "angulo"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 85,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Contra (vang) · ¿Cuándo es más importante?",
+    "a": "Desde través hacia popa",
+    "d": "En ceñida la escota controla; en popa el vang",
+    "tags": [
+      "contra",
+      "vang",
+      "popa"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 86,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Más contra (vang) · ¿Qué produce?",
+    "a": "Menos twist, baluma más cerrada",
+    "d": "Vang cierra la baluma",
+    "tags": [
+      "contra",
+      "vang",
+      "twist"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 87,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Amantillo · ¿Cuándo se libera generalmente?",
+    "a": "Siempre (en regata normal)",
+    "d": "Se libera salvo excepciones",
+    "tags": [
+      "amantillo",
+      "mayor"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 88,
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 4,
+    "q": "Amantillo · ¿Excepción para usarlo?",
+    "a": "Viento extremadamente liviano, rumbos abiertos",
+    "d": "Sostiene botavara, ayuda sables superiores, incrementa twist",
+    "tags": [
+      "amantillo",
+      "viento-flojo"
+    ],
+    "difficulty": 4,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 89,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 1,
+    "q": "Indicadores principales del génova",
+    "a": "Las lanitas",
+    "d": "Mejores indicadores aerodinámicos del barco",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "indicador"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 90,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Lanitas inferiores · ¿Qué representan?",
+    "a": "Parte baja, influenciadas por escota, slot y ola",
+    "d": "Zona baja del génova",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "inferiores"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 91,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Lanitas superiores · ¿Qué representan?",
+    "a": "Parte alta, sensibles al twist",
+    "d": "Zona alta, las más afectadas por twist",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "superiores"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 92,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 1,
+    "q": "Situación ideal de las lanitas",
+    "a": "Ambas horizontales y paralelas",
+    "d": "Flujo adherido, ángulo correcto",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "ideal"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 93,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Lanita interior levantada · ¿Qué significa?",
+    "a": "Demasiado cazada, inicio de pérdida",
+    "d": "Exceso de ángulo de ataque",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "stall"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 94,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Lanita interior levantada · ¿Acción?",
+    "a": "Filar escota o caer levemente",
+    "d": "Reducir ángulo de ataque",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "accion"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 95,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Lanita exterior levantada · ¿Qué significa?",
+    "a": "Demasiado abierta, falta ángulo",
+    "d": "Falta ángulo de ataque",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "falta-angulo"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 96,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Lanita exterior levantada · ¿Acción?",
+    "a": "Cazar escota u orzar",
+    "d": "Aumentar ángulo de ataque",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "accion"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 97,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Sag del génova · ¿Control principal?",
+    "a": "Burdas",
+    "d": "Burdas tensionan el estay",
+    "tags": [
+      "genoa",
+      "sag",
+      "burdas"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 98,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Ubicación de la profundidad en génova · ¿Control principal?",
+    "a": "Driza",
+    "d": "Más tensión de driza = draft adelantado",
+    "tags": [
+      "genoa",
+      "driza",
+      "draft-position"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 99,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Twist del génova · ¿Control principal?",
+    "a": "Punto de escota",
+    "d": "Punto adelantado = menos twist",
+    "tags": [
+      "genoa",
+      "twist",
+      "punto-escota"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 100,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Punto de escota adelantado · ¿Qué produce?",
+    "a": "Menos twist, más tensión de baluma, más trabajo arriba",
+    "d": "Trabaja más la parte alta",
+    "tags": [
+      "genoa",
+      "punto-escota",
+      "twist"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 101,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Punto de escota atrasado · ¿Qué produce?",
+    "a": "Más twist, baluma abierta, descarga de la cabeza",
+    "d": "Descarga la parte alta",
+    "tags": [
+      "genoa",
+      "punto-escota",
+      "twist"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 102,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Lanita superior entra en pérdida primero · ¿Diagnóstico?",
+    "a": "Falta twist",
+    "d": "Cabeza demasiado cerrada",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 103,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Lanita inferior entra en pérdida primero · ¿Diagnóstico?",
+    "a": "Exceso de twist",
+    "d": "Parte baja trabaja demasiado cerrada",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 104,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Todas las lanitas en pérdida · ¿Diagnóstico?",
+    "a": "Exceso de ángulo de ataque",
+    "d": "Filar escota o caer algunos grados",
+    "tags": [
+      "genoa",
+      "lanitas",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 105,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Todas las lanitas bien pero barco lento · ¿Diagnóstico?",
+    "a": "Problema de forma (no de flujo)",
+    "d": "Revisar sag, profundidad, ubicación",
+    "tags": [
+      "genoa",
+      "diagnostico",
+      "forma"
+    ],
+    "difficulty": 4,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 106,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Mucha escora en génova · ¿Causas posibles?",
+    "a": "Exceso de profundidad, exceso de sag, poco twist",
+    "d": "Demasiada potencia sin descarga",
+    "tags": [
+      "genoa",
+      "escora",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 107,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Falta de potencia en génova · ¿Causas posibles?",
+    "a": "Poco sag, génova plano, draft adelantado",
+    "d": "Poca forma = poca potencia",
+    "tags": [
+      "genoa",
+      "potencia",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 108,
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Barco frena en la ola · ¿Causas posibles en génova?",
+    "a": "Velas planas, poco sag, twist insuficiente",
+    "d": "Sin potencia para atravesar la ola",
+    "tags": [
+      "genoa",
+      "ola",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 109,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 1,
+    "q": "Indicador principal del spinnaker",
+    "a": "El gratil",
+    "d": "No hay lanitas confiables en spi; el gratil muestra el flujo",
+    "tags": [
+      "spinnaker",
+      "gratil",
+      "indicador"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 110,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Regla básica de trimado del spinnaker",
+    "a": "Filar, esperar colapso, cazar, estabilizar, repetir",
+    "d": "Ciclo de búsqueda del límite de colapso",
+    "tags": [
+      "spinnaker",
+      "gratil",
+      "metodo"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 111,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi demasiado cazado · ¿Síntomas?",
+    "a": "Escondido detrás de la mayor, barco escorado, sin acelerar",
+    "d": "Sobretrimado = lento",
+    "tags": [
+      "spinnaker",
+      "sobretrimado"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 112,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi demasiado filado · ¿Síntomas?",
+    "a": "Colapsos frecuentes, pérdida de potencia, oscilaciones",
+    "d": "Falta de escota",
+    "tags": [
+      "spinnaker",
+      "colapso"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 113,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Ajuste ideal del spinnaker",
+    "a": "El gratil insinúa colapso periódicamente",
+    "d": "Máxima velocidad cerca del colapso",
+    "tags": [
+      "spinnaker",
+      "gratil",
+      "ideal"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 114,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Braza del spinnaker · ¿Qué controla?",
+    "a": "Posición horizontal del tangón",
+    "d": "Forma, estabilidad, área efectiva",
+    "tags": [
+      "spinnaker",
+      "braza",
+      "tangon"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 115,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Braza muy cazada · ¿Qué produce?",
+    "a": "Exceso de tensión, menor proyección, menor área efectiva",
+    "d": "Tangón demasiado atrás reduce área",
+    "tags": [
+      "spinnaker",
+      "braza"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 116,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Tangón del spinnaker · ¿Qué controla principalmente?",
+    "a": "Distribución vertical de carga",
+    "d": "No solo subir/bajar amura; modifica toda la vela",
+    "tags": [
+      "spinnaker",
+      "tangon"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 117,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi colapsa arriba sistemáticamente · ¿Qué ajustar?",
+    "a": "Altura del tangón (subir o bajar según el barco)",
+    "d": "Evaluar tangón para equilibrar el gratil",
+    "tags": [
+      "spinnaker",
+      "tangon",
+      "colapso"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 118,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi nunca colapsa · ¿Diagnóstico?",
+    "a": "Sobretrimado",
+    "d": "Exceso de escota, vela demasiado cazada",
+    "tags": [
+      "spinnaker",
+      "sobretrimado",
+      "diagnostico"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 119,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Barco acelera y spi comienza a colapsar · ¿Causa?",
+    "a": "El viento aparente rotó hacia proa",
+    "d": "Más velocidad = VA avanza, reajustar escota",
+    "tags": [
+      "spinnaker",
+      "viento-aparente",
+      "colapso"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 120,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi en viento liviano · ¿Prioridad?",
+    "a": "Mantener inflado permanente",
+    "d": "Trabajo constante de escota",
+    "tags": [
+      "spinnaker",
+      "viento-flojo"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 121,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi en popa · ¿Prioridad?",
+    "a": "Maximizar proyección",
+    "d": "Mayor dependencia del arrastre, menor VA",
+    "tags": [
+      "spinnaker",
+      "popa"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 122,
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi en través · ¿Prioridad?",
+    "a": "Mantener estabilidad",
+    "d": "Mayor ángulo de ataque, más sustentación",
+    "tags": [
+      "spinnaker",
+      "traves"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA"
+  },
+  {
+    "id": 123,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Babor vs estribor ceñidos · ¿Quién se aparta?",
+    "a": "Babor",
+    "d": "Regla 10: estribor tiene derecho de paso",
+    "tags": [
+      "rrs",
+      "regla-10",
+      "babor-estribor"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS"
+  },
+  {
+    "id": 124,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Mismo borde comprometidos · ¿Quién tiene derecho?",
+    "a": "Sotavento",
+    "d": "Regla 11: barlovento se aparta",
+    "tags": [
+      "rrs",
+      "regla-11",
+      "barlovento-sotavento"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 125,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Mismo borde sin compromiso · ¿Quién se aparta?",
+    "a": "Libre a popa",
+    "d": "Regla 12: libre a proa tiene derecho",
+    "tags": [
+      "rrs",
+      "regla-12",
+      "libre-proa-popa"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 126,
+    "cat": "REG",
+    "role": "TIM",
+    "fatigue": 2,
+    "q": "Barco virando · ¿Qué regla aplica?",
+    "a": "Regla 13",
+    "d": "El que vira se aparta hasta alcanzar rumbo de ceñida",
+    "tags": [
+      "rrs",
+      "regla-13",
+      "virada"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 127,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Regla 14 · ¿Qué dice?",
+    "a": "Todos deben evitar contacto",
+    "d": "Incluso el barco con derecho de paso",
+    "tags": [
+      "rrs",
+      "regla-14",
+      "contacto"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS"
+  },
+  {
+    "id": 128,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Barco completa virada delante de otro y obtiene derecho\n→ ¿Puede exigir inmediatamente?",
+    "a": "No, debe dar espacio inicial",
+    "d": "Regla 15: dar espacio para mantenerse apartado",
+    "tags": [
+      "rrs",
+      "regla-15",
+      "adquirir-derecho"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 129,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Barco con derecho cambia de rumbo · ¿Qué debe dar?",
+    "a": "Espacio para mantenerse apartado",
+    "d": "Regla 16: cambio de rumbo debe dar espacio",
+    "tags": [
+      "rrs",
+      "regla-16",
+      "cambio-rumbo"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 130,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Comprometidos en zona de marca · ¿Quién recibe espacio?",
+    "a": "Interior",
+    "d": "Regla 18: exterior otorga espacio al interior",
+    "tags": [
+      "rrs",
+      "regla-18",
+      "marca",
+      "espacio"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 131,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Penalización habitual en regata",
+    "a": "Dos viradas y dos trasluchadas",
+    "d": "Giro de penalización según instrucciones de regata",
+    "tags": [
+      "rrs",
+      "penalizacion"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 132,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Babor vs estribor · ¿Gana...?",
+    "a": "Estribor",
+    "d": "Regla 10",
+    "tags": [
+      "rrs",
+      "regla-10"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS"
+  },
+  {
+    "id": 133,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Barlovento vs sotavento · ¿Gana...?",
+    "a": "Sotavento",
+    "d": "Regla 11",
+    "tags": [
+      "rrs",
+      "regla-11"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS"
+  },
+  {
+    "id": 134,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Libre a proa vs libre a popa · ¿Gana...?",
+    "a": "Libre a proa",
+    "d": "Regla 12",
+    "tags": [
+      "rrs",
+      "regla-12"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS"
+  },
+  {
+    "id": 135,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG vs RRS · ¿Cuándo aplica cada uno?",
+    "a": "RRS en regata, COLREG en navegación general",
+    "d": "RRS solo entre competidores",
+    "tags": [
+      "colreg",
+      "rrs",
+      "diferencia"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 136,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Regla 5 COLREG · ¿Qué exige?",
+    "a": "Vigilancia permanente",
+    "d": "Visual, auditiva e instrumental",
+    "tags": [
+      "colreg",
+      "regla-5",
+      "vigilancia"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS"
+  },
+  {
+    "id": 137,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Demora constante y distancia decreciente · ¿Qué asumir?",
+    "a": "Riesgo de colisión",
+    "d": "Regla 7 COLREG",
+    "tags": [
+      "colreg",
+      "regla-7",
+      "colision"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 138,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Regla 8 COLREG · ¿Cómo deben ser las maniobras?",
+    "a": "Tempranas, claras, evidentes",
+    "d": "Evitar correcciones ambiguas",
+    "tags": [
+      "colreg",
+      "regla-8",
+      "maniobra"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 139,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Canal angosto · ¿Por qué lado navegar?",
+    "a": "Tan cerca como sea seguro del lado derecho",
+    "d": "Regla 9 COLREG",
+    "tags": [
+      "colreg",
+      "regla-9",
+      "canal"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 140,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Velero vs buque restringido al canal · ¿Quién cede?",
+    "a": "El velero",
+    "d": "Regla 9: velero no debe impedir el paso del buque",
+    "tags": [
+      "colreg",
+      "regla-9",
+      "canal",
+      "velero"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 141,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Alcance · ¿Quién cede?",
+    "a": "El alcanzante",
+    "d": "Regla 13 COLREG: siempre cede el que alcanza",
+    "tags": [
+      "colreg",
+      "regla-13",
+      "alcance"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 142,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Alcance · ¿Desde qué ángulo se considera?",
+    "a": "Más de 22.5° por detrás del través",
+    "d": "Regla 13 COLREG",
+    "tags": [
+      "colreg",
+      "regla-13",
+      "alcance"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 143,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Encuentro de frente (motor) · ¿Qué hacer?",
+    "a": "Ambos alteran rumbo a estribor",
+    "d": "Regla 14 COLREG",
+    "tags": [
+      "colreg",
+      "regla-14",
+      "frente"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 144,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Rojo y verde visibles simultáneamente · ¿Qué asumir?",
+    "a": "Encuentro de frente",
+    "d": "Regla 14 COLREG",
+    "tags": [
+      "colreg",
+      "regla-14",
+      "luces"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 145,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Cruce (motor) · ¿Quién cede?",
+    "a": "El que tiene al otro por estribor",
+    "d": "Regla 15: \"si lo veo por derecha, cedo\"",
+    "tags": [
+      "colreg",
+      "regla-15",
+      "cruce"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 146,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 4,
+    "q": "Jerarquía de protección COLREG · ¿Orden?",
+    "a": "Sin gobierno > maniobra restringida > calado > pesca > vela > motor",
+    "d": "Regla 18 COLREG",
+    "tags": [
+      "colreg",
+      "regla-18",
+      "jerarquia"
+    ],
+    "difficulty": 4,
+    "source": "01_RRS"
+  },
+  {
+    "id": 147,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "\"Soy velero, siempre tengo prioridad\" · ¿Correcto?",
+    "a": "No, en canal angosto cede al buque restringido",
+    "d": "Regla 9 prevalece sobre la jerarquía general",
+    "tags": [
+      "colreg",
+      "regla-9",
+      "error"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 148,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 1,
+    "q": "IALA Región B · Entrando al puerto\n→ ¿Qué color a estribor?",
+    "a": "Rojo",
+    "d": "Red Right Returninging",
+    "tags": [
+      "iala",
+      "region-b",
+      "boyas"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS"
+  },
+  {
+    "id": 149,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Boya de babor entrando · ¿Color y forma?",
+    "a": "Verde, cilíndrica",
+    "d": "Babor = verde, estribor = rojo (Región B)",
+    "tags": [
+      "iala",
+      "boyas",
+      "babor"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 150,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Cardinal Norte · ¿Colores?",
+    "a": "Negro arriba, amarillo abajo",
+    "d": "El negro apunta al norte",
+    "tags": [
+      "iala",
+      "cardinal",
+      "norte"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 151,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Cardinal Norte · ¿Luz?",
+    "a": "Destellos rápidos continuos",
+    "d": "Q o VQ",
+    "tags": [
+      "iala",
+      "cardinal",
+      "norte",
+      "luz"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 152,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Cardinal Este · ¿Cuántos destellos?",
+    "a": "3",
+    "d": "E = 3 letras",
+    "tags": [
+      "iala",
+      "cardinal",
+      "este"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 153,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Cardinal Este · ¿Colores?",
+    "a": "Negro, amarillo, negro",
+    "d": "N-A-N de arriba abajo",
+    "tags": [
+      "iala",
+      "cardinal",
+      "este"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 154,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Cardinal Sur · ¿Colores?",
+    "a": "Amarillo arriba, negro abajo",
+    "d": "Conos apuntando hacia abajo",
+    "tags": [
+      "iala",
+      "cardinal",
+      "sur"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 155,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Cardinal Sur · ¿Luz?",
+    "a": "6 destellos + 1 largo",
+    "d": "El reloj marca las 6",
+    "tags": [
+      "iala",
+      "cardinal",
+      "sur",
+      "luz"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 156,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Cardinal Oeste · ¿Cuántos destellos?",
+    "a": "9",
+    "d": "W tiene 3 puntas, 3×3 = 9",
+    "tags": [
+      "iala",
+      "cardinal",
+      "oeste"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 157,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Cardinal Oeste · ¿Colores?",
+    "a": "Amarillo, negro, amarillo",
+    "d": "A-N-A de arriba abajo",
+    "tags": [
+      "iala",
+      "cardinal",
+      "oeste"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 158,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Peligro aislado · ¿Colores?",
+    "a": "Negro, rojo, negro",
+    "d": "Dos esferas negras arriba",
+    "tags": [
+      "iala",
+      "peligro-aislado"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 159,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Peligro aislado · ¿Luz?",
+    "a": "2 destellos blancos",
+    "d": "Marca peligro localizado con agua alrededor",
+    "tags": [
+      "iala",
+      "peligro-aislado",
+      "luz"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 160,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Aguas seguras · ¿Colores?",
+    "a": "Franjas verticales rojo y blanco",
+    "d": "Esfera roja arriba",
+    "tags": [
+      "iala",
+      "aguas-seguras"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 161,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Marca especial · ¿Color?",
+    "a": "Amarillo",
+    "d": "Cruz amarilla (X), no define peligros",
+    "tags": [
+      "iala",
+      "marca-especial"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 162,
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Marcas cardinales · ¿Qué marcan?",
+    "a": "El agua segura, no el peligro",
+    "d": "Indican por qué lado pasar el peligro",
+    "tags": [
+      "iala",
+      "cardinal"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS"
+  },
+  {
+    "id": 163,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Velero navegando a vela · ¿Luces?",
+    "a": "Roja, verde, blanca de popa",
+    "d": "Sin luz de tope",
+    "tags": [
+      "luces",
+      "velero"
+    ],
+    "difficulty": 1,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 164,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Velero con motor · ¿Luces?",
+    "a": "Roja, verde, blanca de popa + blanca de tope",
+    "d": "Legalmente es embarcación de motor",
+    "tags": [
+      "luces",
+      "velero",
+      "motor"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 165,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Blanca sobre roja (vertical) · ¿Qué embarcación?",
+    "a": "Práctico",
+    "d": "\"White over red, pilot ahead\"",
+    "tags": [
+      "luces",
+      "practico"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 166,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Roja sobre blanca (vertical) · ¿Qué embarcación?",
+    "a": "Pesca",
+    "d": "\"Red over white, fishing at night\"",
+    "tags": [
+      "luces",
+      "pesca"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 167,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Roja blanca roja (vertical) · ¿Qué significa?",
+    "a": "Maniobra restringida",
+    "d": "Dragado, operaciones submarinas, balizamiento",
+    "tags": [
+      "luces",
+      "maniobra-restringida"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 168,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Dos rojas verticales · ¿Qué significa?",
+    "a": "Sin gobierno",
+    "d": "No puede maniobrar normalmente",
+    "tags": [
+      "luces",
+      "sin-gobierno"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 169,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Tres rojas verticales · ¿Qué significa?",
+    "a": "Restringido por calado",
+    "d": "Buque de calado importante",
+    "tags": [
+      "luces",
+      "calado"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 170,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Veo solo luz roja · ¿Qué observo?",
+    "a": "Banda de babor del otro barco",
+    "d": "Cruza de estribor hacia babor respecto a mí",
+    "tags": [
+      "luces",
+      "reconocimiento",
+      "babor"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 171,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Veo solo luz verde · ¿Qué observo?",
+    "a": "Banda de estribor",
+    "d": "Cruza de babor hacia estribor respecto a mí",
+    "tags": [
+      "luces",
+      "reconocimiento",
+      "estribor"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 172,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Veo roja y verde simultáneamente · ¿Qué situación?",
+    "a": "Viene de frente",
+    "d": "Riesgo máximo, asumir encuentro de frente",
+    "tags": [
+      "luces",
+      "frente",
+      "riesgo"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 173,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Marca diurna: dos bolas negras · ¿Significado?",
+    "a": "Sin gobierno",
+    "d": "Igual que dos rojas de noche",
+    "tags": [
+      "marcas-diurnas",
+      "sin-gobierno"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 174,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Marca diurna: bola diamante bola · ¿Significado?",
+    "a": "Maniobra restringida",
+    "d": "Igual que roja-blanca-roja de noche",
+    "tags": [
+      "marcas-diurnas",
+      "maniobra-restringida"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 175,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Marca diurna: cilindro negro · ¿Significado?",
+    "a": "Restringido por calado",
+    "d": "Igual que tres rojas de noche",
+    "tags": [
+      "marcas-diurnas",
+      "calado"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 176,
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Marca diurna: esfera negra · ¿Significado?",
+    "a": "Fondeado",
+    "d": "Barco anclado",
+    "tags": [
+      "marcas-diurnas",
+      "fondeado"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 177,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "A estribor, B babor · B obliga a A a cambiar rumbo\n→ ¿Quién infringió?",
+    "a": "B",
+    "d": "Regla 10: babor se aparta",
+    "tags": [
+      "rrs",
+      "regla-10",
+      "protesta"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 178,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "A estribor, B babor · A cambia rumbo para evitar contacto\n→ ¿Pierde A el derecho?",
+    "a": "No",
+    "d": "A sigue siendo barco con derecho de paso",
+    "tags": [
+      "rrs",
+      "regla-10",
+      "protesta"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 179,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 4,
+    "q": "Sotavento orza bruscamente, barlovento no puede responder\n→ ¿Quién infringe?",
+    "a": "Sotavento",
+    "d": "Regla 16: cambio brusco sin dar espacio",
+    "tags": [
+      "rrs",
+      "regla-16",
+      "protesta"
+    ],
+    "difficulty": 4,
+    "source": "01_RRS"
+  },
+  {
+    "id": 180,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Sotavento orza gradualmente, barlovento responde\n→ ¿Es legal?",
+    "a": "Sí",
+    "d": "Regla 16 cumplida: da espacio para responder",
+    "tags": [
+      "rrs",
+      "regla-16",
+      "protesta"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 181,
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "A completa virada delante de B y obtiene derecho\n→ ¿Puede exigir que B desaparezca?",
+    "a": "No",
+    "d": "Regla 15: debe dar espacio inicial",
+    "tags": [
+      "rrs",
+      "regla-15",
+      "protesta"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 182,
+    "cat": "REG",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "A vira pero aún no alcanza rumbo de ceñida\n→ ¿Sigue bajo Regla 13?",
+    "a": "Sí",
+    "d": "Hasta alcanzar rumbo de ceñida",
+    "tags": [
+      "rrs",
+      "regla-13",
+      "protesta"
+    ],
+    "difficulty": 3,
+    "source": "01_RRS"
+  },
+  {
+    "id": 183,
+    "cat": "METEO",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Isobaras juntas · ¿Qué significa?",
+    "a": "Más viento",
+    "d": "Gradiente de presión fuerte",
+    "tags": [
+      "isobaras",
+      "gradiente"
+    ],
+    "difficulty": 1,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 184,
+    "cat": "METEO",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Isobaras separadas · ¿Qué significa?",
+    "a": "Menos viento",
+    "d": "Gradiente débil",
+    "tags": [
+      "isobaras",
+      "gradiente"
+    ],
+    "difficulty": 1,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 185,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Viento gradiente · ¿Característica principal?",
+    "a": "Más estable y predecible",
+    "d": "Generado por diferencias de presión",
+    "tags": [
+      "gradiente",
+      "viento"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 186,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Viento térmico · ¿Característica principal?",
+    "a": "Local, frecuente en verano",
+    "d": "Generado por diferencias de temperatura",
+    "tags": [
+      "termico",
+      "viento"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 187,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Brisa marina · ¿Cómo se forma?",
+    "a": "Tierra se calienta más rápido, ingresa viento del agua",
+    "d": "Diferencia térmica día: tierra caliente atrae viento del mar",
+    "tags": [
+      "brisa-marina",
+      "termico"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 188,
+    "cat": "METEO",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Racha · ¿Qué es?",
+    "a": "Aumento temporal de intensidad",
+    "d": "Más escora, más viento aparente, retrimado",
+    "tags": [
+      "racha",
+      "intensidad"
+    ],
+    "difficulty": 1,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 189,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Role · ¿Qué es?",
+    "a": "Cambio gradual de dirección del viento",
+    "d": "Diferente de racha (que es intensidad)",
+    "tags": [
+      "role",
+      "direccion"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 190,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Lift · ¿Qué es?",
+    "a": "Role favorable",
+    "d": "Permite orzar o cobrar",
+    "tags": [
+      "lift",
+      "role"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 191,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Header · ¿Qué es?",
+    "a": "Role desfavorable",
+    "d": "Obliga a derivar o virar",
+    "tags": [
+      "header",
+      "role"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 192,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Frente frío · ¿Señales?",
+    "a": "Nubosidad, role, aumento de intensidad",
+    "d": "Aire frío desplaza aire cálido",
+    "tags": [
+      "frente-frio",
+      "nubes"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 193,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Pampero · ¿Características?",
+    "a": "Aire frío, role brusco, aumento del viento",
+    "d": "Clásico del Río de la Plata",
+    "tags": [
+      "pampero",
+      "rio-de-la-plata"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 194,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Sudestada · ¿Características?",
+    "a": "Viento persistente del SE, mucho oleaje, sube el nivel",
+    "d": "Río de la Plata",
+    "tags": [
+      "sudestada",
+      "rio-de-la-plata"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 195,
+    "cat": "METEO",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Racha en ceñida · ¿Qué hacer con el trimado?",
+    "a": "Retrimar",
+    "d": "Más escora y viento aparente requieren ajuste",
+    "tags": [
+      "racha",
+      "trimado"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 196,
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Brisa marina · ¿Durante el día de qué dirección?",
+    "a": "Del agua hacia la costa",
+    "d": "Tierra caliente atrae viento del mar",
+    "tags": [
+      "brisa-marina",
+      "direccion"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 197,
+    "cat": "DEC",
+    "role": "TOD",
+    "fatigue": 3,
+    "q": "Recorrido barlovento-sotavento · Viento borneando a la derecha\n→ ¿Qué lado cubrir?",
+    "a": "Lado derecho (cobrar)",
+    "d": "Borneo derecho favorece el lado derecho del recorrido",
+    "tags": [
+      "estrategia",
+      "borneo",
+      "recorrido"
+    ],
+    "difficulty": 3,
+    "source": "general"
+  },
+  {
+    "id": 198,
+    "cat": "DEC",
+    "role": "TOD",
+    "fatigue": 3,
+    "q": "Ceñida · Borneo de 30° a la derecha\n→ ¿Virar o mantener?",
+    "a": "Virar (cobrar el borneo)",
+    "d": "Borneo derecho favorece virar para cobrar el ángulo",
+    "tags": [
+      "borneo",
+      "virada",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "general"
+  },
+  {
+    "id": 199,
+    "cat": "DEC",
+    "role": "TIM",
+    "fatigue": 2,
+    "q": "Post virada sin velocidad (viento flojo)\n→ ¿Qué priorizar?",
+    "a": "Velocidad > altura",
+    "d": "Sin velocidad no se puede orzar",
+    "tags": [
+      "viento-flojo",
+      "velocidad",
+      "post-virada"
+    ],
+    "difficulty": 2,
+    "source": "general"
+  },
+  {
+    "id": 200,
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "VMG en ceñida · ¿Gana quien...?",
+    "a": "Mejor VMG, no quien navega más alto",
+    "d": "VMG = avance efectivo hacia barlovento",
+    "tags": [
+      "vmg",
+      "ceñida"
+    ],
+    "difficulty": 2,
+    "source": "general"
+  },
+  {
+    "id": 201,
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "VMG en popa · ¿Gana quien...?",
+    "a": "Mejor VMG, no quien baja más",
+    "d": "VMG = avance efectivo hacia sotavento",
+    "tags": [
+      "vmg",
+      "popa"
+    ],
+    "difficulty": 2,
+    "source": "general"
+  },
+  {
+    "id": 202,
+    "cat": "DEC",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Barco A: 7 kn con corriente adversa\nBarco B: 6 kn con corriente favorable\n→ ¿Quién llega antes?",
+    "a": "B",
+    "d": "VMG real de B puede ser mayor pese a menor STW",
+    "tags": [
+      "vmg",
+      "corriente",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "general"
+  },
+  {
+    "id": 203,
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Layline · ¿Cuándo virar?",
+    "a": "Al alcanzar la layline",
+    "d": "Virar en la layline para no pasarse",
+    "tags": [
+      "layline",
+      "virada"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 204,
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Cobrir vs estirar · ¿Cuándo cobrir?",
+    "a": "Cuando el borneo favorece tu lado",
+    "d": "Cobrar = aprovechar borneo favorable",
+    "tags": [
+      "cobrir",
+      "estirar",
+      "borneo"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 205,
+    "cat": "TACT",
+    "role": "TIM",
+    "fatigue": 2,
+    "q": "Start · ¿Qué controla el timonel?",
+    "a": "Posición en la línea",
+    "d": "Controlar hueco y posición",
+    "tags": [
+      "start",
+      "timonel"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 206,
+    "cat": "TACT",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Start · ¿Qué controla el trimmer de génova?",
+    "a": "Velocidad fina",
+    "d": "Trimado fino para acelerar al cañón",
+    "tags": [
+      "start",
+      "genoa"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 207,
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Posicionamiento en flota · ¿Qué busca el táctico?",
+    "a": "Lado con más viento / borneo favorable",
+    "d": "Estrategia de recorrido",
+    "tags": [
+      "posicionamiento",
+      "estrategia"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA"
+  },
+  {
+    "id": 208,
+    "cat": "SIT",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Borneo oscuro a 200m en ceñida\n→ ¿Qué comunicar?",
+    "a": "Borneo a la derecha, intensidad baja, preparar orzar",
+    "d": "Oscuro = menos viento; anticipar orza",
+    "tags": [
+      "borneo",
+      "lectura-viento",
+      "comunicacion"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 209,
+    "cat": "SIT",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Racha fuerte en ceñida · ¿Qué comunica el trimmer?",
+    "a": "\"Racha\", bajar traveller",
+    "d": "Anticipar descarga con traveller",
+    "tags": [
+      "racha",
+      "comunicacion",
+      "traveller"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 210,
+    "cat": "SIT",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Tráfico en la layline · ¿Qué priorizar?",
+    "a": "Evitar tráfico, mantener rumbo limpio",
+    "d": "Tráfico rompe el layline y genera bad air",
+    "tags": [
+      "trafico",
+      "layline",
+      "prioridad"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 211,
+    "cat": "SIT",
+    "role": "TOD",
+    "fatigue": 2,
+    "q": "Comunicación en maniobra · ¿Qué es clave?",
+    "a": "Disparadores verbales claros",
+    "d": "\"Rizo listo\" coordina roles entre proel y copit",
+    "tags": [
+      "comunicacion",
+      "maniobra",
+      "disparador"
+    ],
+    "difficulty": 2,
+    "source": "maniobras"
+  },
+  {
+    "id": 212,
+    "cat": "SIT",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "Priorización bajo presión · ¿Qué hacer primero?",
+    "a": "Velocidad, luego altura",
+    "d": "Sin velocidad nada funciona",
+    "tags": [
+      "priorizacion",
+      "velocidad",
+      "presion"
+    ],
+    "difficulty": 3,
+    "source": "maniobras"
+  },
+  {
+    "id": 213,
+    "cat": "SEG",
+    "role": "TOD",
+    "fatigue": 3,
+    "q": "Hombre al agua · ¿Primera acción?",
+    "a": "Lanzar flotador, gritar \"¡Hombre al agua!\"",
+    "d": "Flotador y alerta inmediata",
+    "tags": [
+      "hombre-al-agua",
+      "emergencia"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 214,
+    "cat": "SEG",
+    "role": "TOD",
+    "fatigue": 3,
+    "q": "Hombre al agua · ¿Quién mantiene contacto visual?",
+    "a": "Un tripulante fija la vista",
+    "d": "No perder la referencia visual",
+    "tags": [
+      "hombre-al-agua",
+      "emergencia"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 215,
+    "cat": "SEG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Demora constante con buque y distancia decreciente\n→ ¿Qué riesgo?",
+    "a": "Colisión",
+    "d": "Demora constante + distancia decreciente = riesgo",
+    "tags": [
+      "colision",
+      "demora",
+      "colreg"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 216,
+    "cat": "SEG",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "Canal angosto con buque restringido · ¿Qué hacer?",
+    "a": "No impedir el paso del buque",
+    "d": "Regla 9 COLREG",
+    "tags": [
+      "canal",
+      "colreg",
+      "seguridad"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 217,
+    "cat": "SEG",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Vela de tormenta · ¿Cuándo usar?",
+    "a": "Viento extremo",
+    "d": "Sustituye al génova para control",
+    "tags": [
+      "vela-tormenta",
+      "viento-extremo"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 218,
+    "cat": "SEG",
+    "role": "TOD",
+    "fatigue": 1,
+    "q": "Equipo de seguridad · ¿Qué es esencial?",
+    "a": "Chalecos, flotador, radio",
+    "d": "Equipo mínimo obligatorio",
+    "tags": [
+      "equipo",
+      "seguridad"
+    ],
+    "difficulty": 1,
+    "source": "13_LUCES"
+  },
+  {
+    "id": 219,
+    "cat": "SEG",
+    "role": "TIM",
+    "fatigue": 4,
+    "q": "Noche · Veo roja y verde de frente\n→ ¿Qué hacer?",
+    "a": "Asumir encuentro de frente, alterar a estribor",
+    "d": "Riesgo máximo, regla 14 COLREG",
+    "tags": [
+      "luces",
+      "noche",
+      "frente",
+      "colreg"
+    ],
+    "difficulty": 4,
+    "source": "13_LUCES"
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "D = 12 mn · V = 6 kn\n→ Tiempo?",
+    "a": "2 h",
+    "d": "12/6 = 2",
+    "tags": [
+      "velocidad",
+      "tiempo"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 220
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "D = 18 mn · V = 9 kn\n→ Tiempo?",
+    "a": "2 h",
+    "d": "18/9 = 2",
+    "tags": [
+      "velocidad",
+      "tiempo"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 221
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "D = 15 mn · V = 5 kn\n→ Tiempo?",
+    "a": "3 h",
+    "d": "15/5 = 3",
+    "tags": [
+      "velocidad",
+      "tiempo"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 222
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Salida 09:00 · D = 18 mn · V = 6 kn\n→ ETA?",
+    "a": "12:00",
+    "d": "18/6 = 3h → 09:00 + 3h",
+    "tags": [
+      "eta",
+      "navegacion"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION",
+    "id": 223
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Salida 14:15 · D = 21 mn · V = 7 kn\n→ ETA?",
+    "a": "17:15",
+    "d": "21/7 = 3h → 14:15 + 3h",
+    "tags": [
+      "eta",
+      "navegacion"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION",
+    "id": 224
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 4,
+    "q": "Salida 06:30 · D = 30 mn · V = 5 kn · Corriente adversa 1 kn\n→ ETA?",
+    "a": "13:30",
+    "d": "SOG=4 → 30/4=7.5h → 06:30+7:30",
+    "tags": [
+      "eta",
+      "corriente"
+    ],
+    "difficulty": 4,
+    "source": "15_NAVEGACION",
+    "id": 225
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Corriente favorable 2 kn · STW = 5 kn · D = 28 mn\n→ ETA?",
+    "a": "4 h",
+    "d": "SOG=7 → 28/7 = 4h",
+    "tags": [
+      "eta",
+      "corriente"
+    ],
+    "difficulty": 3,
+    "source": "17_CORRIENTES",
+    "id": 226
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué modifica la corriente?",
+    "a": "SOG, tiempo de viaje y deriva",
+    "d": "Corriente afecta velocidad sobre fondo",
+    "tags": [
+      "corriente",
+      "sog"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 227
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "20 mn → ¿metros?",
+    "a": "37040 m",
+    "d": "20 × 1852 = 37040",
+    "tags": [
+      "milla-nautica"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 228
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "5 mn → ¿km?",
+    "a": "9.26 km",
+    "d": "5 × 1.852 = 9.26",
+    "tags": [
+      "milla-nautica"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 229
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "RV = 350° · Var = 12°W · Desvío = 5°E\n→ RC?",
+    "a": "333° C",
+    "d": "350-12=338 RM; 338+5=343 RC... wait: 350-12=338; 338+5=343",
+    "tags": [
+      "conversion-completa"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION",
+    "id": 230
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "RC = 180° · Desvío = 4°W · Var = 10°E\n→ RV?",
+    "a": "186° V",
+    "d": "180+4=184 RM; 184+10=194... wait: RC→RM: 180-4=176; RM→RV: 176+10=186",
+    "tags": [
+      "conversion-completa",
+      "inversa"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION",
+    "id": 231
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué es la demora?",
+    "a": "Dirección observada hacia un objeto",
+    "d": "Faro, boya, buque, punta",
+    "tags": [
+      "demora"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 232
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Demora a un buque cambia\n→ ¿Hay riesgo de colisión?",
+    "a": "No necesariamente",
+    "d": "Riesgo solo si demora constante y distancia decreciente",
+    "tags": [
+      "demora",
+      "colision"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 233
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué es la variación magnética?",
+    "a": "Ángulo entre norte verdadero y norte magnético",
+    "d": "Depende de la zona geográfica",
+    "tags": [
+      "variacion"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 234
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué es el desvío?",
+    "a": "Error generado por la propia embarcación",
+    "d": "Motores, electrónica, estructuras metálicas",
+    "tags": [
+      "desvio"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 235
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Var E → ¿positiva o negativa?",
+    "a": "Positiva",
+    "d": "Este = positivo, Oeste = negativo",
+    "tags": [
+      "variacion",
+      "convencion"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 236
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿De dónde se obtiene la variación magnética?",
+    "a": "Carta náutica o publicaciones náuticas",
+    "d": "Dato de la zona geográfica",
+    "tags": [
+      "variacion",
+      "carta"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 237
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Qué es el set de la corriente?",
+    "a": "Dirección hacia donde fluye",
+    "d": "Set = dirección, drift = velocidad",
+    "tags": [
+      "set",
+      "corriente"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 238
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Qué es el drift?",
+    "a": "Velocidad de la corriente",
+    "d": "Diferente del set que es dirección",
+    "tags": [
+      "drift",
+      "corriente"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 239
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Filosofía general de trimado · ¿Cuál es el orden?",
+    "a": "Forma → flujo adherido → acercarse a pérdida → equilibrio → repetir",
+    "d": "Ciclo continuo de trimado",
+    "tags": [
+      "filosofia",
+      "procedimiento"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA",
+    "id": 240
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Error: regular mirando solo la forma de la vela\n→ Corrección",
+    "a": "Mirar siempre los indicadores de flujo",
+    "d": "Lanitas/cataviento, no solo la forma",
+    "tags": [
+      "error",
+      "indicadores"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA",
+    "id": 241
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Error: intentar eliminar toda pérdida\n→ Corrección",
+    "a": "Navegar cerca del límite",
+    "d": "La máxima potencia está cerca de la pérdida",
+    "tags": [
+      "error",
+      "stall"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA",
+    "id": 242
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Error: buscar máxima altura\n→ Corrección",
+    "a": "Buscar máximo VMG",
+    "d": "VMG > altura",
+    "tags": [
+      "error",
+      "vmg"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA",
+    "id": 243
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Más potencia · ¿Ventajas y desventajas?",
+    "a": "Ventaja: aceleración/empuje · Desventaja: escora/arrastre",
+    "d": "Compromiso potencia vs control",
+    "tags": [
+      "potencia",
+      "control"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA",
+    "id": 244
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Más control · ¿Ventajas y desventajas?",
+    "a": "Ventaja: timón equilibrado/menor escora · Desventaja: menor potencia",
+    "d": "Compromiso potencia vs control",
+    "tags": [
+      "control",
+      "potencia"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA",
+    "id": 245
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Viento liviano · Mayor\n→ ¿Objetivo de trimado?",
+    "a": "Generar potencia",
+    "d": "Más profundidad, menos cunningham, menos outhaul",
+    "tags": [
+      "viento-flojo",
+      "potencia"
+    ],
+    "difficulty": 2,
+    "source": "06_MAYOR",
+    "id": 246
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Viento medio · Mayor\n→ ¿Objetivo?",
+    "a": "Máximo VMG",
+    "d": "Forma equilibrada, trabajo fino sobre cataviento",
+    "tags": [
+      "viento-medio",
+      "vmg"
+    ],
+    "difficulty": 2,
+    "source": "06_MAYOR",
+    "id": 247
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Viento fuerte · Mayor\n→ ¿Ajustes?",
+    "a": "Más cunningham, más outhaul, más twist, menor escora",
+    "d": "Control en viento fuerte",
+    "tags": [
+      "viento-fuerte",
+      "control"
+    ],
+    "difficulty": 3,
+    "source": "06_MAYOR",
+    "id": 248
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Mayor · Mucha escora\n→ Causas posibles",
+    "a": "Exceso de profundidad, poco twist, exceso de ángulo",
+    "d": "Demasiada potencia sin descarga",
+    "tags": [
+      "escora",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "06_MAYOR",
+    "id": 249
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Mayor · Timón muy pesado\n→ Causas posibles",
+    "a": "Mayor sobretrimada, baluma cerrada, exceso de profundidad",
+    "d": "Baluma cerrada carga el timón",
+    "tags": [
+      "timon",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "06_MAYOR",
+    "id": 250
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Mayor · Barco lento en ola\n→ Causas posibles",
+    "a": "Mayor demasiado plana, profundidad insuficiente",
+    "d": "Sin potencia para atravesar la ola",
+    "tags": [
+      "ola",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "06_MAYOR",
+    "id": 251
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Cataviento desaparece constantemente\n→ Revisar",
+    "a": "Escota, contra, carro",
+    "d": "Falta twist",
+    "tags": [
+      "cataviento",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "06_MAYOR",
+    "id": 252
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Cataviento vuela permanentemente\n→ Revisar",
+    "a": "Escota, contra",
+    "d": "Exceso de twist",
+    "tags": [
+      "cataviento",
+      "diagnostico"
+    ],
+    "difficulty": 2,
+    "source": "06_MAYOR",
+    "id": 253
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Slot muy cerrado · ¿Qué puede pasar?",
+    "a": "Estrangular flujo, perjudicar ambas velas",
+    "d": "Mayor y génova se afectan mutuamente",
+    "tags": [
+      "slot",
+      "flujo"
+    ],
+    "difficulty": 3,
+    "source": "06_MAYOR",
+    "id": 254
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Slot muy abierto · ¿Qué efecto?",
+    "a": "Reduce interacción entre velas",
+    "d": "Equilibrio necesario, no mínimo",
+    "tags": [
+      "slot"
+    ],
+    "difficulty": 2,
+    "source": "06_MAYOR",
+    "id": 255
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Lanitas inferior, media y superior rompen simultáneamente\n→ Diagnóstico",
+    "a": "Twist equilibrado",
+    "d": "Mantener regulación",
+    "tags": [
+      "lanitas",
+      "twist",
+      "diagnostico"
+    ],
+    "difficulty": 2,
+    "source": "07_GENOVA",
+    "id": 256
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Lanita superior en pérdida primero\n→ Acción",
+    "a": "Mover punto de escota hacia popa, verificar tensión de escota",
+    "d": "Falta twist, cabeza cerrada",
+    "tags": [
+      "lanitas",
+      "accion"
+    ],
+    "difficulty": 3,
+    "source": "07_GENOVA",
+    "id": 257
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Lanita inferior en pérdida primero\n→ Acción",
+    "a": "Mover punto de escota hacia proa",
+    "d": "Exceso de twist, parte baja cerrada",
+    "tags": [
+      "lanitas",
+      "accion"
+    ],
+    "difficulty": 3,
+    "source": "07_GENOVA",
+    "id": 258
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Todas las lanitas en pérdida\n→ Acción",
+    "a": "Filar escota o caer algunos grados",
+    "d": "Exceso de ángulo de ataque",
+    "tags": [
+      "lanitas",
+      "accion"
+    ],
+    "difficulty": 2,
+    "source": "07_GENOVA",
+    "id": 259
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Lanitas: exterior vs interior\n→ ¿Qué es cada una?",
+    "a": "Exterior = sotavento · Interior = barlovento",
+    "d": "Interior muestra exceso de ángulo",
+    "tags": [
+      "lanitas",
+      "concepto"
+    ],
+    "difficulty": 2,
+    "source": "07_GENOVA",
+    "id": 260
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Lanitas medias · ¿Por qué son las más confiables?",
+    "a": "Representan el comportamiento general del génova",
+    "d": "No tan sensibles como superiores ni inferiores",
+    "tags": [
+      "lanitas",
+      "medias"
+    ],
+    "difficulty": 2,
+    "source": "07_GENOVA",
+    "id": 261
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Más tensión de driza en génova\n→ ¿Qué produce?",
+    "a": "Profundidad adelantada",
+    "d": "Draft se mueve hacia el gratil",
+    "tags": [
+      "driza",
+      "draft-position"
+    ],
+    "difficulty": 3,
+    "source": "07_GENOVA",
+    "id": 262
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Menos tensión de driza\n→ ¿Qué produce?",
+    "a": "Profundidad atrasada",
+    "d": "Draft se mueve hacia atrás, más potencia",
+    "tags": [
+      "driza",
+      "draft-position"
+    ],
+    "difficulty": 3,
+    "source": "07_GENOVA",
+    "id": 263
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi en viento medio · ¿Método?",
+    "a": "Trabajar permanentemente sobre el borde del colapso",
+    "d": "Máximo VMG",
+    "tags": [
+      "viento-medio",
+      "vmg"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 264
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi en viento fuerte · ¿Riesgos?",
+    "a": "Rolidos, broach, pérdida de gobierno",
+    "d": "Priorizar estabilidad y coordinación",
+    "tags": [
+      "viento-fuerte",
+      "riesgo"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 265
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi · Gratil nunca colapsa\n→ Causas posibles",
+    "a": "Exceso de escota, rumbo demasiado alto",
+    "d": "Sobretrimado",
+    "tags": [
+      "gratil",
+      "diagnostico"
+    ],
+    "difficulty": 2,
+    "source": "08_SPINNAKER",
+    "id": 266
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi · Gratil colapsa permanentemente\n→ Causas posibles",
+    "a": "Escota demasiado filada, rumbo demasiado bajo",
+    "d": "Falta de escota",
+    "tags": [
+      "gratil",
+      "diagnostico"
+    ],
+    "difficulty": 2,
+    "source": "08_SPINNAKER",
+    "id": 267
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi se esconde detrás de la mayor\n→ Causas",
+    "a": "Exceso de escota, ángulo incorrecto",
+    "d": "Sobretrimado tapado por la mayor",
+    "tags": [
+      "spinnaker",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 268
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi colapsa después de una aceleración\n→ Diagnóstico y acción",
+    "a": "Cambió el viento aparente → retrimar",
+    "d": "Más velocidad = VA rota hacia proa",
+    "tags": [
+      "viento-aparente",
+      "colapso"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 269
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 4,
+    "q": "Una zona del gratil colapsa antes que otra\n→ Diagnóstico",
+    "a": "Desequilibrio vertical",
+    "d": "Revisar altura del tangón, distribución de carga, rumbo",
+    "tags": [
+      "gratil",
+      "tangon",
+      "desequilibrio"
+    ],
+    "difficulty": 4,
+    "source": "08_SPINNAKER",
+    "id": 270
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi · Error: corregir con escota un problema de rumbo\n→ Corrección",
+    "a": "El spi se trimma junto con timonel, mayor y viento aparente",
+    "d": "No trimmar aislado",
+    "tags": [
+      "error",
+      "coordinacion"
+    ],
+    "difficulty": 2,
+    "source": "08_SPINNAKER",
+    "id": 271
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi · Error: trimar para eliminar todo colapso\n→ Corrección",
+    "a": "El colapso ocasional es saludable",
+    "d": "Máxima velocidad cerca del colapso",
+    "tags": [
+      "error",
+      "colapso"
+    ],
+    "difficulty": 2,
+    "source": "08_SPINNAKER",
+    "id": 272
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi · Filosofía operativa · ¿Orden?",
+    "a": "Rumbo objetivo → trimar al borde → observar gratil → ajustar → comunicar",
+    "d": "Ciclo continuo con timonel",
+    "tags": [
+      "filosofia",
+      "procedimiento"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 273
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Braza muy filada · ¿Qué produce?",
+    "a": "Inestabilidad, colapsos frecuentes, pérdida de control",
+    "d": "Tangón demasiado adelante",
+    "tags": [
+      "braza",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 274
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "A estribor, B babor · Contacto · A intenta evitarlo\n→ ¿Quién infringe?",
+    "a": "B",
+    "d": "Regla 10 + posible regla 14 para A si no evita",
+    "tags": [
+      "regla-10",
+      "regla-14",
+      "protesta"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 275
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 4,
+    "q": "A tiene derecho · No intenta evitar contacto\n→ ¿Qué regla?",
+    "a": "Regla 14",
+    "d": "Incluso con derecho debe evitar contacto",
+    "tags": [
+      "regla-14",
+      "protesta"
+    ],
+    "difficulty": 4,
+    "source": "14_PROTESTA",
+    "id": 276
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Contacto con daño · ¿Consecuencia?",
+    "a": "Aumenta la gravedad, consecuencias adicionales",
+    "d": "Daño agrava la infracción",
+    "tags": [
+      "contacto",
+      "dano"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 277
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "A interior, B exterior comprometidos en zona\n→ ¿Quién recibe espacio?",
+    "a": "A (interior)",
+    "d": "Regla 18: exterior otorga espacio",
+    "tags": [
+      "regla-18",
+      "marca"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 278
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "A exterior, B interior comprometidos\n→ ¿Quién otorga espacio?",
+    "a": "A (exterior)",
+    "d": "Regla 18",
+    "tags": [
+      "regla-18",
+      "marca"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 279
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Sin compromiso · A llega primero a la zona\n→ ¿Quién recibe espacio?",
+    "a": "A",
+    "d": "Regla 18: no hay compromiso, primero llega",
+    "tags": [
+      "regla-18",
+      "marca"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 280
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "B llega libre a popa · ¿Puede exigir espacio en marca?",
+    "a": "No necesariamente",
+    "d": "Libre a popa debe mantenerse apartado (regla 12)",
+    "tags": [
+      "regla-18",
+      "regla-12"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 281
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "A interior, B exterior no deja espacio\n→ ¿Quién infringe?",
+    "a": "B",
+    "d": "Regla 18: exterior debe otorgar espacio",
+    "tags": [
+      "regla-18",
+      "protesta"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 282
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 4,
+    "q": "A sotavento orza gradual, B barlovento responde, llegan a marca comprometidos\n→ ¿Reglas que intervienen?",
+    "a": "11, 16, 18",
+    "d": "Barlovento/sotavento + cambio de rumbo + marca",
+    "tags": [
+      "regla-11",
+      "regla-16",
+      "regla-18",
+      "combinado"
+    ],
+    "difficulty": 4,
+    "source": "14_PROTESTA",
+    "id": 283
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 4,
+    "q": "A completa virada cerca de marca, B llega con derecho\n→ ¿Reglas que intervienen?",
+    "a": "13, 15, 18",
+    "d": "Virando + adquirir derecho + marca",
+    "tags": [
+      "regla-13",
+      "regla-15",
+      "regla-18",
+      "combinado"
+    ],
+    "difficulty": 4,
+    "source": "14_PROTESTA",
+    "id": 284
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Audiencia: dos barcos afirman ser interiores\n→ ¿Qué es clave?",
+    "a": "Determinar el compromiso",
+    "d": "Carga de la prueba del compromiso",
+    "tags": [
+      "audiencia",
+      "compromiso"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 285
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Audiencia: discuten una virada\n→ ¿Qué es clave?",
+    "a": "Determinar cuándo terminó la virada",
+    "d": "Fin de regla 13",
+    "tags": [
+      "audiencia",
+      "virada"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 286
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Audiencia: discuten cambio de rumbo\n→ ¿Qué es clave?",
+    "a": "Determinar si se otorgó espacio suficiente",
+    "d": "Regla 16",
+    "tags": [
+      "audiencia",
+      "regla-16"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 287
+  },
+  {
+    "cat": "REG",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "A vira, B navega normalmente · A pasa proa al viento\n→ ¿Quién se aparta?",
+    "a": "A",
+    "d": "Regla 13: el que vira se aparta",
+    "tags": [
+      "regla-13",
+      "virada"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 288
+  },
+  {
+    "cat": "REG",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "A completa virada delante de B\n→ ¿Termina regla 13 inmediatamente?",
+    "a": "Sí, pero pueden aplicar otras reglas",
+    "d": "Regla 15 puede intervenir",
+    "tags": [
+      "regla-13",
+      "regla-15"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 289
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Dos barcos virando simultáneamente\n→ ¿Qué deben hacer?",
+    "a": "Mantenerse apartados mutuamente",
+    "d": "Regla 13 aplica a ambos",
+    "tags": [
+      "regla-13",
+      "virada"
+    ],
+    "difficulty": 2,
+    "source": "14_PROTESTA",
+    "id": 290
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "A obtiene derecho, B no tiene posibilidad de responder\n→ ¿Quién infringe?",
+    "a": "A",
+    "d": "Regla 15: debe dar espacio inicial",
+    "tags": [
+      "regla-15",
+      "protesta"
+    ],
+    "difficulty": 3,
+    "source": "14_PROTESTA",
+    "id": 291
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "A obtiene derecho, B tiene tiempo suficiente\n→ ¿Legal?",
+    "a": "Sí",
+    "d": "Regla 15 cumplida",
+    "tags": [
+      "regla-15"
+    ],
+    "difficulty": 2,
+    "source": "14_PROTESTA",
+    "id": 292
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 4,
+    "q": "A tiene derecho, orza violentamente, B no puede apartarse\n→ ¿Quién infringe?",
+    "a": "A",
+    "d": "Regla 16: cambio violento sin espacio",
+    "tags": [
+      "regla-16",
+      "protesta"
+    ],
+    "difficulty": 4,
+    "source": "14_PROTESTA",
+    "id": 293
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "A tiene derecho, cae varios grados, B reacciona\n→ ¿Legal?",
+    "a": "Sí",
+    "d": "Regla 16 cumplida",
+    "tags": [
+      "regla-16"
+    ],
+    "difficulty": 2,
+    "source": "14_PROTESTA",
+    "id": 294
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Roja, verde, blanca de tope\n→ ¿Velero o motor?",
+    "a": "Motor",
+    "d": "Velero con motor = legalmente motor",
+    "tags": [
+      "luces",
+      "velero",
+      "motor"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES",
+    "id": 295
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Roja, verde, blanca de popa (sin tope)\n→ ¿Qué embarcación?",
+    "a": "Velero navegando a vela",
+    "d": "Sin luz de tope = solo vela",
+    "tags": [
+      "luces",
+      "velero"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES",
+    "id": 296
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Canal de Acceso · Buque con tres rojas verticales\n→ ¿Interpretación?",
+    "a": "Restringido por calado, no asumir que puede maniobrar",
+    "d": "Tres rojas = calado restringido",
+    "tags": [
+      "rio-de-la-plata",
+      "calado"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 297
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Canal Mitre · Marca diurna bola-diamante-bola\n→ ¿Interpretación?",
+    "a": "Operación restringida, extremar vigilancia",
+    "d": "Maniobra restringida",
+    "tags": [
+      "rio-de-la-plata",
+      "maniobra-restringida"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 298
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Error: confundir práctico con pesca\n→ Corrección",
+    "a": "Práctico = blanca sobre roja · Pesca = roja sobre blanca",
+    "d": "Orden de luces vertical",
+    "tags": [
+      "error",
+      "practico",
+      "pesca"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES",
+    "id": 299
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Error: luz blanca aislada = fondeado\n→ Corrección",
+    "a": "Puede ser la popa de un barco navegando",
+    "d": "Evaluar evolución de la demora",
+    "tags": [
+      "error",
+      "luz-blanca"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES",
+    "id": 300
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Pesca con aparejos extendidos · ¿Luces adicionales?",
+    "a": "Roja-blanca + luz indicando dirección del aparejo",
+    "d": "Redes largas, maniobra limitada",
+    "tags": [
+      "luces",
+      "pesca",
+      "aparejos"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 301
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Marca diurna: dos conos unidos por las puntas\n→ ¿Significado?",
+    "a": "Pesca",
+    "d": "Igual que roja sobre blanca de noche",
+    "tags": [
+      "marcas-diurnas",
+      "pesca"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 302
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Veo solo luz blanca · ¿Posibilidades?",
+    "a": "Fondeado, popa de un barco, embarcación pequeña",
+    "d": "Evaluar demora para descartar",
+    "tags": [
+      "luces",
+      "blanca"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES",
+    "id": 303
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Método de identificación nocturna · ¿Orden?",
+    "a": "Qué luces veo → qué embarcación → situación → riesgo → acción",
+    "d": "5 pasos de identificación",
+    "tags": [
+      "metodo",
+      "noche",
+      "identificacion"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 304
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Brisa marina · ¿Durante el día qué pasa con la tierra?",
+    "a": "Se calienta más rápido que el agua",
+    "d": "Diferencia térmica genera brisa",
+    "tags": [
+      "brisa-marina",
+      "termico"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA",
+    "id": 305
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Frente frío · ¿Qué desplaza a qué?",
+    "a": "Aire frío desplaza aire cálido",
+    "d": "Frente frío empuja aire cálido arriba",
+    "tags": [
+      "frente-frio"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 306
+  },
+  {
+    "cat": "METEO",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué es una isobara?",
+    "a": "Línea de igual presión",
+    "d": "Juntas = más viento, separadas = menos",
+    "tags": [
+      "isobaras"
+    ],
+    "difficulty": 1,
+    "source": "16_METEOROLOGIA",
+    "id": 307
+  },
+  {
+    "cat": "METEO",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Racha · ¿Qué efectos produce en el barco?",
+    "a": "Más escora, más viento aparente, necesidad de retrimado",
+    "d": "Aumento temporal de intensidad",
+    "tags": [
+      "racha",
+      "efectos"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 308
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Lift vs header · ¿Diferencia?",
+    "a": "Lift = role favorable · Header = role desfavorable",
+    "d": "Lift permite orzar, header obliga a derivar",
+    "tags": [
+      "lift",
+      "header",
+      "role"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA",
+    "id": 309
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Pampero · ¿De dónde viene el aire?",
+    "a": "Aire frío del SO",
+    "d": "Clásico del Río de la Plata",
+    "tags": [
+      "pampero",
+      "rio-de-la-plata"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 310
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Sudestada · ¿Dirección del viento?",
+    "a": "SE (sudeste)",
+    "d": "Persistente, mucho oleaje",
+    "tags": [
+      "sudestada",
+      "direccion"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA",
+    "id": 311
+  },
+  {
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Izado de spinnaker · ¿Quién iza?",
+    "a": "El proel",
+    "d": "Proel iza, copit ajusta forma",
+    "tags": [
+      "spinnaker",
+      "izado",
+      "proel"
+    ],
+    "difficulty": 2,
+    "source": "maniobras",
+    "id": 312
+  },
+  {
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 2,
+    "q": "Izado de spinnaker · ¿Qué hace el copit?",
+    "a": "Ajustar forma",
+    "d": "Después del izado del proel",
+    "tags": [
+      "spinnaker",
+      "copit"
+    ],
+    "difficulty": 2,
+    "source": "maniobras",
+    "id": 313
+  },
+  {
+    "cat": "MAN",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Toma de rizos · Estado final",
+    "a": "Mayor con rizo firme, barco balanceado",
+    "d": "Rizo puesto y re-trimmado",
+    "tags": [
+      "rizos",
+      "estado-final"
+    ],
+    "difficulty": 2,
+    "source": "maniobras",
+    "id": 314
+  },
+  {
+    "cat": "MAN",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Toma de rizos · Error: no coordinar con proel\n→ Consecuencia",
+    "a": "Rizo mal tomado, driza sin control",
+    "d": "Coordinación proel-copit es clave",
+    "tags": [
+      "rizos",
+      "error",
+      "coordinacion"
+    ],
+    "difficulty": 2,
+    "source": "maniobras",
+    "id": 315
+  },
+  {
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 2,
+    "q": "Toma de rizos · Error: no filar escota\n→ Consecuencia",
+    "a": "Driza carga la vela, no se puede bajar",
+    "d": "Quitar carga primero",
+    "tags": [
+      "rizos",
+      "error",
+      "escota"
+    ],
+    "difficulty": 2,
+    "source": "maniobras",
+    "id": 316
+  },
+  {
+    "cat": "MAN",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "Trasluchada · Estado final",
+    "a": "Estable en nuevo bordo",
+    "d": "Botavara controlada del otro lado",
+    "tags": [
+      "trasluchada",
+      "estado-final"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 317
+  },
+  {
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Salida viento flojo · ¿Qué hace el trimmer de génova?",
+    "a": "Filar escota",
+    "d": "Velocidad > altura",
+    "tags": [
+      "viento-flojo",
+      "genoa"
+    ],
+    "difficulty": 2,
+    "source": "maniobras",
+    "id": 318
+  },
+  {
+    "cat": "MAN",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Salida viento flojo · ¿Qué hace el trimmer de mayor?",
+    "a": "Mantener potencia",
+    "d": "No orzar, buscar velocidad",
+    "tags": [
+      "viento-flojo",
+      "mayor"
+    ],
+    "difficulty": 2,
+    "source": "maniobras",
+    "id": 319
+  },
+  {
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Virada en ceñida · ¿Qué hace el proel?",
+    "a": "Ayudar paso de cabos",
+    "d": "Cabos libres en preparados",
+    "tags": [
+      "virada",
+      "proel"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 320
+  },
+  {
+    "cat": "MAN",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Virada en ceñida · Post\n→ ¿Qué hacer?",
+    "a": "Acelerar y luego cerrar",
+    "d": "Primero velocidad, después altura",
+    "tags": [
+      "virada",
+      "post"
+    ],
+    "difficulty": 2,
+    "source": "maniobras",
+    "id": 321
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Ceñida · Borneo de 30° a la izquierda\n→ ¿Virar o mantener?",
+    "a": "Mantener (el borneo te favorece)",
+    "d": "Borneo izquierdo en bordo estribor = lift",
+    "tags": [
+      "borneo",
+      "lift",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 322
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Recorrido barlovento-sotavento · Borneando a la izquierda\n→ ¿Qué lado cubrir?",
+    "a": "Lado izquierdo (cobrar)",
+    "d": "Borneo izquierdo favorece lado izquierdo",
+    "tags": [
+      "estrategia",
+      "borneo"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 323
+  },
+  {
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Cobrir vs estirar · ¿Cuándo estirar?",
+    "a": "Cuando el borneo es desfavorable o hay más viento adelante",
+    "d": "Estirar = buscar viento nuevo",
+    "tags": [
+      "cobrir",
+      "estirar"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 324
+  },
+  {
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Layline con tráfico · ¿Qué hacer?",
+    "a": "Virar antes para evitar bad air",
+    "d": "Tráfico en layline rompe el rumbo",
+    "tags": [
+      "layline",
+      "trafico"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 325
+  },
+  {
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Start · ¿Qué busca el táctico?",
+    "a": "Lado con ventaja y hueco limpio",
+    "d": "Posición + viento + tráfico",
+    "tags": [
+      "start",
+      "tactica"
+    ],
+    "difficulty": 2,
+    "source": "general",
+    "id": 326
+  },
+  {
+    "cat": "SIT",
+    "role": "TOD",
+    "fatigue": 3,
+    "q": "Racha fuerte en ceñida · ¿Qué comunica el trimmer de mayor?",
+    "a": "\"Racha\" → bajar traveller",
+    "d": "Anticipar descarga",
+    "tags": [
+      "racha",
+      "comunicacion"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 327
+  },
+  {
+    "cat": "SIT",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "Borneo oscuro adelante en ceñida · ¿Qué hacer?",
+    "a": "Preparar orzar, comunicar intensidad baja",
+    "d": "Oscuro = menos viento",
+    "tags": [
+      "borneo",
+      "lectura-viento"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 328
+  },
+  {
+    "cat": "SIT",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Tras borneo de 30° a la derecha en ceñida\n→ ¿Qué hace el trimmer de genoa?",
+    "a": "Soltar ~10cm de escota",
+    "d": "Mayor ángulo de incidencia → soltar escota",
+    "tags": [
+      "borneo",
+      "genoa",
+      "trimado"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 329
+  },
+  {
+    "cat": "SIT",
+    "role": "TOD",
+    "fatigue": 2,
+    "q": "Priorización bajo presión · ¿Qué viene primero?",
+    "a": "Velocidad, luego altura",
+    "d": "Sin velocidad nada funciona",
+    "tags": [
+      "priorizacion",
+      "velocidad"
+    ],
+    "difficulty": 2,
+    "source": "general",
+    "id": 330
+  },
+  {
+    "cat": "SIT",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spinnaker en popa inestable · ¿Qué priorizar?",
+    "a": "Estabilidad y coordinación con timonel",
+    "d": "Evitar death roll",
+    "tags": [
+      "spinnaker",
+      "popa",
+      "estabilidad"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 331
+  },
+  {
+    "cat": "SEG",
+    "role": "TOD",
+    "fatigue": 4,
+    "q": "Hombre al agua · ¿Segunda acción tras flotador y grito?",
+    "a": "Maniobra de recuperación (Williamson/Anderson)",
+    "d": "Giro controlado para volver al punto",
+    "tags": [
+      "hombre-al-agua",
+      "maniobra"
+    ],
+    "difficulty": 4,
+    "source": "general",
+    "id": 332
+  },
+  {
+    "cat": "SEG",
+    "role": "TOD",
+    "fatigue": 3,
+    "q": "Hombre al agua · ¿Quién apunta referencia visual?",
+    "a": "Un tripulante fija la vista sin soltarlo",
+    "d": "No perder la referencia",
+    "tags": [
+      "hombre-al-agua"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 333
+  },
+  {
+    "cat": "SEG",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "Broach con spinnaker · ¿Primera acción?",
+    "a": "Soltar escota de spi inmediatamente",
+    "d": "Quitar carga para recuperar gobierno",
+    "tags": [
+      "broach",
+      "spinnaker",
+      "emergencia"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 334
+  },
+  {
+    "cat": "SEG",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Viento extremo · ¿Qué vela usar?",
+    "a": "Vela de tormenta (solamente mayor con rizos profundos)",
+    "d": "Control sobre potencia",
+    "tags": [
+      "vela-tormenta",
+      "viento-extremo"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 335
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Equipo de seguridad · ¿Qué es esencial en regata?",
+    "a": "Chalecos, flotador, radio, botiquín",
+    "d": "Equipo mínimo obligatorio",
+    "tags": [
+      "equipo",
+      "seguridad"
+    ],
+    "difficulty": 2,
+    "source": "general",
+    "id": 336
+  },
+  {
+    "cat": "SEG",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Noche · Demora constante con buque, distancia decreciente\n→ ¿Qué hacer?",
+    "a": "Asumir riesgo de colisión, maniobrar temprano y clara",
+    "d": "Regla 7 y 8 COLREG",
+    "tags": [
+      "noche",
+      "colision",
+      "colreg"
+    ],
+    "difficulty": 3,
+    "source": "02_COLREG",
+    "id": 337
+  },
+  {
+    "cat": "SEG",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "Velero en canal angosto · Buque restringido se acerca\n→ ¿Qué hacer?",
+    "a": "No impedir el paso, apartarse temprano",
+    "d": "Regla 9 COLREG",
+    "tags": [
+      "canal",
+      "colreg",
+      "seguridad"
+    ],
+    "difficulty": 3,
+    "source": "02_COLREG",
+    "id": 338
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Regla 6 COLREG · ¿Qué exige?",
+    "a": "Velocidad de seguridad",
+    "d": "Según visibilidad, tráfico, oleaje, corriente",
+    "tags": [
+      "colreg",
+      "regla-6",
+      "velocidad"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 339
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Regla 17 COLREG · ¿Qué debe hacer el barco con derecho?",
+    "a": "Mantener rumbo y velocidad",
+    "d": "Hasta que la situación requiera otra acción",
+    "tags": [
+      "colreg",
+      "regla-17"
+    ],
+    "difficulty": 3,
+    "source": "02_COLREG",
+    "id": 340
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Regla 16 COLREG · ¿Cómo maniobra el que cede?",
+    "a": "Temprano, claro, significativo",
+    "d": "Evitar correcciones ambiguas",
+    "tags": [
+      "colreg",
+      "regla-16"
+    ],
+    "difficulty": 3,
+    "source": "02_COLREG",
+    "id": 341
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RV = 045° · Var = 10°W\n→ RM?",
+    "a": "055° M",
+    "d": "045 + 10 = 055",
+    "tags": [
+      "variacion"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 342
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RV = 200° · Var = 5°E\n→ RM?",
+    "a": "195° M",
+    "d": "200 - 5 = 195",
+    "tags": [
+      "variacion"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 343
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RV = 350° · Var = 15°W\n→ RM?",
+    "a": "005° M",
+    "d": "350 + 15 = 365 → 005",
+    "tags": [
+      "variacion"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 344
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RV = 180° · Var = 3°E\n→ RM?",
+    "a": "177° M",
+    "d": "180 - 3 = 177",
+    "tags": [
+      "variacion"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 345
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RM = 300° · Var = 8°W\n→ RV?",
+    "a": "308° V",
+    "d": "300 + 8 = 308",
+    "tags": [
+      "variacion"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 346
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RM = 150° · Var = 12°E\n→ RV?",
+    "a": "138° V",
+    "d": "150 - 12 = 138",
+    "tags": [
+      "variacion"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 347
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RM = 090° · Desvío = 5°E\n→ RC?",
+    "a": "095° C",
+    "d": "090 + 5 = 095",
+    "tags": [
+      "desvio"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 348
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RM = 270° · Desvío = 7°W\n→ RC?",
+    "a": "263° C",
+    "d": "270 - 7 = 263",
+    "tags": [
+      "desvio"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 349
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "RV = 300° · Var = 5°W · Desvío = 3°W\n→ RC?",
+    "a": "308° C",
+    "d": "300+5=305 RM; 305-3=302... wait: 300+5=305; 305-3=302",
+    "tags": [
+      "conversion-completa"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION",
+    "id": 350
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "RV = 060° · Var = 8°E · Desvío = 2°W\n→ RC?",
+    "a": "066° C",
+    "d": "060-8=052 RM; 052+2=054... wait: 060-8=052; 052-2=050",
+    "tags": [
+      "conversion-completa"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION",
+    "id": 351
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "V = 5 kn · D = 10 mn\n→ Tiempo?",
+    "a": "2 h",
+    "d": "10/5 = 2",
+    "tags": [
+      "velocidad"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 352
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "V = 7 kn · D = 14 mn\n→ Tiempo?",
+    "a": "2 h",
+    "d": "14/7 = 2",
+    "tags": [
+      "velocidad"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 353
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "V = 4.5 kn · D = 9 mn\n→ Tiempo?",
+    "a": "2 h",
+    "d": "9/4.5 = 2",
+    "tags": [
+      "velocidad"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 354
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "V = 6 kn · T = 20 min\n→ Distancia?",
+    "a": "2 mn",
+    "d": "6 × 0.333 = 2",
+    "tags": [
+      "distancia"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 355
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "V = 7.5 kn · T = 2 h\n→ Distancia?",
+    "a": "15 mn",
+    "d": "7.5 × 2 = 15",
+    "tags": [
+      "distancia"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 356
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "D = 24 mn · T = 3 h\n→ Velocidad?",
+    "a": "8 kn",
+    "d": "24/3 = 8",
+    "tags": [
+      "velocidad"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 357
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "D = 30 mn · T = 5 h\n→ Velocidad?",
+    "a": "6 kn",
+    "d": "30/5 = 6",
+    "tags": [
+      "velocidad"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 358
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Salida 08:00 · D = 24 mn · V = 8 kn\n→ ETA?",
+    "a": "11:00",
+    "d": "24/8 = 3h → 08:00 + 3h",
+    "tags": [
+      "eta"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION",
+    "id": 359
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Salida 10:30 · D = 12 mn · V = 4 kn\n→ ETA?",
+    "a": "13:30",
+    "d": "12/4 = 3h → 10:30 + 3h",
+    "tags": [
+      "eta"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION",
+    "id": 360
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Salida 15:00 · D = 20 mn · V = 5 kn\n→ ETA?",
+    "a": "19:00",
+    "d": "20/5 = 4h → 15:00 + 4h",
+    "tags": [
+      "eta"
+    ],
+    "difficulty": 3,
+    "source": "15_NAVEGACION",
+    "id": 361
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 4,
+    "q": "Salida 07:00 · D = 24 mn · SOG = 4 kn (corriente adversa)\n→ ETA?",
+    "a": "13:00",
+    "d": "24/4 = 6h → 07:00 + 6h",
+    "tags": [
+      "eta",
+      "corriente"
+    ],
+    "difficulty": 4,
+    "source": "17_CORRIENTES",
+    "id": 362
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "D = 24 mn · SOG = 8 kn\n→ Tiempo?",
+    "a": "3 h",
+    "d": "24/8 = 3",
+    "tags": [
+      "sog",
+      "tiempo"
+    ],
+    "difficulty": 3,
+    "source": "17_CORRIENTES",
+    "id": 363
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "D = 24 mn · SOG = 4 kn\n→ Tiempo?",
+    "a": "6 h",
+    "d": "24/4 = 6",
+    "tags": [
+      "sog",
+      "tiempo"
+    ],
+    "difficulty": 3,
+    "source": "17_CORRIENTES",
+    "id": 364
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "GPS = 8 kn · Corredera = 6 kn\n→ ¿Qué existe?",
+    "a": "Corriente favorable de 2 kn",
+    "d": "SOG > STW → corriente a favor",
+    "tags": [
+      "sog",
+      "stw",
+      "corriente"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 365
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "GPS = 5 kn · Corredera = 7 kn\n→ ¿Qué existe?",
+    "a": "Corriente adversa de 2 kn",
+    "d": "SOG < STW → corriente en contra",
+    "tags": [
+      "sog",
+      "stw",
+      "corriente"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 366
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Corriente transversal · El barco llega desplazado\n→ ¿Qué fenómeno?",
+    "a": "Deriva",
+    "d": "Corriente lateral desplaza al barco",
+    "tags": [
+      "deriva",
+      "corriente"
+    ],
+    "difficulty": 3,
+    "source": "17_CORRIENTES",
+    "id": 367
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Cruce Buenos Aires-Colonia · Error clásico",
+    "a": "Navegar rumbo directo sin corregir corriente",
+    "d": "La corriente desplaza, hay que corregir rumbo",
+    "tags": [
+      "cruce",
+      "rio-de-la-plata",
+      "error"
+    ],
+    "difficulty": 3,
+    "source": "17_CORRIENTES",
+    "id": 368
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Cruce BA-Colonia · Procedimiento correcto",
+    "a": "Estimar corriente → deriva → corregir rumbo → monitorear GPS",
+    "d": "4 pasos del procedimiento",
+    "tags": [
+      "cruce",
+      "procedimiento"
+    ],
+    "difficulty": 3,
+    "source": "17_CORRIENTES",
+    "id": 369
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Corriente en ceñida · ¿Qué modifica?",
+    "a": "Laylines, bordes favorecidos, tiempo de cada pierna",
+    "d": "Corriente afecta táctica de ceñida",
+    "tags": [
+      "corriente",
+      "ceñida",
+      "layline"
+    ],
+    "difficulty": 3,
+    "source": "17_CORRIENTES",
+    "id": 370
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Corriente en popa · ¿Qué modifica?",
+    "a": "VMG y ángulos efectivos",
+    "d": "Corriente cambia el VMG de popa",
+    "tags": [
+      "corriente",
+      "popa",
+      "vmg"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 371
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "Canal de Acceso · ¿Qué puede modificar la corriente?",
+    "a": "Tiempo de ingreso, maniobra, separación lateral",
+    "d": "Corriente afecta navegación en canal",
+    "tags": [
+      "canal",
+      "corriente"
+    ],
+    "difficulty": 3,
+    "source": "17_CORRIENTES",
+    "id": 372
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Canal Mitre · ¿A qué prestar atención?",
+    "a": "Tráfico y corriente transversal",
+    "d": "Riesgo principal del Mitre",
+    "tags": [
+      "canal-mitre",
+      "corriente"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 373
+  },
+  {
+    "cat": "NAV",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "Banco Ortiz · ¿Qué característica tiene?",
+    "a": "Corrientes y profundidades variables",
+    "d": "Zona cambiante del Río de la Plata",
+    "tags": [
+      "banco-ortiz",
+      "rio-de-la-plata"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 374
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "1 nudo = ¿qué?",
+    "a": "1 milla náutica por hora",
+    "d": "1 kn = 1 mn/h",
+    "tags": [
+      "nudo",
+      "velocidad"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 375
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "1 mn = ¿cuántos metros?",
+    "a": "1852 m",
+    "d": "Milla náutica estándar",
+    "tags": [
+      "milla-nautica"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 376
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "V = 10 kn · D = 25 mn\n→ Tiempo?",
+    "a": "2h 30min",
+    "d": "25/10 = 2.5h",
+    "tags": [
+      "velocidad"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 377
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "V = 3 kn · D = 6 mn\n→ Tiempo?",
+    "a": "2 h",
+    "d": "6/3 = 2",
+    "tags": [
+      "velocidad"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 378
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "V = 9 kn · T = 2 h 30 min\n→ Distancia?",
+    "a": "22.5 mn",
+    "d": "9 × 2.5 = 22.5",
+    "tags": [
+      "distancia"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 379
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "D = 50 mn · T = 10 h\n→ Velocidad?",
+    "a": "5 kn",
+    "d": "50/10 = 5",
+    "tags": [
+      "velocidad"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 380
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Rumbo 000° → ¿Qué dirección?",
+    "a": "Norte",
+    "d": "000° = N",
+    "tags": [
+      "rumbo",
+      "puntos"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 381
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Rumbo 090° → ¿Qué dirección?",
+    "a": "Este",
+    "d": "090° = E",
+    "tags": [
+      "rumbo",
+      "puntos"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 382
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Rumbo 180° → ¿Qué dirección?",
+    "a": "Sur",
+    "d": "180° = S",
+    "tags": [
+      "rumbo",
+      "puntos"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 383
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Rumbo 270° → ¿Qué dirección?",
+    "a": "Oeste",
+    "d": "270° = W",
+    "tags": [
+      "rumbo",
+      "puntos"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 384
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué es el rumbo verdadero?",
+    "a": "Rumbo medido respecto al norte verdadero",
+    "d": "Se usa sobre la carta náutica",
+    "tags": [
+      "rumbo-verdadero"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 385
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué es el rumbo de compás?",
+    "a": "Lectura observada en el compás",
+    "d": "Incluye variación y desvío",
+    "tags": [
+      "rumbo-compas"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 386
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Relación entre rumbos · ¿Orden correcto?",
+    "a": "RV → Var → RM → Desvío → RC",
+    "d": "Cadena de conversiones",
+    "tags": [
+      "conversion",
+      "orden"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 387
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Para qué sirve la demora?",
+    "a": "Posicionamiento, prevención de colisiones, navegación costera",
+    "d": "Usos de la demora",
+    "tags": [
+      "demora",
+      "uso"
+    ],
+    "difficulty": 2,
+    "source": "15_NAVEGACION",
+    "id": 388
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué es la ETA?",
+    "a": "Estimated Time of Arrival (hora estimada de llegada)",
+    "d": "Salida + tiempo de navegación",
+    "tags": [
+      "eta"
+    ],
+    "difficulty": 1,
+    "source": "15_NAVEGACION",
+    "id": 389
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "STW vs SOG · ¿Diferencia?",
+    "a": "STW = respecto al agua · SOG = respecto al fondo",
+    "d": "Corredera mide STW, GPS mide SOG",
+    "tags": [
+      "stw",
+      "sog"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 390
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Qué es la deriva?",
+    "a": "Desplazamiento lateral por corriente o viento",
+    "d": "La proa apunta a un lugar, el barco termina en otro",
+    "tags": [
+      "deriva"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 391
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Corriente favorable · STW = 6, corriente = 1.5\n→ SOG?",
+    "a": "7.5 kn",
+    "d": "6 + 1.5 = 7.5",
+    "tags": [
+      "sog",
+      "corriente"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 392
+  },
+  {
+    "cat": "NAV",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Corriente adversa · STW = 7, corriente = 2.5\n→ SOG?",
+    "a": "4.5 kn",
+    "d": "7 - 2.5 = 4.5",
+    "tags": [
+      "sog",
+      "corriente"
+    ],
+    "difficulty": 2,
+    "source": "17_CORRIENTES",
+    "id": 393
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué es el ángulo de ataque?",
+    "a": "Ángulo entre viento aparente y orientación de la vela",
+    "d": "Demasiado chico = poca fuerza; demasiado grande = pérdida",
+    "tags": [
+      "angulo-ataque"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA",
+    "id": 394
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué es el twist?",
+    "a": "Diferencia de ángulo de ataque entre parte inferior y superior",
+    "d": "El viento aparente cambia con la altura",
+    "tags": [
+      "twist"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA",
+    "id": 395
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Qué es el sag?",
+    "a": "Curvatura longitudinal del estay de proa",
+    "d": "Más sag = génova más profundo",
+    "tags": [
+      "sag"
+    ],
+    "difficulty": 1,
+    "source": "05_AERODINAMICA",
+    "id": 396
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Qué ocurre al aumentar la profundidad?",
+    "a": "Más potencia, más aceleración, más escora",
+    "d": "Vela más profunda = más empuje",
+    "tags": [
+      "profundidad"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA",
+    "id": 397
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Qué sucede cuando el flujo se separa?",
+    "a": "Lanitas caídas, vibraciones, pérdida de velocidad, menor VMG",
+    "d": "Flujo separado = eficiencia cae",
+    "tags": [
+      "flujo",
+      "stall"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA",
+    "id": 398
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "¿Por qué el viento aparente cambia con la altura?",
+    "a": "Porque la velocidad del barco suma al viento real y la fricción disminuye con la altura",
+    "d": "La cabeza ve viento diferente al pie",
+    "tags": [
+      "viento-aparente",
+      "altura"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA",
+    "id": 399
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "¿Cómo afecta el sag al rendimiento del génova?",
+    "a": "Más sag = más profundidad y potencia; menos sag = más plano y control",
+    "d": "Sag controla profundidad del génova",
+    "tags": [
+      "sag",
+      "genoa"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA",
+    "id": 400
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "¿Por qué navegar más alto no siempre produce mejor VMG?",
+    "a": "Porque VMG depende del avance efectivo, no de la altura",
+    "d": "VMG = velocidad × cos(ángulo)",
+    "tags": [
+      "vmg",
+      "altura"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA",
+    "id": 401
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Lanitas estables pero el barco no acelera\n→ ¿Qué revisar?",
+    "a": "Sag, profundidad, ubicación del draft",
+    "d": "Problema de forma, no de flujo",
+    "tags": [
+      "diagnostico",
+      "forma"
+    ],
+    "difficulty": 3,
+    "source": "05_AERODINAMICA",
+    "id": 402
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Mayor · ¿Qué controla el outhaul?",
+    "a": "Profundidad del pie de la mayor",
+    "d": "Outhaul = curvatura del pie",
+    "tags": [
+      "outhaul",
+      "profundidad"
+    ],
+    "difficulty": 2,
+    "source": "06_MAYOR",
+    "id": 403
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Mayor · ¿Qué controla el cunningham?",
+    "a": "Ubicación de la profundidad (draft position)",
+    "d": "Cunningham mueve el draft",
+    "tags": [
+      "cunningham",
+      "draft-position"
+    ],
+    "difficulty": 2,
+    "source": "06_MAYOR",
+    "id": 404
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Mayor · ¿Qué controla el contra (vang)?",
+    "a": "Apertura de la baluma",
+    "d": "Especialmente cuando la escota pierde influencia",
+    "tags": [
+      "contra",
+      "vang",
+      "baluma"
+    ],
+    "difficulty": 2,
+    "source": "06_MAYOR",
+    "id": 405
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Mayor · ¿Qué controla la escota?",
+    "a": "Ángulo y twist",
+    "d": "Escota afecta ambos simultáneamente",
+    "tags": [
+      "escota",
+      "angulo",
+      "twist"
+    ],
+    "difficulty": 2,
+    "source": "06_MAYOR",
+    "id": 406
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Mayor · ¿Qué controla el carro?",
+    "a": "Ángulo (con menor efecto sobre twist)",
+    "d": "Carro = ángulo sin tocar baluma",
+    "tags": [
+      "carro",
+      "angulo"
+    ],
+    "difficulty": 2,
+    "source": "06_MAYOR",
+    "id": 407
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Menos contra (vang) · ¿Qué produce?",
+    "a": "Más twist, baluma más abierta",
+    "d": "Vang filado = baluma abre",
+    "tags": [
+      "contra",
+      "twist"
+    ],
+    "difficulty": 3,
+    "source": "06_MAYOR",
+    "id": 408
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Menos cunningham · ¿Qué produce?",
+    "a": "Profundidad atrasada, más potencia, más sensibilidad",
+    "d": "Draft se mueve atrás",
+    "tags": [
+      "cunningham",
+      "potencia"
+    ],
+    "difficulty": 3,
+    "source": "06_MAYOR",
+    "id": 409
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Mayor · ¿Qué función principal tiene?",
+    "a": "Generar potencia, equilibrar, controlar escora, optimizar slot",
+    "d": "No trabaja aislada, es un sistema con el génova",
+    "tags": [
+      "mayor",
+      "funcion"
+    ],
+    "difficulty": 2,
+    "source": "06_MAYOR",
+    "id": 410
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Amantillo · ¿Qué sostiene?",
+    "a": "La botavara",
+    "d": "Generalmente liberado en regata",
+    "tags": [
+      "amantillo",
+      "botavara"
+    ],
+    "difficulty": 3,
+    "source": "06_MAYOR",
+    "id": 411
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 4,
+    "q": "Amantillo en viento extremadamente liviano · ¿Beneficios?",
+    "a": "Sostiene peso de botavara, evita deformaciones, ayuda sables, incrementa twist efectivo",
+    "d": "Excepción al uso normal",
+    "tags": [
+      "amantillo",
+      "viento-flojo"
+    ],
+    "difficulty": 4,
+    "source": "06_MAYOR",
+    "id": 412
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Génova · ¿Cuál es el mejor indicador aerodinámico?",
+    "a": "Las lanitas",
+    "d": "Mejores indicadores del barco",
+    "tags": [
+      "lanitas",
+      "indicador"
+    ],
+    "difficulty": 2,
+    "source": "07_GENOVA",
+    "id": 413
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Génova · Sag · ¿Control principal?",
+    "a": "Burdas",
+    "d": "Burdas tensionan el estay",
+    "tags": [
+      "sag",
+      "burdas"
+    ],
+    "difficulty": 2,
+    "source": "07_GENOVA",
+    "id": 414
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Génova · Twist · ¿Control principal?",
+    "a": "Punto de escota",
+    "d": "Adelantado = menos twist",
+    "tags": [
+      "twist",
+      "punto-escota"
+    ],
+    "difficulty": 2,
+    "source": "07_GENOVA",
+    "id": 415
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Génova · Ángulo · ¿Control principal?",
+    "a": "Escota",
+    "d": "Regula cuánto trabaja la vela",
+    "tags": [
+      "angulo",
+      "escota"
+    ],
+    "difficulty": 2,
+    "source": "07_GENOVA",
+    "id": 416
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Génova · Filosofía de ceñida",
+    "a": "Navegar muy cerca del límite, no evitar toda pérdida",
+    "d": "La lanita interior puede insinuar pérdida ocasionalmente",
+    "tags": [
+      "filosofia",
+      "ceñida"
+    ],
+    "difficulty": 3,
+    "source": "07_GENOVA",
+    "id": 417
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Génova · Más sag → ¿qué pasa con la profundidad?",
+    "a": "Más profundidad, más potencia, más aceleración",
+    "d": "Estay más curvo = vela más profunda",
+    "tags": [
+      "sag",
+      "profundidad"
+    ],
+    "difficulty": 3,
+    "source": "07_GENOVA",
+    "id": 418
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Génova · Menos sag → ¿qué pasa?",
+    "a": "Menos profundidad, menos escora, más control",
+    "d": "Estay tenso = vela plana",
+    "tags": [
+      "sag",
+      "control"
+    ],
+    "difficulty": 3,
+    "source": "07_GENOVA",
+    "id": 419
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi · ¿Qué controla la escota?",
+    "a": "Ángulo de ataque, apertura, potencia",
+    "d": "Control principal de trabajo",
+    "tags": [
+      "spinnaker",
+      "escota"
+    ],
+    "difficulty": 2,
+    "source": "08_SPINNAKER",
+    "id": 420
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi · ¿Qué controla la braza?",
+    "a": "Posición horizontal del tangón",
+    "d": "Forma, estabilidad, área efectiva",
+    "tags": [
+      "spinnaker",
+      "braza"
+    ],
+    "difficulty": 2,
+    "source": "08_SPINNAKER",
+    "id": 421
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi · ¿Qué controla el tangón?",
+    "a": "Distribución vertical de carga",
+    "d": "No solo subir/bajar amura",
+    "tags": [
+      "spinnaker",
+      "tangon"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 422
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi · ¿Respecto a qué se trimma?",
+    "a": "Viento aparente (no viento real)",
+    "d": "VA cambia con la velocidad",
+    "tags": [
+      "spinnaker",
+      "viento-aparente"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 423
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi · Escota demasiado cazada · ¿Síntoma del gratil?",
+    "a": "Excesivamente estable",
+    "d": "Sobretrimado = gratil no colapsa",
+    "tags": [
+      "gratil",
+      "sobretrimado"
+    ],
+    "difficulty": 2,
+    "source": "08_SPINNAKER",
+    "id": 424
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi · Twist · ¿Influencias?",
+    "a": "Altura del tangón, escota, forma de la vela, viento aparente",
+    "d": "Múltiples factores",
+    "tags": [
+      "spinnaker",
+      "twist"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 425
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 2,
+    "q": "Spi · Largo · ¿Prioridad?",
+    "a": "Mantener flujo y potencia",
+    "d": "Compromiso sustentación/arrastre",
+    "tags": [
+      "spinnaker",
+      "largo"
+    ],
+    "difficulty": 2,
+    "source": "08_SPINNAKER",
+    "id": 426
+  },
+  {
+    "cat": "TRIM",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi · Coordinación trimmer-timonel · ¿Principio?",
+    "a": "El spi no se trimma aislado, trabaja con timonel, mayor y VA",
+    "d": "Comunicación constante",
+    "tags": [
+      "spinnaker",
+      "coordinacion"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 427
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué son las reglas de Parte 2?",
+    "a": "Encuentro entre barcos cuando hay riesgo de interferencia",
+    "d": "Reglas 10-18",
+    "tags": [
+      "rrs",
+      "parte-2"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 428
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · Principio fundamental sobre contacto",
+    "a": "Incluso con derecho de paso, evitar contacto",
+    "d": "Regla 14",
+    "tags": [
+      "regla-14",
+      "contacto"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 429
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · ¿Qué es el espacio en marca?",
+    "a": "Espacio para llegar a la marca, rodearla y navegar su rumbo",
+    "d": "Regla 18",
+    "tags": [
+      "regla-18",
+      "espacio"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 430
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Barco interior vs exterior · ¿Definición?",
+    "a": "Interior = más cercano a la marca · Exterior = más alejado",
+    "d": "Regla 18",
+    "tags": [
+      "regla-18",
+      "interior"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 431
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Error: \"tengo prioridad\"\n→ Corrección",
+    "a": "Las RRS hablan de derecho de paso y mantenerse apartado, no prioridad absoluta",
+    "d": "No existe prioridad absoluta",
+    "tags": [
+      "error",
+      "prioridad"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 432
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Error: barco más rápido tiene prioridad\n→ Corrección",
+    "a": "La prioridad depende únicamente de la regla, no de la velocidad",
+    "d": "Regla 10",
+    "tags": [
+      "error",
+      "velocidad"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 433
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Regla 15 · ¿Cuándo aplica?",
+    "a": "Cuando un barco obtiene derecho de paso",
+    "d": "Debe dar espacio inicial",
+    "tags": [
+      "regla-15"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 434
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Regla 16 · Error común",
+    "a": "Creer que se puede orzar indefinidamente sin restricciones",
+    "d": "Cambio de rumbo debe dar espacio",
+    "tags": [
+      "regla-16",
+      "error"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 435
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Regla 13 · ¿Cuándo comienza y termina?",
+    "a": "Comienza al pasar proa al viento, termina al alcanzar rumbo de ceñida",
+    "d": "El que vira pierde privilegios",
+    "tags": [
+      "regla-13",
+      "virada"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 436
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Regla 12 · ¿Cuándo aplica?",
+    "a": "Mismo borde, sin compromiso",
+    "d": "Libre a popa se aparta de libre a proa",
+    "tags": [
+      "regla-12"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 437
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "COLREG · ¿Cuándo aplica vs RRS?",
+    "a": "COLREG en navegación general, RRS en regata",
+    "d": "RRS solo entre competidores",
+    "tags": [
+      "colreg",
+      "rrs"
+    ],
+    "difficulty": 1,
+    "source": "02_COLREG",
+    "id": 438
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Regla 5 · ¿Qué incluye la vigilancia?",
+    "a": "Visual, auditiva e instrumental",
+    "d": "Vigilancia permanente",
+    "tags": [
+      "colreg",
+      "regla-5"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 439
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Regla 6 · ¿Factores para velocidad segura?",
+    "a": "Visibilidad, tráfico, oleaje, corriente, maniobrabilidad",
+    "d": "Velocidad de seguridad",
+    "tags": [
+      "colreg",
+      "regla-6"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 440
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Regla 7 · Si hay duda sobre riesgo...",
+    "a": "Asumir que existe riesgo de colisión",
+    "d": "Indicador: demora constante + distancia decreciente",
+    "tags": [
+      "colreg",
+      "regla-7"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 441
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Regla 9 · ¿Por qué lado en canal angosto?",
+    "a": "Tan cerca como sea seguro del lado derecho",
+    "d": "Canal angosto",
+    "tags": [
+      "colreg",
+      "regla-9",
+      "canal"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 442
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "COLREG · Regla 9 · ¿Puede un velero cruzar un canal obligando a un buque?",
+    "a": "No, no debe impedir el paso del buque restringido al canal",
+    "d": "Velero cede en canal angosto",
+    "tags": [
+      "colreg",
+      "regla-9",
+      "velero"
+    ],
+    "difficulty": 3,
+    "source": "02_COLREG",
+    "id": 443
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Regla 12 · Velero vs velero · ¿Si no se puede determinar el borde?",
+    "a": "El barco que tiene al otro por babor se mantiene apartado",
+    "d": "Duda = ceder",
+    "tags": [
+      "colreg",
+      "regla-12",
+      "velero"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 444
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "COLREG · Regla 13 · Alcance · ¿Hasta cuándo se es alcanzante?",
+    "a": "Hasta estar completamente libre",
+    "d": "Aunque cambien los rumbos",
+    "tags": [
+      "colreg",
+      "regla-13",
+      "alcance"
+    ],
+    "difficulty": 3,
+    "source": "02_COLREG",
+    "id": 445
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Regla 14 · Encuentro de frente · ¿Acción?",
+    "a": "Ambos alteran rumbo a estribor",
+    "d": "Rojo y verde = frente",
+    "tags": [
+      "colreg",
+      "regla-14"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 446
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Regla 15 · Cruce · Memoria",
+    "a": "\"Si lo veo por mi derecha, cedo\"",
+    "d": "El que tiene al otro por estribor cede",
+    "tags": [
+      "colreg",
+      "regla-15",
+      "cruce"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 447
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "COLREG · Regla 18 · ¿Puede prevalecer canal angosto sobre jerarquía?",
+    "a": "Sí, las reglas de canal y alcance pueden prevalecer",
+    "d": "Jerarquía no es absoluta",
+    "tags": [
+      "colreg",
+      "regla-18",
+      "excepcion"
+    ],
+    "difficulty": 3,
+    "source": "02_COLREG",
+    "id": 448
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Error: \"ya no estoy alcanzando\"\n→ Corrección",
+    "a": "La responsabilidad continúa hasta estar completamente libre",
+    "d": "Regla 13",
+    "tags": [
+      "colreg",
+      "error",
+      "alcance"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 449
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Canal de Acceso · Velero vs portacontenedores\n→ ¿Puede obligarlo?",
+    "a": "No, el velero debe evitar impedir su paso",
+    "d": "Regla 9",
+    "tags": [
+      "colreg",
+      "canal",
+      "rio-de-la-plata"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 450
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 1,
+    "q": "IALA · ¿Qué región usa Argentina?",
+    "a": "Región B",
+    "d": "Red Right Returninging",
+    "tags": [
+      "iala",
+      "region-b"
+    ],
+    "difficulty": 1,
+    "source": "03_IALA",
+    "id": 451
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 1,
+    "q": "IALA Región B · Boya de estribor entrando · ¿Color?",
+    "a": "Rojo",
+    "d": "Red Right Returninging",
+    "tags": [
+      "iala",
+      "estribor"
+    ],
+    "difficulty": 1,
+    "source": "03_IALA",
+    "id": 452
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 1,
+    "q": "IALA Región B · Boya de babor entrando · ¿Color?",
+    "a": "Verde",
+    "d": "Babor = verde en Región B",
+    "tags": [
+      "iala",
+      "babor"
+    ],
+    "difficulty": 1,
+    "source": "03_IALA",
+    "id": 453
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Error: confundir Región A con B\n→ En Argentina",
+    "a": "Siempre Región B",
+    "d": "Rojo a estribor entrando",
+    "tags": [
+      "iala",
+      "error"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 454
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Boya de estribor · ¿Forma?",
+    "a": "Cónica",
+    "d": "Estribor = roja, cónica",
+    "tags": [
+      "iala",
+      "forma"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 455
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Boya de babor · ¿Forma?",
+    "a": "Cilíndrica o castillete",
+    "d": "Babor = verde, cilíndrica",
+    "tags": [
+      "iala",
+      "forma"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 456
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Cardinal Norte · ¿Conos?",
+    "a": "Dos conos apuntando hacia arriba",
+    "d": "El negro apunta al norte",
+    "tags": [
+      "iala",
+      "cardinal",
+      "norte"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 457
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Cardinal Sur · ¿Conos?",
+    "a": "Ambos apuntan hacia abajo",
+    "d": "Reloj marca las 6",
+    "tags": [
+      "iala",
+      "cardinal",
+      "sur"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 458
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "IALA · Cardinal Este · ¿Conos?",
+    "a": "Conos alejándose entre sí",
+    "d": "Parece una flecha abierta",
+    "tags": [
+      "iala",
+      "cardinal",
+      "este"
+    ],
+    "difficulty": 3,
+    "source": "03_IALA",
+    "id": 459
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 3,
+    "q": "IALA · Cardinal Oeste · ¿Conos?",
+    "a": "Apuntando uno hacia el otro",
+    "d": "Parece una cintura",
+    "tags": [
+      "iala",
+      "cardinal",
+      "oeste"
+    ],
+    "difficulty": 3,
+    "source": "03_IALA",
+    "id": 460
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Aguas seguras · ¿Luz?",
+    "a": "Isofase, ocultaciones o Morse A",
+    "d": "Franjas rojo-blanco",
+    "tags": [
+      "iala",
+      "aguas-seguras",
+      "luz"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 461
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Aguas seguras · ¿Uso?",
+    "a": "Recalada, eje de canal, entrada a puerto",
+    "d": "Agua navegable alrededor",
+    "tags": [
+      "iala",
+      "aguas-seguras"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 462
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Marca especial · ¿Ejemplos?",
+    "a": "Zonas militares, fondeo, deportivas, cables submarinos",
+    "d": "Amarillo, cruz X",
+    "tags": [
+      "iala",
+      "marca-especial"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 463
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Peligro aislado · ¿Ejemplos?",
+    "a": "Roca aislada, casco hundido, bajo pequeño",
+    "d": "Agua navegable alrededor",
+    "tags": [
+      "iala",
+      "peligro-aislado"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 464
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Peligro aislado · ¿Marca superior?",
+    "a": "Dos esferas negras",
+    "d": "Negro-rojo-negro",
+    "tags": [
+      "iala",
+      "peligro-aislado"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 465
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Aguas seguras · ¿Marca superior?",
+    "a": "Esfera roja",
+    "d": "Franjas verticales rojo-blanco",
+    "tags": [
+      "iala",
+      "aguas-seguras"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 466
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 2,
+    "q": "IALA · Marca especial · ¿Marca superior?",
+    "a": "Cruz amarilla (X)",
+    "d": "Color amarillo",
+    "tags": [
+      "iala",
+      "marca-especial"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 467
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Luces · Embarcación fondeada · ¿Luz?",
+    "a": "Blanca todo horizonte",
+    "d": "Marca diurna: esfera negra",
+    "tags": [
+      "luces",
+      "fondeado"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 468
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Luces · Práctico · ¿Significado?",
+    "a": "Buque práctico embarcado",
+    "d": "Blanca sobre roja",
+    "tags": [
+      "luces",
+      "practico"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 469
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Luces · Maniobra restringida · ¿Ejemplos?",
+    "a": "Dragas, buques trabajando, operaciones submarinas",
+    "d": "Roja-blanca-roja",
+    "tags": [
+      "luces",
+      "maniobra-restringida"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 470
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Reconocimiento rápido · Dos rojas",
+    "a": "Sin gobierno",
+    "d": "No puede maniobrar",
+    "tags": [
+      "luces",
+      "reconocimiento"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 471
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Reconocimiento rápido · Roja blanca roja",
+    "a": "Maniobra restringida",
+    "d": "Bola-diamante-bola de día",
+    "tags": [
+      "luces",
+      "reconocimiento"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 472
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Reconocimiento rápido · Roja blanca",
+    "a": "Pesca",
+    "d": "Dos conos unidos de día",
+    "tags": [
+      "luces",
+      "reconocimiento"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 473
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Reconocimiento rápido · Blanca roja",
+    "a": "Práctico",
+    "d": "\"White over red, pilot ahead\"",
+    "tags": [
+      "luces",
+      "reconocimiento"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 474
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Reconocimiento rápido · Dos bolas negras",
+    "a": "Sin gobierno",
+    "d": "Igual que dos rojas de noche",
+    "tags": [
+      "marcas-diurnas",
+      "reconocimiento"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 475
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Reconocimiento rápido · Bola diamante bola",
+    "a": "Maniobra restringida",
+    "d": "Igual que roja-blanca-roja",
+    "tags": [
+      "marcas-diurnas",
+      "reconocimiento"
+    ],
+    "difficulty": 2,
+    "source": "03_IALA",
+    "id": 476
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Noche · Principio fundamental",
+    "a": "No vemos barcos, vemos información",
+    "d": "Las luces indican qué es, qué hace, qué limitaciones",
+    "tags": [
+      "luces",
+      "noche",
+      "principio"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 477
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Noche · Veo blanca sobre roja · ¿Riesgo?",
+    "a": "Alta maniobrabilidad, operaciones de practicaje",
+    "d": "Práctico",
+    "tags": [
+      "luces",
+      "practico",
+      "riesgo"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 478
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Noche · Veo roja sobre blanca · ¿Riesgo?",
+    "a": "Redes y aparejos",
+    "d": "Pesca",
+    "tags": [
+      "luces",
+      "pesca",
+      "riesgo"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 479
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Noche · Veo roja blanca roja · ¿Riesgo?",
+    "a": "Maniobra limitada (dragado, submarinas, balizamiento)",
+    "d": "Maniobra restringida",
+    "tags": [
+      "luces",
+      "maniobra-restringida",
+      "riesgo"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 480
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Noche · Veo dos rojas · ¿Riesgo?",
+    "a": "No puede maniobrar normalmente",
+    "d": "Sin gobierno",
+    "tags": [
+      "luces",
+      "sin-gobierno",
+      "riesgo"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES",
+    "id": 481
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Noche · Veo tres rojas · ¿Riesgo?",
+    "a": "Buque de calado importante, no puede maniobrar libremente",
+    "d": "Restringido por calado",
+    "tags": [
+      "luces",
+      "calado",
+      "riesgo"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 482
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Gradiente vs térmico · ¿Diferencia?",
+    "a": "Gradiente = estable/predecible · Térmico = local/frecuente en verano",
+    "d": "Dos tipos de viento",
+    "tags": [
+      "gradiente",
+      "termico"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA",
+    "id": 483
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Brisa marina · ¿Cuándo se detiene?",
+    "a": "Al anochecer (tierra se enfría)",
+    "d": "Diferencia térmica desaparece",
+    "tags": [
+      "brisa-marina",
+      "noche"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA",
+    "id": 484
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Pampero · ¿Qué lo dispara?",
+    "a": "Frente frío que avanza desde el SO",
+    "d": "Aire frío desplaza aire cálido",
+    "tags": [
+      "pampero",
+      "frente-frio"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 485
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Sudestada · ¿Qué la diferencia del pampero?",
+    "a": "Persistencia y oleaje, viento del SE",
+    "d": "Sudestada dura más, pampero es brusco",
+    "tags": [
+      "sudestada",
+      "pampero"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 486
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Role · ¿Es cambio de intensidad o dirección?",
+    "a": "Dirección",
+    "d": "Racha = intensidad, role = dirección",
+    "tags": [
+      "role",
+      "racha"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA",
+    "id": 487
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Racha · ¿Es cambio de intensidad o dirección?",
+    "a": "Intensidad",
+    "d": "Racha = intensidad, role = dirección",
+    "tags": [
+      "racha",
+      "role"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA",
+    "id": 488
+  },
+  {
+    "cat": "METEO",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Frente frío · ¿Qué señales anuncian?",
+    "a": "Nubosidad, role, aumento de intensidad",
+    "d": "Aire frío desplaza cálido",
+    "tags": [
+      "frente-frio",
+      "señales"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 489
+  },
+  {
+    "cat": "METEO",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Isobaras muy juntas · ¿Viento fuerte o débil?",
+    "a": "Fuerte",
+    "d": "Gradiente de presión intenso",
+    "tags": [
+      "isobaras",
+      "gradiente"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA",
+    "id": 490
+  },
+  {
+    "cat": "METEO",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Isobaras muy separadas · ¿Viento fuerte o débil?",
+    "a": "Débil",
+    "d": "Gradiente de presión suave",
+    "tags": [
+      "isobaras",
+      "gradiente"
+    ],
+    "difficulty": 2,
+    "source": "16_METEOROLOGIA",
+    "id": 491
+  },
+  {
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Trasluchada · Copit\n→ Ordená la secuencia",
+    "a": "Control escota → Cazar mayor al centro → Pasar botavara → Filar",
+    "d": "Control progresivo de la botavara",
+    "steps": [
+      "Control escota",
+      "Cazar mayor al centro",
+      "Pasar botavara",
+      "Filar"
+    ],
+    "tags": [
+      "trasluchada",
+      "copit",
+      "secuencia",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 492
+  },
+  {
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Arriada de spinnaker\n→ Ordená la secuencia",
+    "a": "Soltar braza → Traer vela → Bajar driza",
+    "d": "Braza primero, vela, driza última",
+    "steps": [
+      "Soltar braza",
+      "Traer vela",
+      "Bajar driza"
+    ],
+    "tags": [
+      "spinnaker",
+      "arriada",
+      "secuencia",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 493
+  },
+  {
+    "cat": "MAN",
+    "role": "PRO",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Peeling de génova\n→ Ordená la secuencia",
+    "a": "Izar nueva → Trimar nueva → Filar vieja → Arriar vieja",
+    "d": "Nueva arriba antes de soltar vieja",
+    "steps": [
+      "Izar nueva",
+      "Trimar nueva",
+      "Filar vieja",
+      "Arriar vieja"
+    ],
+    "tags": [
+      "peeling",
+      "genoa",
+      "secuencia",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 494
+  },
+  {
+    "cat": "MAN",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Izado de spinnaker\n→ Ordená la secuencia",
+    "a": "Spi listo (proel) → Escotas claras (copit) → Izar (proel) → Ajustar forma (copit)",
+    "d": "Preparar, izar, ajustar",
+    "steps": [
+      "Spi listo",
+      "Escotas claras",
+      "Izar",
+      "Ajustar forma"
+    ],
+    "tags": [
+      "spinnaker",
+      "izado",
+      "secuencia",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 495
+  },
+  {
+    "cat": "MAN",
+    "role": "PIT",
+    "fatigue": 3,
+    "type": "invalid",
+    "q": "Toma de rizos · Ejecutar\n→ Hay un paso incorrecto. Tocalo.",
+    "a": "Izar driza antes de filar escota (hay que quitar carga primero)",
+    "d": "Filar escota primero, luego bajar driza",
+    "steps": [
+      "Filar escota",
+      "Izar driza",
+      "Bajar driza",
+      "Cazar amante"
+    ],
+    "invalidIndex": 1,
+    "tags": [
+      "rizos",
+      "error",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 496
+  },
+  {
+    "cat": "MAN",
+    "role": "TIM",
+    "fatigue": 3,
+    "type": "invalid",
+    "q": "Virada en ceñida\n→ Hay un paso incorrecto. Tocalo.",
+    "a": "Cazar nueva antes de cruzar (hay que soltar al flameo primero)",
+    "d": "Soltar al flameo, cazar después de cruzar",
+    "steps": [
+      "Verificar velocidad",
+      "Orzar progresivo",
+      "Cazar nueva escota",
+      "Soltar al flameo"
+    ],
+    "invalidIndex": 2,
+    "tags": [
+      "virada",
+      "error",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 497
+  },
+  {
+    "cat": "MAN",
+    "role": "MAY",
+    "fatigue": 2,
+    "type": "filter",
+    "q": "Racha fuerte en ceñida · Trimmer de mayor\n→ Marcá qué hacer",
+    "a": "Bajar traveller + Mantener ángulo",
+    "d": "Traveller baja, no filar escota primero",
+    "steps": [
+      "Bajar traveller",
+      "Mantener ángulo",
+      "Filar escota primero",
+      "Subir cunningham"
+    ],
+    "validMask": [
+      true,
+      true,
+      false,
+      false
+    ],
+    "tags": [
+      "rachas",
+      "mayor",
+      "procedural"
+    ],
+    "difficulty": 2,
+    "source": "maniobras",
+    "id": 498
+  },
+  {
+    "cat": "MAN",
+    "role": "TIM",
+    "fatigue": 3,
+    "type": "filter",
+    "q": "Death roll en popa\n→ Marcá qué hacer",
+    "a": "Control suave + Cazar sotavento",
+    "d": "Cazar escota sotavento estabiliza",
+    "steps": [
+      "Control suave del timón",
+      "Cazar sotavento",
+      "Orzar bruscamente",
+      "Soltar todo"
+    ],
+    "validMask": [
+      true,
+      true,
+      false,
+      false
+    ],
+    "tags": [
+      "death-roll",
+      "popa",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 499
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Ceñida · Header de 25°\n→ ¿Virar o mantener?",
+    "a": "Virar (el header te perjudica)",
+    "d": "Header obliga a derivar, mejor virar",
+    "tags": [
+      "header",
+      "virada",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 500
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Ceñida · Lift de 20°\n→ ¿Virar o mantener?",
+    "a": "Mantener (el lift te favorece)",
+    "d": "Lift permite orzar, cobrar",
+    "tags": [
+      "lift",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 501
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Popa · Corriente favorable\n→ ¿Buscar o evitar?",
+    "a": "Buscar (aumenta VMG)",
+    "d": "Corriente a favor en popa = más VMG",
+    "tags": [
+      "corriente",
+      "popa",
+      "vmg"
+    ],
+    "difficulty": 3,
+    "source": "17_CORRIENTES",
+    "id": 502
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Ceñida · Corriente adversa\n→ ¿Qué hacer?",
+    "a": "Virar más frecuente para minimizar deriva",
+    "d": "Corriente en contra = menos VMG",
+    "tags": [
+      "corriente",
+      "ceñida",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "17_CORRIENTES",
+    "id": 503
+  },
+  {
+    "cat": "DEC",
+    "role": "TOD",
+    "fatigue": 2,
+    "q": "Potencia vs control · ¿Cuándo priorizar control?",
+    "a": "Viento fuerte, exceso de escora",
+    "d": "Menos potencia = más control",
+    "tags": [
+      "potencia",
+      "control",
+      "decision"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA",
+    "id": 504
+  },
+  {
+    "cat": "DEC",
+    "role": "TOD",
+    "fatigue": 2,
+    "q": "Potencia vs control · ¿Cuándo priorizar potencia?",
+    "a": "Viento liviano, ola corta, necesidad de aceleración",
+    "d": "Más potencia = más aceleración",
+    "tags": [
+      "potencia",
+      "control",
+      "decision"
+    ],
+    "difficulty": 2,
+    "source": "05_AERODINAMICA",
+    "id": 505
+  },
+  {
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Start · ¿Cómo elegir lado de línea?",
+    "a": "Lado con más viento o borneo favorable",
+    "d": "Estrategia de recorrido",
+    "tags": [
+      "start",
+      "estrategia"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 506
+  },
+  {
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Flota · ¿Cuándo cubrir al barco de atrás?",
+    "a": "Cuando está cerca y puede pasarte",
+    "d": "Cobrir = tapar el viento",
+    "tags": [
+      "cobrir",
+      "flota"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 507
+  },
+  {
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Flota · ¿Cuándo estirar al barco de adelante?",
+    "a": "Cuando hay más viento en otro lado",
+    "d": "Estirar = buscar viento nuevo",
+    "tags": [
+      "estirar",
+      "flota"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 508
+  },
+  {
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "Layline · ¿Qué evitar?",
+    "a": "Llegar过早 (pasarse) o con tráfico",
+    "d": "Llegar justo o antes, sin tráfico",
+    "tags": [
+      "layline",
+      "tactica"
+    ],
+    "difficulty": 2,
+    "source": "general",
+    "id": 509
+  },
+  {
+    "cat": "TACT",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Posicionamiento en flota · ¿Qué busca el táctico en ceñida?",
+    "a": "Lado con borneo favorable y menos tráfico",
+    "d": "Borneo + viento + espacio limpio",
+    "tags": [
+      "posicionamiento",
+      "ceñida"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 510
+  },
+  {
+    "cat": "SIT",
+    "role": "TOD",
+    "fatigue": 3,
+    "q": "Maniobra · ¿Qué coordina los roles?",
+    "a": "Disparadores verbales claros",
+    "d": "\"Preparados\", \"listos\", \"¡Rizo listo!\"",
+    "tags": [
+      "comunicacion",
+      "disparador"
+    ],
+    "difficulty": 3,
+    "source": "maniobras",
+    "id": 511
+  },
+  {
+    "cat": "SIT",
+    "role": "TIM",
+    "fatigue": 3,
+    "q": "Olas en ceñida · ¿Qué ajustar?",
+    "a": "Trim más abierto, no orzar en la ola",
+    "d": "Atravesar la ola con velocidad",
+    "tags": [
+      "olas",
+      "ceñida",
+      "trim"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 512
+  },
+  {
+    "cat": "SIT",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Ola · Génova · ¿Qué hacer?",
+    "a": "Trim más abierto",
+    "d": "Más ángulo para atravesar la ola",
+    "tags": [
+      "ola",
+      "genoa",
+      "trim"
+    ],
+    "difficulty": 2,
+    "source": "07_GENOVA",
+    "id": 513
+  },
+  {
+    "cat": "SIT",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Borneo a la derecha en ceñida · ¿Qué comunica el trimmer?",
+    "a": "\"Lift\" o \"header\" según el bordo",
+    "d": "Comunicar el cambio para decidir virar",
+    "tags": [
+      "borneo",
+      "comunicacion",
+      "lift"
+    ],
+    "difficulty": 3,
+    "source": "16_METEOROLOGIA",
+    "id": 514
+  },
+  {
+    "cat": "SIT",
+    "role": "TOD",
+    "fatigue": 2,
+    "q": "Tráfico en ceñida · ¿Qué evitar?",
+    "a": "Bad air (viento sucio de otros barcos)",
+    "d": "El viento de otro barco te frena",
+    "tags": [
+      "trafico",
+      "bad-air"
+    ],
+    "difficulty": 2,
+    "source": "general",
+    "id": 515
+  },
+  {
+    "cat": "SIT",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Spi colapsando frecuentemente · ¿Qué comunicar?",
+    "a": "\"Colapso\" → ajustar escota o rumbo",
+    "d": "Coordinar con timonel",
+    "tags": [
+      "spinnaker",
+      "colapso",
+      "comunicacion"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 516
+  },
+  {
+    "cat": "SEG",
+    "role": "TOD",
+    "fatigue": 3,
+    "q": "Hombre al agua · ¿Qué lanzar primero?",
+    "a": "Flotador (boya de hombre al agua)",
+    "d": "Flotador + gritar \"¡Hombre al agua!\"",
+    "tags": [
+      "hombre-al-agua"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 517
+  },
+  {
+    "cat": "SEG",
+    "role": "TIM",
+    "fatigue": 4,
+    "q": "Hombre al agua · ¿Qué maniobra hacer?",
+    "a": "Williamson turn o Anderson turn",
+    "d": "Giro controlado para volver al punto",
+    "tags": [
+      "hombre-al-agua",
+      "maniobra"
+    ],
+    "difficulty": 4,
+    "source": "general",
+    "id": 518
+  },
+  {
+    "cat": "SEG",
+    "role": "TOD",
+    "fatigue": 3,
+    "q": "Hombre al agua · ¿Por qué mantener referencia visual?",
+    "a": "Para no perder la posición de la persona",
+    "d": "Una persona en el agua es difícil de ver",
+    "tags": [
+      "hombre-al-agua",
+      "visual"
+    ],
+    "difficulty": 3,
+    "source": "general",
+    "id": 519
+  },
+  {
+    "cat": "SEG",
+    "role": "PRO",
+    "fatigue": 3,
+    "q": "Broach con spinnaker · ¿Qué soltar?",
+    "a": "Escota de spi inmediatamente",
+    "d": "Quitar carga para recuperar gobierno",
+    "tags": [
+      "broach",
+      "spinnaker"
+    ],
+    "difficulty": 3,
+    "source": "08_SPINNAKER",
+    "id": 520
+  },
+  {
+    "cat": "SEG",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Viento extremo · ¿Qué ajustes en la mayor?",
+    "a": "Rizos profundos, más cunningham, más outhaul, más twist",
+    "d": "Control total",
+    "tags": [
+      "viento-extremo",
+      "mayor"
+    ],
+    "difficulty": 3,
+    "source": "06_MAYOR",
+    "id": 521
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Regata · ¿Qué equipo es obligatorio?",
+    "a": "Chalecos para toda la tripulación",
+    "d": "Seguridad mínima",
+    "tags": [
+      "equipo",
+      "chalecos"
+    ],
+    "difficulty": 2,
+    "source": "general",
+    "id": 522
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Noche · Velero con motor · ¿Legalmente qué es?",
+    "a": "Embarcación de motor",
+    "d": "Aunque tenga velas desplegadas",
+    "tags": [
+      "luces",
+      "motor",
+      "legal"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 523
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Regla 8 · ¿Qué evitar en maniobras?",
+    "a": "Pequeñas correcciones ambiguas",
+    "d": "Maniobras tempranas, claras, evidentes",
+    "tags": [
+      "colreg",
+      "regla-8"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 524
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "COLREG · Regla 9 · Cruce de canal\n→ ¿Qué evitar?",
+    "a": "Cruzar si obliga a maniobrar a un buque restringido",
+    "d": "No impedir el paso",
+    "tags": [
+      "colreg",
+      "regla-9",
+      "canal"
+    ],
+    "difficulty": 3,
+    "source": "02_COLREG",
+    "id": 525
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "COLREG · Regla 13 · Duda sobre si es alcance\n→ ¿Qué asumir?",
+    "a": "Asumir que es alcance",
+    "d": "El alcanzante cede",
+    "tags": [
+      "colreg",
+      "regla-13",
+      "alcance"
+    ],
+    "difficulty": 3,
+    "source": "02_COLREG",
+    "id": 526
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Regla 18 · ¿Quién está más protegido?",
+    "a": "Sin gobierno (primero en la jerarquía)",
+    "d": "Orden: sin gobierno > maniobra restringida > calado > pesca > vela > motor",
+    "tags": [
+      "colreg",
+      "regla-18",
+      "jerarquia"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 527
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "COLREG · Regla 18 · ¿Quién cede más?",
+    "a": "Motor (último en la jerarquía)",
+    "d": "Vela tiene prioridad sobre motor",
+    "tags": [
+      "colreg",
+      "regla-18",
+      "jerarquia"
+    ],
+    "difficulty": 2,
+    "source": "02_COLREG",
+    "id": 528
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Canal de Acceso · Buque con tres rojas\n→ ¿Qué NO asumir?",
+    "a": "No asumir que puede maniobrar libremente",
+    "d": "Restringido por calado",
+    "tags": [
+      "rio-de-la-plata",
+      "calado",
+      "canal"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 529
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Canal Mitre · Marca bola-diamante-bola\n→ ¿Qué hacer?",
+    "a": "Extremar vigilancia",
+    "d": "Operación restringida",
+    "tags": [
+      "rio-de-la-plata",
+      "canal-mitre"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 530
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Error: \"velero siempre tiene prioridad\"\n→ Corrección",
+    "a": "Las limitaciones operativas pueden prevalecer",
+    "d": "Canal angosto, calado, etc.",
+    "tags": [
+      "error",
+      "velero",
+      "prioridad"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES",
+    "id": 531
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Error: luz blanca aislada = fondeado\n→ Corrección",
+    "a": "Puede ser la popa de un barco navegando",
+    "d": "Evaluar evolución de la demora",
+    "tags": [
+      "error",
+      "luz-blanca"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES",
+    "id": 532
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Pesca con aparejos extendidos · ¿Riesgo?",
+    "a": "Redes largas, maniobra limitada",
+    "d": "Luz adicional indica dirección del aparejo",
+    "tags": [
+      "pesca",
+      "aparejos",
+      "riesgo"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 533
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Marca diurna: dos conos unidos por las puntas\n→ ¿Significado?",
+    "a": "Pesca",
+    "d": "Igual que roja sobre blanca de noche",
+    "tags": [
+      "marcas-diurnas",
+      "pesca"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 534
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Método de identificación nocturna · Paso 1",
+    "a": "Qué luces veo",
+    "d": "5 pasos: luces → embarcación → situación → riesgo → acción",
+    "tags": [
+      "metodo",
+      "noche"
+    ],
+    "difficulty": 2,
+    "source": "13_LUCES",
+    "id": 535
+  },
+  {
+    "cat": "SEG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Método de identificación nocturna · Paso 5",
+    "a": "Qué acción debo considerar",
+    "d": "Último paso del método",
+    "tags": [
+      "metodo",
+      "noche",
+      "accion"
+    ],
+    "difficulty": 3,
+    "source": "13_LUCES",
+    "id": 536
+  }
+]

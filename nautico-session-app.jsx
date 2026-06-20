@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect, useRef, useCallback } from "react";
-import BUILTIN_QUESTIONS from "./Questions/naut-preguntas-2026-06-18.json";
+import BUILTIN_QUESTIONS from "./Questions/naut-preguntas-master.json";
 
 // ─── LIB MODULES ───────────────────────────────────────────────────────────
 import {
@@ -25,6 +25,7 @@ function BottomNav({ screen, setScreen }) {
   const tabs = [
     { id: "home",    label: "Sesion",    icon: "⚓" },
     { id: "library", label: "Banco",     icon: "📚" },
+    { id: "generate", label: "Generar",  icon: "✨" },
     { id: "history", label: "Historial", icon: "📊" },
   ];
   return (
@@ -1411,7 +1412,7 @@ function InvalidUI({ q, onAnswer }) {
           <button key={i} onClick={() => pick(i)} disabled={answered} style={{
             display: "block", width: "100%", textAlign: "left",
             padding: "12px 14px", marginBottom: 6, borderRadius: 8, cursor: answered ? "default" : "pointer",
-            background: isWrong ? "rgba(244,63,94,0.12)" : isPicked ? "rgba(251,191,36,0.12)" : S.bg2,
+            background: isWrong ? "rgba(244,63,94,0.12)" : isPicked ? "rgba(56,189,248,0.12)" : S.bg2,
             border: isWrong ? "1.5px solid #F43F5E" : isPicked ? "1.5px solid #FBBF24" : "1px solid " + S.border,
             color: S.text, fontFamily: S.font, fontSize: 12, lineHeight: 1.4,
           }}>
@@ -1848,6 +1849,233 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, setting
   );
 }
 
+// ─── GENERATE SCREEN (agente on-the-fly) ───────────────────────────────────
+// La app es client-side sin backend, así que el flujo con el agente es:
+// 1. El usuario arma un prompt (tema + cantidad + filtros opcionales).
+// 2. La app genera el prompt completo para Copilot (que tiene el skill
+//    naut-q-generator cargado) y lo copia al clipboard.
+// 3. El usuario pega el prompt en el chat de Copilot, Copilot genera el JSON.
+// 4. El usuario copia el JSON de vuelta y lo pega en el textarea.
+// 5. La app valida e importa las preguntas como custom (IDs negativos).
+
+const GENERATE_PROMPT_TEMPLATE = (tema, cantidad, cat, role, fatigue) => {
+  const filtros = [
+    cat ? `cat=${cat}` : null,
+    role ? `role=${role}` : null,
+    fatigue ? `fatigue=${fatigue}` : null,
+  ].filter(Boolean).join(", ");
+  return `runtime: generá ${cantidad} preguntas cognitivas de regata sobre "${tema}"${filtros ? ` (${filtros})` : ""}.
+
+Usá el skill naut-q-generator en modo Runtime. Leé primero la documentación relevante de Questions/nautica-reg/ según el tema. Devolvé SOLO un array JSON con las preguntas (sin prose), cada una con: cat, role, fatigue, q, a, d, tags, difficulty, source. Los IDs pueden ser null (la app los reasigna).`;
+};
+
+function GenerateScreen({ customQ, setCustomQ }) {
+  const [tema, setTema] = useState("");
+  const [cantidad, setCantidad] = useState(5);
+  const [cat, setCat] = useState("");
+  const [role, setRole] = useState("");
+  const [fatigue, setFatigue] = useState("");
+  const [jsonInput, setJsonInput] = useState("");
+  const [status, setStatus] = useState(null); // { type: "ok"|"error", msg }
+  const [copied, setCopied] = useState(false);
+
+  const allQ = getAllQuestions(customQ);
+
+  const buildPrompt = () => {
+    if (!tema.trim()) return null;
+    return GENERATE_PROMPT_TEMPLATE(tema.trim(), cantidad, cat || null, role || null, fatigue || null);
+  };
+
+  const handleCopyPrompt = async () => {
+    const prompt = buildPrompt();
+    if (!prompt) { setStatus({ type: "error", msg: "Ingresá un tema primero." }); return; }
+    try {
+      await navigator.clipboard.writeText(prompt);
+      setCopied(true);
+      setStatus({ type: "ok", msg: "Prompt copiado. Pegalo en el chat de Copilot." });
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // fallback: seleccionar texto en un textarea temporal
+      const ta = document.createElement("textarea");
+      ta.value = prompt;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); setCopied(true); setStatus({ type: "ok", msg: "Prompt copiado. Pegalo en el chat de Copilot." }); }
+      catch { setStatus({ type: "error", msg: "No se pudo copiar. Copialo manualmente abajo." }); }
+      document.body.removeChild(ta);
+    }
+  };
+
+  const handleImport = () => {
+    setStatus(null);
+    try {
+      const raw = JSON.parse(jsonInput.trim());
+      const arr = Array.isArray(raw) ? raw : [raw];
+      const validated = validateImportedQuestions(arr);
+      if (validated.length === 0) { setStatus({ type: "error", msg: "No se encontraron preguntas válidas en el JSON." }); return; }
+      const existingTexts = new Set(allQ.map(q => q.q));
+      const newOnes = validated.filter(q => !existingTexts.has(q.q));
+      if (newOnes.length === 0) { setStatus({ type: "error", msg: "Todas las preguntas ya existen (duplicadas)." }); return; }
+      let nextId = nextCustomId(allQ);
+      const withIds = newOnes.map(q => ({ ...q, id: nextId-- }));
+      setCustomQ(prev => [...prev, ...withIds]);
+      setStatus({ type: "ok", msg: `✓ ${withIds.length} pregunta(s) generada(s) e importada(s) como custom.` });
+      setJsonInput("");
+      setTema("");
+    } catch (err) {
+      setStatus({ type: "error", msg: "✗ JSON inválido: " + err.message });
+    }
+  };
+
+  const promptPreview = buildPrompt();
+
+  return (
+    <div style={{ minHeight: "100vh", background: S.bg, fontFamily: S.font, padding: "28px 20px 96px" }}>
+      <div style={{ textAlign: "center", marginBottom: 22 }}>
+        <div style={{ fontSize: 9, letterSpacing: 4, color: S.muted, textTransform: "uppercase" }}>Agente On-the-Fly</div>
+        <div style={{ fontSize: 20, fontWeight: 700, color: S.text, marginTop: 4 }}>Generar preguntas</div>
+        <div style={{ fontSize: 10, color: S.muted, marginTop: 6, lineHeight: 1.5 }}>
+          Generá preguntas frescas con el skill naut-q-generator<br/>y importalas a tu banco en 3 pasos.
+        </div>
+      </div>
+
+      {/* Paso 1: armar prompt */}
+      <div style={{
+        background: S.bg2, borderRadius: 12, border: "1px solid " + S.border,
+        padding: "16px", marginBottom: 14,
+      }}>
+        <div style={{ fontSize: 9, color: "#0EA5E9", letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>
+          ① Armar prompt
+        </div>
+
+        <FormField label="Tema / situación" value={tema} onChange={setTema} multiline
+          placeholder="Ej: trimado de spinnaker en viento flojo, regla 18 en baliza, virada en ceñida con olas" />
+
+        <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 6, textTransform: "uppercase" }}>Cantidad</div>
+            <input type="number" min={1} max={20} value={cantidad} onChange={e => setCantidad(Math.max(1, Math.min(20, Number(e.target.value) || 1)))} style={{
+              width: "100%", background: S.bg3, border: "1px solid " + S.border, borderRadius: 8, padding: "10px",
+              color: S.text, fontFamily: S.font, fontSize: 12, outline: "none", boxSizing: "border-box",
+            }} />
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 6, textTransform: "uppercase" }}>Fatigue</div>
+            <select value={fatigue} onChange={e => setFatigue(e.target.value)} style={{
+              width: "100%", background: S.bg3, border: "1px solid " + S.border, borderRadius: 8, padding: "10px",
+              color: S.text, fontFamily: S.font, fontSize: 12, outline: "none", boxSizing: "border-box",
+            }}>
+              <option value="">Cualquiera</option>
+              <option value="1">1 - Fresco</option>
+              <option value="2">2 - Activado</option>
+              <option value="3">3 - Fatigado</option>
+              <option value="4">4 - Al límite</option>
+            </select>
+          </div>
+        </div>
+
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 6, textTransform: "uppercase" }}>Categoría (opcional)</div>
+          <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+            <button onClick={() => setCat("")} style={{
+              padding: "6px 10px", borderRadius: 6, cursor: "pointer",
+              background: !cat ? "#64748B22" : S.bg3, border: "1px solid " + (!cat ? "#64748B" : S.border),
+              color: !cat ? "#64748B" : S.muted, fontFamily: S.font, fontSize: 9, fontWeight: 700,
+            }}>Cualquiera</button>
+            {CAT_ORDER.map(c => (
+              <button key={c} onClick={() => setCat(c)} style={{
+                padding: "6px 10px", borderRadius: 6, cursor: "pointer",
+                background: cat === c ? CAT_COLORS[c] + "22" : S.bg3,
+                border: "1px solid " + (cat === c ? CAT_COLORS[c] : S.border),
+                color: cat === c ? CAT_COLORS[c] : S.muted, fontFamily: S.font, fontSize: 9, fontWeight: 700,
+              }}>{c}</button>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ fontSize: 9, color: S.muted, letterSpacing: 3, marginBottom: 6, textTransform: "uppercase" }}>Rol (opcional)</div>
+          <select value={role} onChange={e => setRole(e.target.value)} style={{
+            width: "100%", background: S.bg3, border: "1px solid " + S.border, borderRadius: 8, padding: "10px",
+            color: S.text, fontFamily: S.font, fontSize: 12, outline: "none", boxSizing: "border-box",
+          }}>
+            <option value="">Cualquiera</option>
+            {ROLES.map(r => <option key={r.id} value={r.id}>{r.label}</option>)}
+          </select>
+        </div>
+
+        {promptPreview && (
+          <div style={{
+            background: S.bg3, border: "1px solid " + S.border, borderRadius: 8,
+            padding: "12px", marginBottom: 12,
+          }}>
+            <div style={{ fontSize: 8, color: S.dim, letterSpacing: 2, marginBottom: 6, textTransform: "uppercase" }}>Preview del prompt</div>
+            <pre style={{ fontSize: 10, color: S.muted, margin: 0, whiteSpace: "pre-wrap", lineHeight: 1.6, fontFamily: S.font }}>
+              {promptPreview}
+            </pre>
+          </div>
+        )}
+
+        <button onClick={handleCopyPrompt} disabled={!tema.trim()} style={{
+          width: "100%", padding: "14px",
+          background: tema.trim() ? "linear-gradient(135deg, #0EA5E9, #0D9488)" : S.bg3,
+          border: "none", borderRadius: 10, color: tema.trim() ? "#fff" : S.muted,
+          fontFamily: S.font, fontSize: 11, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
+        }}>{copied ? "✓ COPIADO" : "📋 COPIAR PROMPT"}</button>
+      </div>
+
+      {/* Paso 2: pegar JSON */}
+      <div style={{
+        background: S.bg2, borderRadius: 12, border: "1px solid " + S.border,
+        padding: "16px", marginBottom: 14,
+      }}>
+        <div style={{ fontSize: 9, color: "#A78BFA", letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>
+          ② Pegar JSON del agente
+        </div>
+        <div style={{ fontSize: 10, color: S.muted, marginBottom: 10, lineHeight: 1.5 }}>
+          Pegá el prompt en el chat de Copilot, esperá la respuesta,<br/>copiá el JSON y pegalo acá:
+        </div>
+        <textarea value={jsonInput} onChange={e => setJsonInput(e.target.value)} placeholder='[ { "cat": "TRIM", "role": "PRO", "fatigue": 2, "q": "...", "a": "...", "d": "...", "tags": [...], "source": "08_SPINNAKER" } ]' rows={8} style={{
+          width: "100%", background: S.bg3, border: "1px solid " + S.border, borderRadius: 8,
+          padding: "12px", color: S.text, fontFamily: S.font, fontSize: 11, outline: "none",
+          resize: "vertical", minHeight: 120, boxSizing: "border-box",
+        }} />
+        <button onClick={handleImport} disabled={!jsonInput.trim()} style={{
+          width: "100%", padding: "14px", marginTop: 10,
+          background: jsonInput.trim() ? "linear-gradient(135deg, #A78BFA, #7C3AED)" : S.bg3,
+          border: "none", borderRadius: 10, color: jsonInput.trim() ? "#fff" : S.muted,
+          fontFamily: S.font, fontSize: 11, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
+        }}>③ IMPORTAR AL BANCO</button>
+      </div>
+
+      {status && (
+        <div style={{
+          padding: "10px 14px", borderRadius: 10, marginBottom: 14,
+          background: status.type === "ok" ? "rgba(52,211,153,0.1)" : "rgba(244,63,94,0.1)",
+          border: "1px solid " + (status.type === "ok" ? "rgba(52,211,153,0.3)" : "rgba(244,63,94,0.3)"),
+          color: status.type === "ok" ? "#34D399" : "#F43F5E",
+          fontSize: 11, fontFamily: S.font, display: "flex", justifyContent: "space-between", alignItems: "center",
+        }}>
+          {status.msg}
+          <button onClick={() => setStatus(null)} style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", fontSize: 13 }}>✕</button>
+        </div>
+      )}
+
+      <div style={{
+        background: S.bg3, border: "1px solid " + S.border, borderRadius: 10,
+        padding: "14px", fontSize: 10, color: S.dim, lineHeight: 1.6,
+      }}>
+        <div style={{ fontSize: 9, color: S.muted, letterSpacing: 2, marginBottom: 8, textTransform: "uppercase" }}>Cómo funciona</div>
+        ① Elegí tema, cantidad y filtros → copiá el prompt.<br/>
+        ② Pegá el prompt en el chat de Copilot (tiene el skill cargado).<br/>
+        ③ Copiá el JSON de respuesta y pegalo acá → se importa como custom.<br/>
+        <br/>
+        Las preguntas generadas se guardan en tu banco local (IDs negativos) y aparecen en la Biblioteca como CUSTOM.
+      </div>
+    </div>
+  );
+}
+
 // ─── MAIN APP ──────────────────────────────────────────────────────────────
 
 export default function App() {
@@ -2046,6 +2274,9 @@ export default function App() {
       )}
       {navScreen === "library" && (
         <LibraryScreen customQ={customQ} setCustomQ={setCustomQ} />
+      )}
+      {navScreen === "generate" && (
+        <GenerateScreen customQ={customQ} setCustomQ={setCustomQ} />
       )}
       {navScreen === "history" && (
         <HistoryScreen history={history} onClearHistory={handleClearHistory} />

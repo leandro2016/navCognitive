@@ -1,7 +1,9 @@
 // Pure utilities: questions, exercises, session building, spaced repetition,
 // adaptive weighting, schema migration. No React — fully testable.
 
-import BUILTIN_QUESTIONS from "../../Questions/naut-preguntas-2026-06-18.json";
+// Archivo maestro de preguntas builtin. Para cambiar el banco, editar esta
+// constante (o usar import.meta.env si se prefiere env-based).
+import BUILTIN_QUESTIONS from "../../Questions/naut-preguntas-master.json";
 import EXERCISES from "../../Questions/exercises.json";
 import {
   DIFFICULTIES, SESSION_TEMPLATES, PHASE_EX_MAP, PHASE_Q_MAP, SCHEMA_VERSION, LS,

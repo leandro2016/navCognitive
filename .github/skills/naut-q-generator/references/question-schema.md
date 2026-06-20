@@ -29,6 +29,7 @@
 | `d` | string | si | Deduccion / calculo / razonamiento en una linea. |
 | `tags` | string[] | no | Default `[]`. Palabras clave en minusculas. |
 | `difficulty` | number\|null | no | 1-4 o `null`. |
+| `source` | string | si | Archivo doc de origen (sin extension). Ej: `"01_RRS"`, `"07_GENOVA"`, `"general"`, `"relato"`. |
 | `type` | string | no | `"recall"` (default), `"sequence"`, `"invalid"`, `"filter"`. |
 | `steps` | string[] | no | Pasos. Obligatorio si `type !== "recall"`. |
 | `invalidIndex` | number | no | Indice del paso incorrecto. Solo `type: "invalid"`. |
@@ -85,7 +86,10 @@
 ## Reglas de IDs
 
 - **Builtin** (este skill): positivos, secuenciales desde `max(existing) + 1`.
+  Archivo destino: `Questions/naut-preguntas-master.json`.
 - **Custom** (app, no este skill): negativos descendentes desde -1.
+- **Runtime** (modo runtime del skill): IDs temporales (null o negativos), la
+  app los reasigna al inyectarlos como custom.
 - Nunca renumerar existentes.
 
 ## Deteccion de duplicados
