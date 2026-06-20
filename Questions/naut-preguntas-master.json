@@ -8325,5 +8325,1832 @@
     "difficulty": 3,
     "source": "13_LUCES",
     "id": 536
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Qué pasa en los extremos de las velas?",
+    "a": "Fuga de presión que genera vórtices y desvía el flujo adherido",
+    "d": "La presión se derrama de la zona de más a menos presión",
+    "tags": [
+      "vortices",
+      "fuga-presion",
+      "flujo"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 537
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Vórtices en los extremos · ¿Qué efecto producen?",
+    "a": "Hacen el perfil menos eficiente en esa zona",
+    "d": "Desvían el flujo adherido y reducen la sustentación",
+    "tags": [
+      "vortices",
+      "eficiencia"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 538
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Mayor triangular vs cuadrada · ¿Por qué la cuadrada es más eficiente?",
+    "a": "Menor vórtice y más área vélica eficiente porcentualmente",
+    "d": "No solo más área, sino más eficiente",
+    "tags": [
+      "mayor",
+      "cuadrada",
+      "vortices"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 539
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Mayor con baluma más negativa (triangular) · ¿Qué pasa con el vórtice?",
+    "a": "El vórtice es más grande y menos eficiente",
+    "d": "Menos área vélica + más vórtice",
+    "tags": [
+      "mayor",
+      "baluma",
+      "vortices"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 540
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Genoa · Vórtice superior vs inferior · ¿Cuál es más problemático?",
+    "a": "El inferior (el superior lo succiona el flujo de la mayor)",
+    "d": "El vórtice superior desaparece por la mayor",
+    "tags": [
+      "genoa",
+      "vortices",
+      "superior"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 541
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Genoa · ¿Por qué el puño de escota bajo?",
+    "a": "Para evitar la fuga de presión en la parte baja",
+    "d": "Si el puño es alto, el vórtice afecta gran parte de la sustentación",
+    "tags": [
+      "genoa",
+      "puño-escota",
+      "vortices"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 542
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Vela con enrollador · ¿Por qué es menos eficiente?",
+    "a": "Pérdida de fuga de presión muy grande en toda la parte baja",
+    "d": "No solo más chica y plana, sino fuga en la parte baja",
+    "tags": [
+      "enrollador",
+      "vortices",
+      "eficiencia"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 543
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Genoa con pollera alta y despejada · ¿Qué problema genera?",
+    "a": "Vórtice demasiado grande que afecta la sustentación baja",
+    "d": "Fuga de presión en la parte baja",
+    "tags": [
+      "genoa",
+      "pollera",
+      "vortices"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 544
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "¿Cómo evitar el vórtice inferior del genoa si el puño es alto?",
+    "a": "Que la parte baja del genoa toque con la cubierta",
+    "d": "Al tocar, no hay por dónde escapar el flujo",
+    "tags": [
+      "genoa",
+      "vortices",
+      "cubierta"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 545
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 1,
+    "q": "¿Qué función cumple el genoa además de sumar área vélica?",
+    "a": "Mejora el flujo de aire en la mayor, más velocidad y mejor ángulo de orzada",
+    "d": "Ambas velas se complementan",
+    "tags": [
+      "genoa",
+      "mayor",
+      "complemento"
+    ],
+    "difficulty": 1,
+    "source": "charla-genoa-manzoli",
+    "id": 546
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Barco con mayor+genoa vs una sola vela · ¿Quién orza más?",
+    "a": "Mayor+genoa",
+    "d": "El genoa complementa y agrega flujo extra a la mayor",
+    "tags": [
+      "genoa",
+      "orzada",
+      "complemento"
+    ],
+    "difficulty": 1,
+    "source": "charla-genoa-manzoli",
+    "id": 547
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Racha · Si filamos la mayor pero no el genoa · ¿Qué pasa?",
+    "a": "Se cierra el corredor y la mayor se desarma muy rápido",
+    "d": "Derrame del genoa sobre la mayor",
+    "tags": [
+      "racha",
+      "genoa",
+      "mayor",
+      "corredor"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 548
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Racha · ¿Por qué filar el genoa además de la mayor?",
+    "a": "Desahoga el barco + ayuda a acelerar más rápido",
+    "d": "Dos funciones: despotenciar y acelerar",
+    "tags": [
+      "racha",
+      "genoa",
+      "filar"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 549
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Racha · Filar solo mayor sin filar genoa · ¿Qué síntoma ves?",
+    "a": "La mayor flamea antes de poder filarla todo lo necesario",
+    "d": "Derrame del genoa desarma la mayor",
+    "tags": [
+      "racha",
+      "derrame",
+      "mayor"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 550
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Racha · Filar genoa · ¿Qué dos funciones cumple?",
+    "a": "Desahogar el barco (menos escora) + acelerar más rápido",
+    "d": "Regular la mayor + sacar jugo a la nueva presión",
+    "tags": [
+      "racha",
+      "genoa",
+      "funcion"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 551
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Racha persistente · ¿Rizo o cambio de genoa?",
+    "a": "Depende del tipo de barco, regata, tripulación y maniobra",
+    "d": "No hay respuesta única",
+    "tags": [
+      "racha",
+      "rizo",
+      "genoa",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 552
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Barlo-sotavento (Sota) · ¿Rizo o achicar genoa?",
+    "a": "Achicar genoa (mantiene tendencia a orzar + área en popa para spi)",
+    "d": "El barco necesita orzar y tener vela en popa",
+    "tags": [
+      "sota",
+      "rizo",
+      "genoa",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 553
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Marcas fijas o través · ¿Rizo o achicar genoa?",
+    "a": "Tomar rizo (centro vélico adelante, tendencia a derivar, barco potente)",
+    "d": "Rumbo fijo = barco lanzado en velocidad",
+    "tags": [
+      "marcas-fijas",
+      "rizo",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 554
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Solitario o doble · ¿Rizo o achicar genoa?",
+    "a": "Tomar rizo (más cómodo y fácil)",
+    "d": "El menos malo si no hay genoa chico",
+    "tags": [
+      "solitario",
+      "rizo",
+      "decision"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 555
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 4,
+    "q": "Sota con rizo tomado en ceñida · ¿Qué problema?",
+    "a": "Menos tendencia a orzar, más a derivar, se potencia demasiado",
+    "d": "Derivar = más escora = más filar = descontrol",
+    "tags": [
+      "sota",
+      "rizo",
+      "ceñida",
+      "error"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 556
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Achicar genoa · ¿Qué pasa con el centro vélico?",
+    "a": "La mayor toma más protagonismo y el barco mantiene tendencia a orzar",
+    "d": "Centro vélico se mueve según qué vela achiques",
+    "tags": [
+      "centro-velico",
+      "genoa",
+      "rizo"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 557
+  },
+  {
+    "cat": "DEC",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Tomar rizo · ¿Qué pasa con el centro vélico?",
+    "a": "Se va adelante, el barco tiende a derivar",
+    "d": "Centro vélico adelante = tendencia a derivar",
+    "tags": [
+      "centro-velico",
+      "rizo"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 558
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Por qué el viento aumenta con la altura?",
+    "a": "Menos rozamiento con la superficie y menos temperatura (más denso)",
+    "d": "A más altura, más velocidad de viento",
+    "tags": [
+      "twist",
+      "viento",
+      "altura"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 559
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Viento aparente a altura de botavara vs cabeza · ¿Diferencia?",
+    "a": "La cabeza ve viento más fuerte y más abierto",
+    "d": "Más viento real + misma velocidad = VA más abierto",
+    "tags": [
+      "twist",
+      "viento-aparente",
+      "altura"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 560
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Por qué las velas van twisteadas?",
+    "a": "Porque el viento aparente cambia con la altura",
+    "d": "La cabeza ve un viento diferente al pie",
+    "tags": [
+      "twist",
+      "viento-aparente"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 561
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Genoa · ¿Qué controla la escota?",
+    "a": "Twist de baluma, profundidad general, balance de ángulo de entrada",
+    "d": "Control principal del genoa",
+    "tags": [
+      "genoa",
+      "escota",
+      "controles"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 562
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Genoa · ¿Qué controla el punto de escota (patín)?",
+    "a": "Twist, profundidad y balance de entrada",
+    "d": "Trabaja en conjunto con la escota",
+    "tags": [
+      "genoa",
+      "patin",
+      "controles"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 563
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Genoa · ¿Qué controla la brisa (cunningham)?",
+    "a": "Posición de la máxima profundidad",
+    "d": "Regula ángulo de orzada, potencia y presión en timón",
+    "tags": [
+      "genoa",
+      "brisa",
+      "cunningham"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 564
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Genoa · ¿Qué controla el papel (outhaul)?",
+    "a": "El sag del estay de proa",
+    "d": "Despotencia el barco, aplana/engorda la vela",
+    "tags": [
+      "genoa",
+      "papel",
+      "outhaul",
+      "sag"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 565
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Genoa · ¿Qué controla el entrenador?",
+    "a": "Lo mismo que el traveler de la mayor: potencia extra",
+    "d": "Cazar para más potencia, filar para despotenciar",
+    "tags": [
+      "genoa",
+      "entrenador",
+      "traveler"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 566
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "¿Por qué se necesitan varios genoa y no varios mayores?",
+    "a": "El genoa tiene menos controles que la mayor (solo escota y patín)",
+    "d": "La mayor tiene mástil, escota, botavara, outhaul; el genoa va en relinga",
+    "tags": [
+      "genoa",
+      "mayor",
+      "controles"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 567
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Genoa · Escota cazada · ¿Qué pasa con la potencia?",
+    "a": "Más potencia en parte baja, menos en parte alta",
+    "d": "Por eso trabaja con el patín",
+    "tags": [
+      "genoa",
+      "escota",
+      "potencia"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 568
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Genoa grande · ¿Cuál es el límite de cazar escota?",
+    "a": "Los obenques",
+    "d": "Genoa que pasa por fuera de obenques",
+    "tags": [
+      "genoa",
+      "obenques",
+      "limite"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 569
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Genoa chico · ¿Cuál es el límite de cazar escota?",
+    "a": "La lanita de baluma se esconde",
+    "d": "Sin crucetas, la lanita de baluma es el indicador",
+    "tags": [
+      "genoa",
+      "lanita",
+      "baluma",
+      "limite"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 570
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Lanita de baluma del genoa · ¿Cómo funciona?",
+    "a": "Igual que la de la mayor: si me paso de cazada se esconde",
+    "d": "Indica el máximo cazado",
+    "tags": [
+      "genoa",
+      "lanita",
+      "baluma"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 571
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "¿Cómo encontrar el patín neutro?",
+    "a": "Cazar escota al máximo y ver qué lanita patea primero",
+    "d": "Si barlovento superior patea primero = muy twisteado",
+    "tags": [
+      "genoa",
+      "patin",
+      "neutro",
+      "metodo"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 572
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Lanita barlovento superior patea primero · ¿Diagnóstico?",
+    "a": "Patín muy a popa, vela demasiado twisteada",
+    "d": "Parte alta despotenciada",
+    "tags": [
+      "genoa",
+      "patin",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 573
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Lanita inferior patea primero · ¿Diagnóstico?",
+    "a": "Patín muy a proa, vela muy redonda abajo y cerrada arriba",
+    "d": "Parte baja demasiado cerrada",
+    "tags": [
+      "genoa",
+      "patin",
+      "diagnostico"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 574
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Todas las lanitas parten al mismo tiempo · ¿Qué encontraste?",
+    "a": "Patín neutro para ese viento",
+    "d": "Posición de partida para ajustes de escota",
+    "tags": [
+      "genoa",
+      "patin",
+      "neutro"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 575
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Patín neutro a 10 nudos · ¿Sirve para 5 nudos?",
+    "a": "No, la vela queda muy abierta (menos tensión de escota)",
+    "d": "Con menos viento la escota va más suelta y se abre la baluma",
+    "tags": [
+      "genoa",
+      "patin",
+      "neutro",
+      "viento"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 576
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Patín neutro a 10 nudos · ¿Qué hacer con 5 nudos?",
+    "a": "Mover patín a proa para compensar la filada de escota",
+    "d": "Compensar el twist que se abre",
+    "tags": [
+      "genoa",
+      "patin",
+      "viento-flojo"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 577
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Patín neutro a 10 nudos · ¿Qué hacer con 15 nudos?",
+    "a": "Mover patín a popa",
+    "d": "Con más viento la escota se caza más y cierra la baluma",
+    "tags": [
+      "genoa",
+      "patin",
+      "viento-fuerte"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 578
+  },
+  {
+    "cat": "TRIM",
+    "role": "TIM",
+    "fatigue": 2,
+    "q": "Barlo-sotavento · ¿Quién ajusta el rumbo?",
+    "a": "El timonel con el timón",
+    "d": "Genoa estática, timonel acomoda",
+    "tags": [
+      "sota",
+      "timonel",
+      "ajuste"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 579
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Marcas fijas · ¿Quién ajusta las velas?",
+    "a": "Los trimmers (el timonel va derecho)",
+    "d": "Menos alteración de timón = menos freno",
+    "tags": [
+      "marcas-fijas",
+      "trimmers",
+      "ajuste"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 580
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Marcas fijas · ¿Qué lanitas mirar para trimar?",
+    "a": "Las del medio (equilibrio)",
+    "d": "No inferiores (des cuidan la parte alta)",
+    "tags": [
+      "marcas-fijas",
+      "lanitas",
+      "medio"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 581
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Marcas fijas · Error: trimar solo con lanitas inferiores",
+    "a": "El genoa queda muy twisteado, la parte alta mal",
+    "d": "Hay que trimar el medio y que arriba acompañe",
+    "tags": [
+      "marcas-fijas",
+      "error",
+      "lanitas"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 582
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Marcas fijas · Filar escota y lanita barlovento patea · ¿Qué hacer?",
+    "a": "Cazar escota",
+    "d": "El timonel no altera el rumbo",
+    "tags": [
+      "marcas-fijas",
+      "escota",
+      "lanitas"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 583
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Marcas fijas · Cazar escota de más · ¿Qué lanita patea?",
+    "a": "La de sotavento",
+    "d": "Sobretrimado",
+    "tags": [
+      "marcas-fijas",
+      "escota",
+      "sobretrimado"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 584
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Brisa suelta · ¿Qué perfil genera?",
+    "a": "Profundidad media/trasera, más orzadora, menos potente, timón crítico",
+    "d": "Margen de 1-2° entre orzar y colapsar",
+    "tags": [
+      "genoa",
+      "brisa",
+      "perfil"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 585
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Brisa cazada · ¿Qué perfil genera?",
+    "a": "Profundidad adelantada, menos forzadora, timón más fácil",
+    "d": "Margen de 2-3°",
+    "tags": [
+      "genoa",
+      "brisa",
+      "perfil"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 586
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Brisa suelta · ¿Por qué el timón es más crítico?",
+    "a": "Solo 1-2° entre orzar bien y que la lanita colapse",
+    "d": "Perfil más fino",
+    "tags": [
+      "genoa",
+      "brisa",
+      "timon",
+      "critico"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 587
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Brisa · ¿Por qué NO trimar por ángulo de orzada?",
+    "a": "Se trimar por la potencia que se necesita",
+    "d": "Si hay exceso de potencia, cazar brisa",
+    "tags": [
+      "genoa",
+      "brisa",
+      "potencia"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 588
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "15 nudos, río chato, brisa suelta · ¿Qué problema?",
+    "a": "Vela demasiado potente, hay que filar mayor, desencadena descontrol",
+    "d": "Por 1° de orzada, 1° de escora, cadena de despotenciar",
+    "tags": [
+      "genoa",
+      "brisa",
+      "error",
+      "potencia"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 589
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Brisa suelta · ¿Cuándo es correcta?",
+    "a": "Poco viento y poca ola (necesitamos orzar)",
+    "d": "El barco se banca la potencia",
+    "tags": [
+      "genoa",
+      "brisa",
+      "viento-flojo"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 590
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Brisa cazada · ¿Cuándo es correcta?",
+    "a": "Viento medio/fuerte con ola (timón más fácil)",
+    "d": "2-3° de margen para derivar/orzar",
+    "tags": [
+      "genoa",
+      "brisa",
+      "viento-fuerte"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 591
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Entrenador · ¿Cuándo cazarlo al máximo?",
+    "a": "Poco viento y poca ola (buscar potencia extra)",
+    "d": "Como subir el traveler de la mayor",
+    "tags": [
+      "genoa",
+      "entrenador",
+      "viento-flojo"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 592
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Entrenador · ¿Cuándo no usarlo?",
+    "a": "Mucho viento (queremos vela abierta y despotenciada)",
+    "d": "Filar entrenador para abrir",
+    "tags": [
+      "genoa",
+      "entrenador",
+      "viento-fuerte"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 593
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Desbalance de trimado · ¿Qué es?",
+    "a": "Genoa con mucho entrenador + mayor poco potente",
+    "d": "Genera burbuja/derrame entre las velas",
+    "tags": [
+      "genoa",
+      "desbalance",
+      "trimado"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 594
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Desbalance de trimado · ¿Qué síntoma produce?",
+    "a": "Burbuja entre genoa y mayor",
+    "d": "Puede ser por el mástil (papel filado)",
+    "tags": [
+      "genoa",
+      "desbalance",
+      "burbuja"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 595
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Baten cortos del genoa · ¿Cómo ponerlos?",
+    "a": "Lo más planos posible (poca presión en la funda)",
+    "d": "Baten cortos = planos",
+    "tags": [
+      "genoa",
+      "baten",
+      "cortos"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 596
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Baten superior del genoa · ¿Qué control da?",
+    "a": "Más presión = más profundo = más potencia",
+    "d": "Se puede jugar con presión",
+    "tags": [
+      "genoa",
+      "baten",
+      "superior"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 597
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Baten blandos vs duros · ¿Cuándo usar cada uno?",
+    "a": "Blandos para poco viento, duros para mucho viento",
+    "d": "Blandos = más potencia, duros = menos potencia",
+    "tags": [
+      "genoa",
+      "baten",
+      "dureza"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 598
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Mismo genoa con 6 y 11 nudos · ¿Qué cambiar?",
+    "a": "Baten blandos a 6 nudos, duros a 11 nudos",
+    "d": "Misma vela, distinta dureza según viento",
+    "tags": [
+      "genoa",
+      "baten",
+      "crossover"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 599
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Papel filado (poco papel) · ¿Qué produce?",
+    "a": "Mucho sag, vela gorda, profundidad a proa",
+    "d": "Bueno para calma o ola con poco viento",
+    "tags": [
+      "genoa",
+      "papel",
+      "sag",
+      "viento-flojo"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 600
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Papel medio · ¿Para qué condición?",
+    "a": "Viento medio o agua plana",
+    "d": "Menos sag, vela más plana",
+    "tags": [
+      "genoa",
+      "papel",
+      "viento-medio"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 601
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Papel máximo cazado · ¿Para qué condición?",
+    "a": "Mucho viento (vela lo más plana posible)",
+    "d": "Mínimo sag, máximo aplanado",
+    "tags": [
+      "genoa",
+      "papel",
+      "viento-fuerte"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 602
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Papel · ¿Qué efecto colateral tiene al cazarse?",
+    "a": "La profundidad se va atrás, hay que compensar con brisa",
+    "d": "Cazar brisa para corregir profundidad adelante",
+    "tags": [
+      "genoa",
+      "papel",
+      "brisa",
+      "compensar"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 603
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Papel · ¿Para qué es el control más efectivo?",
+    "a": "Despotenciar el barco de manera rápida",
+    "d": "Control más rápido de despotenciar",
+    "tags": [
+      "genoa",
+      "papel",
+      "despotenciar"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 604
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Poco viento + agua plana · ¿Papel suelto o medio?",
+    "a": "Medio (no tan potente, no hay nada que frene)",
+    "d": "Agua plana = no necesita tanta potencia",
+    "tags": [
+      "genoa",
+      "papel",
+      "agua-plana"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 605
+  },
+  {
+    "cat": "TRIM",
+    "role": "TAC",
+    "fatigue": 2,
+    "q": "¿Qué es un crossover?",
+    "a": "Papelito que dice qué vela usar según viento y rumbo",
+    "d": "Asegura navegar con la vela correcta",
+    "tags": [
+      "crossover",
+      "velas"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 606
+  },
+  {
+    "cat": "TRIM",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "¿Por qué es importante tener un crossover escrito?",
+    "a": "Para que la experiencia no se pierda en una sola persona",
+    "d": "Plasmar datos para repetir y mejorar",
+    "tags": [
+      "crossover",
+      "experiencia"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 607
+  },
+  {
+    "cat": "TRIM",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Crossover · 5-10 nudos con 40° de ángulo de ceñida · ¿Qué genoa?",
+    "a": "Genoa ligero (light)",
+    "d": "Rango de poco viento",
+    "tags": [
+      "crossover",
+      "genoa-ligero"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 608
+  },
+  {
+    "cat": "TRIM",
+    "role": "TAC",
+    "fatigue": 3,
+    "q": "Crossover · 22-26 nudos · ¿Qué genoa?",
+    "a": "Genoa 3 (heavy)",
+    "d": "Rango de mucho viento",
+    "tags": [
+      "crossover",
+      "genoa-3"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 609
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Viento leve · ¿Objetivo del trimado?",
+    "a": "Generar potencia, aprovechar al máximo la energía débil",
+    "d": "Mejorar ángulo de timón y aumentar escora",
+    "tags": [
+      "viento-flojo",
+      "potencia",
+      "tips"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 610
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 2,
+    "q": "Viento leve · ¿Cómo trimar el genoa?",
+    "a": "Poco twist, brisa suelta, patín a proa, entrenador cazado, baten blandos",
+    "d": "Todo busca potencia",
+    "tags": [
+      "viento-flojo",
+      "genoa",
+      "tips"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 611
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 2,
+    "q": "Viento leve · ¿Cómo trimar la mayor?",
+    "a": "Poco twist, papel suelto, outhaul suelto, traveller barlovento, baten blandos",
+    "d": "Máxima potencia",
+    "tags": [
+      "viento-flojo",
+      "mayor",
+      "tips"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 612
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Viento medio · ¿Objetivo del trimado?",
+    "a": "Administrar potencia (dar y quitar según necesidad)",
+    "d": "No obtener potencia, sino administrarla",
+    "tags": [
+      "viento-medio",
+      "administrar",
+      "tips"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 613
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Viento medio · ¿Cómo trimar el genoa?",
+    "a": "Twist moderado activo, papel más tenso activo, patín un poco atrás, baten estándar",
+    "d": "Activo = ajustar constantemente",
+    "tags": [
+      "viento-medio",
+      "genoa",
+      "tips"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 614
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Viento medio · ¿Cómo trimar la mayor?",
+    "a": "Twist moderado activo, papel más tenso, traveller más al centro y activo",
+    "d": "Equilibrar potencia con estabilidad",
+    "tags": [
+      "viento-medio",
+      "mayor",
+      "tips"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 615
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Viento medio · ¿Por qué es clave ser ACTIVO?",
+    "a": "Vientos medios son fluctuantes, hay que buscar balance constantemente",
+    "d": "Balance de timón y escora",
+    "tags": [
+      "viento-medio",
+      "activo",
+      "dinamico"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 616
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Viento fuerte · ¿Objetivo del trimado?",
+    "a": "Reducir potencia, controlar ángulo de timón y escora",
+    "d": "Igualar potencia con estabilidad",
+    "tags": [
+      "viento-fuerte",
+      "reducir",
+      "tips"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 617
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Viento fuerte · ¿Cómo trimar el genoa?",
+    "a": "Mucho twist, papel máximo cazado, brisa bien cazada, patín atrás, baten duros",
+    "d": "Máximo despotenciar",
+    "tags": [
+      "viento-fuerte",
+      "genoa",
+      "tips"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 618
+  },
+  {
+    "cat": "TRIM",
+    "role": "MAY",
+    "fatigue": 3,
+    "q": "Viento fuerte · ¿Cómo trimar la mayor?",
+    "a": "Mucho twist, papel máximo, cunningham full, traveller sotavento, baten duros",
+    "d": "Vela lo más plana posible",
+    "tags": [
+      "viento-fuerte",
+      "mayor",
+      "tips"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 619
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Viento fuerte · Papel máximo cazado · ¿Qué compensar?",
+    "a": "Cazar brisa/cunningham para corregir profundidad que se va atrás",
+    "d": "Efecto colateral del papel",
+    "tags": [
+      "viento-fuerte",
+      "papel",
+      "brisa",
+      "compensar"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 620
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Bolsa adelante (cazando brisa) · ¿Siempre es más potencia?",
+    "a": "No, aplana la parte de atrás y despotencia",
+    "d": "Con poco viento, bolsa adelante = menos potencia",
+    "tags": [
+      "genoa",
+      "bolsa",
+      "potencia",
+      "mito"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 621
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Bolsa adelante · ¿Qué pasa con el vector de empuje?",
+    "a": "Más hacia adelante pero más chico (contraproducente)",
+    "d": "El módulo de la fuerza disminuye",
+    "tags": [
+      "genoa",
+      "bolsa",
+      "vector",
+      "potencia"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 622
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Bolsa atrás por la fuerza del viento · ¿Qué hacer?",
+    "a": "Corregir con brisa para llevarla al medio",
+    "d": "No se mueve atrás a propósito, se corrige",
+    "tags": [
+      "genoa",
+      "bolsa",
+      "corregir"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 623
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Poco viento + ola · ¿Bolsa adelante o vela potente?",
+    "a": "Vela potente y filar todo (la estabilidad se banca la potencia)",
+    "d": "No cazar brisa con poco viento aunque haya ola",
+    "tags": [
+      "genoa",
+      "bolsa",
+      "ola",
+      "viento-flojo"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 624
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Mucho viento + ola · ¿Bolsa adelante?",
+    "a": "Sí, pero como efecto colateral de despotenciar",
+    "d": "No se busca el vector, se busca control",
+    "tags": [
+      "genoa",
+      "bolsa",
+      "ola",
+      "viento-fuerte"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 625
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "¿Qué es lo PRIMORDIAL del trimado?",
+    "a": "La potencia, no el ángulo de orzada",
+    "d": "Primero potencia, después el resto",
+    "tags": [
+      "genoa",
+      "potencia",
+      "principio"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 626
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "q": "Vela potente + derivada para pasar ola · ¿Qué problema?",
+    "a": "El barco se escora de más, hay que filar demasiado, descontrol",
+    "d": "Barco desequilibrado",
+    "tags": [
+      "genoa",
+      "ola",
+      "escora",
+      "error"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 627
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "¿Cuál es el instrumento más importante?",
+    "a": "La corredera",
+    "d": "Mide velocidad real del barco",
+    "tags": [
+      "corredera",
+      "instrumentos"
+    ],
+    "difficulty": 1,
+    "source": "charla-genoa-manzoli",
+    "id": 628
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Cuál es el ángulo de timón ideal?",
+    "a": "2-4°",
+    "d": "Ni demasiado ni muy poco",
+    "tags": [
+      "timon",
+      "angulo",
+      "ideal"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 629
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Indicadores de performance · ¿Cuáles son?",
+    "a": "Catavientos, lanitas, ángulo de escora, corredera",
+    "d": "No la forma de la vela",
+    "tags": [
+      "indicadores",
+      "performance"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 630
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Error: trimar mirando solo la forma de la vela",
+    "a": "Hay que mirar los indicadores de flujo (lanitas, catavientos)",
+    "d": "La forma no dice si el flujo está adherido",
+    "tags": [
+      "error",
+      "indicadores",
+      "forma"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 631
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "16 nudos con velas cazadas y potentes · ¿Qué pasa?",
+    "a": "Exceso de escora, ángulo de timón alto, barco descontrolado",
+    "d": "Hay que despotenciar",
+    "tags": [
+      "simulador",
+      "exceso-potencia",
+      "escora"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 632
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "13 nudos con velas despotenciadas · ¿Qué pasa?",
+    "a": "El barco se adriza (poca potencia para poco viento)",
+    "d": "Hay que repotenciar",
+    "tags": [
+      "simulador",
+      "despotenciado",
+      "adrizar"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 633
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "6 nudos · ¿Qué trimado buscar?",
+    "a": "Máxima potencia: patín a proa, entrenador cazado, brisa suelta, papel suelto",
+    "d": "Todo para potencia",
+    "tags": [
+      "simulador",
+      "viento-flojo",
+      "potencia"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 634
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Simulador · ¿Qué muestra el cuadradito de controles?",
+    "a": "Profundidad (camber), twist y draft de la vela activa",
+    "d": "Resumen del trimado",
+    "tags": [
+      "simulador",
+      "camber",
+      "twist"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 635
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Simulador · ¿Para qué sirve tocar los controles manualmente?",
+    "a": "Para entender cómo funciona cada control",
+    "d": "No para copiar el trimado exacto",
+    "tags": [
+      "simulador",
+      "controles",
+      "aprender"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 636
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Simulador J35 · ¿El trimado sirve para todos los barcos?",
+    "a": "No, cada barco navega distinto",
+    "d": "J24 navega distinto al J35",
+    "tags": [
+      "simulador",
+      "barco",
+      "diferencias"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 637
+  },
+  {
+    "cat": "TRIM",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "¿Por qué es importante sacarle fotos a las velas?",
+    "a": "Para tener análisis completo del trimado y repetirlo",
+    "d": "Plasmar experiencia en algo tangible",
+    "tags": [
+      "fotos",
+      "analisis",
+      "trimado"
+    ],
+    "difficulty": 2,
+    "source": "charla-genoa-manzoli",
+    "id": 638
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Igualar potencia con estabilidad · ¿Qué significa?",
+    "a": "Si hay mucha potencia y poca estabilidad, despotenciar; si poca potencia y mucha estabilidad, potenciar",
+    "d": "Equilibrio",
+    "tags": [
+      "potencia",
+      "estabilidad",
+      "equilibrio"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 639
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Barco muy estable + queremos más potencia · ¿Baten?",
+    "a": "Baten blandos (se banca la estabilidad)",
+    "d": "Barco estable permite más potencia",
+    "tags": [
+      "baten",
+      "estabilidad",
+      "potencia"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 640
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "q": "Barco muy tierno (inestable) · ¿Baten?",
+    "a": "Baten más duros (para no tener exceso de potencia)",
+    "d": "Barco tierno necesita menos potencia",
+    "tags": [
+      "baten",
+      "tierno",
+      "inestable"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 641
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "sequence",
+    "q": "Encontrar patín neutro · ¿Orden?",
+    "a": "Cazar escota al máximo → ver qué lanita patea primero → mover patín → repetir hasta que todas partan juntas",
+    "d": "Método de patín neutro",
+    "steps": [
+      "Cazar escota al máximo",
+      "Ver qué lanita patea primero",
+      "Mover patín hacia proa o popa",
+      "Repetir hasta que todas partan juntas"
+    ],
+    "tags": [
+      "genoa",
+      "patin",
+      "neutro",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 642
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "invalid",
+    "q": "Patín neutro · Hay un paso incorrecto. Tocalo.",
+    "a": "Dejar el patín fijo sin moverlo según el viento",
+    "d": "El patín neutro depende del viento",
+    "steps": [
+      "Cazar escota al máximo",
+      "Ver qué lanita patea primero",
+      "Dejar el patín fijo para todos los vientos",
+      "Mover patín hasta que todas partan juntas"
+    ],
+    "invalidIndex": 2,
+    "tags": [
+      "genoa",
+      "patin",
+      "error",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 643
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "filter",
+    "q": "Viento leve · Genoa · Marcá qué hacer",
+    "a": "Poco twist + Brisa suelta + Patín a proa + Entrenador cazado",
+    "d": "Todo busca potencia",
+    "steps": [
+      "Poco twist",
+      "Brisa suelta",
+      "Patín a proa",
+      "Entrenador cazado",
+      "Papel máximo cazado",
+      "Baten duros"
+    ],
+    "validMask": [
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ],
+    "tags": [
+      "viento-flojo",
+      "genoa",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 644
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 3,
+    "type": "filter",
+    "q": "Viento fuerte · Genoa · Marcá qué hacer",
+    "a": "Mucho twist + Papel máximo + Brisa cazada + Patín atrás + Baten duros",
+    "d": "Máximo despotenciar",
+    "steps": [
+      "Mucho twist",
+      "Papel máximo cazado",
+      "Brisa cazada",
+      "Patín atrás",
+      "Baten blandos",
+      "Entrenador cazado al máximo"
+    ],
+    "validMask": [
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ],
+    "tags": [
+      "viento-fuerte",
+      "genoa",
+      "procedural"
+    ],
+    "difficulty": 3,
+    "source": "charla-genoa-manzoli",
+    "id": 645
+  },
+  {
+    "cat": "TRIM",
+    "role": "GEN",
+    "fatigue": 4,
+    "type": "sequence",
+    "q": "Racha · Ajustar genoa · ¿Orden?",
+    "a": "Filar genoa → abrir corredor → desahogar barco → acelerar",
+    "d": "Filar genoa en racha: despotenciar + acelerar",
+    "steps": [
+      "Filar genoa",
+      "Abrir corredor",
+      "Desahogar barco",
+      "Acelerar con nueva presión"
+    ],
+    "tags": [
+      "racha",
+      "genoa",
+      "procedural"
+    ],
+    "difficulty": 4,
+    "source": "charla-genoa-manzoli",
+    "id": 646
   }
 ]

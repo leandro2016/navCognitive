@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef, useCallback } from "react";
+﻿import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import BUILTIN_QUESTIONS from "./Questions/naut-preguntas-master.json";
 
 // ─── LIB MODULES ───────────────────────────────────────────────────────────
@@ -139,19 +139,43 @@ function PauseOverlay({ onResume, onSaveExit, onExitNoSave }) {
 
 // ─── HOME SCREEN ───────────────────────────────────────────────────────────
 
-function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSettings, reviews }) {
+function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSettings, reviews, history }) {
   const [template,   setTemplate]   = useState("30min");
   const [role,       setRole]       = useState("ALL");
   const [difficulty, setDifficulty] = useState(settings.difficulty || "hard");
   const [customCats, setCustomCats] = useState(["NAV", "MAN", "DEC", "REG", "SIT"]);
   const [customCount, setCustomCount] = useState(15);
+  const [sourceFilter, setSourceFilter] = useState("");
 
   const diff = DIFFICULTIES.find(d => d.id === difficulty);
   const dueCount = getOverdueCount(reviews);
 
+  // E: Sources disponibles para filtro (from builtin questions)
+  const availableSources = useMemo(() => {
+    const sources = new Set(BUILTIN_QUESTIONS.map(q => q.source).filter(Boolean));
+    return [...sources].sort();
+  }, []);
+
+  // B: Modo Focus — calcular categoría más débil del historial
+  const stats = computeCategoryStats(history || []);
+  const weakCat = useMemo(() => {
+    let worst = null;
+    let worstAcc = 1;
+    for (const [cat, s] of Object.entries(stats)) {
+      if (s.total < 3) continue;
+      const acc = s.correct / s.total;
+      if (acc < worstAcc) { worstAcc = acc; worst = cat; }
+    }
+    return worst ? { cat, acc: worstAcc, total: stats[worst].total } : null;
+  }, [history]);
+
   const handleStart = () => {
     setSettings(s => ({ ...s, difficulty }));
-    onStart(template, role, difficulty, { cats: customCats, count: customCount });
+    if (template === "focus" && weakCat) {
+      onStart("focus", role, difficulty, { focusCat: weakCat.cat, count: 15 });
+    } else {
+      onStart(template, role, difficulty, { cats: customCats, count: customCount, sourceFilter: sourceFilter || null });
+    }
   };
 
   const DIFFICULTY_OPTIONS = DIFFICULTIES.filter(d => d.id !== "notimer" && d.id !== "shrinking");
@@ -201,9 +225,9 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
 
       <Section label="Duracion">
         {Object.entries(SESSION_TEMPLATES).map(([k, v]) => (
-          <ChoiceBtn key={k} active={template === k} color={k === "walk" ? "#34D399" : k === "custom" ? "#FBBF24" : k === "repaso" ? "#F472B6" : k === "procedural" ? "#2DD4BF" : "#0EA5E9"} onClick={() => setTemplate(k)}>
+          <ChoiceBtn key={k} active={template === k} color={k === "walk" ? "#34D399" : k === "custom" ? "#FBBF24" : k === "repaso" ? "#F472B6" : k === "procedural" ? "#2DD4BF" : k === "focus" ? "#F43F5E" : k === "race" ? "#F472B6" : "#0EA5E9"} onClick={() => setTemplate(k)}>
             <strong>{v.label}</strong>
-            {k !== "custom" && k !== "repaso" && k !== "procedural" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>{v.phases.length} fases</span>}
+            {k !== "custom" && k !== "repaso" && k !== "procedural" && k !== "focus" && k !== "race" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>{v.phases.length} fases</span>}
             {k === "walk" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>30s/pregunta</span>}
             {k === "custom" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>Vos elegis</span>}
             {k === "repaso" && (
@@ -212,6 +236,12 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
               </span>
             )}
             {k === "procedural" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>Secuencias · pasos</span>}
+            {k === "focus" && (
+              <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>
+                {weakCat ? `${weakCat.cat} · ${Math.round(weakCat.acc * 100)}% acc` : "sin datos aún"}
+              </span>
+            )}
+            {k === "race" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>8 preguntas encadenadas</span>}
           </ChoiceBtn>
         ))}
       </Section>
@@ -252,6 +282,26 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
               }}>{n}</button>
             ))}
           </div>
+        </Section>
+      )}
+
+      {template === "custom" && availableSources.length > 1 && (
+        <Section label="Fuente documental (opcional)">
+          <select value={sourceFilter} onChange={e => setSourceFilter(e.target.value)} style={{
+            width: "100%", padding: "12px", borderRadius: 10,
+            background: S.bg2, border: "1.5px solid " + S.border, color: sourceFilter ? "#FBBF24" : S.muted,
+            fontFamily: S.font, fontSize: 11, outline: "none", cursor: "pointer",
+          }}>
+            <option value="">Todas las fuentes</option>
+            {availableSources.map(s => (
+              <option key={s} value={s}>{s}</option>
+            ))}
+          </select>
+          {sourceFilter && (
+            <div style={{ fontSize: 9, color: "#FBBF24", marginTop: 6 }}>
+              Filtrando solo preguntas de: {sourceFilter}
+            </div>
+          )}
         </Section>
       )}
 
@@ -352,6 +402,30 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
             </div>
           </div>
         )}
+        {template === "focus" && (
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
+            <div style={{ width: 3, height: 32, borderRadius: 2, background: "#F43F5E", flexShrink: 0 }} />
+            <div>
+              <div style={{ fontSize: 11, color: S.text, fontWeight: 700 }}>
+                {weakCat ? `Focus · ${CAT_LABELS[weakCat.cat]} (${Math.round(weakCat.acc * 100)}% acc)` : "Focus · sin datos aún"}
+              </div>
+              <div style={{ fontSize: 10, color: S.muted }}>
+                {weakCat
+                  ? `15 preguntas de tu categoría más débil · Progresión fatigue 1→4 · Timer: ${diff?.sprintTime || 10}s`
+                  : "Necesitás al menos 3 sesiones con datos para detectar tu debilidad"}
+              </div>
+            </div>
+          </div>
+        )}
+        {template === "race" && (
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
+            <div style={{ width: 3, height: 32, borderRadius: 2, background: "#F472B6", flexShrink: 0 }} />
+            <div>
+              <div style={{ fontSize: 11, color: S.text, fontWeight: 700 }}>Leg de regata</div>
+              <div style={{ fontSize: 10, color: S.muted }}>8 preguntas encadenadas: DEC → MAN → TRIM → NAV → TACT · Timer: {diff?.sprintTime || 10}s</div>
+            </div>
+          </div>
+        )}
         {template !== "walk" && template !== "custom" && template !== "repaso" && SESSION_TEMPLATES[template].phases.map(p => (
           <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 9 }}>
             <div style={{ width: 3, height: 32, borderRadius: 2, background: p.color, flexShrink: 0 }} />
@@ -363,12 +437,12 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
         ))}
       </Section>
 
-      <button onClick={handleStart} style={{
+      <button onClick={handleStart} disabled={template === "focus" && !weakCat} style={{
         width: "100%", maxWidth: 380, padding: "18px",
-        background: "linear-gradient(135deg, #0EA5E9, #0D9488)",
-        border: "none", borderRadius: 12, color: "#fff",
+        background: (template === "focus" && !weakCat) ? S.bg3 : "linear-gradient(135deg, #0EA5E9, #0D9488)",
+        border: "none", borderRadius: 12, color: (template === "focus" && !weakCat) ? S.muted : "#fff",
         fontFamily: S.font, fontSize: 14, fontWeight: 700,
-        letterSpacing: 3, cursor: "pointer", textTransform: "uppercase",
+        letterSpacing: 3, cursor: (template === "focus" && !weakCat) ? "not-allowed" : "pointer", textTransform: "uppercase",
       }}>COMENZAR →</button>
     </div>
   );
@@ -1700,7 +1774,7 @@ function SprintScreen({ round, paused, onDone }) {
 
 // ─── RESULTS SCREEN ────────────────────────────────────────────────────────
 
-function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, settings }) {
+function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, settings, onRetryErrors }) {
   const [saved, setSaved] = useState(false);
   const [showPR, setShowPR] = useState(false);
 
@@ -1709,6 +1783,18 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, setting
   const total    = all.length;
   const score    = total ? Math.round((correct / total) * 100) : 0;
   const scoreColor = score >= 75 ? "#34D399" : score >= 55 ? "#FB923C" : "#F43F5E";
+
+  // ── C: Métrica de velocidad de decisión ──
+  const timedResults = all.filter(r => typeof r.time === "number" && r.time > 0);
+  const hasTimeData = timedResults.length > 0;
+  const avgTime = hasTimeData ? (timedResults.reduce((a, r) => a + r.time, 0) / timedResults.length) : 0;
+  const fastest = hasTimeData ? Math.min(...timedResults.map(r => r.time)) : 0;
+  const slowest = hasTimeData ? Math.max(...timedResults.map(r => r.time)) : 0;
+  // Accuracy vs velocidad: ¿respondés rápido y bien?
+  const fastCorrect = timedResults.filter(r => r.correct && r.time < avgTime).length;
+  const fastWrong   = timedResults.filter(r => !r.correct && r.time < avgTime).length;
+  const slowCorrect = timedResults.filter(r => r.correct && r.time >= avgTime).length;
+  const slowWrong   = timedResults.filter(r => !r.correct && r.time >= avgTime).length;
 
   const byCat = {};
   all.forEach(r => {
@@ -1810,6 +1896,64 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, setting
         </div>
       )}
 
+      {hasTimeData && (
+        <div style={{ marginBottom: 24 }}>
+          <div style={{ fontSize: 9, letterSpacing: 4, color: S.muted, marginBottom: 12, textTransform: "uppercase" }}>
+            Velocidad de decisión
+          </div>
+          <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
+            <div style={{ flex: 1, background: S.bg2, borderRadius: 8, border: "1px solid " + S.border, padding: "10px 12px" }}>
+              <div style={{ fontSize: 8, color: S.dim, letterSpacing: 2, textTransform: "uppercase" }}>Promedio</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: "#A78BFA" }}>{avgTime.toFixed(1)}s</div>
+            </div>
+            <div style={{ flex: 1, background: S.bg2, borderRadius: 8, border: "1px solid " + S.border, padding: "10px 12px" }}>
+              <div style={{ fontSize: 8, color: S.dim, letterSpacing: 2, textTransform: "uppercase" }}>Más rápido</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: "#34D399" }}>{fastest.toFixed(1)}s</div>
+            </div>
+            <div style={{ flex: 1, background: S.bg2, borderRadius: 8, border: "1px solid " + S.border, padding: "10px 12px" }}>
+              <div style={{ fontSize: 8, color: S.dim, letterSpacing: 2, textTransform: "uppercase" }}>Más lento</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: "#FB923C" }}>{slowest.toFixed(1)}s</div>
+            </div>
+          </div>
+          {/* Matriz accuracy vs velocidad */}
+          <div style={{
+            background: S.bg2, borderRadius: 8, border: "1px solid " + S.border, padding: "12px",
+          }}>
+            <div style={{ fontSize: 8, color: S.dim, letterSpacing: 2, marginBottom: 8, textTransform: "uppercase" }}>
+              Accuracy vs velocidad
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, fontSize: 10 }}>
+              <div style={{ background: "rgba(52,211,153,0.08)", borderRadius: 6, padding: "8px", textAlign: "center" }}>
+                <div style={{ color: "#34D399", fontWeight: 700, fontSize: 14 }}>{fastCorrect}</div>
+                <div style={{ color: S.dim, fontSize: 8 }}>Rápido ✓</div>
+              </div>
+              <div style={{ background: "rgba(244,63,94,0.08)", borderRadius: 6, padding: "8px", textAlign: "center" }}>
+                <div style={{ color: "#F43F5E", fontWeight: 700, fontSize: 14 }}>{fastWrong}</div>
+                <div style={{ color: S.dim, fontSize: 8 }}>Rápido ✗</div>
+              </div>
+              <div style={{ background: "rgba(56,189,248,0.08)", borderRadius: 6, padding: "8px", textAlign: "center" }}>
+                <div style={{ color: "#38BDF8", fontWeight: 700, fontSize: 14 }}>{slowCorrect}</div>
+                <div style={{ color: S.dim, fontSize: 8 }}>Lento ✓</div>
+              </div>
+              <div style={{ background: "rgba(251,146,60,0.08)", borderRadius: 6, padding: "8px", textAlign: "center" }}>
+                <div style={{ color: "#FB923C", fontWeight: 700, fontSize: 14 }}>{slowWrong}</div>
+                <div style={{ color: S.dim, fontSize: 8 }}>Lento ✗</div>
+              </div>
+            </div>
+            {fastWrong > slowWrong && (
+              <div style={{ fontSize: 9, color: "#FB923C", marginTop: 8, lineHeight: 1.4 }}>
+                ⚠ Respondés rápido pero errando — bajá el ritmo en preguntas difíciles
+              </div>
+            )}
+            {fastCorrect > slowCorrect * 2 && (
+              <div style={{ fontSize: 9, color: "#34D399", marginTop: 8, lineHeight: 1.4 }}>
+                ✓ Buena velocidad de decisión — mantenela en regata
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {wrongOnes.length > 0 && (
         <div style={{ marginBottom: 24 }}>
           <div style={{ fontSize: 9, letterSpacing: 4, color: S.muted, marginBottom: 12, textTransform: "uppercase" }}>
@@ -1826,6 +1970,14 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, setting
       )}
 
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        {wrongOnes.length > 0 && onRetryErrors && !saved && (
+          <button onClick={onRetryErrors} style={{
+            width: "100%", padding: "14px",
+            background: "rgba(167,139,250,0.1)", border: "1.5px solid rgba(167,139,250,0.4)",
+            borderRadius: 12, color: "#A78BFA",
+            fontFamily: S.font, fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
+          }}>🔁 REENTRENAR ERRORES ({wrongOnes.length})</button>
+        )}
         {!saved ? (
           <button onClick={handleSave} style={{
             width: "100%", padding: "14px",
@@ -2221,6 +2373,30 @@ export default function App() {
     setSettings(s => ({ ...s, newPR: false }));
   };
 
+  // F: Reentrenar errores — genera una sesión sprint solo con las preguntas erróneas
+  // de la sesión recién terminada. No guarda historial por separado (es un drill).
+  const handleRetryErrors = () => {
+    if (!sessionState) return;
+    const wrongResults = sessionState.results.flat().filter(r => r && r.q && !r.correct);
+    if (wrongResults.length === 0) return;
+    const wrongQs = wrongResults.map(r => r.q);
+    const diff = DIFFICULTIES.find(d => d.id === sessionState.meta.difficulty) || DIFFICULTIES[0];
+    const sprintTime = sessionState.meta.difficulty === "shrinking"
+      ? (settings.shrinkingBase || 10) : diff.sprintTime;
+    const rounds = [{
+      type: "sprint",
+      phaseLabel: "Reentrenar errores",
+      phaseColor: "#A78BFA",
+      questions: wrongQs,
+      questionTimer: sprintTime,
+      questionTimers: wrongQs.map(q => questionTimer(sprintTime, q)),
+      isRetry: true,
+    }];
+    setSavedSession(null);
+    setSessionState({ rounds, roundIdx: 0, results: [], meta: { ...sessionState.meta, template: "retry" }, done: false });
+    setPaused(false);
+  };
+
   const handleClearHistory = () => {
     if (window.confirm("Borrar todo el historial?")) setHistory([]);
   };
@@ -2235,6 +2411,7 @@ export default function App() {
             onRestart={handleRestart}
             onSave={handleSaveHistory}
             settings={settings}
+            onRetryErrors={handleRetryErrors}
           />
           <style>{`body{margin:0;background:#060C14}`}</style>
         </>
@@ -2270,7 +2447,7 @@ export default function App() {
   return (
     <>
       {navScreen === "home" && (
-        <HomeScreen onStart={handleStart} onResumeSaved={handleResumeSaved} savedSession={savedSession} settings={settings} setSettings={setSettings} reviews={reviews} />
+        <HomeScreen onStart={handleStart} onResumeSaved={handleResumeSaved} savedSession={savedSession} settings={settings} setSettings={setSettings} reviews={reviews} history={history} />
       )}
       {navScreen === "library" && (
         <LibraryScreen customQ={customQ} setCustomQ={setCustomQ} />

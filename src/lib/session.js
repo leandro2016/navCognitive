@@ -7,7 +7,7 @@ import BUILTIN_QUESTIONS from "../../Questions/naut-preguntas-master.json";
 import EXERCISES from "../../Questions/exercises.json";
 import {
   DIFFICULTIES, SESSION_TEMPLATES, PHASE_EX_MAP, PHASE_Q_MAP, SCHEMA_VERSION, LS,
-  CAT_ORDER, Q_TYPE_MAP,
+  CAT_ORDER, CAT_LABELS, Q_TYPE_MAP,
 } from "./constants.js";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -177,6 +177,14 @@ export function getQuestionsForPhase(phaseId, role, fatigueLevel, count, usedIds
     if (hard.length >= count) pool = hard;
   }
 
+  // G: Fatiga progresiva — a medida que avanzan las rondas (más usedIds),
+  // priorizar preguntas de fatigue más alto para simular fatiga acumulada.
+  const progress = usedIds.size / Math.max(1, allQ.length);
+  if (progress > 0.3 && pool.length > count * 2) {
+    const harder = pool.filter(q => q.fatigue >= Math.min(4, 2 + Math.floor(progress * 2)));
+    if (harder.length >= count) pool = harder;
+  }
+
   if (pool.length < count) {
     pool = allQ.filter(q =>
       cats.includes(q.cat) &&
@@ -226,15 +234,18 @@ export function buildSession(templateKey, role, difficultyId, allQ, opts) {
   if (templateKey === "custom") {
     const cats = opts?.cats || ["NAV", "MAN", "DEC", "REG", "SIT"];
     const count = opts?.count || 15;
+    const sourceFilter = opts?.sourceFilter || null;
     let pool = allQ.filter(q =>
       cats.includes(q.cat) &&
       roleMatch(q) &&
-      q.fatigue >= diff.minFatigue
+      q.fatigue >= diff.minFatigue &&
+      (!sourceFilter || q.source === sourceFilter)
     );
     if (pool.length < count) {
       pool = allQ.filter(q =>
         cats.includes(q.cat) &&
-        roleMatch(q)
+        roleMatch(q) &&
+        (!sourceFilter || q.source === sourceFilter)
       );
     }
     pool = weights ? weightedShuffle(pool, weights) : shuffle(pool);
@@ -307,6 +318,92 @@ export function buildSession(templateKey, role, difficultyId, allQ, opts) {
       questionTimer: effectiveSprintTime,
       questionTimers: questions.map(q => questionTimer(effectiveSprintTime, q)),
       isProcedural: true,
+    });
+    return rounds;
+  }
+
+  if (templateKey === "race") {
+    // A: Simulación de regata — preguntas encadenadas como un leg de regata.
+    // Secuencia temática: DEC (decisión) → MAN/TRIM (maniobra/trimado) → NAV/TACT (navegación/táctica)
+    // Cada pregunta tiene un contexto que se acumula del resultado anterior.
+    const raceCats = ["DEC", "MAN", "TRIM", "NAV", "TACT", "SIT", "METEO"];
+    const count = opts?.count || 8;
+    let pool = allQ.filter(q =>
+      raceCats.includes(q.cat) &&
+      roleMatch(q) &&
+      q.fatigue >= diff.minFatigue
+    );
+    if (pool.length < count) {
+      pool = allQ.filter(q => raceCats.includes(q.cat) && roleMatch(q));
+    }
+    // Agrupar por categoría y tomar de cada una para armar la secuencia.
+    const byCat = {};
+    for (const q of shuffle(pool)) {
+      if (!byCat[q.cat]) byCat[q.cat] = [];
+      byCat[q.cat].push(q);
+    }
+    // Secuencia de un leg: DEC → MAN/TRIM → NAV/TACT → repetir
+    const sequence = ["DEC", "MAN", "TRIM", "NAV", "TACT", "SIT", "METEO", "DEC", "MAN", "TRIM"];
+    const questions = [];
+    const usedIds = new Set();
+    for (const cat of sequence) {
+      if (questions.length >= count) break;
+      const candidates = (byCat[cat] || []).filter(q => !usedIds.has(q.id));
+      if (candidates.length > 0) {
+        const q = candidates[0];
+        questions.push(q);
+        usedIds.add(q.id);
+      }
+    }
+    // Si no llegamos a count, completar con cualquier pregunta del pool.
+    if (questions.length < count) {
+      const rest = shuffle(pool.filter(q => !usedIds.has(q.id)));
+      for (const q of rest) {
+        if (questions.length >= count) break;
+        questions.push(q);
+        usedIds.add(q.id);
+      }
+    }
+    rounds.push({
+      type: "sprint",
+      phaseLabel: "Leg de regata",
+      phaseColor: "#F472B6",
+      questions,
+      questionTimer: effectiveSprintTime,
+      questionTimers: questions.map(q => questionTimer(effectiveSprintTime, q)),
+      isRace: true,
+    });
+    return rounds;
+  }
+
+  if (templateKey === "focus") {
+    // Modo Focus: sesión 100% de la categoría más débil del historial.
+    // Progresión: empieza con fatigue baja, sube a medida que acertás.
+    const focusCat = opts?.focusCat || "NAV";
+    const count = opts?.count || 15;
+    let pool = allQ.filter(q =>
+      q.cat === focusCat &&
+      roleMatch(q) &&
+      q.fatigue >= diff.minFatigue
+    );
+    if (pool.length < count) {
+      // Fallback: sin filtro de fatigue ni rol si hay pocas.
+      pool = allQ.filter(q => q.cat === focusCat);
+    }
+    pool = shuffle(pool);
+    // Progresión de fatigue: ordenar por fatigue ascendente para que empiece suave.
+    const sorted = [...pool].sort((a, b) => (a.fatigue || 2) - (b.fatigue || 2));
+    const questions = sorted.slice(0, Math.min(count, sorted.length));
+    questions.forEach(q => usedIds.add(q.id));
+    rounds.push({
+      type: "sprint",
+      phaseLabel: "Focus · " + (CAT_LABELS?.[focusCat] || focusCat),
+      phaseColor: "#F43F5E",
+      questions,
+      questionTimer: effectiveSprintTime,
+      questionTimers: questions.map(q => questionTimer(effectiveSprintTime, q)),
+      isFocus: true,
+      focusCat,
     });
     return rounds;
   }

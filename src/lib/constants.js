@@ -120,6 +120,18 @@ export const SESSION_TEMPLATES = {
       { id: "sprint", label: "Procedural",  duration: 0, color: "#2DD4BF" },
     ],
   },
+  "focus": {
+    label: "Focus — tu debilidad",
+    phases: [
+      { id: "sprint", label: "Focus",  duration: 0, color: "#F43F5E" },
+    ],
+  },
+  "race": {
+    label: "Simulación de regata",
+    phases: [
+      { id: "sprint", label: "Leg de regata",  duration: 0, color: "#F472B6" },
+    ],
+  },
 };
 
 export const PHASE_EX_MAP = {
