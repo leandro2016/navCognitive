@@ -360,3 +360,197 @@ Observás una demora constante y una distancia decreciente.
 
 Respuesta:
 Existe riesgo de colisión.
+
+---
+
+# Capítulo Extra
+# Regla 19 - Visibilidad Restringida
+
+---
+
+## Aplicación
+
+Aplica cuando la visibilidad está restringida (niebla, bruma, lluvia intensa, tormenta).
+
+No aplica el orden normal de jerarquía de la Regla 18.
+
+Todos los barcos deben proceder con precaución extrema.
+
+---
+
+## Principios
+
+- Todo barco debe navegar a velocidad de seguridad moderada.
+- Mantener vigilancia visual, auditiva e instrumental.
+- Usar radar si está disponible.
+- Evitar virar bruscamente.
+
+---
+
+## Reglas de Maniobra en Visibilidad Restringida
+
+No hay regla de "quién cede" como en cruce normal.
+
+Cada barco debe:
+
+- Alterar rumbo temprano y claro.
+- Evitar virar a babor para pasar a otro por babor (si es alcanzante).
+- Reducir velocidad si es necesario.
+
+---
+
+## Señales Fónicas en Niebla
+
+### Barco con propulsión mecánica navegando
+
+1 sonido largo (4-6 s) cada 2 minutos.
+
+### Barco con propulsión mecánica sin gobierno o maniobra restringida
+
+2 sonidos largos seguidos cada 2 minutos.
+
+### Velero navegando
+
+1 sonido largo + 2 cortos cada 2 minutos.
+
+### Barco fondeado
+
+Campana rápida 5 s cada 1 minuto.
+
+### Barco varado
+
+Campana + 3 golpes antes y después.
+
+---
+
+## Aplicación Río de la Plata
+
+Niebla de advección común en primavera/otoño.
+
+Velero de regata en niebla:
+
+- Emitir 1 largo + 2 cortos cada 2 min.
+- Reducir velocidad.
+- Extremar vigilancia.
+- Considerar abandono si visibilidad < 50 m.
+
+---
+
+# Capítulo Extra
+# Señales Fónicas (Reglas 34-37)
+
+---
+
+## Regla 34 - Maniobra y Advertencia
+
+### Cuando dos barcos se aproximan y no entienden las intenciones
+
+- 1 sonido corto: "altero rumbo a estribor".
+- 2 sonidos cortos: "altero rumbo a babor".
+- 3 sonidos cortos: "estoy dando atrás".
+- 5 sonidos cortos: "no entiendo tus intenciones" (advertencia).
+
+---
+
+## Regla 35 - Visibilidad Restringida
+
+(Ver capítulo Regla 19 arriba)
+
+---
+
+## Regla 36 - Señales para Atraer Atención
+
+Si es necesario atraer atención se puede usar cualquier señal no confundible con otras del reglamento.
+
+---
+
+## Regla 37 - Señales de Peligro
+
+Bandera N+C (November + Charlie).
+
+Bandera NC del Código Internacional de Señales.
+
+Luces rojas intermitentes.
+
+Bengalas rojas.
+
+Fuego de artificio rojo.
+
+---
+
+# Capítulo Extra
+# Luces de Remolque y Fondeo
+
+---
+
+## Remolcador
+
+### Luces
+
+- Luces de navegación (roja, verde, blanca de popa).
+- Luz amarilla de remolque sobre la blanca de popa.
+- Si remolque > 200 m: luz de tope adicional.
+
+### Interpretación
+
+Buque con remolque.
+
+Precaución: cable largo.
+
+---
+
+## Buque Fondeado
+
+### Luces
+
+- Luz blanca todo horizonte en la parte más alta.
+- Si > 50 m: segunda luz blanca más baja.
+
+### Marca Diurna
+
+Esfera negra en la parte más alta.
+
+---
+
+## Buque Varado
+
+### Luces
+
+- Luces de fondeado.
+- Más 2 luces rojas verticales.
+
+### Marca Diurna
+
+3 esferas negras verticales.
+
+---
+
+# Banco de Preguntas Adicional
+
+## Nivel Básico
+
+¿Qué señal fónica emite un velero en niebla?
+
+¿Qué significa 5 sonidos cortos?
+
+¿Qué luz identifica un remolcador?
+
+---
+
+## Nivel Intermedio
+
+¿Qué regla aplica en visibilidad restringida?
+
+¿Qué señal emite un barco fondeado en niebla?
+
+¿Qué luces muestra un buque varado?
+
+---
+
+## Nivel Avanzado
+
+Dos barcos en niebla sin visibilidad. ¿Qué debe hacer cada uno?
+
+¿Cuándo se usa la bandera NC?
+
+¿Cómo identificar un remolque de más de 200 m?

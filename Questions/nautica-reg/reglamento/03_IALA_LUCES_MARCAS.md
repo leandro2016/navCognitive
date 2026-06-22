@@ -651,3 +651,140 @@ Blanca sobre roja.
 
 Respuesta:
 Práctico.
+
+---
+
+# Capítulo Extra
+# Ritmos de Luces
+
+---
+
+## Concepto
+
+Las boyas y faros no solo se identifican por color.
+
+También por el ritmo de la luz (secuencia de destellos).
+
+---
+
+## Abreviaturas
+
+| Símbolo | Nombre | Descripción |
+|---------|--------|-------------|
+| F | Fija | Luz continua |
+| Fl | Destellante | Destellos regulares |
+| Fl(2) | Grupos de 2 destellos | 2 destellos por grupo |
+| Q | Destellos rápidos | 50-79 destellos/min |
+| VQ | Destellos muy rápidos | 80-159 destellos/min |
+| Iso | Isófase | Luz y oscuridad iguales |
+| Occ | Ocultaciones | Luz más tiempo encendida que apagada |
+| LFl | Destello largo | Destello ≥ 2 s |
+| Mo(A) | Morse A | Luz que emite código Morse "A" (·−) |
+
+---
+
+## Período
+
+Tiempo total de un ciclo completo de la luz.
+
+Se expresa en segundos.
+
+Ejemplo: Fl(2) 10s = grupos de 2 destellos cada 10 segundos.
+
+---
+
+## Aplicación
+
+Permite distinguir boyas cercanas en una misma zona.
+
+Cada boya del Río de la Plata tiene un ritmo único registrado en la carta.
+
+---
+
+# Capítulo Extra
+# Enfilación y Luces Sectoriales
+
+---
+
+## Enfilación
+
+Alineación de dos puntos notables (faros, torres, boyas) que define una línea de posición.
+
+Si los dos puntos se ven alineados, el barco está sobre esa línea.
+
+Útil para:
+
+- Entrar a puerto.
+- Navegar canales.
+- Verificar rumbo.
+
+---
+
+## Luces Sectoriales
+
+Faro que muestra diferentes colores según el sector desde donde se lo observe.
+
+Ejemplo:
+
+- Sector blanco: agua segura.
+- Sector rojo: peligro a babor.
+- Sector verde: peligro a estribor.
+
+Permite saber si se está dentro del canal seguro.
+
+---
+
+# Capítulo Extra
+# Alcance Nominal de una Luz
+
+---
+
+## Definición
+
+Distancia máxima a la que una luz es visible en condiciones de visibilidad clara (visibilidad meteorológica de 10 Mn).
+
+Se expresa en millas náuticas.
+
+Se indica en las cartas y publicaciones náuticas.
+
+---
+
+## Importancia
+
+Planificar recalada nocturna.
+
+Saber cuándo esperar ver una luz.
+
+No confundir con alcance geográfico (limitado por la curvatura terrestre y altura del observador).
+
+---
+
+# Banco de Preguntas Adicional
+
+## Nivel Básico
+
+¿Qué significa Fl?
+
+¿Qué significa Q?
+
+¿Qué es una enfilación?
+
+---
+
+## Nivel Intermedio
+
+¿Qué diferencia hay entre Fl e Iso?
+
+¿Qué indica una luz sectorial roja?
+
+¿Qué es el período de una luz?
+
+---
+
+## Nivel Avanzado
+
+¿Cómo distinguir dos boyas cercanas de noche?
+
+¿Qué es el alcance nominal vs geográfico?
+
+Interpretar Fl(2) 10s.

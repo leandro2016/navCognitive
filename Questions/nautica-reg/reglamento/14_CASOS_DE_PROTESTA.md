@@ -791,3 +791,412 @@ Análisis de protestas.
 ---
 
 Resolución de audiencias.
+
+---
+
+# SECCIÓN J
+# Regla 19
+# Espacio para Pasar Obstrucción
+
+---
+
+# Caso 36
+
+A y B comprometidos.
+
+Se aproximan a un buque fondeado que es obstrucción.
+
+A interior.
+
+B exterior.
+
+## Pregunta
+
+¿Quién debe dar espacio?
+
+## Respuesta
+
+B.
+
+Regla 19.
+
+---
+
+# Caso 37
+
+A y B en bordes opuestos ceñidos.
+
+Se aproximan a una obstrucción.
+
+A babor debe mantenerse apartado por Regla 10.
+
+## Pregunta
+
+¿Aplica Regla 19?
+
+## Respuesta
+
+No entre bordes opuestos en ceñida cuando uno debe apartarse por Regla 10.
+
+---
+
+# Caso 38
+
+A interior pide espacio para pasar obstrucción.
+
+B no deja espacio.
+
+A toca la obstrucción.
+
+## Pregunta
+
+¿Quién infringe?
+
+## Respuesta
+
+B.
+
+Regla 19.
+
+---
+
+# SECCIÓN K
+# Regla 20
+# Agua para Virar
+
+---
+
+# Caso 39
+
+A ceñido se aproxima a una obstrucción a barlovento.
+
+Grita "¡Agua para virar!".
+
+B responde "¡Virá!".
+
+## Pregunta
+
+¿Qué debe hacer A?
+
+## Respuesta
+
+Virar lo antes posible.
+
+---
+
+# Caso 40
+
+A pide agua para virar.
+
+B no responde.
+
+## Pregunta
+
+¿Qué puede hacer A?
+
+## Respuesta
+
+A puede virar y protestar a B si no dio espacio.
+
+---
+
+# Caso 41
+
+A pide agua para virar por un competidor lento a barlovento.
+
+## Pregunta
+
+¿Aplica Regla 20?
+
+## Respuesta
+
+No.
+
+Un competidor no es obstrucción si se puede caer y pasarlo.
+
+---
+
+# Caso 42
+
+A pide agua para virar.
+
+B responde "¡Virá!".
+
+A vira.
+
+B no vira y no da espacio.
+
+## Pregunta
+
+¿Quién infringe?
+
+## Respuesta
+
+B.
+
+Regla 20.
+
+---
+
+# SECCIÓN L
+# Regla 42
+# Propulsión Prohibida
+
+---
+
+# Caso 43
+
+A bombea la escota una vez al entrar una racha.
+
+## Pregunta
+
+¿Es legal?
+
+## Respuesta
+
+Sí.
+
+Un bombeo por racha está permitido.
+
+---
+
+# Caso 44
+
+A bombea repetidamente la mayor en ceñida.
+
+## Pregunta
+
+¿Infringe?
+
+## Respuesta
+
+Sí.
+
+Regla 42 (pumping repetido).
+
+---
+
+# Caso 45
+
+A balancea el barco con el cuerpo en popa para surfear una ola.
+
+## Pregunta
+
+¿Es legal?
+
+## Respuesta
+
+Depende.
+
+Surfear una ola con un bombeo por ola está permitido.
+
+Balanceo repetido (rocking) no.
+
+---
+
+# Caso 46
+
+A usa el timón repetidamente para avanzar en viento flojo.
+
+## Pregunta
+
+¿Infringe?
+
+## Respuesta
+
+Sí.
+
+Sculling prohibido por Regla 42.
+
+---
+
+# SECCIÓN M
+# Regla 44
+# Penalizaciones
+
+---
+
+# Caso 47
+
+A toca una marca.
+
+## Pregunta
+
+¿Qué penalización?
+
+## Respuesta
+
+Una vuelta (una virada + una trasluchada) lo antes posible.
+
+Regla 31 + 44.
+
+---
+
+# Caso 48
+
+A infringe Regla 10 sin contacto.
+
+## Pregunta
+
+¿Qué penalización?
+
+## Respuesta
+
+Una vuelta (2 viradas + 2 trasluchadas según instrucciones).
+
+Regla 44.
+
+---
+
+# Caso 49
+
+A infringe Regla 11 con contacto y daño.
+
+## Pregunta
+
+¿Qué penalización?
+
+## Respuesta
+
+Dos vueltas.
+
+Regla 44 (contacto con daño).
+
+---
+
+# Caso 50
+
+A infringe en la última pierna antes de meta.
+
+## Pregunta
+
+¿Cuándo hacer la penalización?
+
+## Respuesta
+
+Antes de cruzar la meta.
+
+---
+
+# Caso 51
+
+A hace la penalización pero no completa las vueltas.
+
+## Pregunta
+
+¿Vale la penalización?
+
+## Respuesta
+
+No.
+
+Debe completar las vueltas requeridas.
+
+---
+
+# SECCIÓN N
+# Casos Combinados Avanzados
+
+---
+
+# Caso 52
+
+A estribor.
+
+B babor.
+
+B vira delante de A.
+
+A no tiene espacio para responder.
+
+## Pregunta
+
+¿Qué reglas intervienen?
+
+## Respuesta
+
+10 (B debía apartarse).
+
+13 (B virando debe apartarse).
+
+15 (B adquiere derecho de paso, debe dar espacio).
+
+---
+
+# Caso 53
+
+A interior.
+
+B exterior.
+
+Comprometidos en zona de marca.
+
+B no deja espacio.
+
+A toca la marca.
+
+## Pregunta
+
+¿Qué puede hacer A?
+
+## Respuesta
+
+Protestar a B por Regla 18.
+
+A puede hacer penalización de Regla 31 si tocó la marca, pero puede ser eximido si B la obligó.
+
+---
+
+# Caso 54
+
+A pide agua para virar por obstrucción.
+
+B responde "¡Virá!".
+
+A vira.
+
+C viene con derecho de paso y A no puede apartarse.
+
+## Pregunta
+
+¿Quién infringe?
+
+## Respuesta
+
+Analizar si A tuvo espacio razonable.
+
+B puede ser responsable por no dar espacio suficiente.
+
+C tiene derecho de paso pero Regla 15 aplica si A adquirió derecho de paso.
+
+---
+
+# Banco de Preguntas Adicional
+
+## Nivel Básico
+
+¿Qué penalización por tocar una marca?
+
+¿Es legal un bombeo por racha?
+
+¿Qué gritar al pedir agua para virar?
+
+---
+
+## Nivel Intermedio
+
+¿Cuándo NO aplica Regla 19?
+
+¿Cuántas vueltas por infracción con contacto y daño?
+
+¿Qué es sculling y por qué está prohibido?
+
+---
+
+## Nivel Avanzado
+
+Análisis de caso 52 (múltiples reglas).
+
+¿Qué hacer si te obligan a tocar una marca?
+
+Diferencia entre bombeo legal e ilegal.

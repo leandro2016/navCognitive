@@ -616,3 +616,116 @@ Puede ser la popa de un barco navegando.
 ---
 
 ¿Qué precauciones adicionales tomarías al encontrar una embarcación de pesca de noche?
+
+---
+
+# Capítulo Extra
+# Luces de Remolque
+
+---
+
+## Remolcador
+
+### Luces
+
+- Luces de navegación (roja, verde, blanca de popa).
+- Luz amarilla de remolque sobre la blanca de popa.
+
+### Si remolque > 200 m
+
+- Luz de tope adicional.
+- Forma de diamante negra en el remolque.
+
+---
+
+## Interpretación
+
+Buque con remolque.
+
+Precaución: cable largo, puede cruzar el rumbo.
+
+---
+
+# Capítulo Extra
+# Luces de Fondeo y Varadura
+
+---
+
+## Buque Fondeado
+
+### Luces
+
+- Luz blanca todo horizonte en la parte más alta.
+- Si > 50 m: segunda luz blanca más baja.
+
+### Marca Diurna
+
+Esfera negra en la parte más alta.
+
+---
+
+## Buque Varado
+
+### Luces
+
+- Luces de fondeado.
+- Más 2 luces rojas verticales.
+
+### Marca Diurna
+
+3 esferas negras verticales.
+
+---
+
+# Capítulo Extra
+# Alcance Nominal de Luces
+
+---
+
+## Definición
+
+Distancia máxima a la que una luz es visible con visibilidad meteorológica de 10 Mn.
+
+Se indica en cartas y publicaciones.
+
+---
+
+## Importancia
+
+Planificar recalada nocturna.
+
+Saber cuándo esperar ver una luz.
+
+No confundir con alcance geográfico (limitado por curvatura terrestre y altura).
+
+---
+
+# Banco de Preguntas Adicional
+
+## Nivel Básico
+
+¿Qué luz identifica un remolcador?
+
+¿Qué luces muestra un buque fondeado?
+
+¿Qué marca diurna indica varadura?
+
+---
+
+## Nivel Intermedio
+
+¿Cómo identificar un remolque de más de 200 m?
+
+¿Qué luces muestra un buque varado?
+
+¿Qué es el alcance nominal?
+
+---
+
+## Nivel Avanzado
+
+Diferenciar fondeado de varado de noche.
+
+Planificar recalada con alcance nominal y geográfico.
+
+Interpretar luz amarilla de remolque en Canal de Acceso.

@@ -658,3 +658,160 @@ El barco tiene mucha escora y timón pesado.
 El barco no acelera en ola corta.
 
 ¿Qué controles gruesos podrían estar involucrados?
+
+---
+
+# Capítulo Extra
+# Backstay y Mast Bend
+
+---
+
+## Backstay
+
+### Función
+
+Controla la flexión del mástil y la tensión del estay de proa.
+
+Afecta simultáneamente:
+
+- Forma de la mayor (profundidad y twist).
+- Sag del estay (forma del génova).
+
+---
+
+## Más Backstay
+
+Produce:
+
+- Mayor aplanada (menor profundidad).
+- Más flexión de mástil.
+- Menos sag del estay (génova más plano).
+- Más control en viento fuerte.
+
+---
+
+## Menos Backstay
+
+Produce:
+
+- Mayor más profunda.
+- Menos flexión de mástil.
+- Más sag del estay (génova más profundo).
+- Más potencia en viento liviano.
+
+---
+
+## Mast Bend (Flexión de Mástil)
+
+### Concepto
+
+El mástil se flexiona hacia adelante o atrás según la tensión del backstay y la configuración del aparejo.
+
+---
+
+## Más Flexión
+
+- Aplana la parte media de la mayor.
+- Abre la baluma (más twist).
+- Reduce potencia.
+
+---
+
+## Menos Flexión
+
+- Más profundidad en la mayor.
+- Baluma más cerrada.
+- Más potencia.
+
+---
+
+## Pre-bend
+
+Flexión permanente del mástil configurada en botavaras y burdas.
+
+Define la forma base de la mayor sin backstay.
+
+---
+
+## Aplicación por Intensidad
+
+- Viento liviano: poco backstay, poco bend, mayor profunda.
+- Viento medio: backstay medio, bend controlado.
+- Viento fuerte: mucho backstay, mucho bend, mayor plana.
+
+---
+
+# Capítulo Extra
+# Spreaders y Rake
+
+---
+
+## Spreaders (Crucetas)
+
+### Función
+
+Soportan lateralmente el mástil y definen la flexión lateral.
+
+Afectan la forma de la mayor en el medio.
+
+---
+
+## Rake (Inclinación del Mástil)
+
+### Concepto
+
+Inclinación del mástil hacia proa o popa.
+
+Afecta:
+
+- Centro vélico.
+- Balance del timón.
+- Capacidad de orzar.
+
+---
+
+## Más Rake (hacia popa)
+
+- Centro vélico más atrás.
+- Más presión en el timón.
+- Mejor popa.
+
+---
+
+## Menos Rake (más vertical)
+
+- Centro vélico más adelante.
+- Menos presión en timón.
+- Mejor ceñida.
+
+---
+
+# Banco de Preguntas Adicional
+
+## Nivel Básico
+
+¿Qué controla el backstay?
+
+¿Qué es el mast bend?
+
+¿Qué es el rake?
+
+---
+
+## Nivel Intermedio
+
+¿Qué efecto produce más backstay en la mayor?
+
+¿Cómo afecta el backstay al sag del estay?
+
+¿Qué rake priorizar para ceñida?
+
+---
+
+## Nivel Avanzado
+
+Ajustar backstay en transición de viento medio a fuerte.
+
+Diagnosticar timón pesado por rake excesivo.
+
+Relación entre pre-bend y backstay.

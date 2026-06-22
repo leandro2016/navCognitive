@@ -942,3 +942,576 @@ Interpretar demoras.
 ---
 
 Planificar una derrota costera.
+
+---
+
+# Capítulo 15
+# Navegación por Estima
+
+---
+
+## Definición
+
+Desde un punto conocido, navegar a un rumbo determinado durante un tiempo y a una velocidad establecida hasta una nueva posición.
+
+La nueva posición se llama **posición estimada**.
+
+No hay certeza de su exactitud.
+
+---
+
+## Simbología
+
+Punto estimado:
+
+Punto rodeado de un triángulo.
+
+Punto cierto (FIX):
+
+Punto rodeado de un círculo.
+
+---
+
+## Datos Necesarios
+
+- Punto de partida conocido.
+- Rumbo de compás (Rc).
+- Declinación magnética (dm) de la zona.
+- Desvío del compás (Dc) al rumbo.
+- Velocidad de corredera.
+- Tiempo navegado.
+
+---
+
+# Capítulo 16
+# Estima Directa
+
+---
+
+## Concepto
+
+Conocido el punto de partida, el rumbo y la distancia recorrida, calcular la posición a la que se arriba.
+
+Es el caso típico de navegación: zarpo de A y quiero saber dónde estoy.
+
+---
+
+## Procedimiento
+
+1. Situar en la carta el punto de partida "A".
+2. Calcular el Rumbo Verdadero (Rv):
+
+   Rv = Rc + Dc + dm
+
+3. Trazar el Rv desde A.
+4. Calcular la distancia recorrida:
+
+   D = V × T
+
+5. Con compás de punta seca, tomar la distancia de la escala de latitudes.
+6. Trasladar la distancia sobre la recta trazada.
+7. Marcar el punto de estima.
+
+---
+
+## Conversión de Tiempo
+
+El nudo equivale a milla náutica por hora.
+
+Dos formas de calcular D = V × T:
+
+- Pasar el tiempo a hora y fracción (1 h 10 m = 1,1666 h).
+- Pasar todo a minutos (1 h 10 m = 70 m) y usar Mn/60 m.
+
+Ambas dan el mismo resultado.
+
+---
+
+## Ejemplo Estima Directa
+
+Zarpamos de A (Lat 33° 26,600' S, Long 50° 48,000' W) a las 11:00 hs.
+
+Rc = 75°.
+
+Velocidad corredera = 3 Nd.
+
+A las 12:10 hs colocamos punto de estima.
+
+dm zona = 10° W.
+
+Dc al rumbo = +5°.
+
+---
+
+### Cálculo del Rv
+
+Rv = Rc + Dc + dm
+
+Rv = 75° + (+5°) + (-10°)
+
+Rv = 70°
+
+---
+
+### Cálculo de la distancia
+
+D = V × T
+
+D = 3 Nd × 1 h 10 m
+
+D = 3 Mn/h × 1,1666 h
+
+D = 3,5 Mn
+
+---
+
+### Resultado
+
+Trazar Rv = 70° desde A.
+
+Trasladar 3,5 Mn sobre la recta.
+
+Marcar punto de estima con hora 12:10, sondaje y corredera.
+
+---
+
+# Capítulo 17
+# Estima Inversa
+
+---
+
+## Concepto
+
+Conocidos dos puntos en la carta (A y B), calcular el rumbo a gobernar y la hora de arribo.
+
+Es el caso típico de planificación: quiero ir de A a B, ¿qué rumbo llevo?
+
+---
+
+## Procedimiento
+
+1. Situar A y B en la carta.
+2. Unirlos con una línea.
+3. Medir el Rumbo Verdadero (Rv) con reglas paralelas o talco.
+4. Despejar Rc de la fórmula:
+
+   Rc = Rv - Dc - dm
+
+5. Medir la distancia entre A y B con compás sobre escala de latitudes.
+6. Calcular tiempo de navegación:
+
+   T = D / V
+
+7. Calcular hora de arribo:
+
+   Hb2 = Hb1 + T
+
+---
+
+## Ejemplo Estima Inversa
+
+Zarpo de A (Lat 34° 28,800' S, Long 58° 50,600' W) a Hb1 = 12:15 hs.
+
+Arribo a B (Lat 34° 30,000' S, Long 58° 47,400' W).
+
+Velocidad corredera = 4,9 Nd.
+
+dm zona = 6° W.
+
+Dc al rumbo = +3°.
+
+---
+
+### Paso 1: Medir Rv en la carta
+
+Rv = 113°
+
+---
+
+### Paso 2: Calcular Rc
+
+Rc = Rv - Dc - dm
+
+Rc = 113° - (+3°) - (-6°)
+
+Rc = 113° - 3° + 6°
+
+Rc = 116°
+
+---
+
+### Paso 3: Medir distancia en la carta
+
+Distancia A-B = 3,2 Mn
+
+---
+
+### Paso 4: Calcular tiempo
+
+T = D / V
+
+T = 3,2 Mn / 4,9 Nd
+
+T = 0,653 h
+
+Pasar a minutos:
+
+0,653 × 60 = 39 minutos
+
+---
+
+### Paso 5: Calcular hora de arribo
+
+Hb2 = Hb1 + T
+
+Hb2 = 12 h 15 m + 39 m
+
+Hb2 = 12 h 54 m
+
+---
+
+# Capítulo 18
+# Abatimiento
+
+---
+
+## Definición
+
+Desplazamiento lateral del barco provocado por el viento sobre el casco y la obra muerta.
+
+El barco, en lugar de avanzar por la línea de crujía, lo hace en otro sentido.
+
+---
+
+## Dependencia
+
+El abatimiento depende de:
+
+- Intensidad del viento.
+- Ángulo de incidencia del viento.
+- Superficie presentada al viento (francobordo, obra muerta).
+
+Es nulo con viento de popa.
+
+Es máximo con viento por las amuras.
+
+Afecta también a barcos de motor con francobordo importante a baja velocidad.
+
+---
+
+## Derrota Verdadera (Dv)
+
+Si no hay corriente (deriva), el rumbo real seguido sobre el agua se llama **derrota verdadera (Dv)**.
+
+El ángulo entre el rumbo verdadero de la proa (Rv) y la derrota verdadera es el **abatimiento (a)**.
+
+---
+
+## Signo del Abatimiento
+
+Positivo: a estribor (se suma al rumbo).
+
+Negativo: a babor (se resta al rumbo).
+
+---
+
+## Fórmula General
+
+Dv = Rv + a
+
+Dv = Rc + Dc + dm + a
+
+---
+
+## Medición Práctica
+
+Determinar con precisión el abatimiento es dificultoso, sobre todo en embarcaciones de placer.
+
+Métodos:
+
+- Ángulo entre la crujía y la estela.
+- Arrojar por la popa el cabo naranja flotante del salvavidas circular y medir visualmente el ángulo con la crujía.
+
+Ambos métodos dependen del ojo del marino y del conocimiento del barco.
+
+---
+
+## Ejemplo Abatimiento - Estima Directa
+
+Barco navega con Rc = 180°.
+
+Dc = -6°.
+
+dm = 8° W.
+
+Abatimiento estimado = 10° a estribor.
+
+---
+
+### Cálculo
+
+Dv = Rc + Dc + dm + a
+
+Dv = 180° + (-6°) + (-8°) + 10°
+
+Dv = 176°
+
+---
+
+## Ejemplo Abatimiento - Estima Inversa
+
+Se desea navegar sobre Dv = 240°.
+
+dm = 6° E.
+
+Dc = -3°.
+
+Abatimiento = 15° a babor.
+
+---
+
+### Cálculo
+
+Rc = Dv - Dc - dm - a
+
+Rc = 240° - (-3°) - (+6°) - (-15°)
+
+Rc = 240° + 3° - 6° + 15°
+
+Rc = 252°
+
+---
+
+## Aplicación en Regata
+
+El abatimiento es una corrección adicional sobre el rumbo de compás, igual que la declinación y el desvío.
+
+En ceñida, el barco no puede seguir la derrota ideal porque el viento no favorece.
+
+El patrón ceñirá al máximo para aproximarse al destino y luego calculará la Dv sobre la carta.
+
+Si el barco puede navegar la derrota ideal (vientos favorables o motor), se calcula el Rc a gobernar a partir de la Dv deseada.
+
+---
+
+# Capítulo 19
+# Punto FIX
+
+---
+
+## Definición
+
+Posición cierta obtenida por métodos independientes de la estima.
+
+Se simboliza con un círculo alrededor del punto.
+
+A diferencia del punto de estima, el FIX tiene certeza de exactitud.
+
+---
+
+## Métodos para Obtener un FIX
+
+- GPS / navegador satelital.
+- Puntos notables de la costa al aproximarse (navegación costera).
+- Cálculo astronómico cuando no hay referencias costeras.
+- Enfilaciones de dos puntos notables.
+- Demoras cruzadas a dos o más puntos.
+- Distancias a puntos notables (radar o visual).
+
+---
+
+## Importancia
+
+La navegación por estima acumula errores.
+
+Al obtener un FIX se corrige la estima y se continúa la navegación desde ese nuevo punto cierto.
+
+---
+
+# Capítulo 20
+# Resumen de Fórmulas
+
+---
+
+## Conversión de Rumbos
+
+Rv = Rc + Dc + dm
+
+Rc = Rv - Dc - dm
+
+---
+
+## Con Abatimiento
+
+Dv = Rc + Dc + dm + a
+
+Rc = Dv - Dc - dm - a
+
+---
+
+## Distancia
+
+D = V × T
+
+---
+
+## Tiempo
+
+T = D / V
+
+---
+
+## ETA
+
+ETA = Hora de salida + T
+
+Hb2 = Hb1 + T
+
+---
+
+# Capítulo 21
+# Casos Prácticos de Estima
+
+---
+
+# Caso 9
+
+Rc = 090°.
+
+Dc = +2°.
+
+dm = 7° W.
+
+Abatimiento = 5° a babor.
+
+---
+
+Pregunta
+
+Calcular Dv.
+
+---
+
+Respuesta
+
+Dv = 90° + 2° - 7° - 5°
+
+Dv = 80°
+
+---
+
+# Caso 10
+
+Dv deseada = 200°.
+
+dm = 4° E.
+
+Dc = -1°.
+
+Abatimiento = 8° a estribor.
+
+---
+
+Pregunta
+
+Calcular Rc a gobernar.
+
+---
+
+Respuesta
+
+Rc = 200° - (-1°) - (+4°) - (+8°)
+
+Rc = 200° + 1° - 4° - 8°
+
+Rc = 189°
+
+---
+
+# Caso 11
+
+Zarpo de A a Hb1 = 10:00.
+
+Rv = 045°.
+
+Distancia = 12 Mn.
+
+Velocidad = 4 Nd.
+
+---
+
+Pregunta
+
+Hora de arribo.
+
+---
+
+Respuesta
+
+T = 12 / 4 = 3 h
+
+Hb2 = 10:00 + 3 h = 13:00
+
+---
+
+# Caso 12
+
+Navego 1 h 20 m a 6 Nd.
+
+---
+
+Pregunta
+
+Distancia recorrida.
+
+---
+
+Respuesta
+
+D = 6 × (1 + 20/60)
+
+D = 6 × 1,333
+
+D = 8 Mn
+
+---
+
+# Banco de Preguntas Estima
+
+## Nivel Básico
+
+¿Qué es la estima directa?
+
+¿Qué es la estima inversa?
+
+¿Qué simbología tiene un punto de estima?
+
+¿Qué simbología tiene un punto FIX?
+
+¿Qué es el abatimiento?
+
+---
+
+## Nivel Intermedio
+
+Calcular Rv a partir de Rc, Dc y dm.
+
+Calcular Dv incorporando abatimiento.
+
+Calcular Rc a gobernar a partir de Dv deseada.
+
+¿Cuándo es máximo el abatimiento?
+
+¿Cómo se mide prácticamente el abatimiento?
+
+---
+
+## Nivel Avanzado
+
+Planificar una derrota con estima inversa y calcular hora de arribo.
+
+Corregir rumbo por abatimiento en un cruce Río de la Plata - Colonia.
+
+¿Qué métodos dan un punto FIX?
+
+Diferencia entre posición estimada y posición cierta.

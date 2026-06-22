@@ -649,3 +649,239 @@ Analizar VMG con corriente.
 ---
 
 Planificar un cruce del Río de la Plata.
+
+---
+
+# Capítulo Extra
+# Triángulo de Corriente (Vectorial)
+
+---
+
+## Concepto
+
+La corriente es un vector que se suma al vector del barco sobre el agua.
+
+El resultado es el vector sobre el fondo (derrota verdadera sobre el fondo).
+
+Se resuelve gráficamente en la carta con un triángulo vectorial.
+
+---
+
+## Elementos
+
+- Vector barco: rumbo verdadero de la proa (Rv) + distancia por corredera (STW × T).
+- Vector corriente: set (dirección hacia donde fluye) + drift × T.
+- Vector resultante: derrota verdadera sobre el fondo (Dv fondo) + SOG × T.
+
+---
+
+## Procedimiento Gráfico
+
+1. Trazar desde el punto de partida el vector del barco (Rv, distancia por corredera).
+2. Desde la punta del vector barco, trazar el vector corriente (set, drift × T).
+3. Unir el punto de partida con la punta del vector corriente.
+4. Esa recta es la derrota verdadera sobre el fondo.
+5. Medir su dirección (Dv fondo) y su longitud (SOG × T).
+
+---
+
+## Aplicación
+
+Permite calcular:
+
+- Rumbo efectivo sobre el fondo.
+- Velocidad efectiva (SOG).
+- Desplazamiento lateral total (deriva por corriente).
+
+---
+
+## Rumbo de Gobierno
+
+Para navegar una derrota deseada sobre el fondo con corriente conocida:
+
+1. Trazar la derrota deseada desde A hasta B.
+2. Desde A trazar el vector corriente (set, drift × T).
+3. Desde la punta del vector corriente, abrir un arco con radio = distancia por corredera (STW × T).
+4. Donde el arco corta la derrota deseada, trazar el vector barco.
+5. La dirección de ese vector es el Rv a gobernar.
+6. La longitud desde la punta de la corriente hasta B da la distancia efectiva.
+
+---
+
+## Ejemplo
+
+Derrota deseada A-B: 090°, 10 Mn.
+
+Corriente: set 180°, drift 2 kn.
+
+STW: 6 kn.
+
+Tiempo estimado: ~2 h.
+
+---
+
+### Resolución
+
+Vector corriente: 180°, 2 × 2 = 4 Mn hacia el sur.
+
+Desde la punta del vector corriente, arco de 6 × 2 = 12 Mn.
+
+El Rv resultante será algo al norte de 090° para compensar el empuje sur.
+
+La SOG será levemente menor que 6 kn (componente transversal no aporta al avance).
+
+---
+
+# Capítulo Extra
+# Regla de los Doceavos (Marea)
+
+---
+
+## Concepto
+
+La marea no sube ni baja linealmente.
+
+Sigue una curva senoidal aproximada.
+
+La regla de los doceavos permite estimar la altura de marea entre pleamar y bajamar.
+
+---
+
+## Regla
+
+Dividir el rango (pleamar - bajamar) en 12 doceavos.
+
+Distribuir por hora desde la bajamar o pleamar:
+
+| Hora | Doceavos | Acumulado |
+|------|----------|-----------|
+| 1ª   | 1/12     | 1/12      |
+| 2ª   | 2/12     | 3/12      |
+| 3ª   | 3/12     | 6/12      |
+| 4ª   | 3/12     | 9/12      |
+| 5ª   | 2/12     | 11/12     |
+| 6ª   | 1/12     | 12/12     |
+
+---
+
+## Interpretación
+
+El cambio es lento al principio y al final.
+
+El cambio es máximo en el medio (horas 3 y 4).
+
+---
+
+## Ejemplo
+
+Bajamar = 1,0 m.
+
+Pleamar = 4,0 m.
+
+Rango = 3,0 m.
+
+---
+
+### Altura a la 3ª hora
+
+Acumulado = 6/12 = 0,5 del rango.
+
+Altura = 1,0 + (3,0 × 0,5) = 2,5 m.
+
+---
+
+### Altura a la 4ª hora
+
+Acumulado = 9/12 = 0,75 del rango.
+
+Altura = 1,0 + (3,0 × 0,75) = 3,25 m.
+
+---
+
+## Aplicación en Regata
+
+Calcular profundidad disponible en canales y bajos del Río de la Plata.
+
+Planificar paso por Banco Ortiz, Canal de Acceso, zonas de poco calado.
+
+Anticipar intensidad de corriente (máxima entre la 3ª y 4ª hora del flujo/reflujo).
+
+---
+
+# Capítulo Extra
+# Corriente y Laylines
+
+---
+
+## Concepto
+
+La corriente desplaza las laylines geográficas.
+
+Una layline sin corriente no es la misma con corriente.
+
+---
+
+## Caso Corriente de Proa
+
+Acorta la layline efectiva.
+
+Se llega a la marca con más bordos.
+
+---
+
+## Caso Corriente de Popa
+
+Alarga la layline efectiva.
+
+Se llega con menos bordos.
+
+---
+
+## Caso Corriente Transversal
+
+Desplaza la layline a barlovento o sotavento.
+
+El borde favorecido cambia según el set.
+
+---
+
+## Aplicación Táctica
+
+Antes de elegir borde:
+
+1. Identificar set y drift (tablas, GPS, boyas).
+2. Calcular layline efectiva.
+3. Evaluar VMG sobre el fondo de cada borde.
+4. Elegir el borde que maximice VMG hacia la marca.
+
+---
+
+# Banco de Preguntas Adicional
+
+## Nivel Básico
+
+¿Qué es el triángulo de corriente?
+
+¿Qué es la regla de los doceavos?
+
+¿Qué es el rumbo de gobierno?
+
+---
+
+## Nivel Intermedio
+
+Dado set y drift, calcular SOG.
+
+Calcular altura de marea a la 3ª hora con regla de doceavos.
+
+¿Cómo afecta una corriente transversal a la layline?
+
+---
+
+## Nivel Avanzado
+
+Calcular rumbo de gobierno para una derrota deseada con corriente conocida.
+
+Planificar paso por Banco Ortiz considerando marea y corriente.
+
+Comparar VMG de dos bordos con corriente transversal.

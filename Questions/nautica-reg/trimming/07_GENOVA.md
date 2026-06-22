@@ -637,3 +637,140 @@ El barco tiene mucha escora y timón pesado.
 Las lanitas vuelan bien pero el barco no atraviesa la ola.
 
 ¿Qué controles gruesos revisarías primero?
+
+---
+
+# Capítulo Extra
+# Inhauler (Trimmer de Escota)
+
+---
+
+## Función
+
+Mueve el punto de escota hacia la línea de crujía.
+
+Acorta la distancia entre el punto de escota y la vela.
+
+---
+
+## Más Inhauler
+
+Produce:
+
+- Ángulo de ataque más cerrado.
+- Más altura en ceñida.
+- Slot más cerrado.
+
+Riesgo:
+
+- Estrangular el slot.
+- Pérdida por exceso de ángulo.
+
+---
+
+## Menos Inhauler
+
+Produce:
+
+- Ángulo más abierto.
+- Menos altura, más velocidad.
+- Slot más abierto.
+
+---
+
+## Aplicación
+
+- Viento liviano y mar plana: más inhauler (buscar altura).
+- Ola o viento medio: menos inhauler (buscar velocidad).
+- Viento fuerte: ajustar para controlar escora.
+
+---
+
+# Capítulo Extra
+# Genoa Car (Punto de Escota Fino)
+
+---
+
+## Ajuste Fino
+
+El carro del génova se mueve adelante-atrás para ajustar el punto de escota.
+
+---
+
+## Adelante
+
+- Menos twist.
+- Más tensión de baluma.
+- Más trabajo arriba.
+
+---
+
+## Atrás
+
+- Más twist.
+- Baluma más abierta.
+- Descarga de la cabeza.
+
+---
+
+## Combinación con Inhauler
+
+El inhauler ajusta el ángulo sin cambiar el twist.
+
+El carro ajusta el twist.
+
+Usar ambos para optimizar forma y ángulo.
+
+---
+
+# Capítulo Extra
+# Headstay Sag vía Backstay
+
+---
+
+## Relación
+
+El sag del estay se controla principalmente con el backstay.
+
+Más backstay → más tensión de estay → menos sag → génova más plano.
+
+Menos backstay → menos tensión → más sag → génova más profundo.
+
+---
+
+## Aplicación por Intensidad
+
+- Viento liviano: poco backstay, mucho sag, génova profundo (potencia).
+- Viento fuerte: mucho backstay, poco sag, génova plano (control).
+
+---
+
+# Banco de Preguntas Adicional
+
+## Nivel Básico
+
+¿Qué controla el inhauler?
+
+¿Qué hace el carro del génova?
+
+¿Cómo se controla el sag del estay?
+
+---
+
+## Nivel Intermedio
+
+¿Qué produce más inhauler en ceñida?
+
+¿Cuándo reducir el inhauler?
+
+¿Cómo combinar carro e inhauler?
+
+---
+
+## Nivel Avanzado
+
+Ajustar sag en transición de flojo a medio.
+
+Diagnosticar slot estrangulado por exceso de inhauler.
+
+Optimizar altura vs velocidad con carro e inhauler.

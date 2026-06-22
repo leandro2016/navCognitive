@@ -643,3 +643,181 @@ El spi colapsa continuamente.
 El colapso aparece predominantemente en una zona específica del gratil.
 
 ¿Qué controles podrían estar involucrados?
+
+---
+
+# Capítulo Extra
+# Spinnaker Asimétrico (Gennaker / Asymmetrical)
+
+---
+
+## Diferencia con Spi Simétrico
+
+El asimétrico tiene:
+
+- Gratil fijo (no tangón).
+- Puño de amura fijo en proa o bowsprit.
+- Una sola escota.
+- No usa tangón ni braza.
+
+---
+
+## Ventajas
+
+- Más fácil de trimar.
+- Mejor en ángulos cerrados (través-largo).
+- Ideal para barcos modernos con bowsprit.
+
+---
+
+## Desventajas
+
+- Menor proyección en popa cerrada.
+- No se puede navegar ángulos muy bajos sin colapsar.
+
+---
+
+## Controles
+
+### Escota
+
+Control principal.
+
+Regula ángulo de ataque y apertura.
+
+---
+
+### Tacker (Puño de Amura)
+
+Ajusta tensión del gratil.
+
+Más tensión: gratil más recto, más altura.
+
+Menos tensión: gratil más curvo, más proyección.
+
+---
+
+### Altura del Puño de Escota
+
+Algunos sistemas permiten ajustar la altura del puño de escota.
+
+Más alto: más twist.
+
+Más bajo: menos twist, más proyección.
+
+---
+
+## Trimado
+
+- Buscar que el gratil insinúe colapso periódicamente.
+- En ángulos cerrados: cazar más, buscar altura.
+- En ángulos abiertos: filar, buscar proyección.
+
+---
+
+# Capítulo Extra
+# Broach Recovery
+
+---
+
+## Broach
+
+Escora extrema con pérdida de gobierno en popa.
+
+Causas:
+
+- Sobretrimado de spi.
+- Racha fuerte.
+- Timón mal manejado.
+- Mayor sin controlar.
+
+---
+
+## Recuperación
+
+### Pasos
+
+1. Soltar escota de spi inmediatamente.
+2. Filar braza si es simétrico.
+3. Cazar mayor al centro para recuperar gobierno.
+4. Timonel: orzar suave para recuperar el barco.
+5. No soltar todo descontroladamente.
+
+---
+
+## Prevención
+
+- Anticipar rachas.
+- Despotenciar mayor antes de la racha.
+- Coordinación trimmer-timonel.
+- En viento fuerte, navegar ángulos más cerrados.
+
+---
+
+# Capítulo Extra
+# Wing-on-Wing
+
+---
+
+## Concepto
+
+Navegar popa con mayor a un lado y génova/spi al otro.
+
+Maximiza proyección vélica en popa cerrada.
+
+---
+
+## Condiciones
+
+- Viento estable.
+- Popa cerrada.
+- Barco con tangón o whisker pole.
+
+---
+
+## Procedimiento
+
+1. Cazar mayor al centro o pasar botavara.
+2. Pasar génova al lado opuesto con tangón.
+3. Ajustar ambas velas para máximo proyección.
+4. Timonel: mantener rumbo estable.
+
+---
+
+## Riesgos
+
+- Inestabilidad.
+- Death roll si el spi oscila.
+- Dificultad de trasluchada.
+
+---
+
+# Banco de Preguntas Adicional
+
+## Nivel Básico
+
+¿Qué diferencia hay entre spi simétrico y asimétrico?
+
+¿Qué es un broach?
+
+¿Qué es wing-on-wing?
+
+---
+
+## Nivel Intermedio
+
+¿Cómo recuperar un broach?
+
+¿Qué controles tiene un asimétrico?
+
+¿Cuándo usar wing-on-wing?
+
+---
+
+## Nivel Avanzado
+
+Trimar asimétrico en ángulo cerrado vs abierto.
+
+Prevenir broach en viento fuerte con spi.
+
+Coordinar wing-on-wing con timonel.
