@@ -458,7 +458,7 @@
       "preparados"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 30,
@@ -474,7 +474,7 @@
       "preparados"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 31,
@@ -490,7 +490,7 @@
       "ejecutar"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 32,
@@ -506,7 +506,7 @@
       "disparador"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 33,
@@ -522,7 +522,7 @@
       "disparador"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 34,
@@ -538,7 +538,7 @@
       "preparados"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 35,
@@ -554,7 +554,7 @@
       "escota"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 36,
@@ -569,7 +569,7 @@
       "error"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 37,
@@ -585,7 +585,7 @@
       "mayor"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 38,
@@ -600,7 +600,7 @@
       "timonel"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 39,
@@ -616,7 +616,7 @@
       "izado"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 40,
@@ -632,7 +632,7 @@
       "secuencia"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 41,
@@ -648,7 +648,7 @@
       "error"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 42,
@@ -664,7 +664,7 @@
       "secuencia"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 43,
@@ -680,7 +680,7 @@
       "post-virada"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 44,
@@ -696,7 +696,7 @@
       "traveller"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 45,
@@ -712,7 +712,7 @@
       "mayor"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 46,
@@ -728,7 +728,7 @@
       "estabilidad"
     ],
     "difficulty": 4,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 47,
@@ -744,7 +744,7 @@
       "prestart"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 48,
@@ -760,7 +760,7 @@
       "prestart"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 49,
@@ -784,7 +784,7 @@
       "procedural"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 50,
@@ -809,7 +809,7 @@
       "procedural"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 51,
@@ -838,7 +838,7 @@
       "procedural"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 52,
@@ -862,7 +862,7 @@
       "procedural"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 53,
@@ -3298,7 +3298,7 @@
       "comunicacion"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 209,
@@ -3314,7 +3314,7 @@
       "traveller"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 210,
@@ -3330,7 +3330,7 @@
       "prioridad"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 211,
@@ -3346,7 +3346,7 @@
       "disparador"
     ],
     "difficulty": 2,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 212,
@@ -3362,7 +3362,7 @@
       "presion"
     ],
     "difficulty": 3,
-    "source": "maniobras"
+    "source": "04_MANIOBRAS"
   },
   {
     "id": 213,
@@ -4867,7 +4867,7 @@
       "proel"
     ],
     "difficulty": 2,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 312
   },
   {
@@ -4882,7 +4882,7 @@
       "copit"
     ],
     "difficulty": 2,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 313
   },
   {
@@ -4897,7 +4897,7 @@
       "estado-final"
     ],
     "difficulty": 2,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 314
   },
   {
@@ -4913,7 +4913,7 @@
       "coordinacion"
     ],
     "difficulty": 2,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 315
   },
   {
@@ -4929,7 +4929,7 @@
       "escota"
     ],
     "difficulty": 2,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 316
   },
   {
@@ -4944,7 +4944,7 @@
       "estado-final"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 317
   },
   {
@@ -4959,7 +4959,7 @@
       "genoa"
     ],
     "difficulty": 2,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 318
   },
   {
@@ -4974,7 +4974,7 @@
       "mayor"
     ],
     "difficulty": 2,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 319
   },
   {
@@ -4989,7 +4989,7 @@
       "proel"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 320
   },
   {
@@ -5004,7 +5004,7 @@
       "post"
     ],
     "difficulty": 2,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 321
   },
   {
@@ -5095,7 +5095,7 @@
       "comunicacion"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 327
   },
   {
@@ -5157,7 +5157,7 @@
       "estabilidad"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 331
   },
   {
@@ -7575,7 +7575,7 @@
       "procedural"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 492
   },
   {
@@ -7598,7 +7598,7 @@
       "procedural"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 493
   },
   {
@@ -7622,7 +7622,7 @@
       "procedural"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 494
   },
   {
@@ -7646,7 +7646,7 @@
       "procedural"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 495
   },
   {
@@ -7670,7 +7670,7 @@
       "procedural"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 496
   },
   {
@@ -7694,7 +7694,7 @@
       "procedural"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 497
   },
   {
@@ -7723,7 +7723,7 @@
       "procedural"
     ],
     "difficulty": 2,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 498
   },
   {
@@ -7752,7 +7752,7 @@
       "procedural"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 499
   },
   {
@@ -7937,7 +7937,7 @@
       "disparador"
     ],
     "difficulty": 3,
-    "source": "maniobras",
+    "source": "04_MANIOBRAS",
     "id": 511
   },
   {
@@ -8296,5 +8296,853 @@
     "difficulty": 3,
     "source": "13_LUCES",
     "id": 536
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Largada · ¿Qué bandera se iza 5 minutos antes?",
+    "a": "Bandera de clase",
+    "d": "Señal de atención: 5 min antes",
+    "tags": [
+      "largada",
+      "bandera",
+      "señal"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 537
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Largada · ¿Qué bandera se iza 4 minutos antes (preparación)?",
+    "a": "Bandera P (Papa)",
+    "d": "Señal de preparación: 4 min antes",
+    "tags": [
+      "largada",
+      "bandera-p",
+      "señal"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 538
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Largada · ¿Qué pasa 1 minuto antes?",
+    "a": "Bandera P arriada + 1 sonido largo",
+    "d": "Señal de preparación baja",
+    "tags": [
+      "largada",
+      "bandera-p",
+      "señal"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 539
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Largada · ¿Qué señala la bandera P?",
+    "a": "Preparación sin restricciones",
+    "d": "Reglas de Parte 2 en vigor, sin penalizaciones especiales",
+    "tags": [
+      "bandera-p",
+      "preparacion"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 540
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Largada · Bandera I (India) · ¿Qué significa?",
+    "a": "Regla 30.1: navegar por el lado correcto de balizas de pre-largada",
+    "d": "Si pasás por el lado incorrecto, debés rodear por los extremos",
+    "tags": [
+      "bandera-i",
+      "regla-30",
+      "largada"
+    ],
+    "difficulty": 2,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 541
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Largada · Bandera Z (Zulu) · ¿Qué significa?",
+    "a": "Regla 30.2: penalización del 20% si estás en la zona 1 min antes",
+    "d": "Penalización del 20% de la flota (mínimo 3 barcos)",
+    "tags": [
+      "bandera-z",
+      "regla-30",
+      "largada"
+    ],
+    "difficulty": 2,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 542
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Largada · Bandera negra · ¿Qué significa?",
+    "a": "Regla 30.3: descualificación si estás en la zona 1 min antes",
+    "d": "Descalificación sin audiencia — la más severa",
+    "tags": [
+      "bandera-negra",
+      "regla-30",
+      "largada"
+    ],
+    "difficulty": 3,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 543
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Largada · Bandera I + Z combinada · ¿Qué significa?",
+    "a": "Regla 30.1 + 30.2 aplican simultáneamente",
+    "d": "Ambas restricciones en vigor",
+    "tags": [
+      "bandera-i-z",
+      "regla-30",
+      "largada"
+    ],
+    "difficulty": 2,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 544
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Largada · Bandera X izada + 1 sonido · ¿Qué significa?",
+    "a": "Recall individual — uno o más barcos largaron prematuro",
+    "d": "Deben volver a largar",
+    "tags": [
+      "recall",
+      "bandera-x",
+      "largada"
+    ],
+    "difficulty": 2,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 545
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Largada · Primer sustituto + 2 sonidos · ¿Qué significa?",
+    "a": "Recall general — error en la largada, se reinicia",
+    "d": "Todos vuelven a la secuencia",
+    "tags": [
+      "recall-general",
+      "largada"
+    ],
+    "difficulty": 3,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 546
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Regata · Bandera C (Charlie) · ¿Qué significa?",
+    "a": "Cambio de posición de la próxima baliza",
+    "d": "Se iza con señal numérica",
+    "tags": [
+      "bandera-c",
+      "cambio-recorrido"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 547
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Regata · Bandera M (Mike) · ¿Qué significa?",
+    "a": "Baliza reemplazada por otra con bandera M",
+    "d": "La nueva baliza lleva bandera M",
+    "tags": [
+      "bandera-m",
+      "baliza"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 548
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Regata · Bandera L (Lima) · ¿Qué significa?",
+    "a": "Aviso a competidores — instrucciones en el panel",
+    "d": "Revisar panel de avisos",
+    "tags": [
+      "bandera-l",
+      "aviso"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 549
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Regata · Bandera N (November) · ¿Qué significa?",
+    "a": "Todas las regatas abandonadas",
+    "d": "Volver al puerto",
+    "tags": [
+      "bandera-n",
+      "abandono"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 550
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Regata · Bandera AP (Answering Pennant) · ¿Qué significa?",
+    "a": "Regatas pospuestas — esperar más señales",
+    "d": "No largar hasta nueva señal",
+    "tags": [
+      "bandera-ap",
+      "pospuesta"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 551
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Regata · Bandera S (Sierra) · ¿Qué significa?",
+    "a": "Recorrido acortado — terminar en la baliza más cercana",
+    "d": "Se acorta el recorrido",
+    "tags": [
+      "bandera-s",
+      "acortado"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 552
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "Regata · Bandera Y (Yankee) · ¿Qué significa?",
+    "a": "Chalecos obligatorios para toda la tripulación",
+    "d": "Todos deben usar chaleco",
+    "tags": [
+      "bandera-y",
+      "chalecos",
+      "seguridad"
+    ],
+    "difficulty": 1,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 553
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Largada · ¿Cuánto dura la secuencia de largada estándar?",
+    "a": "5 minutos (atención → preparación → 1 min → largada)",
+    "d": "5 min: atención, 4 min: P, 1 min: P abajo, 0: largada",
+    "tags": [
+      "largada",
+      "secuencia"
+    ],
+    "difficulty": 2,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 554
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Largada · Bandera P vs Bandera negra · ¿Diferencia?",
+    "a": "P = sin restricciones; negra = descualificación si en zona 1 min antes",
+    "d": "Negra es la más severa",
+    "tags": [
+      "bandera-p",
+      "bandera-negra",
+      "comparacion"
+    ],
+    "difficulty": 2,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 555
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Largada · Bandera Z vs Bandera negra · ¿Diferencia?",
+    "a": "Z = penalización 20%; negra = descualificación",
+    "d": "Z es penalización, negra es eliminación",
+    "tags": [
+      "bandera-z",
+      "bandera-negra",
+      "comparacion"
+    ],
+    "difficulty": 3,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 556
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Largada · Recall individual vs general · ¿Diferencia?",
+    "a": "Individual = bandera X (uno o pocos); general = primer sustituto (todos)",
+    "d": "Individual: volver a largar; general: reiniciar secuencia",
+    "tags": [
+      "recall",
+      "comparacion"
+    ],
+    "difficulty": 2,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 557
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Pre-largada · ¿Qué hacer primero?",
+    "a": "Revisar panel de avisos para señales especiales",
+    "d": "Identificar bandera de clase y preparación",
+    "tags": [
+      "pre-largada",
+      "procedimiento"
+    ],
+    "difficulty": 2,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 558
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "Largada · ¿Cómo sincronizar el reloj?",
+    "a": "Con la señal de atención (5 min antes)",
+    "d": "Bandera de clase izada = inicio del conteo",
+    "tags": [
+      "largada",
+      "sincronizar"
+    ],
+    "difficulty": 2,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 559
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 3,
+    "q": "Largada con bandera I · Pasaste por lado incorrecto de baliza · ¿Qué hacer?",
+    "a": "Rodear por los extremos antes de largar",
+    "d": "Regla 30.1",
+    "tags": [
+      "bandera-i",
+      "regla-30",
+      "procedimiento"
+    ],
+    "difficulty": 3,
+    "source": "18_SENALES_DE_REGATA",
+    "id": 560
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué significa RRS?",
+    "a": "Racing Rules of Sailing (Reglamento de Regatas a Vela)",
+    "d": "Reglas que regulan interacciones entre barcos en regata",
+    "tags": [
+      "rrs",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 561
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es la Parte 2?",
+    "a": "Reglas de encuentro entre barcos (reglas 10-18)",
+    "d": "Aplican cuando hay riesgo de interferencia",
+    "tags": [
+      "rrs",
+      "parte-2",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 562
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es un compromiso?",
+    "a": "Dos barcos que están al mismo borde y se superponen",
+    "d": "Si están al mismo borde y uno superpone al otro",
+    "tags": [
+      "rrs",
+      "compromiso",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 563
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es 'libre a proa'?",
+    "a": "Un barco que no está comprometido y está más adelante",
+    "d": "No hay superposición",
+    "tags": [
+      "rrs",
+      "libre-proa",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 564
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es 'libre a popa'?",
+    "a": "Un barco que no está comprometido y está más atrás",
+    "d": "No hay superposición",
+    "tags": [
+      "rrs",
+      "libre-popa",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 565
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es la zona de marca?",
+    "a": "Área alrededor de la marca donde aplica la regla 18",
+    "d": "Generalmente 3 esloras de la marca",
+    "tags": [
+      "rrs",
+      "zona-marca",
+      "regla-18"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 566
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es 'amurado a estribor'?",
+    "a": "El viento viene por la banda de estribor",
+    "d": "Estribor tiene derecho de paso sobre babor",
+    "tags": [
+      "rrs",
+      "estribor",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 567
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es 'amurado a babor'?",
+    "a": "El viento viene por la banda de babor",
+    "d": "Babor debe mantenerse apartado de estribor",
+    "tags": [
+      "rrs",
+      "babor",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 568
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es 'barlovento'?",
+    "a": "El lado de donde viene el viento",
+    "d": "Barlovento se aparta de sotavento (regla 11)",
+    "tags": [
+      "rrs",
+      "barlovento",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 569
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es 'sotavento'?",
+    "a": "El lado opuesto al viento",
+    "d": "Sotavento tiene derecho de paso sobre barlovento",
+    "tags": [
+      "rrs",
+      "sotavento",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 570
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Regla 10 · ¿Cuándo aplica?",
+    "a": "Cuando dos barcos navegan en bordes opuestos",
+    "d": "Babor se aparta de estribor",
+    "tags": [
+      "rrs",
+      "regla-10",
+      "bordes-opuestos"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 571
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Regla 11 · ¿Cuándo aplica?",
+    "a": "Mismo borde, comprometidos",
+    "d": "Barlovento se aparta de sotavento",
+    "tags": [
+      "rrs",
+      "regla-11",
+      "mismo-borde"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 572
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Regla 13 · ¿Cuándo comienza?",
+    "a": "Cuando el barco pasa proa al viento",
+    "d": "El que vira se aparta hasta alcanzar rumbo de ceñida",
+    "tags": [
+      "rrs",
+      "regla-13",
+      "virada"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 574
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Regla 14 · ¿Quién debe evitar contacto?",
+    "a": "Todos, incluso el barco con derecho de paso",
+    "d": "Tener derecho no autoriza colisión",
+    "tags": [
+      "rrs",
+      "regla-14",
+      "contacto"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 575
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Regla 16 · ¿Qué prohíbe?",
+    "a": "Cambiar de rumbo sin dar espacio al otro barco",
+    "d": "El barco con derecho debe dar espacio",
+    "tags": [
+      "rrs",
+      "regla-16",
+      "cambio-rumbo"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 577
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · Regla 18 · ¿Qué define?",
+    "a": "Espacio en marca entre barcos comprometidos",
+    "d": "Exterior otorga espacio al interior",
+    "tags": [
+      "rrs",
+      "regla-18",
+      "marca"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 578
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es 'derecho de paso'?",
+    "a": "El derecho de un barco a mantener su rumbo",
+    "d": "El otro barco debe mantenerse apartado",
+    "tags": [
+      "rrs",
+      "derecho-paso",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 579
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué significa 'mantenerse apartado'?",
+    "a": "Dar espacio al barco con derecho de paso",
+    "d": "No interferir con el barco con derecho",
+    "tags": [
+      "rrs",
+      "mantenerse-apartado",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 580
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · ¿Qué es una penalización?",
+    "a": "Giro de penalización por infringir una regla",
+    "d": "Habitualmente dos viradas y dos trasluchadas",
+    "tags": [
+      "rrs",
+      "penalizacion",
+      "definicion"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 581
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 2,
+    "q": "RRS · ¿Qué es una protesta?",
+    "a": "Reclamación formal por infracción de una regla",
+    "d": "Se presenta ante el comité de protestas",
+    "tags": [
+      "rrs",
+      "protesta",
+      "definicion"
+    ],
+    "difficulty": 2,
+    "source": "01_RRS",
+    "id": 582
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué es el comité de regatas?",
+    "a": "Autoridad que organiza y juzga la regata",
+    "d": "Aplica las RRS y resuelve protestas",
+    "tags": [
+      "rrs",
+      "comite",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 583
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "RRS · ¿Qué son las Instrucciones de Regata?",
+    "a": "Reglas específicas de cada evento",
+    "d": "Modifican o complementan las RRS",
+    "tags": [
+      "rrs",
+      "instrucciones",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "01_RRS",
+    "id": 584
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "COLREG · ¿Qué significa COLREG?",
+    "a": "Reglamento Internacional para Prevenir Abordajes",
+    "d": "También conocido como RIPA",
+    "tags": [
+      "colreg",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "02_COLREG",
+    "id": 585
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "COLREG · ¿Cuándo aplica?",
+    "a": "En navegación general (no en regata)",
+    "d": "RRS aplica entre competidores, COLREG en navegación normal",
+    "tags": [
+      "colreg",
+      "aplicacion"
+    ],
+    "difficulty": 1,
+    "source": "02_COLREG",
+    "id": 586
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "COLREG · ¿Qué es 'alcance'?",
+    "a": "Cuando un barco se aproxima desde más de 22.5° por detrás del través",
+    "d": "El alcanzante siempre cede",
+    "tags": [
+      "colreg",
+      "alcance",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "02_COLREG",
+    "id": 587
+  },
+  {
+    "cat": "REG",
+    "role": "ALL",
+    "fatigue": 1,
+    "q": "COLREG · ¿Qué es 'canal angosto'?",
+    "a": "Pasaje navegable donde un buque no puede maniobrar libremente",
+    "d": "Velero no debe impedir el paso del buque restringido",
+    "tags": [
+      "colreg",
+      "canal",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "02_COLREG",
+    "id": 588
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 1,
+    "q": "IALA · ¿Qué significa IALA?",
+    "a": "International Association of Marine Aids to Navigation",
+    "d": "Sistema internacional de boyado",
+    "tags": [
+      "iala",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "03_IALA",
+    "id": 589
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 1,
+    "q": "IALA · ¿Qué diferencia hay entre Región A y B?",
+    "a": "A: verde a babor, rojo a estribor; B: rojo a estribor, verde a babor",
+    "d": "Argentina usa Región B",
+    "tags": [
+      "iala",
+      "region-a-b",
+      "diferencia"
+    ],
+    "difficulty": 1,
+    "source": "03_IALA",
+    "id": 590
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 1,
+    "q": "IALA · ¿Qué es una cardinal?",
+    "a": "Boya que indica por qué lado pasar un peligro",
+    "d": "Marca el agua segura, no el peligro",
+    "tags": [
+      "iala",
+      "cardinal",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "03_IALA",
+    "id": 591
+  },
+  {
+    "cat": "REG",
+    "role": "NAVEG",
+    "fatigue": 1,
+    "q": "IALA · ¿Qué es una lateral?",
+    "a": "Boya que marca el límite del canal",
+    "d": "Rojo a estribor, verde a babor (Región B)",
+    "tags": [
+      "iala",
+      "lateral",
+      "definicion"
+    ],
+    "difficulty": 1,
+    "source": "03_IALA",
+    "id": 592
   }
 ]

@@ -13,7 +13,7 @@ const questions = JSON.parse(readFileSync(QUESTIONS_FILE, "utf8"));
 // ─── Constantes ───────────────────────────────────────────────────────────
 const VALID_CAT = new Set(["NAV","MAN","DEC","REG","SIT","TRIM","TACT","METEO","SEG"]);
 const VALID_ROLE = new Set(["ALL","GEN","MAY","PRO","TAC","TIM","PIT","NAVEG","TOD"]);
-const KNOWN_SOURCES = new Set(["15_NAVEGACION","17_CORRIENTES","16_METEOROLOGIA","maniobras","05_AERODINAMICA","06_MAYOR","07_GENOVA","08_SPINNAKER","01_RRS","02_COLREG","03_IALA","13_LUCES","14_PROTESTA","general","relato"]);
+const KNOWN_SOURCES = new Set(["15_NAVEGACION","17_CORRIENTES","16_METEOROLOGIA","04_MANIOBRAS","05_AERODINAMICA","06_MAYOR","07_GENOVA","08_SPINNAKER","01_RRS","02_COLREG","03_IALA","13_LUCES","14_PROTESTA","18_SENALES_DE_REGATA","general","relato"]);
 
 const DIAGNOSTIC_SIGNALS = [/\bsíntomas?\b/i,/\bdiagnóstico\b/i,/\bcausas?\s+posibles?\b/i,/\brevisar\b/i,/\bacción\b/i,/\bqué hacer\b/i,/\bindica\b/i,/\bsospech/i,/\bqué pasa\b/i,/\bqué problema\b/i];
 const SITUATION_SIGNALS = [/\d+\s*(kn|nudos|°|grados|mn|kg)?/i,/\bceñida\b/i,/\btravés\b/i,/\btraves\b/i,/\blargo\b/i,/\bpopa\b/i,/\bracha\b/i,/\bola\b/i,/\bborneo\b/i,/\bviento (liviano|flojo|medio|fuerte)\b/i];

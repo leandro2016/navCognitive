@@ -61,6 +61,7 @@ import { useLocalStorage, useCountdown } from "./src/lib/hooks.js";
 function BottomNav({ screen, setScreen }) {
   const tabs = [
     { id: "home",    label: "Sesion",    icon: "⚓" },
+    { id: "study",   label: "Estudio",   icon: "📖" },
     { id: "library", label: "Banco",     icon: "📚" },
     { id: "generate", label: "Generar",  icon: "✨" },
     { id: "history", label: "Historial", icon: "📊" },
@@ -221,6 +222,18 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
 
   const DIFFICULTY_OPTIONS = DIFFICULTIES.filter(d => d.id !== "notimer" && d.id !== "shrinking");
 
+  const TEMPLATE_INFO = {
+    "30min": "Calentamiento + cardio + ejercicios + sprint mental. La sesión más completa.",
+    "20min": "Calentamiento + cardio + sprint. Más corto pero intenso.",
+    "15min": "Cardio + sprint. Rápido y enfocado.",
+    "walk": "Caminata con preguntas cada 30s. Sin ejercicios, ideal al aire libre.",
+    "custom": "Vos elegís categorías, cantidad y fuente. Sin ejercicios.",
+    "repaso": "Repaso espaciado (SM-2). Repetís las preguntas que erraste antes.",
+    "procedural": "Solo secuencias y pasos de maniobras. Ordenar, detectar errores, filtrar.",
+    "focus": "Sesión 100% de tu categoría más débil. Progresión de dificultad 1→4.",
+    "race": "8 preguntas encadenadas como un leg de regata: decisión → maniobra → trimado → navegación.",
+  };
+
   const toggleCustomCat = (cat) => {
     setCustomCats(prev => {
       if (prev.includes(cat)) {
@@ -244,6 +257,24 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
         </div>
         <div style={{ fontSize: 22, fontWeight: 700, color: S.text }}>Nueva Sesion</div>
       </div>
+
+      {/* Onboarding hint para nuevos usuarios */}
+      {(!history || history.length === 0) && (
+        <div style={{
+          width: "100%", maxWidth: 380, marginBottom: 20,
+          background: "rgba(14,165,233,0.06)", border: "1px solid rgba(14,165,233,0.2)",
+          borderRadius: 12, padding: "14px 16px",
+        }}>
+          <div style={{ fontSize: 9, color: "#0EA5E9", letterSpacing: 2, marginBottom: 6, textTransform: "uppercase" }}>
+            👋 Empezá acá
+          </div>
+          <div style={{ fontSize: 11, color: S.muted, lineHeight: 1.6 }}>
+            Elegí <strong style={{ color: S.text }}>15 min — Sprint</strong> para una sesión rápida,
+            o <strong style={{ color: S.text }}>📖 Estudio</strong> para repasar preguntas sin presión.
+            Usá <strong style={{ color: S.text }}>Sin reloj</strong> si estás aprendiendo.
+          </div>
+        </div>
+      )}
 
       {savedSession && (
         <div style={{
@@ -285,6 +316,15 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
             {k === "race" && <span style={{ fontSize: 10, opacity: 0.6, marginLeft: 10 }}>8 preguntas encadenadas</span>}
           </ChoiceBtn>
         ))}
+        {TEMPLATE_INFO[template] && (
+          <div style={{
+            fontSize: 10, color: S.muted, lineHeight: 1.5, marginTop: 8, marginBottom: 4,
+            padding: "10px 12px", background: S.bg3, borderRadius: 8,
+            border: "1px solid " + S.border,
+          }}>
+            ℹ️ {TEMPLATE_INFO[template]}
+          </div>
+        )}
       </Section>
 
       {template === "custom" && (
@@ -374,12 +414,18 @@ function HomeScreen({ onStart, onResumeSaved, savedSession, settings, setSetting
             );
           })}
         </div>
-        <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-          <ChoiceBtn active={difficulty === "notimer"} color="#64748B"
-            extraStyle={{ flex: 1, textAlign: "center", marginBottom: 0 }}
-            onClick={() => setDifficulty("notimer")}>
-            Sin reloj
-          </ChoiceBtn>
+        <div style={{ display: "flex", gap: 8, marginTop: 8, alignItems: "center" }}>
+          <button onClick={() => setDifficulty(difficulty === "notimer" ? "hard" : "notimer")} style={{
+            flex: 1, padding: "10px", borderRadius: 10, cursor: "pointer",
+            background: difficulty === "notimer" ? "rgba(100,116,139,0.15)" : S.bg2,
+            border: difficulty === "notimer" ? "1.5px solid #64748B" : "1.5px solid " + S.border,
+            color: difficulty === "notimer" ? "#64748B" : S.muted,
+            fontFamily: S.font, fontSize: 10, fontWeight: 700, textAlign: "center",
+            display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+          }}>
+            <span style={{ fontSize: 14 }}>{difficulty === "notimer" ? "⏱️" : "⏱️"}</span>
+            {difficulty === "notimer" ? "Sin reloj (estudio)" : "Con reloj"}
+          </button>
           <ChoiceBtn active={difficulty === "shrinking"} color="#FBBF24"
             extraStyle={{ flex: 1, textAlign: "center", marginBottom: 0 }}
             onClick={() => setDifficulty("shrinking")}>
@@ -1059,9 +1105,81 @@ function HistoryScreen({ history, onClearHistory }) {
   );
 }
 
+// ─── SWIPEABLE (gesto swipe para self-grading en mobile) ──────────────────
+// Envuelve la tarjeta de respuesta revelada y dispara onSwipe(dir) al
+// detectar un swipe horizontal decisivo. Mantiene botones como fallback
+// para desktop/teclado. dir = 'left' (erre) | 'right' (acerte).
+function Swipeable({ children, onSwipe, disabled }) {
+  const [dragX, setDragX]   = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const startRef = useRef(null);
+
+  const THRESHOLD = 70; // px mínimos para disparar
+  const MAX       = 110; // tope visual del arrastre
+
+  const onStart = (clientX) => {
+    if (disabled) return;
+    startRef.current = clientX;
+    setDragging(true);
+  };
+  const onMove = (clientX) => {
+    if (disabled || startRef.current == null) return;
+    const dx = clientX - startRef.current;
+    setDragX(Math.max(-MAX, Math.min(MAX, dx)));
+  };
+  const onEnd = () => {
+    if (disabled) { setDragX(0); setDragging(false); startRef.current = null; return; }
+    if (Math.abs(dragX) >= THRESHOLD) {
+      onSwipe(dragX < 0 ? "left" : "right");
+    }
+    setDragX(0);
+    setDragging(false);
+    startRef.current = null;
+  };
+
+  // Indicador visual de dirección durante el arrastre
+  const ratio = dragX / MAX; // -1..1
+  const hintColor = ratio < -0.15 ? "#F43F5E" : ratio > 0.15 ? "#34D399" : "transparent";
+  const hintOpacity = Math.min(0.5, Math.abs(ratio) * 0.6);
+
+  return (
+    <div
+      onTouchStart={(e) => onStart(e.touches[0].clientX)}
+      onTouchMove={(e) => { e.preventDefault(); onMove(e.touches[0].clientX); }}
+      onTouchEnd={onEnd}
+      onMouseDown={(e) => onStart(e.clientX)}
+      onMouseMove={(e) => dragging && onMove(e.clientX)}
+      onMouseUp={onEnd}
+      onMouseLeave={() => dragging && onEnd()}
+      style={{
+        position: "relative",
+        transform: dragging ? `translateX(${dragX}px)` : "translateX(0)",
+        transition: dragging ? "none" : "transform .25s ease",
+        touchAction: "pan-y",
+        userSelect: "none",
+      }}
+    >
+      {/* Indicador de dirección durante arrastre */}
+      {dragging && Math.abs(dragX) > 8 && (
+        <div style={{
+          position: "absolute", inset: 0, borderRadius: 12, pointerEvents: "none",
+          background: hintColor, opacity: hintOpacity,
+          display: "flex", alignItems: "center", justifyContent: dragX < 0 ? "flex-start" : "flex-end",
+          padding: "0 20px",
+        }}>
+          <span style={{ fontSize: 28, color: "#fff", fontWeight: 700 }}>
+            {dragX < 0 ? "✗" : "✓"}
+          </span>
+        </div>
+      )}
+      {children}
+    </div>
+  );
+}
+
 // ─── EXERCISE TIMER ────────────────────────────────────────────────────────
 
-function ExerciseTimer({ round, paused, onDone }) {
+function ExerciseTimer({ round, paused, onDone, sessionResults }) {
   const [stage,            setStage]            = useState("exercise");
   const [running,          setRunning]          = useState(true);
   const [questionRevealed, setQuestionRevealed] = useState(false);
@@ -1069,13 +1187,18 @@ function ExerciseTimer({ round, paused, onDone }) {
   const [qTimeUp,          setQTimeUp]          = useState(false);
   const [rpe,              setRpe]              = useState(null);
 
+  // ── 3A: Ratio ACERTE/ERRE en vivo ──
+  const allSoFar = (sessionResults || []).flat().filter(r => r && r.q);
+  const ratioCorrect = allSoFar.filter(r => r.correct).length;
+  const ratioWrong   = allSoFar.filter(r => !r.correct).length;
+
   const ex          = round.exercise;
   const isTimeBased = !!ex.dur;
   const isExProcedural = stage === "question" && round.question && round.question.type && round.question.type !== "recall";
 
-  const handleExProceduralAnswer = (correct) => {
+  const handleExProceduralAnswer = (correct, stepTimings) => {
     if (correct) { CUE.correct(); vibrate(40); } else { CUE.wrong(); vibrate(120); }
-    onDone({ correct, time: (Date.now() - qStart) / 1000, rpe });
+    onDone({ correct, time: (Date.now() - qStart) / 1000, rpe, stepTimings: stepTimings || null });
   };
 
   const totalSecs = stage === "exercise"
@@ -1158,6 +1281,12 @@ function ExerciseTimer({ round, paused, onDone }) {
           background: INT_COLORS[round.fatigueLevel] + "18",
           color: INT_COLORS[round.fatigueLevel], letterSpacing: 1,
         }}>{FAT_LABELS[round.fatigueLevel]}</div>
+        {ratioCorrect + ratioWrong > 0 && (
+          <div style={{ fontSize: 9, letterSpacing: 1, display: "flex", gap: 4 }}>
+            <span style={{ color: "#34D399" }}>✓{ratioCorrect}</span>
+            <span style={{ color: "#F43F5E" }}>✗{ratioWrong}</span>
+          </div>
+        )}
       </div>
 
       <div style={{ flex: 1, display: "flex", flexDirection: "column", padding: "20px 16px 0" }}>
@@ -1266,15 +1395,26 @@ function ExerciseTimer({ round, paused, onDone }) {
               <QuestionCard key={round.question.id} q={round.question} onAnswer={handleExProceduralAnswer} />
             )}
             {!isExProcedural && questionRevealed && (
-              <div style={{
-                background: "#0F172A", border: "1px solid #A78BFA55",
-                borderRadius: 12, padding: "16px", marginBottom: 12,
-                animation: "fadeIn .2s ease",
+              <Swipeable onSwipe={(dir) => {
+                if (dir === "left")  { CUE.wrong();   vibrate(120); onDone({ correct: false, time: (Date.now() - qStart) / 1000, rpe }); }
+                if (dir === "right") { CUE.correct();  vibrate(40);  onDone({ correct: true,  time: (Date.now() - qStart) / 1000, rpe }); }
               }}>
-                <div style={{ fontSize: 9, letterSpacing: 3, color: "#A78BFA", marginBottom: 6, textTransform: "uppercase" }}>Respuesta</div>
-                <div style={{ fontSize: 18, fontWeight: 700, color: S.text, marginBottom: 6 }}>{round.question.a}</div>
-                <div style={{ fontSize: 11, color: S.muted }}>{round.question.d}</div>
-              </div>
+                <div style={{
+                  background: "#0F172A", border: "1px solid #A78BFA55",
+                  borderRadius: 12, padding: "16px", marginBottom: 12,
+                  animation: "fadeIn .2s ease",
+                }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                    <div style={{ fontSize: 9, letterSpacing: 3, color: "#A78BFA", textTransform: "uppercase" }}>Respuesta</div>
+                    <div style={{ fontSize: 11, color: S.dim, fontWeight: 700 }}>⏱ {((Date.now() - qStart) / 1000).toFixed(1)}s</div>
+                  </div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: S.text, marginBottom: 6 }}>{round.question.a}</div>
+                  <div style={{ fontSize: 11, color: S.muted }}>{round.question.d}</div>
+                  <div style={{ fontSize: 8, color: S.dim, marginTop: 8, letterSpacing: 1, textTransform: "uppercase" }}>
+                    ← erre · acerté →
+                  </div>
+                </div>
+              </Swipeable>
             )}
           </div>
         )}
@@ -1370,6 +1510,17 @@ function SequenceUI({ q, onAnswer }) {
   const containerRef = useRef(null);
   const touchDragRef = useRef(null); // { idx, startY, itemHeights }
 
+  // ── A: Tiempo de reacción por paso ──
+  const startRef    = useRef(Date.now());
+  const lastTapRef  = useRef(Date.now());
+  const stepTimesRef = useRef([]); // ms entre taps consecutivos
+  const [stepTimes, setStepTimes] = useState([]); // para render tras confirm
+  const recordTap = () => {
+    const now = Date.now();
+    stepTimesRef.current.push(now - lastTapRef.current);
+    lastTapRef.current = now;
+  };
+
   const move = (idx, dir) => {
     if (confirmed) return;
     const newIdx = idx + dir;
@@ -1377,6 +1528,7 @@ function SequenceUI({ q, onAnswer }) {
     const next = [...order];
     [next[idx], next[newIdx]] = [next[newIdx], next[idx]];
     setOrder(next);
+    recordTap();
   };
 
   // Reordenar por drag: mover el item de dragIdx a la posición target.
@@ -1388,6 +1540,7 @@ function SequenceUI({ q, onAnswer }) {
       next.splice(to, 0, item);
       return next;
     });
+    recordTap();
   };
 
   // Touch drag: detectar sobre qué item está el dedo y reordenar.
@@ -1426,7 +1579,10 @@ function SequenceUI({ q, onAnswer }) {
     const chosen = order.map(i => shuffled[i]);
     const correct = chosen.every((s, i) => s === q.steps[i]);
     setConfirmed(true);
-    onAnswer(correct);
+    const totalMs = Date.now() - startRef.current;
+    const times = stepTimesRef.current.map(ms => Math.round(ms) / 1000);
+    setStepTimes(times);
+    onAnswer(correct, { stepTimes: times, totalMs });
   };
 
   return (
@@ -1494,7 +1650,14 @@ function SequenceUI({ q, onAnswer }) {
         }}>
           <div style={{ fontSize: 9, color: "#A78BFA", letterSpacing: 3, marginBottom: 6, textTransform: "uppercase" }}>Orden correcto</div>
           {q.steps.map((s, i) => (
-            <div key={i} style={{ fontSize: 11, color: S.text, marginBottom: 3 }}>{i + 1}. {s}</div>
+            <div key={i} style={{ fontSize: 11, color: S.text, marginBottom: 3, display: "flex", justifyContent: "space-between" }}>
+              <span>{i + 1}. {s}</span>
+              {stepTimes[i] != null && (
+                <span style={{ fontSize: 9, color: stepTimes[i] > 3 ? "#F43F5E" : stepTimes[i] > 1.5 ? "#FB923C" : "#34D399", fontWeight: 700 }}>
+                  {stepTimes[i].toFixed(1)}s
+                </span>
+              )}
+            </div>
           ))}
           {q.d && <div style={{ fontSize: 10, color: S.muted, marginTop: 6 }}>{q.d}</div>}
         </div>
@@ -1507,11 +1670,17 @@ function InvalidUI({ q, onAnswer }) {
   const [selected, setSelected] = useState(null);
   const [answered, setAnswered] = useState(false);
 
+  // ── A: Tiempo de reacción (tap único) ──
+  const startRef = useRef(Date.now());
+  const [reactionTime, setReactionTime] = useState(null);
+
   const pick = (idx) => {
     if (answered) return;
     setSelected(idx);
     setAnswered(true);
-    onAnswer(idx === q.invalidIndex);
+    const rt = (Date.now() - startRef.current) / 1000;
+    setReactionTime(rt);
+    onAnswer(idx === q.invalidIndex, { stepTimes: [rt], totalMs: rt * 1000 });
   };
 
   return (
@@ -1539,6 +1708,11 @@ function InvalidUI({ q, onAnswer }) {
       })}
       {answered && q.d && (
         <div style={{ marginTop: 10, padding: "12px", borderRadius: 10, background: "#0F172A", border: "1px solid #A78BFA55" }}>
+          {reactionTime != null && (
+            <div style={{ fontSize: 9, color: reactionTime > 5 ? "#F43F5E" : reactionTime > 2.5 ? "#FB923C" : "#34D399", marginBottom: 6, fontWeight: 700 }}>
+              ⏱ {reactionTime.toFixed(1)}s
+            </div>
+          )}
           <div style={{ fontSize: 10, color: S.muted }}>{q.d}</div>
         </div>
       )}
@@ -1550,15 +1724,27 @@ function FilterUI({ q, onAnswer }) {
   const [mask, setMask] = useState(() => (q.steps || []).map(() => false));
   const [confirmed, setConfirmed] = useState(false);
 
+  // ── A: Tiempo de reacción por toggle ──
+  const startRef    = useRef(Date.now());
+  const lastTapRef  = useRef(Date.now());
+  const stepTimesRef = useRef([]);
+  const [stepTimes, setStepTimes] = useState([]);
+
   const toggle = (i) => {
     if (confirmed) return;
     setMask(m => m.map((v, j) => j === i ? !v : v));
+    const now = Date.now();
+    stepTimesRef.current.push(now - lastTapRef.current);
+    lastTapRef.current = now;
   };
 
   const confirm = () => {
     const correct = q.validMask && mask.every((v, i) => v === q.validMask[i]);
     setConfirmed(true);
-    onAnswer(correct);
+    const totalMs = Date.now() - startRef.current;
+    const times = stepTimesRef.current.map(ms => Math.round(ms) / 1000);
+    setStepTimes(times);
+    onAnswer(correct, { stepTimes: times, totalMs });
   };
 
   return (
@@ -1604,6 +1790,11 @@ function FilterUI({ q, onAnswer }) {
       )}
       {confirmed && q.d && (
         <div style={{ marginTop: 10, padding: "12px", borderRadius: 10, background: "#0F172A", border: "1px solid #A78BFA55" }}>
+          {stepTimes.length > 0 && (
+            <div style={{ fontSize: 9, color: S.dim, marginBottom: 6, letterSpacing: 1 }}>
+              ⏱ {stepTimes.map(t => t.toFixed(1) + "s").join(" · ")}
+            </div>
+          )}
           <div style={{ fontSize: 10, color: S.muted }}>{q.d}</div>
         </div>
       )}
@@ -1629,13 +1820,18 @@ function QuestionCard({ q, onAnswer }) {
 
 // ─── SPRINT SCREEN ─────────────────────────────────────────────────────────
 
-function SprintScreen({ round, paused, onDone }) {
+function SprintScreen({ round, paused, onDone, sessionResults }) {
   const [qIdx,     setQIdx]     = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [results,  setResults]  = useState([]);
   const [running,  setRunning]  = useState(true);
   const [qStart,   setQStart]   = useState(Date.now());
   const [qTimeUp,  setQTimeUp]  = useState(false);
+
+  // ── 3A: Ratio ACERTE/ERRE en vivo (sesión completa + sprint actual) ──
+  const allSoFar = [...(sessionResults || []).flat(), ...results].filter(r => r && r.q);
+  const ratioCorrect = allSoFar.filter(r => r.correct).length;
+  const ratioWrong   = allSoFar.filter(r => !r.correct).length;
 
   const questions = round.questions;
   const current   = questions[qIdx];
@@ -1650,7 +1846,7 @@ function SprintScreen({ round, paused, onDone }) {
   const baseTimer  = (round.questionTimers?.[qIdx] ?? round.questionTimer) || round.questionTimer;
   const isNoTimer  = baseTimer >= 90;
   const active     = running && !paused && !revealed && !isNoTimer && !isProcedural;
-  const t          = useCountdown(baseTimer, active, handleDone);
+  const t          = useCountdown(baseTimer, active, handleDone, qIdx);
   const pct        = isNoTimer ? 100 : (t / baseTimer) * 100;
   const timerColor = t > baseTimer * 0.5 ? "#A78BFA" : t > 3 ? "#FB923C" : "#F43F5E";
 
@@ -1659,9 +1855,9 @@ function SprintScreen({ round, paused, onDone }) {
     setQTimeUp(false);
   };
 
-  const next = (correct) => {
+  const next = (correct, stepTimings) => {
     const elapsed = (Date.now() - qStart) / 1000;
-    const updated = [...results, { q: current, correct, time: elapsed }];
+    const updated = [...results, { q: current, correct, time: elapsed, stepTimings: stepTimings || null }];
     setResults(updated);
     if (qIdx + 1 >= questions.length) { onDone(updated); return; }
     setQIdx(qIdx + 1);
@@ -1672,9 +1868,9 @@ function SprintScreen({ round, paused, onDone }) {
   };
 
   // Respuesta de pregunta procedural: juzga y avanza con feedback.
-  const handleProceduralAnswer = (correct) => {
+  const handleProceduralAnswer = (correct, stepTimings) => {
     if (correct) { CUE.correct(); vibrate(40); } else { CUE.wrong(); vibrate(120); }
-    next(correct);
+    next(correct, stepTimings);
   };
 
   // keyboard shortcuts: Space=reveal/ya respondi, ArrowLeft=erre, ArrowRight=acerte
@@ -1702,6 +1898,12 @@ function SprintScreen({ round, paused, onDone }) {
         <div style={{ width: 3, height: 20, borderRadius: 2, background: "#A78BFA" }} />
         <div style={{ fontSize: 9, letterSpacing: 3, color: "#A78BFA", textTransform: "uppercase", flex: 1 }}>Sprint Mental</div>
         <div style={{ fontSize: 11, color: S.muted }}>{qIdx + 1}/{questions.length}</div>
+        {ratioCorrect + ratioWrong > 0 && (
+          <div style={{ fontSize: 9, letterSpacing: 1, display: "flex", gap: 4 }}>
+            <span style={{ color: "#34D399" }}>✓{ratioCorrect}</span>
+            <span style={{ color: "#F43F5E" }}>✗{ratioWrong}</span>
+          </div>
+        )}
       </div>
 
       <div style={{ padding: "10px 16px 0", display: "flex", gap: 4 }}>
@@ -1778,15 +1980,26 @@ function SprintScreen({ round, paused, onDone }) {
         )}
 
         {!isProcedural && revealed && (
-          <div style={{
-            background: "#0F172A", border: "1px solid #A78BFA55",
-            borderRadius: 12, padding: "16px", marginBottom: 12,
-            animation: "fadeIn .2s ease",
+          <Swipeable onSwipe={(dir) => {
+            if (dir === "left")  { CUE.wrong();   vibrate(120); next(false); }
+            if (dir === "right") { CUE.correct();  vibrate(40);  next(true); }
           }}>
-            <div style={{ fontSize: 9, letterSpacing: 3, color: "#A78BFA", marginBottom: 6, textTransform: "uppercase" }}>Respuesta</div>
-            <div style={{ fontSize: 18, fontWeight: 700, color: S.text, marginBottom: 4 }}>{current.a}</div>
-            <div style={{ fontSize: 11, color: S.muted }}>{current.d}</div>
-          </div>
+            <div style={{
+              background: "#0F172A", border: "1px solid #A78BFA55",
+              borderRadius: 12, padding: "16px", marginBottom: 12,
+              animation: "fadeIn .2s ease",
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                <div style={{ fontSize: 9, letterSpacing: 3, color: "#A78BFA", textTransform: "uppercase" }}>Respuesta</div>
+                <div style={{ fontSize: 11, color: S.dim, fontWeight: 700 }}>⏱ {((Date.now() - qStart) / 1000).toFixed(1)}s</div>
+              </div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: S.text, marginBottom: 4 }}>{current.a}</div>
+              <div style={{ fontSize: 11, color: S.muted }}>{current.d}</div>
+              <div style={{ fontSize: 8, color: S.dim, marginTop: 8, letterSpacing: 1, textTransform: "uppercase" }}>
+                ← erre · acerté →
+              </div>
+            </div>
+          </Swipeable>
         )}
       </div>
 
@@ -1854,6 +2067,17 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, setting
     .map(r => r?.rpe)
     .filter(r => typeof r === "number");
   const hasRpe = rpePoints.length > 0;
+
+  // Auto-save: guardar automáticamente al mostrar resultados
+  useEffect(() => {
+    if (!saved) {
+      onSave();
+      setSaved(true);
+      if (sessionMeta?.difficulty === "shrinking" && settings?.newPR) {
+        setShowPR(true);
+      }
+    }
+  }, []); // solo al montar
 
   const handleSave = () => {
     onSave();
@@ -2011,7 +2235,7 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, setting
       )}
 
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-        {wrongOnes.length > 0 && onRetryErrors && !saved && (
+        {wrongOnes.length > 0 && onRetryErrors && (
           <button onClick={onRetryErrors} style={{
             width: "100%", padding: "14px",
             background: "rgba(167,139,250,0.1)", border: "1.5px solid rgba(167,139,250,0.4)",
@@ -2019,16 +2243,13 @@ function ResultsScreen({ sessionResults, sessionMeta, onRestart, onSave, setting
             fontFamily: S.font, fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
           }}>🔁 REENTRENAR ERRORES ({wrongOnes.length})</button>
         )}
-        {!saved ? (
-          <button onClick={handleSave} style={{
-            width: "100%", padding: "14px",
-            background: "rgba(52,211,153,0.1)", border: "1px solid rgba(52,211,153,0.3)",
-            borderRadius: 12, color: "#34D399",
-            fontFamily: S.font, fontSize: 12, fontWeight: 700, letterSpacing: 2, cursor: "pointer",
-          }}>💾 GUARDAR EN HISTORIAL</button>
-        ) : (
+        {saved ? (
           <div style={{ textAlign: "center", fontSize: 11, color: "#34D399", padding: "8px 0" }}>
             ✓ Sesion guardada en historial
+          </div>
+        ) : (
+          <div style={{ textAlign: "center", fontSize: 10, color: S.dim, padding: "4px 0" }}>
+            Guardando...
           </div>
         )}
         <button onClick={onRestart} style={{
@@ -2269,6 +2490,260 @@ function GenerateScreen({ customQ, setCustomQ }) {
   );
 }
 
+// ─── STUDY SCREEN (flashcards con contexto) ───────────────────────────────
+
+function StudyScreen({ customQ }) {
+  const [filterCat, setFilterCat] = useState("ALL");
+  const [filterSource, setFilterSource] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [revealed, setRevealed] = useState(new Set());
+  const [qIdx, setQIdx] = useState(0);
+  const [knownIds, setKnownIds] = useState(new Set());
+
+  const allQ = getAllQuestions(customQ);
+  const availableSources = useMemo(() => {
+    try { return [...new Set(BUILTIN_QUESTIONS.map(q => q.source).filter(Boolean))].sort(); }
+    catch { return []; }
+  }, []);
+
+  let filtered = filterCat === "ALL" ? allQ : allQ.filter(q => q.cat === filterCat);
+  if (filterSource) filtered = filtered.filter(q => q.source === filterSource);
+  if (searchText.trim()) {
+    const st = searchText.toLowerCase();
+    filtered = filtered.filter(q =>
+      q.q.toLowerCase().includes(st) ||
+      q.a.toLowerCase().includes(st) ||
+      (q.d || "").toLowerCase().includes(st) ||
+      (Array.isArray(q.tags) ? q.tags : []).some(t => t.toLowerCase().includes(st))
+    );
+  }
+
+  const current = filtered[qIdx];
+
+  const toggleReveal = (id) => {
+    setRevealed(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
+  const next = () => { setQIdx(i => Math.min(i + 1, filtered.length - 1)); };
+  const prev = () => { setQIdx(i => Math.max(i - 1, 0)); };
+
+  const resetFilter = () => { setFilterCat("ALL"); setFilterSource(""); setQIdx(0); setRevealed(new Set()); };
+
+  return (
+    <div style={{ minHeight: "100vh", background: S.bg, fontFamily: S.font, padding: "28px 20px 96px" }}>
+      <div style={{ textAlign: "center", marginBottom: 22 }}>
+        <div style={{ fontSize: 9, letterSpacing: 4, color: S.muted, textTransform: "uppercase" }}>Modo Estudio</div>
+        <div style={{ fontSize: 20, fontWeight: 700, color: S.text, marginTop: 4 }}>Flashcards</div>
+        <div style={{ fontSize: 10, color: S.muted, marginTop: 6 }}>Tocá una card para ver la respuesta</div>
+      </div>
+
+      {/* Búsqueda */}
+      <input
+        type="text"
+        value={searchText}
+        onChange={e => { setSearchText(e.target.value); setQIdx(0); setRevealed(new Set()); }}
+        placeholder="🔍 Buscar por texto o tag..."
+        style={{
+          width: "100%", padding: "12px 14px", marginBottom: 14, borderRadius: 10,
+          background: S.bg2, border: "1px solid " + S.border, color: S.text,
+          fontFamily: S.font, fontSize: 12, outline: "none", boxSizing: "border-box",
+        }}
+      />
+
+      {/* Filtros */}
+      <div style={{ display: "flex", gap: 6, marginBottom: 12, flexWrap: "wrap" }}>
+        <button onClick={() => { setFilterCat("ALL"); setQIdx(0); setRevealed(new Set()); }} style={{
+          padding: "6px 12px", borderRadius: 6, cursor: "pointer",
+          background: filterCat === "ALL" ? "#64748B22" : S.bg2,
+          border: "1px solid " + (filterCat === "ALL" ? "#64748B" : S.border),
+          color: filterCat === "ALL" ? "#64748B" : S.muted,
+          fontFamily: S.font, fontSize: 9, fontWeight: 700,
+        }}>TODAS ({allQ.length})</button>
+        {CAT_ORDER.map(c => {
+          const count = allQ.filter(q => q.cat === c).length;
+          if (count === 0) return null;
+          const col = CAT_COLORS[c];
+          return (
+            <button key={c} onClick={() => { setFilterCat(c); setQIdx(0); setRevealed(new Set()); }} style={{
+              padding: "6px 12px", borderRadius: 6, cursor: "pointer",
+              background: filterCat === c ? col + "22" : S.bg2,
+              border: "1px solid " + (filterCat === c ? col : S.border),
+              color: filterCat === c ? col : S.muted,
+              fontFamily: S.font, fontSize: 9, fontWeight: 700,
+            }}>{c} ({count})</button>
+          );
+        })}
+      </div>
+
+      {/* Filtro por source */}
+      {availableSources.length > 1 && (
+        <select value={filterSource} onChange={e => { setFilterSource(e.target.value); setQIdx(0); setRevealed(new Set()); }} style={{
+          width: "100%", padding: "10px", marginBottom: 14, borderRadius: 8,
+          background: S.bg2, border: "1px solid " + S.border, color: filterSource ? "#FBBF24" : S.muted,
+          fontFamily: S.font, fontSize: 10, outline: "none", cursor: "pointer",
+        }}>
+          <option value="">Todas las fuentes</option>
+          {availableSources.map(s => <option key={s} value={s}>{s}</option>)}
+        </select>
+      )}
+
+      {filtered.length === 0 && (
+        <div style={{ textAlign: "center", color: S.muted, fontSize: 12, padding: 40 }}>
+          No hay preguntas con este filtro
+        </div>
+      )}
+
+      {/* Flashcard actual */}
+      {current && (
+        <div>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+            <div style={{ fontSize: 10, color: S.muted }}>{qIdx + 1} / {filtered.length}</div>
+            <div style={{ display: "flex", gap: 6 }}>
+              <span style={{
+                fontSize: 8, padding: "2px 7px", borderRadius: 4,
+                background: CAT_COLORS[current.cat] + "18", color: CAT_COLORS[current.cat],
+                letterSpacing: 1, fontWeight: 700,
+              }}>{current.cat}</span>
+              {current.source && (
+                <span style={{
+                  fontSize: 8, padding: "2px 7px", borderRadius: 4,
+                  background: S.bg3, color: S.dim, letterSpacing: 1,
+                }}>{current.source}</span>
+              )}
+            </div>
+          </div>
+
+          {/* Card */}
+          <div
+            onClick={() => toggleReveal(current.id)}
+            style={{
+              background: S.bg2, borderRadius: 12, border: "1px solid " + S.border,
+              padding: "20px 16px", marginBottom: 14, cursor: "pointer",
+              minHeight: 200, display: "flex", flexDirection: "column", justifyContent: "center",
+            }}
+          >
+            <div style={{ fontSize: 16, fontWeight: 700, color: S.text, lineHeight: 1.65, whiteSpace: "pre-line", marginBottom: 16 }}>
+              {current.q}
+            </div>
+
+            {revealed.has(current.id) ? (
+              <div style={{ animation: "fadeIn .2s ease" }}>
+                <div style={{
+                  background: "#0F172A", border: "1px solid #A78BFA55",
+                  borderRadius: 10, padding: "14px", marginBottom: 10,
+                }}>
+                  <div style={{ fontSize: 9, letterSpacing: 3, color: "#A78BFA", marginBottom: 6, textTransform: "uppercase" }}>Respuesta</div>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: S.text, marginBottom: 4 }}>{current.a}</div>
+                  {current.d && <div style={{ fontSize: 11, color: S.muted }}>{current.d}</div>}
+                </div>
+
+                {/* Contexto enriquecido: tags + source + categoría */}
+                <div style={{
+                  background: S.bg3, border: "1px solid " + S.border, borderRadius: 8,
+                  padding: "10px 12px", marginBottom: 10,
+                }}>
+                  <div style={{ fontSize: 8, color: S.dim, letterSpacing: 2, marginBottom: 6, textTransform: "uppercase" }}>Contexto</div>
+                  <div style={{ fontSize: 10, color: S.muted, lineHeight: 1.6 }}>
+                    <strong style={{ color: CAT_COLORS[current.cat] }}>{CAT_LABELS[current.cat]}</strong>
+                    {CAT_DESC[current.cat] && <span style={{ color: S.dim }}> — {CAT_DESC[current.cat]}</span>}
+                  </div>
+                  {current.role && current.role !== "ALL" && ROLE_MAP[current.role] && (
+                    <div style={{ fontSize: 10, color: S.muted, marginTop: 4 }}>
+                      Rol: <strong style={{ color: ROLE_MAP[current.role].color }}>{ROLE_MAP[current.role].label}</strong>
+                    </div>
+                  )}
+                  {Array.isArray(current.tags) && current.tags.length > 0 && (
+                    <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginTop: 8 }}>
+                      {current.tags.map((t, i) => (
+                        <span key={i} style={{
+                          fontSize: 8, padding: "1px 6px", borderRadius: 3,
+                          background: S.bg2, color: S.dim, letterSpacing: 0.5,
+                        }}>#{t}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Pista de estudio */}
+                <div style={{
+                  background: "rgba(14,165,233,0.06)", border: "1px solid rgba(14,165,233,0.2)",
+                  borderRadius: 8, padding: "10px 12px",
+                }}>
+                  <div style={{ fontSize: 8, color: "#0EA5E9", letterSpacing: 2, marginBottom: 4, textTransform: "uppercase" }}>Tip de estudio</div>
+                  <div style={{ fontSize: 10, color: S.muted, lineHeight: 1.5 }}>
+                    {current.fatigue <= 2
+                      ? "Pregunta básica — ideal para empezar a aprender el tema"
+                      : current.fatigue <= 3
+                      ? "Pregunta intermedia — requiere entender el contexto"
+                      : "Pregunta avanzada — para cuando domines los conceptos previos"}
+                  </div>
+                </div>
+
+                {/* Active recall: Sabía / No sabía */}
+                <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+                  <button onClick={() => {
+                    setKnownIds(prev => { const n = new Set(prev); n.add(current.id); return n; });
+                    if (qIdx < filtered.length - 1) next();
+                  }} style={{
+                    flex: 1, padding: "12px", borderRadius: 10, cursor: "pointer",
+                    background: knownIds.has(current.id) ? "rgba(52,211,153,0.15)" : "rgba(52,211,153,0.08)",
+                    border: "1px solid rgba(52,211,153,0.3)", color: "#34D399",
+                    fontFamily: S.font, fontSize: 11, fontWeight: 700,
+                  }}>✓ SABÍA</button>
+                  <button onClick={() => {
+                    setKnownIds(prev => { const n = new Set(prev); n.delete(current.id); return n; });
+                    if (qIdx < filtered.length - 1) next();
+                  }} style={{
+                    flex: 1, padding: "12px", borderRadius: 10, cursor: "pointer",
+                    background: "rgba(244,63,94,0.08)", border: "1px solid rgba(244,63,94,0.3)",
+                    color: "#F43F5E", fontFamily: S.font, fontSize: 11, fontWeight: 700,
+                  }}>✗ NO SABÍA</button>
+                </div>
+                {knownIds.size > 0 && (
+                  <div style={{ fontSize: 9, color: S.dim, textAlign: "center", marginTop: 6 }}>
+                    {knownIds.size} de {filtered.length} marcadas como sabidas
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div style={{ textAlign: "center", color: S.dim, fontSize: 11, padding: 20 }}>
+                👆 Tocá para ver la respuesta
+              </div>
+            )}
+          </div>
+
+          {/* Navegación */}
+          <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
+            <button onClick={prev} disabled={qIdx === 0} style={{
+              flex: 1, padding: "12px", borderRadius: 10, cursor: qIdx === 0 ? "not-allowed" : "pointer",
+              background: qIdx === 0 ? S.bg3 : S.bg2, border: "1px solid " + S.border,
+              color: qIdx === 0 ? S.dim : S.text, fontFamily: S.font, fontSize: 11, fontWeight: 700,
+            }}>← ANTERIOR</button>
+            <button onClick={next} disabled={qIdx >= filtered.length - 1} style={{
+              flex: 1, padding: "12px", borderRadius: 10, cursor: qIdx >= filtered.length - 1 ? "not-allowed" : "pointer",
+              background: qIdx >= filtered.length - 1 ? S.bg3 : "linear-gradient(135deg, #0EA5E9, #0D9488)",
+              border: "none", color: qIdx >= filtered.length - 1 ? S.dim : "#fff",
+              fontFamily: S.font, fontSize: 11, fontWeight: 700,
+            }}>SIGUIENTE →</button>
+          </div>
+
+          {/* Shuffle */}
+          <button onClick={() => { setQIdx(Math.floor(Math.random() * filtered.length)); setRevealed(new Set()); }} style={{
+            width: "100%", padding: "10px", borderRadius: 8, cursor: "pointer",
+            background: S.bg2, border: "1px solid " + S.border, color: S.muted,
+            fontFamily: S.font, fontSize: 10, letterSpacing: 1,
+          }}>🔀 ALEATORIA</button>
+        </div>
+      )}
+      <style>{`@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}`}</style>
+    </div>
+  );
+}
+
 // ─── MAIN APP ──────────────────────────────────────────────────────────────
 
 function App() {
@@ -2359,7 +2834,7 @@ function App() {
       if (Array.isArray(result)) {
         qResult = result;
       } else if (result !== null && typeof result === "object") {
-        qResult = [{ q: round?.question, correct: result.correct, time: result.time, rpe: result.rpe ?? null }];
+        qResult = [{ q: round?.question, correct: result.correct, time: result.time, rpe: result.rpe ?? null, stepTimings: result.stepTimings ?? null }];
       } else if (result !== null) {
         qResult = [{ q: round?.question, correct: result }];
       } else {
@@ -2478,8 +2953,8 @@ function App() {
         >⏸ PAUSA</button>
 
         {round.type === "sprint"
-          ? <SprintScreen  key={sessionState.roundIdx} round={round} paused={paused} onDone={handleRoundDone} />
-          : <ExerciseTimer key={sessionState.roundIdx} round={round} paused={paused} onDone={handleRoundDone} />
+          ? <SprintScreen  key={sessionState.roundIdx} round={round} paused={paused} onDone={handleRoundDone} sessionResults={sessionState.results} />
+          : <ExerciseTimer key={sessionState.roundIdx} round={round} paused={paused} onDone={handleRoundDone} sessionResults={sessionState.results} />
         }
         <style>{`body{margin:0;background:#060C14}`}</style>
       </>
@@ -2490,6 +2965,9 @@ function App() {
     <>
       {navScreen === "home" && (
         <HomeScreen onStart={handleStart} onResumeSaved={handleResumeSaved} savedSession={savedSession} settings={settings} setSettings={setSettings} reviews={reviews} history={history} />
+      )}
+      {navScreen === "study" && (
+        <StudyScreen customQ={customQ} />
       )}
       {navScreen === "library" && (
         <LibraryScreen customQ={customQ} setCustomQ={setCustomQ} />

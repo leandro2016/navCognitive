@@ -238,10 +238,10 @@ def check_unknown_sources(data, known_sources):
 
 
 KNOWN_SOURCES = {
-    "15_NAVEGACION", "17_CORRIENTES", "16_METEOROLOGIA", "maniobras",
+    "15_NAVEGACION", "17_CORRIENTES", "16_METEOROLOGIA", "04_MANIOBRAS",
     "05_AERODINAMICA", "06_MAYOR", "07_GENOVA", "08_SPINNAKER",
     "01_RRS", "02_COLREG", "03_IALA", "13_LUCES", "14_PROTESTA",
-    "general", "relato",
+    "18_SENALES_DE_REGATA", "general", "relato",
 }
 
 

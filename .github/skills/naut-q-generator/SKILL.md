@@ -39,7 +39,7 @@ organizada por temas. Cada carpeta mapea a categorias del schema:
 | `navegacion/15_NAVEGACION_COSTERA_Y_RIO_DE_LA_PLATA.md` | NAV |
 | `navegacion/17_CORRIENTES_Y_MAREAS.md` | NAV, METEO |
 | `metereologia/16_METEOROLOGIA_PARA_REGATISTAS.md` | METEO, TACT |
-| `maniobras/maniobras.md` | MAN, TRIM, SIT |
+| `maniobras/04_MANIOBRAS_Y_ACCIONES.md` | MAN, TRIM, SIT |
 | `trimming/05_AERODINAMICA.md` | TRIM |
 | `trimming/06_MAYOR.md` | TRIM |
 | `trimming/07_GENOVA.md` | TRIM |
